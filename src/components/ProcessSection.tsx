@@ -44,14 +44,34 @@ const processSteps = [
 const ProcessSection = () => {
   return (
     <section className="bg-white text-black py-20 px-4 sm:px-6 lg:px-8">
-      <div className="mx-16">
-        <div className="text-left mb-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
           <p className="text-sm font-bold tracking-widest text-gray-500 mb-2">PROCESS</p>
-          <h2 className="text-5xl mx-auto text-center md:text-6xl font-bold tracking-tighter">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter px-4">
             Together as a team <br /> every step of the way
           </h2>
         </div>
-        <div className="grid grid-cols-[120px_24px_1fr_120px] gap-x-4 w-1/2">
+        
+        {/* Mobile Layout */}
+        <div className="block md:hidden space-y-12">
+          {processSteps.map((step, index) => (
+            <div key={index} className="relative">
+              {/* Day */}
+              <div className="mb-4">
+                <p className="text-base font-bold text-gray-600">{step.day}</p>
+              </div>
+              
+              {/* Content */}
+              <div className="pl-6 border-l-2 border-gray-300">
+                <h3 className="text-2xl font-semibold mb-3 text-gray-700 leading-tight">{step.title}</h3>
+                <p className="text-gray-600 text-base leading-relaxed">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden md:grid md:grid-cols-[120px_24px_1fr_120px] gap-x-4 lg:gap-x-8 max-w-5xl mx-auto">
           {processSteps.map((step, index) => (
             <React.Fragment key={index}>
               {/* Day */}
@@ -65,11 +85,11 @@ const ProcessSection = () => {
                   <div className="absolute top-6 left-1/2 -translate-x-1/2 w-px h-full bg-gray-300" />
                 )}
                 {/* Dot */}
-                {/* <div className="w-3 h-3 rounded-full bg-gray-400 z-10 mt-1" /> */}
+                <div className="w-3 h-3 rounded-full bg-gray-400 z-10 mt-1" />
               </div>
               {/* Content */}
               <div className="pb-16">
-                <h3 className="text-4xl font-semibold mb-4 text-gray-700 leading-tight">{step.title}</h3>
+                <h3 className="text-3xl lg:text-4xl font-semibold mb-4 text-gray-700 leading-tight">{step.title}</h3>
                 <p className="text-gray-600 text-lg max-w-xl leading-relaxed">{step.description}</p>
               </div>
               {/* Icon (only for the first step, as a placeholder) */}

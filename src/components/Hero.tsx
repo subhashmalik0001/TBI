@@ -8,7 +8,7 @@ const Hero = () => {
         loop
         muted
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover -z-20 transform scale-110 md:scale-120 object-center"
+        className="absolute top-0 left-0 w-full h-120 object-cover -z-20 transform scale-110 md:scale-120 object-center"
       >
         <source src="/hero.mp4" type="video/mp4" />
       </video>
