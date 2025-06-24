@@ -49,9 +49,11 @@ const Navbar = () => {
           <a href="#" className="hover:underline">Events</a>
         </div>
 
-        <a href="#" className={`mr-8 py-2 px-6 rounded-lg font-bold transition-colors duration-300 ${scrolled ? 'bg-black text-white hover:bg-gray-800' : 'bg-white/20 hover:bg-white/30'}`}>
-          APPLY TO INCUBATOR
-        </a>
+        <Link href="/apply" legacyBehavior>
+          <a className={`mr-8 py-2 px-6 rounded-lg font-bold transition-colors duration-300 ${scrolled ? 'bg-black text-white hover:bg-gray-800' : 'bg-white/20 hover:bg-white/30'}`}>
+            APPLY TO INCUBATOR
+          </a>
+        </Link>
       </nav>
 
       {showPrograms && (

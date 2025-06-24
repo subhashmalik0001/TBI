@@ -55,10 +55,8 @@ const IHNavbar = () => {
 
   return (
     <>
-      {/* Very thin top bar with same background, slightly taller than 1px */}
-      <div className="h-31 bg-black">
-
-      </div>
+      {/* Thin black accent bar at the top */}
+      <div className="w-full h-28 bg-black"></div>
       <div
         className="bg-[url('/pattern.svg')] bg-white bg-repeat w-full"
         style={{ height: "7px" }}

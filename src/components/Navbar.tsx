@@ -6,7 +6,9 @@ import ProgramGrid from "./ProgramGrid";
 import Link from "next/link";
 import { HiMenu, HiX } from 'react-icons/hi';
 
-const Navbar = () => {
+interface NavbarProps { forceWhiteBg?: boolean; }
+
+const Navbar = ({ forceWhiteBg = false }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [showPrograms, setShowPrograms] = useState(false);
   const [showAboutPopover, setShowAboutPopover] = useState(false);
@@ -32,9 +34,11 @@ const Navbar = () => {
   }, [scrolled]);
 
   // Prevent hydration mismatch by not rendering scroll-dependent styles until mounted
-  const headerClasses = mounted 
-    ? `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white text-black shadow-lg border-black' : 'bg-transparent text-white border-white'} border-b`
-    : 'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent text-white border-white border-b';
+  const headerClasses = forceWhiteBg
+    ? 'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black border-black border-b shadow-lg'
+    : mounted 
+      ? `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white text-black shadow-lg border-black' : 'bg-transparent text-white border-white'} border-b`
+      : 'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent text-white border-white border-b';
 
   const logoClasses = mounted 
     ? `flex items-center gap-2 md:gap-4 p-2 md:p-3 lg:p-4 ${scrolled ? 'border-black' : 'border-white'} border-r`
@@ -57,7 +61,7 @@ const Navbar = () => {
 
   return (
     <header className={headerClasses}>
-      <nav className="flex items-center justify-between relative min-h-[64px]">
+      <nav className="flex items-center justify-between relative min-h-[64px] pr-6">
         <Link href={`/`}>
         <div className={logoClasses + ' relative flex items-center'}>
           <Image
@@ -182,21 +186,26 @@ const Navbar = () => {
               >
                 Events
               </Link>
-              <a
-                href="/apply"
-                className="bg-white text-black px-6 py-3 rounded-lg font-bold mt-6 hover:bg-gray-200 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                APPLY TO INCUBATOR
-              </a>
+              <button
+                  type="submit"
+                  className="bg-red-600 text-white px-12 py-4 text-lg font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200"
+                >
+              APPLY TO INCUBATOR
+                </button>
             </div>
           </div>
         )}
 
         {/* Apply button for desktop */}
-        <a href="/apply" className={applyButtonClasses + ' hidden md:inline-block'}>
-          APPLY TO INCUBATOR
-        </a>
+        <Link href="/apply" legacyBehavior>
+          <a
+            className="mr-10 bg-red-600 text-white px-10 py-4 text-lg font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200"
+          >
+            APPLY TO INCUBATOR
+          </a>
+        </Link>
+
+      
       </nav>
     </header>
   );
