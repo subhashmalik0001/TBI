@@ -90,6 +90,12 @@ const Navbar = () => {
               >
                 Master Class
               </button>
+              <button
+                className="w-full py-2 px-4 rounded border border-black text-black hover:bg-gray-100 transition"
+                onClick={() => { setShowPrograms(false); router.push('/incubation'); }}
+              >
+                Incubation
+              </button>
             </div>
           </div>
         </div>
