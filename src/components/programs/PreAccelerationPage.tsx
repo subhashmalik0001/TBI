@@ -1,6 +1,5 @@
+"use client";
 import { Button } from "@/components/programs/Button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/programs/Card"
-import { Badge } from "@/components/programs/Badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/programs/Accordion"
 import {
   ArrowRight,
@@ -26,6 +25,29 @@ import {
 } from "lucide-react"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
+import { ReactNode } from "react"
+
+const Card = ({ children, className }: { children: ReactNode; className?: string }) => (
+  <div className={className}>{children}</div>
+);
+
+const CardHeader = ({ children, className }: { children: ReactNode; className?: string }) => (
+  <div className={className}>{children}</div>
+);
+
+const CardContent = ({ children, className }: { children: ReactNode; className?: string }) => (
+  <div className={className}>{children}</div>
+);
+
+const CardTitle = ({ children, className }: { children: ReactNode; className?: string }) => (
+  <h3 className={className}>{children}</h3>
+);
+
+const Badge = ({ children, variant, className }: { children: ReactNode; variant?: string; className?: string }) => (
+  <span className={`inline-block px-2 py-1 rounded text-xs font-medium ${className}`}>
+    {children}
+  </span>
+);
 
 export default function PreAccelerationPage() {
   return (
@@ -252,76 +274,7 @@ export default function PreAccelerationPage() {
       </section>
 
       {/* Program Structure / Timeline */}
-      <section id="structure" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">Program Structure</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  week: "Week 1-2",
-                  title: "Goal Setting & KPI Mapping",
-                  description: "Define growth metrics, set ambitious targets, and create accountability frameworks",
-                  icon: Target,
-                  color: "bg-black",
-                },
-                {
-                  week: "Week 3-4",
-                  title: "Customer Acquisition Strategy",
-                  description: "Develop scalable customer acquisition channels and retention strategies",
-                  icon: Users,
-                  color: "bg-gray-800",
-                },
-                {
-                  week: "Week 5",
-                  title: "Financial & Legal Planning",
-                  description: "Structure finances, legal compliance, and prepare for investment rounds",
-                  icon: Calculator,
-                  color: "bg-gray-600",
-                },
-                {
-                  week: "Week 6",
-                  title: "Pitch Deck & Demo Day",
-                  description: "Perfect your investor pitch and present to our angel network",
-                  icon: Presentation,
-                  color: "bg-gray-400",
-                },
-              ].map((item, index) => (
-                <Card key={index} className="border-2 border-gray-200 hover:border-black transition-colors">
-                  <CardHeader className="text-center">
-                    <div
-                      className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center mx-auto mb-4`}
-                    >
-                      <item.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <Badge variant="outline" className="border-black text-black mb-2">
-                      {item.week}
-                    </Badge>
-                    <CardTitle className="text-lg">{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 text-center text-sm">{item.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            {/* Timeline Visual */}
-            <div className="mt-16 flex justify-center">
-              <div className="flex items-center space-x-4">
-                {[1, 2, 3, 4].map((step, index) => (
-                  <div key={step} className="flex items-center">
-                    <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold">
-                      {step}
-                    </div>
-                    {index < 3 && <ArrowRight className="w-6 h-6 text-gray-400 mx-2" />}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProgramStructure />
 
       {/* Success Highlights */}
       <section id="success" className="py-20 bg-white">
@@ -337,29 +290,28 @@ export default function PreAccelerationPage() {
                     </div>
                     <div>
                       <CardTitle className="text-lg">Rajesh Jain</CardTitle>
-                      <CardDescription>TechFlow Solutions</CardDescription>
+                      <CardContent>
+                        <div className="flex mb-3">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-black" />
+                          ))}
+                        </div>
+                        <p className="text-gray-600 italic mb-4">
+                          "Pre-Acceleration transformed our startup from idea to funded company. We raised ₹50L in seed
+                          funding within 2 months of graduation!"
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <Badge variant="outline" className="border-green-600 text-green-600">
+                            ₹50L Seed Funding
+                          </Badge>
+                          <Badge variant="outline" className="border-blue-600 text-blue-600">
+                            500+ Customers
+                          </Badge>
+                        </div>
+                      </CardContent>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-black" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 italic mb-4">
-                    "Pre-Acceleration transformed our startup from idea to funded company. We raised ₹50L in seed
-                    funding within 2 months of graduation!"
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline" className="border-green-600 text-green-600">
-                      ₹50L Seed Funding
-                    </Badge>
-                    <Badge variant="outline" className="border-blue-600 text-blue-600">
-                      500+ Customers
-                    </Badge>
-                  </div>
-                </CardContent>
               </Card>
 
               <Card className="border-2 border-gray-200">
@@ -370,29 +322,28 @@ export default function PreAccelerationPage() {
                     </div>
                     <div>
                       <CardTitle className="text-lg">Neha Kapoor</CardTitle>
-                      <CardDescription>EcoSmart Innovations</CardDescription>
+                      <CardContent>
+                        <div className="flex mb-3">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-black" />
+                          ))}
+                        </div>
+                        <p className="text-gray-600 italic mb-4">
+                          "The investor pitch training was game-changing. We went from nervous founders to confident
+                          entrepreneurs ready to scale globally!"
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <Badge variant="outline" className="border-purple-600 text-purple-600">
+                            Series A Ready
+                          </Badge>
+                          <Badge variant="outline" className="border-orange-600 text-orange-600">
+                            International Expansion
+                          </Badge>
+                        </div>
+                      </CardContent>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-black" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 italic mb-4">
-                    "The investor pitch training was game-changing. We went from nervous founders to confident
-                    entrepreneurs ready to scale globally!"
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline" className="border-purple-600 text-purple-600">
-                      Series A Ready
-                    </Badge>
-                    <Badge variant="outline" className="border-orange-600 text-orange-600">
-                      International Expansion
-                    </Badge>
-                  </div>
-                </CardContent>
               </Card>
 
               <Card className="border-2 border-gray-200">
@@ -403,29 +354,28 @@ export default function PreAccelerationPage() {
                     </div>
                     <div>
                       <CardTitle className="text-lg">Amit Singh</CardTitle>
-                      <CardDescription>HealthTech Pro</CardDescription>
+                      <CardContent>
+                        <div className="flex mb-3">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-black" />
+                          ))}
+                        </div>
+                        <p className="text-gray-600 italic mb-4">
+                          "From 0 to 10,000 users in 4 months! The customer acquisition strategies we learned were incredibly
+                          effective for our healthcare platform."
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <Badge variant="outline" className="border-red-600 text-red-600">
+                            10K+ Users
+                          </Badge>
+                          <Badge variant="outline" className="border-teal-600 text-teal-600">
+                            ₹25L Revenue
+                          </Badge>
+                        </div>
+                      </CardContent>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-black" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 italic mb-4">
-                    "From 0 to 10,000 users in 4 months! The customer acquisition strategies we learned were incredibly
-                    effective for our healthcare platform."
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline" className="border-red-600 text-red-600">
-                      10K+ Users
-                    </Badge>
-                    <Badge variant="outline" className="border-teal-600 text-teal-600">
-                      ₹25L Revenue
-                    </Badge>
-                  </div>
-                </CardContent>
               </Card>
             </div>
           </div>
@@ -492,4 +442,96 @@ export default function PreAccelerationPage() {
       {/* Footer */}
     </div>
   )
-} 
+}
+
+const ProgramStructure = () => {
+  const programData = [
+    {
+      week: "Week 1-2",
+      title: "Goal Setting & KPI Mapping",
+      description: "Define growth metrics, set ambitious targets, and create accountability frameworks",
+      icon: Target,
+      color: "bg-black",
+    },
+    {
+      week: "Week 3-4",
+      title: "Customer Acquisition Strategy",
+      description: "Develop scalable customer acquisition channels and retention strategies",
+      icon: Users,
+      color: "bg-gray-800",
+    },
+    {
+      week: "Week 5",
+      title: "Financial & Legal Planning",
+      description: "Structure finances, legal compliance, and prepare for investment rounds",
+      icon: Calculator,
+      color: "bg-gray-600",
+    },
+    {
+      week: "Week 6",
+      title: "Pitch Deck & Demo Day",
+      description: "Perfect your investor pitch and present to our angel network",
+      icon: Presentation,
+      color: "bg-gray-400",
+    },
+  ];
+
+  return (
+    <section id="structure" className="py-20 bg-gray-50 overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">Program Structure</h2>
+          {/* Animated Cards Container */}
+          <div className="relative overflow-hidden">
+            <div className="animate-slide-left-right flex gap-8 min-w-max">
+              {programData.map((item, index) => (
+                <Card key={index} className="border-2 border-gray-200 hover:border-black transition-colors bg-white rounded-lg shadow-sm w-80 flex-shrink-0">
+                  <CardHeader className="text-center p-6">
+                    <div
+                      className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center mx-auto mb-4`}
+                    >
+                      <item.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <Badge variant="outline" className="border-black text-black mb-2">
+                      {item.week}
+                    </Badge>
+                    <CardTitle className="text-lg font-semibold">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="px-6 pb-6">
+                    <p className="text-gray-600 text-center text-sm">{item.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+          {/* Timeline Visual */}
+          <div className="mt-16 flex justify-center">
+            <div className="flex items-center space-x-4">
+              {[1, 2, 3, 4].map((step, index) => (
+                <div key={step} className="flex items-center">
+                  <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold">
+                    {step}
+                  </div>
+                  {index < 3 && <ArrowRight className="w-6 h-6 text-gray-400 mx-2" />}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <style jsx>{`
+        @keyframes slideLeftRight {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+        .animate-slide-left-right {
+          animation: slideLeftRight 15s linear infinite;
+        }
+      `}</style>
+    </section>
+  );
+}; 
