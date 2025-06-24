@@ -30,7 +30,7 @@ const AboutHero = ({
           loop
           muted
           playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover -z-20 transform scale-120 object-center"
+          className="absolute top-0 left-0 w-full h-full object-cover -z-20 md:object-center object-center"
         >
           <source src="/hero.mp4" type="video/mp4" />
         </video>

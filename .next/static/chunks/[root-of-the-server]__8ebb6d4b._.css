@@ -2664,6 +2664,12 @@
   }
 
   @media (width >= 48rem) {
+    .md\:object-center {
+      object-position: center;
+    }
+  }
+
+  @media (width >= 48rem) {
     .md\:p-3 {
       padding: calc(var(--spacing) * 3);
     }
