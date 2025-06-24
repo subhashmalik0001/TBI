@@ -1959,6 +1959,10 @@
     color: var(--color-purple-600);
   }
 
+  .text-red-300 {
+    color: var(--color-red-300);
+  }
+
   .text-red-400 {
     color: var(--color-red-400);
   }
@@ -2474,6 +2478,12 @@
   @media (width >= 48rem) {
     .md\:hidden {
       display: none;
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:inline-flex {
+      display: inline-flex;
     }
   }
 

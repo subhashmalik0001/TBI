@@ -4,7 +4,12 @@
   "/apply/page": "app/apply/page.js",
   "/events/page": "app/events/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/insights/ai/page": "app/insights/ai/page.js",
+  "/insights/creators/page": "app/insights/creators/page.js",
+  "/insights/lifestyle/page": "app/insights/lifestyle/page.js",
   "/insights/page": "app/insights/page.js",
   "/page": "app/page.js",
+  "/programs/bridge-program/page": "app/programs/bridge-program/page.js",
+  "/programs/master-class/page": "app/programs/master-class/page.js",
   "/programs/pre-acceleration/page": "app/programs/pre-acceleration/page.js"
 }

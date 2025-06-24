@@ -24,9 +24,9 @@ const Navbar = () => {
   }, [scrolled]);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white text-black shadow-lg border-black' : 'bg-transparent text-white border-white'} border-b-1 `}>
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black shadow-lg border-black border-b-1`}>
       <nav className="flex items-center justify-between">
-        <div className={`flex items-center gap-4 p-8 ${scrolled ? 'border-black' : 'border-white'} border-r-1 `}>
+        <div className={`flex items-center gap-4 p-8 border-black border-r-1`}>
           <Image
             src="/logo.svg"
             alt="Logo"
@@ -48,12 +48,12 @@ const Navbar = () => {
           <a href="#" className="hover:underline">Insights</a>
           <a href="#" className="hover:underline">Events</a>
         </div>
-
-        <Link href="/apply" legacyBehavior>
-          <a className={`mr-8 py-2 px-6 rounded-lg font-bold transition-colors duration-300 ${scrolled ? 'bg-black text-white hover:bg-gray-800' : 'bg-white/20 hover:bg-white/30'}`}>
-            APPLY TO INCUBATOR
-          </a>
-        </Link>
+        <button
+          type="submit"
+          className="hidden md:inline-flex bg-red-600 text-white px-12 py-4 text-lg font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200"
+        >
+          APPLY TO INCUBATOR
+        </button>
       </nav>
 
       {showPrograms && (

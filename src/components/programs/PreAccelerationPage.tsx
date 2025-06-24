@@ -32,6 +32,7 @@ export default function PreAccelerationPage() {
     <div className="min-h-screen bg-white text-black">
       {/* Header */}
       {/* Hero Section */}
+    
       
       <section className="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50"
       >
@@ -49,10 +50,12 @@ export default function PreAccelerationPage() {
               Designed for startups ready to refine, scale, and raise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <Button size="lg" className="bg-black text-white hover:bg-gray-800 px-8 py-3">
-                Apply Now
-                <ArrowRight className="ml-2 w-4 h-4 inline" />
-              </Button>
+              <button
+                type="submit"
+                className="bg-red-600 text-white px-12 py-4 text-lg font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200"
+              >
+                Apply now
+              </button>
               <Button
                 variant="outline"
                 size="lg"
@@ -108,7 +111,7 @@ export default function PreAccelerationPage() {
       <section id="about" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">About the Pre-Acceleration Program</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold mb-8">About the Pre-Acceleration Program</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-12">
               The Pre-Acceleration Program at TBI CU is for early-stage startups who have validated their product and
               are now ready to scale, refine their go-to-market strategy, and prepare for investor pitches. This program
@@ -142,7 +145,7 @@ export default function PreAccelerationPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Who Should Apply?</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-12">Who Should Apply?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card className="border-2 border-gray-200 hover:border-black transition-colors">
                 <CardHeader className="text-center">
@@ -192,7 +195,7 @@ export default function PreAccelerationPage() {
       <section id="offerings" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">What You'll Get</h2>
+            <h2 className=" text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">What You'll Get</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="flex flex-col items-center text-center p-6 border border-gray-200 rounded-lg hover:border-black transition-colors">
                 <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-4">
@@ -252,7 +255,7 @@ export default function PreAccelerationPage() {
       <section id="structure" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Program Structure</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">Program Structure</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
@@ -324,7 +327,7 @@ export default function PreAccelerationPage() {
       <section id="success" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Success Highlights</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">Success Highlights</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card className="border-2 border-gray-200">
                 <CardHeader>
@@ -433,7 +436,7 @@ export default function PreAccelerationPage() {
       <section id="faq" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
             <Accordion className="space-y-4">
               <AccordionItem value="item-1" className="border border-gray-200 rounded-lg px-6">
                 <AccordionTrigger className="text-left font-semibold">

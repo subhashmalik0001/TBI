@@ -7,6 +7,7 @@ import RightSidebar from "@/components/insights/RightSideBar";
 
 const HomePage = () => {
   return (
+
     <main className="bg-white text-black min-h-screen py-6 w-full">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4 py-6">
         {/* Left Sidebar */}
