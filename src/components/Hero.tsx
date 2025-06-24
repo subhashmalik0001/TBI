@@ -60,7 +60,7 @@ const Hero = () => {
             <div className="transform transition-all duration-500 group-hover:scale-105 flex flex-wrap gap-4 lg:gap-6 xl:gap-8">
               {/* Startups Incubated */}
               <div>
-                <h1 className="text-red-400 text-4xl lg:text-5xl xl:text-7xl font-bold leading-tight mb-2 transition-colors duration-300 group-hover:text-red-300">
+                <h1 className="text-red-600 text-4xl lg:text-5xl xl:text-7xl font-bold leading-tight mb-2 transition-colors duration-300 group-hover:text-red-300">
                   10+
                 </h1>
                 <p className="text-white text-lg lg:text-xl xl:text-2xl font-medium opacity-80 group-hover:opacity-100 transition-opacity duration-300">
@@ -70,7 +70,7 @@ const Hero = () => {
 
               {/* Accelerated */}
               <div>
-                <h1 className="text-red-400 text-4xl lg:text-5xl xl:text-7xl font-bold leading-tight mb-2 transition-colors duration-300 group-hover:text-red-300">
+                <h1 className="text-red-600 text-4xl lg:text-5xl xl:text-7xl font-bold leading-tight mb-2 transition-colors duration-300 group-hover:text-red-300">
                   25+
                 </h1>
                 <p className="text-white text-lg lg:text-xl xl:text-2xl font-medium opacity-80 group-hover:opacity-100 transition-opacity duration-300">
@@ -85,7 +85,7 @@ const Hero = () => {
           <div className="relative z-10 p-4 lg:p-6 xl:p-8 h-full flex flex-col justify-center">
             <div className="transform transition-all duration-500 group-hover:scale-105 flex flex-wrap gap-4 lg:gap-8 xl:gap-16">
               <div>
-                <h1 className="text-red-400 text-4xl lg:text-5xl xl:text-7xl font-bold leading-tight mb-2 transition-colors duration-300 group-hover:text-red-300">
+                <h1 className="text-red-600 text-4xl lg:text-5xl xl:text-7xl font-bold leading-tight mb-2 transition-colors duration-300 group-hover:text-red-300">
                   ₹2.5Cr+
                 </h1>
                 <p className="text-white text-lg lg:text-xl xl:text-2xl font-medium opacity-80 group-hover:opacity-100 transition-opacity duration-300">
@@ -94,7 +94,7 @@ const Hero = () => {
               </div>
 
               <div>
-                <h1 className="text-red-400 text-4xl lg:text-5xl xl:text-7xl font-bold leading-tight mb-2 transition-colors duration-300 group-hover:text-red-300">
+                <h1 className="text-red-600 text-4xl lg:text-5xl xl:text-7xl font-bold leading-tight mb-2 transition-colors duration-300 group-hover:text-red-300">
                   2000+
                 </h1>
                 <p className="text-white text-lg lg:text-xl xl:text-2xl font-medium opacity-80 group-hover:opacity-100 transition-opacity duration-300">
