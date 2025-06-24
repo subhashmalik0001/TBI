@@ -1,15 +1,17 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import ProgramGrid from "./ProgramGrid";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showPrograms, setShowPrograms] = useState(false);
-  const router = useRouter();
+  const [showAboutPopover, setShowAboutPopover] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
       if (isScrolled !== scrolled) {
@@ -17,89 +19,96 @@ const Navbar = () => {
       }
     };
 
+    // Set initial scroll state
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [scrolled]);
 
+  // Prevent hydration mismatch by not rendering scroll-dependent styles until mounted
+  const headerClasses = mounted 
+    ? `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white text-black shadow-lg border-black' : 'bg-transparent text-white border-white'} border-b-1`
+    : 'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent text-white border-white border-b-1';
+
+  const logoClasses = mounted 
+    ? `flex items-center gap-4 p-8 ${scrolled ? 'border-black' : 'border-white'} border-r-1`
+    : 'flex items-center gap-4 p-8 border-white border-r-1';
+
+  const logoImageClasses = mounted 
+    ? `w-40 ${scrolled ? 'invert' : ''}`
+    : 'w-40';
+
+  const applyButtonClasses = mounted
+    ? `${scrolled ? 'bg-black text-white hover:bg-gray-800' : 'bg-white/20 hover:bg-white/30'} mr-8 py-2 px-6 rounded-lg font-bold transition-colors duration-300`
+    : 'bg-white/20 hover:bg-white/30 mr-8 py-2 px-6 rounded-lg font-bold transition-colors duration-300';
+
+  const aboutLinkClasses = (baseClasses: string) => mounted
+    ? `${baseClasses} ${scrolled ? 'hover:bg-black/70 hover:text-white' : 'hover:bg-white/30'}`
+    : `${baseClasses} hover:bg-white/30`;
+
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white text-black shadow-lg border-black' : 'bg-transparent text-white border-white'} border-b-1 `}>
-      <nav className="flex items-center justify-between">
-        <div className={`flex items-center gap-4 p-8 ${scrolled ? 'border-black' : 'border-white'} border-r-1 `}>
+    <header className={headerClasses}>
+      <nav className="flex items-center justify-between relative">
+        <Link href={`/`}>
+        <div className={logoClasses}>
           <Image
             src="/logo.svg"
             alt="Logo"
             width={60}
             height={60}
-            className={`w-40 ${scrolled ? 'invert' : ''}`}
+            className={logoImageClasses}
           />
         </div>
+        </Link>
 
         <div className="flex gap-16 text-lg p-8">
-          <a href="#" className="hover:underline">About</a>
-          <button
-            className="hover:underline focus:outline-none"
-            onClick={() => setShowPrograms(true)}
-            type="button"
+          <div
+            className="relative"
+            onMouseEnter={() => setShowAboutPopover(true)}
+            onMouseLeave={() => setShowAboutPopover(false)}
+            onFocus={() => setShowAboutPopover(true)}
+            onBlur={() => setShowAboutPopover(false)}
+            tabIndex={0}
           >
-            Programs
-          </button>
-          <a href="#" className="hover:underline">Insights</a>
-          <a href="#" className="hover:underline">Events</a>
+            <a href="/about" className="hover:underline focus:outline-none">About</a>
+            <div
+              className={`absolute left-1/2 -translate-x-1/2 mt-4 z-50 transition-all duration-300 ${showAboutPopover ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
+              style={{ minWidth: '320px' }}
+            >
+              <div className="bg-white/20 backdrop-blur py-6 px-4 flex flex-col rounded-2xl shadow-xl text-black">
+                <Link href="/about#journey" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Our Journey</Link>
+                <Link href="/about#leadership" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Leadership</Link>
+                <Link href="/about#team" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Our Team</Link>
+              </div>
+            </div>
+          </div>
+          <div
+            className="relative"
+            onMouseEnter={() => setShowPrograms(true)}
+            onMouseLeave={() => setShowPrograms(false)}
+            onFocus={() => setShowPrograms(true)}
+            onBlur={() => setShowPrograms(false)}
+            tabIndex={0}
+          >
+            <a href="#" className="hover:underline focus:outline-none">Programs</a>
+            <div
+              className={`absolute left-1/2 -translate-x-1/2 mt-4 z-50 transition-all duration-300 ${showPrograms ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
+              style={{ minWidth: '420px' }}
+            >
+              <ProgramGrid onLinkClick={() => setShowPrograms(false)} />
+            </div>
+          </div>
+          <a href="/insights" className="hover:underline">Insights</a>
+          <a href="/events" className="hover:underline">Events</a>
         </div>
 
-        <a href="#" className={`mr-8 py-2 px-6 rounded-lg font-bold transition-colors duration-300 ${scrolled ? 'bg-black text-white hover:bg-gray-800' : 'bg-white/20 hover:bg-white/30'}`}>
+        <a href="/apply" className={applyButtonClasses}>
           APPLY TO INCUBATOR
         </a>
       </nav>
-
-      {showPrograms && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg p-8 min-w-[300px] text-black relative">
-            <button
-              className="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl"
-              onClick={() => setShowPrograms(false)}
-              aria-label="Close"
-            >
-              ×
-            </button>
-            <h3 className="text-xl font-bold mb-6">Select Program</h3>
-            <div className="flex flex-col gap-4">
-              <button
-                className="w-full py-2 px-4 rounded bg-black text-white hover:bg-gray-800 transition"
-                onClick={() => { setShowPrograms(false); router.push('/preincubation'); }}
-              >
-                Pre-Incubation
-              </button>
-              <button
-                className="w-full py-2 px-4 rounded border border-black text-black hover:bg-gray-100 transition"
-                onClick={() => { setShowPrograms(false); router.push('/bridge-program'); }}
-              >
-                Bridge Program
-              </button>
-              <button
-                className="w-full py-2 px-4 rounded border border-black text-black hover:bg-gray-100 transition"
-                onClick={() => { setShowPrograms(false); router.push('/pre-acceleration'); }}
-              >
-                Pre-Acceleration
-              </button>
-              <button
-                className="w-full py-2 px-4 rounded border border-black text-black hover:bg-gray-100 transition"
-                onClick={() => { setShowPrograms(false); router.push('/master-class'); }}
-              >
-                Master Class
-              </button>
-              <button
-                className="w-full py-2 px-4 rounded border border-black text-black hover:bg-gray-100 transition"
-                onClick={() => { setShowPrograms(false); router.push('/incubation'); }}
-              >
-                Incubation
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

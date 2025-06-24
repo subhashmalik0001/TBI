@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 const processSteps = [
   {
@@ -52,7 +53,7 @@ const ProcessSection = () => {
         </div>
         <div className="grid grid-cols-[120px_24px_1fr_120px] gap-x-4 w-1/2">
           {processSteps.map((step, index) => (
-            <>
+            <React.Fragment key={index}>
               {/* Day */}
               <div className="flex justify-end items-start pt-2">
                 <p className="text-base font-bold text-gray-600 whitespace-nowrap">{step.day}</p>
@@ -73,7 +74,7 @@ const ProcessSection = () => {
               </div>
               {/* Icon (only for the first step, as a placeholder) */}
                <div></div>
-            </>
+            </React.Fragment>
           ))}
         </div>
       </div>
