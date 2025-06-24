@@ -971,32 +971,8 @@
     width: calc(var(--spacing) * 80);
   }
 
-  .w-\[80px\] {
-    width: 80px;
-  }
-
-  .w-\[100px\] {
-    width: 100px;
-  }
-
-  .w-\[130px\] {
-    width: 130px;
-  }
-
-  .w-\[140px\] {
-    width: 140px;
-  }
-
-  .w-\[180px\] {
-    width: 180px;
-  }
-
   .w-\[190px\] {
     width: 190px;
-  }
-
-  .w-\[200px\] {
-    width: 200px;
   }
 
   .w-\[500px\] {
