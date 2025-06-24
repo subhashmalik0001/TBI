@@ -17,14 +17,13 @@ const Hero = () => {
       {/* Mobile Layout */}
       <div className="absolute inset-0 flex flex-col md:hidden">
         {/* Main heading section */}
-        <div className="flex-1 flex items-center justify-center px-4 pt-20">
-          <h1 className="text-white text-4xl sm:text-5xl font-bold leading-tight text-center">
-            Discover. <br /> Learn.
-            <br /> Empower.
+        <div className="flex-1 flex items-center justify-start pt-20">
+          <h1 className="text-white text-4xl sm:text-5xl font-bold leading-tight text-left pl-0 ml-0">
+            Build. <br /> Connect .
+            <br /> Grow.
           </h1>
         </div>
 
-        {/* Stats section */}
         <div className="flex-1 flex flex-col justify-center px-4 pb-8">
           <div className="grid grid-cols-2 gap-4 text-center">
             <div className="p-4">
@@ -51,8 +50,8 @@ const Hero = () => {
       <div className="absolute inset-0 hidden md:grid grid-cols-2 grid-rows-3">
         <div className="col-span-2 row-span-2 flex items-center justify-start pl-8 lg:pl-12">
           <h1 className="text-white text-5xl lg:text-6xl xl:text-7xl mt-20 font-bold leading-tight">
-            Discover. <br /> Learn.
-            <br /> Empower.
+            Build. <br /> Connect.
+            <br /> Grow.
           </h1>
         </div>
 
