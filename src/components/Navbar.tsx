@@ -5,10 +5,15 @@ import { useState, useEffect } from "react";
 import ProgramGrid from "./ProgramGrid";
 import Link from "next/link";
 import { HiMenu, HiX } from 'react-icons/hi';
+import { usePathname } from "next/navigation";
 
-interface NavbarProps { forceWhiteBg?: boolean; }
+interface NavbarProps { forceWhiteBg?: boolean; hideOnInsights?: boolean; }
 
-const Navbar = ({ forceWhiteBg = false }: NavbarProps) => {
+const Navbar = ({ forceWhiteBg = false, hideOnInsights = false }: NavbarProps) => {
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "";
+  if (hideOnInsights && pathname.startsWith("/insights")) {
+    return null;
+  }
   const [scrolled, setScrolled] = useState(false);
   const [showPrograms, setShowPrograms] = useState(false);
   const [showAboutPopover, setShowAboutPopover] = useState(false);
@@ -67,9 +72,9 @@ const Navbar = ({ forceWhiteBg = false }: NavbarProps) => {
           <Image
             src="/logo.svg"
             alt="Logo"
-            width={80}
-            height={80}
-            className="w-[80px] h-[80px]"
+            width={100}
+            height={100}
+            className="w-[190px] h-[80px]"
           />
           {/* Hamburger for mobile - now always white and right after logo, touching it */}
           <button

@@ -22,7 +22,7 @@ const IHLogo = () => (
     className="flex items-center justify-center bg-white text-[#1a3552] font-extrabold text-base mr-3"
     style={{
       width: 44,
-      height: 44,
+      height: 100,
       borderRadius: 0, // Square
       fontFamily: "'Poppins', sans-serif",
       letterSpacing: "0.02em",
