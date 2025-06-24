@@ -24,41 +24,14 @@ import {
   Calendar,
   Clock,
 } from "lucide-react"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
 
 export default function PreAccelerationPage() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Header */}
-      <header className="border-b border-gray-200 bg-white">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-              <Rocket className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-xl font-bold">TBI CU</span>
-          </div>
-          <nav className="hidden md:flex space-x-8">
-            <a href="#about" className="text-sm font-medium hover:text-gray-600 transition-colors">
-              About
-            </a>
-            <a href="#offerings" className="text-sm font-medium hover:text-gray-600 transition-colors">
-              Offerings
-            </a>
-            <a href="#structure" className="text-sm font-medium hover:text-gray-600 transition-colors">
-              Structure
-            </a>
-            <a href="#success" className="text-sm font-medium hover:text-gray-600 transition-colors">
-              Success
-            </a>
-            <a href="#faq" className="text-sm font-medium hover:text-gray-600 transition-colors">
-              FAQ
-            </a>
-          </nav>
-          <Button variant="outline" className="bg-black text-white border-black hover:bg-gray-800">
-            Apply Now
-          </Button>
-        </div>
-      </header>
+     <Navbar/>
 
       {/* Hero Section */}
       <section className="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50">
@@ -509,99 +482,12 @@ export default function PreAccelerationPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-black text-white">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Take the Leap Toward Acceleration</h2>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              If you're ready to scale, we're ready to guide you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button size="lg" className="bg-white text-black hover:bg-gray-200 px-8 py-3">
-                Apply for Pre-Acceleration
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-black px-8 py-3"
-              >
-                Schedule a Call
-              </Button>
-            </div>
-
-            {/* Program Highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-12 border-t border-gray-800">
-              <div className="flex items-center justify-center space-x-3">
-                <Clock className="w-5 h-5" />
-                <span>4-6 Weeks</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3">
-                <DollarSign className="w-5 h-5" />
-                <span>Investor Ready</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3">
-                <Network className="w-5 h-5" />
-                <span>Angel Network</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3">
-                <Award className="w-5 h-5" />
-                <span>Demo Day</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       {/* Contact Information */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-2xl font-bold mb-8">Ready to Accelerate?</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex items-center justify-center space-x-3">
-                <Mail className="w-5 h-5" />
-                <span>preacceleration@tbi.cu.ac.in</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3">
-                <Phone className="w-5 h-5" />
-                <span>+91 98765 43212</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3">
-                <MapPin className="w-5 h-5" />
-                <span>TBI CU, Chandigarh University</span>
-              </div>
-            </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white">
-                <FileText className="w-4 h-4 mr-2" />
-                Download Program Guide
-              </Button>
-              <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white">
-                <Calendar className="w-4 h-4 mr-2" />
-                Book Consultation
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-                <Rocket className="w-4 h-4 text-white" />
-              </div>
-              <span className="text-xl font-bold">TBI CU</span>
-            </div>
-            <div className="text-sm text-gray-600">
-              © 2024 Technology Business Incubator - Chandigarh University. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   )
 } 
