@@ -42,14 +42,20 @@ const AboutHero = ({
         </h1>
         <div className="flex gap-6 flex-col sm:flex-row">
           <Link href={primaryButton.href}>
-            <span className="inline-block bg-red-600 hover:bg-red-700 text-black font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-colors duration-200 cursor-pointer">
+            <button
+              type="button"
+              className="bg-red-600 text-white px-9 py-3 text-lg font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200"
+            >
               {primaryButton.label}
-            </span>
+            </button>
           </Link>
           <Link href={secondaryButton.href}>
-            <span className="inline-block bg-white/20 hover:bg-white/40 text-black font-bold py-3 px-8 rounded-full text-lg shadow-lg border border-white transition-colors duration-200 cursor-pointer">
+            <button
+              type="button"
+              className="bg-red-600 text-white px-9 py-3 text-lg font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200"
+            >
               {secondaryButton.label}
-            </span>
+            </button>
           </Link>
         </div>
       </div>
