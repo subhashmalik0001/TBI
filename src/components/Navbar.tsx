@@ -50,11 +50,16 @@ const Navbar = () => {
     ? `${baseClasses} ${scrolled ? 'hover:bg-black/70 hover:text-white' : 'hover:bg-white/30'}`
     : `${baseClasses} hover:bg-white/30`;
 
+  // Fixed hamburger icon classes - now responds to scroll state
+  const hamburgerClasses = mounted
+    ? `md:hidden flex items-center p-4 focus:outline-none ${scrolled ? 'text-black' : 'text-white'}`
+    : 'md:hidden flex items-center p-4 focus:outline-none text-white';
+
   return (
     <header className={headerClasses}>
       <nav className="flex items-center justify-between relative min-h-[64px]">
         <Link href={`/`}>
-        <div className={logoClasses}>
+        <div className={logoClasses + ' relative flex items-center'}>
           <Image
             src="/logo.svg"
             alt="Logo"
@@ -62,17 +67,20 @@ const Navbar = () => {
             height={80}
             className="w-[80px] h-[80px]"
           />
+          {/* Hamburger for mobile - now always white and right after logo, touching it */}
+          <button
+            className="md:hidden flex items-center p-3 ml-53 focus:outline-none bg-red-600 rounded text-red-600 absolute right-0 top-1/2 -translate-y-1/2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+            style={{ left: '100%', position: 'absolute' }}
+          >
+            {mobileMenuOpen 
+              ? <HiX className="w-6 h-6 text-red-600" /> 
+              : <HiMenu className="w-6 h-6 text-red-600" />
+            }
+          </button>
         </div>
         </Link>
-
-        {/* Hamburger for mobile */}
-        <button
-          className="md:hidden flex items-center p-4 focus:outline-none"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <HiX className="w-6 h-6" /> : <HiMenu className="w-6 h-6" />}
-        </button>
 
         {/* Desktop Menu */}
         <div className="gap-8 lg:gap-12 xl:gap-16 text-base lg:text-lg p-2 md:p-3 lg:p-4 hidden md:flex">
