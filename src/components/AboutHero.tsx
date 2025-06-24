@@ -37,7 +37,7 @@ const AboutHero = ({
       )}
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-70 -z-10"></div>
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-8 drop-shadow-lg">
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-8 drop-shadow-lg text-white">
           {title}
         </h1>
         <div className="flex gap-6 flex-col sm:flex-row">

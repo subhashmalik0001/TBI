@@ -1637,8 +1637,8 @@
     padding-inline: calc(var(--spacing) * 8);
   }
 
-  .px-10 {
-    padding-inline: calc(var(--spacing) * 10);
+  .px-9 {
+    padding-inline: calc(var(--spacing) * 9);
   }
 
   .px-12 {
@@ -1647,6 +1647,10 @@
 
   .px-16 {
     padding-inline: calc(var(--spacing) * 16);
+  }
+
+  .px-19 {
+    padding-inline: calc(var(--spacing) * 19);
   }
 
   .py-1 {
@@ -1965,10 +1969,6 @@
 
   .text-red-600 {
     color: var(--color-red-600);
-  }
-
-  .text-red-700 {
-    color: var(--color-red-700);
   }
 
   .text-teal-600 {
