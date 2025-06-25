@@ -1895,8 +1895,20 @@
     padding-right: calc(var(--spacing) * 40);
   }
 
+  .pr-70 {
+    padding-right: calc(var(--spacing) * 70);
+  }
+
+  .pr-75 {
+    padding-right: calc(var(--spacing) * 75);
+  }
+
   .pr-80 {
     padding-right: calc(var(--spacing) * 80);
+  }
+
+  .pr-90 {
+    padding-right: calc(var(--spacing) * 90);
   }
 
   .pr-100 {
