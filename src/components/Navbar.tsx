@@ -23,6 +23,7 @@ const Navbar = ({ forceWhiteBg = false, hideOnInsights = false }: NavbarProps) =
   const [showAboutPopover, setShowAboutPopover] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showMobilePrograms, setShowMobilePrograms] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -234,11 +235,19 @@ const Navbar = ({ forceWhiteBg = false, hideOnInsights = false }: NavbarProps) =
                     About
                   </Link>
                   <button
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => setShowMobilePrograms((v) => !v)}
                     className="text-white text-xl font-medium py-3 hover:text-red-400 transition-colors border-b border-gray-700 text-left"
                   >
                     Programs
                   </button>
+                  {showMobilePrograms && (
+                    <div className="w-full py-4">
+                      <ProgramGrid onLinkClick={() => {
+                        setShowMobilePrograms(false);
+                        setMobileMenuOpen(false);
+                      }} isMobile />
+                    </div>
+                  )}
                   <Link
                     href="/insights"
                     onClick={() => setMobileMenuOpen(false)}

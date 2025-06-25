@@ -3589,6 +3589,12 @@
   }
 
   @media (width >= 64rem) {
+    .lg\:py-45 {
+      padding-block: calc(var(--spacing) * 45);
+    }
+  }
+
+  @media (width >= 64rem) {
     .lg\:py-50 {
       padding-block: calc(var(--spacing) * 50);
     }

@@ -95,32 +95,30 @@ export default function IncubationPage() {
     <div className="min-h-screen bg-white text-black flex flex-col min-h-screen">
       {/* ... rest of the provided code, replacing <header> with <Navbar /> and <footer> with <Footer /> ... */}
       {/* Place all sections and content here, as in the provided code, except for header/footer */}
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+      <section className="py-20 lg:py-50 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-5xl mx-auto">
-            <Badge variant="outline" className="mb-6 border-black text-black animate-fade-in">
-              DST, GoI Supported
-            </Badge>
+            
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-slide-up">
               Full Startup <span className="underline decoration-4">Incubation</span>
               <br />
-              at TBI CU
+              
+              <span className="text-red-600 text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-slide-up" > @TBI CU</span>
+             
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay">
               Where student ideas become funded startups.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-delay-2">
-              <Button size="lg" className="bg-black text-white hover:bg-gray-800 px-8 py-3">
-                Apply for Incubation
-                <ArrowRight className="ml-2 w-4 h-4 inline" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-white text-black border-black hover:bg-gray-50 px-8 py-3"
-              >
-                Explore Programs
-              </Button>
+            <div className="hidden lg:flex">
+     
+            <button className="bg-red-600 text-white px-4 xl:px-6 py-2 xl:py-3 text-sm xl:text-base font-bold border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-200 whitespace-nowrap">
+              APPLY TO INCUBATOR
+            </button>
+    
+        </div>
+      
+              
             </div>
 
             {/* Animated Startup Launch Illustration */}
@@ -176,7 +174,7 @@ export default function IncubationPage() {
       <section id="about" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 animate-on-scroll">What is TBI CU?</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold mb-8 animate-on-scroll">What is TBI CU?</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-12 animate-on-scroll">
               Technology Business Incubator (TBI) at Chandigarh University is an institution supported by DST, GoI, and
               the university ecosystem to nurture innovative and scalable ideas. TBI supports budding student
@@ -216,7 +214,7 @@ export default function IncubationPage() {
       <section id="process" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">How TBI Works</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">How TBI Works</h2>
             <div className="space-y-8">
               {[
                 {
@@ -285,7 +283,7 @@ export default function IncubationPage() {
       <section id="services" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">What TBI Provides</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">What TBI Provides</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 { icon: Coffee, title: "Co-Working Space", description: "Modern workspace with all amenities" },
@@ -322,7 +320,7 @@ export default function IncubationPage() {
       <section id="initiatives" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">
               Initiatives by TBI CU
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -394,7 +392,7 @@ export default function IncubationPage() {
       <section id="impact" className="py-20 bg-black text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-16">Achievements & Impact</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold mb-16">Achievements & Impact</h2>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
               <AnimatedCounter end={150} suffix="+" label="Startups Incubated" />
               <AnimatedCounter end={75} suffix="+" label="Mentors Onboarded" />
@@ -410,7 +408,7 @@ export default function IncubationPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">Success Stories</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">Success Stories</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
