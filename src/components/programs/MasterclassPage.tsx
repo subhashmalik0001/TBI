@@ -32,32 +32,27 @@ export default function MasterclassPage() {
     <div className="min-h-screen bg-white text-black flex flex-col min-h-screen">
       {/* Header */}
       {/* Hero Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 lg:py-50 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-5xl mx-auto">
-            <Badge variant="outline" className="mb-6 border-black text-black">
-              Expert-Led Training
-            </Badge>
+           
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               TBI <span className="underline decoration-4">Masterclass</span> Series
               <br />
-              <span className="italic">Learn</span>, Build, <span className="italic">Launch</span>
+              <span className="italic text-red-600">Learn,</span> <span className="italic text-red-600">Build,</span> <span className=" text-red-600 italic">Launch</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
               Expert-led workshops and startup training sessions to empower your entrepreneurial journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <Button size="lg" className="bg-black text-white hover:bg-gray-800 px-8 py-3">
-                Join the Next Masterclass
-                <ArrowRight className="ml-2 w-4 h-4 inline" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-white text-black border-black hover:bg-gray-50 px-8 py-3"
-              >
-                View Schedule
-              </Button>
+            <div className="hidden lg:flex">
+ 
+            <button className="bg-red-600 text-white px-4 xl:px-6 py-2 xl:py-3 text-sm xl:text-base font-bold border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-200 whitespace-nowrap">
+              APPLY FOR MASTERCLASS
+            </button>
+          
+        </div>
+             
             </div>
             {/* Workshop Illustration */}
             <div className="relative max-w-4xl mx-auto">
@@ -94,7 +89,7 @@ export default function MasterclassPage() {
       <section id="about" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">What is the TBI Masterclass?</h2>
+            <h2 className="text-3xl md:text-4xl text-red-600 font-bold mb-8">What is the TBI Masterclass?</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-12">
               The TBI Masterclass is a structured series of sessions designed to educate, empower, and elevate young
               innovators. From ideation to execution, our workshops cover startup essentials, product design, business
@@ -128,7 +123,7 @@ export default function MasterclassPage() {
       <section id="sessions" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Types of Sessions Conducted</h2>
+            <h2 className=" text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">Types of Sessions Conducted</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="flex flex-col items-center text-center p-6 border border-gray-200 rounded-lg hover:border-black transition-colors bg-white">
                 <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-4">
@@ -194,7 +189,7 @@ export default function MasterclassPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Who Should Attend?</h2>
+            <h2 className=" text-red-600 text-3xl md:text-4xl font-bold text-center mb-12">Who Should Attend?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <Card className="border-2 border-gray-200 hover:border-black transition-colors">
                 <CardHeader className="text-center">
@@ -258,7 +253,7 @@ export default function MasterclassPage() {
       <section id="highlights" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Highlights from Past Masterclasses</h2>
+            <h2 className=" text-red-600  text-3xl md:text-4xl font-bold text-center mb-16">Highlights from Past Masterclasses</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card className="border-2 border-gray-200 bg-white">
                 <CardHeader>
@@ -364,7 +359,7 @@ export default function MasterclassPage() {
       <section id="upcoming" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Upcoming Masterclasses</h2>
+            <h2 className=" text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">Upcoming Masterclasses</h2>
             <div className="space-y-6">
               {[
                 {
@@ -431,7 +426,7 @@ export default function MasterclassPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Why Join?</h2>
+            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">Why Join?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center flex-shrink-0">

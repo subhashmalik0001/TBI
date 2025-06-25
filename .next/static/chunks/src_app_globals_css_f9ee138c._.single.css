@@ -2429,6 +2429,10 @@
     color: var(--color-purple-600);
   }
 
+  .text-red-100 {
+    color: var(--color-red-100);
+  }
+
   .text-red-300 {
     color: var(--color-red-300);
   }
@@ -3481,6 +3485,18 @@
   @media (width >= 64rem) {
     .lg\:py-34 {
       padding-block: calc(var(--spacing) * 34);
+    }
+  }
+
+  @media (width >= 64rem) {
+    .lg\:py-40 {
+      padding-block: calc(var(--spacing) * 40);
+    }
+  }
+
+  @media (width >= 64rem) {
+    .lg\:py-50 {
+      padding-block: calc(var(--spacing) * 50);
     }
   }
 
