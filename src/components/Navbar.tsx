@@ -181,7 +181,7 @@ const Navbar = ({ forceWhiteBg = false, hideOnInsights = false }: NavbarProps) =
 
         {/* Mobile Hamburger Menu */}
         <button
-          className={`lg:hidden flex flex-col justify-center items-center w-8 h-8 focus:outline-none transition-colors duration-200 ${
+          className={`lg:hidden flex flex-col justify-center items-center w-15 h-8 pr-80 focus:outline-none transition-colors duration-200 ${
             mounted && scrolled && !forceWhiteBg ? 'text-black' : 'text-white'
           }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
