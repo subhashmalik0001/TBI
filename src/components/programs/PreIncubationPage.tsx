@@ -53,13 +53,14 @@ export default function PreIncubationPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
              
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-white text-black border-black hover:bg-gray-50 px-8 py-3"
-              >
-                Learn More
-              </Button>
+            <div className="hidden lg:flex">
+          
+            <button className="bg-red-600 text-white px-4 xl:px-6 py-2 xl:py-3 text-sm xl:text-base font-bold border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-200 whitespace-nowrap">
+              APPLY TO PRE-INCUBATION
+            </button>
+        =
+        </div>
+      
             </div>
 
             {/* Hero Illustration */}
@@ -86,7 +87,9 @@ export default function PreIncubationPage() {
       <section id="about" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">About Pre-Incubation @ TBI CU</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">
+              About Pre-Incubation <span className="text-red-600">@ TBI CU</span>
+            </h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-12">
               The Pre-Incubation Program at TBI CU is designed to support early-stage student entrepreneurs who have
               innovative ideas but need guidance to develop them into working models. We help you validate your idea,
@@ -116,10 +119,10 @@ export default function PreIncubationPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Who is it For?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-red-600 text-center mb-12">Who is it For?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card className="border-2 border-gray-200 hover:border-black transition-colors">
-                <CardHeader className="text-center">
+                <CardHeader className="text-center"> 
                   
                   <CardTitle>Raw Ideas</CardTitle>
                 </CardHeader>
@@ -158,7 +161,7 @@ export default function PreIncubationPage() {
       <section id="benefits" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Program Benefits</h2>
+            <h2 className="text-3xl md:text-4xl text-red-600 font-bold text-center mb-16">Program Benefits</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="flex flex-col items-center text-center p-6 border border-gray-200 rounded-lg hover:border-black transition-colors">
                
@@ -204,7 +207,7 @@ export default function PreIncubationPage() {
       <section id="journey" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Pre-Incubation Journey</h2>
+            <h2 className="text-3xl md:text-4xl text-red-600 font-bold text-center mb-16">Pre-Incubation Journey</h2>
             <div className="space-y-8">
               {[
                 { step: "01", title: "Apply Online", description: "Submit your application with your innovative idea" },
@@ -251,11 +254,12 @@ export default function PreIncubationPage() {
         </div>
       </section>
 
+
       {/* Success Stories */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Success Stories</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600 mb-16">Success Stories</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card className="border-2 border-gray-200">
                 <CardHeader>
@@ -336,57 +340,72 @@ export default function PreIncubationPage() {
         </div>
       </section>
 
+    
+
       {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
-            <Accordion className="space-y-4">
-              <AccordionItem value="item-1" className="border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold">
-                  What's the duration of the program?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  The Pre-Incubation Program typically runs for 3-4 months, providing ample time for idea development,
-                  mentorship sessions, and MVP creation.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-2" className="border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold">Do I need a team to apply?</AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  No, you can apply as an individual. However, we encourage team formation during the program and can
-                  help you connect with like-minded individuals.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-3" className="border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold">Is it open to all departments?</AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  Yes, the program is open to students from all departments and disciplines. We believe innovation comes
-                  from diverse backgrounds and perspectives.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-4" className="border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold">
-                  What happens after pre-incubation?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  Successful participants get the opportunity to pitch for our full Incubation Program, which offers
-                  funding, advanced mentorship, and comprehensive business support.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </div>
-      </section>
+      <FAQSection />
 
       {/* Call to Action */}
      
 
       {/* Footer */}
       
+      
     </div>
+    
   )
-} 
+}
+
+// FAQ Section Component
+const FAQSection = () => {
+  const faqs = [
+    {
+      question: "What's the duration of the program?",
+      answer:
+        "The Pre-Incubation Program typically runs for 3-4 months, providing ample time for idea development, mentorship sessions, and MVP creation.",
+    },
+    {
+      question: "Do I need a team to apply?",
+      answer:
+        "No, you can apply as an individual. However, we encourage team formation during the program and can help you connect with like-minded individuals.",
+    },
+    {
+      question: "Is it open to all departments?",
+      answer:
+        "Yes, the program is open to students from all departments and disciplines. We believe innovation comes from diverse backgrounds and perspectives.",
+    },
+    {
+      question: "What happens after pre-incubation?",
+      answer:
+        "Successful participants get the opportunity to pitch for our full Incubation Program, which offers funding, advanced mentorship, and comprehensive business support.",
+    },
+  ];
+
+  return (
+    <section id="faq" className="py-20 bg-white">
+      <div className="max-w-4xl mx-auto">
+        <div className="border-4 border-black p-8">
+          <h1 className="text-2xl font-bold text-red-600 mb-8 tracking-wide">FREQUENTLY ASKED QUESTIONS</h1>
+          <div className="space-y-8">
+            {faqs.map((faq, index) => (
+              <div key={index} className="space-y-4">
+                <h2 className="text-lg font-bold text-black">{faq.question}</h2>
+                <div className="border-2 border-black p-4 bg-white">
+                  <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 pt-8 border-t-2 border-black">
+            <h2 className="text-lg font-bold text-black mb-4">Have More Questions?</h2>
+            <div className="border-2 border-black p-4 bg-white">
+              <p className="text-gray-700">
+                {"If you have additional questions not covered here, please don't hesitate to contact our team. We're here to help you understand our programs and find the right fit for your startup ey."}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}; 

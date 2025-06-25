@@ -181,7 +181,7 @@ export default function PreAccelerationPage() {
         <div className="w-[320px] border-4 border-black bg-white p-6 shadow-[10px_10px_0_#ff0000] font-sans">
           <div className="flex items-center gap-4 mb-4 border-b-2 border-black pb-4">
             
-            <div className="text-2xl font-black text-black uppercase">Founders Structured Growth</div>
+            <div className="text-2xl font-black text-black uppercase"> Founders Structured Growth</div>
           </div>
 
           <div className="mt-4 text-black text-sm font-semibold leading-relaxed border-b-2 border-black pb-4">
