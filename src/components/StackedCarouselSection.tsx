@@ -52,13 +52,49 @@ const StackedCarouselSection = () => {
       <div className="flex flex-col items-center">
         <h2 className="text-2xl font-semibold mb-6 text-gray-700">As Featured In</h2>
         <div className="flex gap-8 flex-wrap justify-center text-gray-500">
-          {companies.map((c) => (
-            <div key={c.name} className="flex items-center gap-2 text-lg font-medium">
-              <span className="text-xl">{c.icon}</span>
-              {c.name}
-            </div>
+          
+        </div>
+      </div>
+      {/* Animated Sponsor Logos */}
+      <div className="w-full h-[20vh] overflow-hidden py-10">
+        <div
+          className="flex gap-8 whitespace-nowrap group hover:[animation-play-state:paused] px-1 animate-logo-scroll"
+        >
+          {Array(2).fill(null).flatMap(() => [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1200px-Microsoft_logo_%282012%29.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1200px-Apple_logo_black.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1200px-Microsoft_logo_%282012%29.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1200px-Apple_logo_black.svg.png",
+          ]).map((src, idx) => (
+            <img
+              key={idx}
+              src={src}
+              alt={`sponsor-${idx}`}
+              className="inline-block object-contain"
+              style={{ width: "150px", height: "70px" }}
+            />
           ))}
         </div>
+        <style jsx>{`
+          .animate-logo-scroll {
+            animation: scroll 15s linear infinite;
+            animation-fill-mode: forwards;
+            animation-direction: normal;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+          }
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+        `}</style>
       </div>
       <div className="w-full max-w-3xl mt-12">
         <div className="grid grid-cols-2 gap-6">
