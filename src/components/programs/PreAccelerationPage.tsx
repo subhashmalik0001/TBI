@@ -22,10 +22,15 @@ import {
   Award,
   Calendar,
   Clock,
+  Heart,
+  Smile,
+  Diamond,
+  BarChart3,
 } from "lucide-react"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 import { ReactNode } from "react"
+import Link from "next/link"
 
 const Card = ({ children, className }: { children: ReactNode; className?: string }) => (
   <div className={className}>{children}</div>
@@ -51,83 +56,72 @@ const Badge = ({ children, variant, className }: { children: ReactNode; variant?
 
 export default function PreAccelerationPage() {
   return (
-    <div className="min-h-screen bg-white text-black">
-      {/* Header */}
-      {/* Hero Section */}
-    
-      
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50"
-      >
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-5xl mx-auto">
-            <Badge variant="outline" className="mb-6 border-black text-black">
-              Advanced Program
-            </Badge>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="">Pre-Acceleration</span>
-              <br />
-              <span className="">Accelerate</span> Your Startup Journey
-            </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Designed for startups ready to refine, scale, and raise.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <button
-                type="submit"
-                className="bg-red-600 text-white px-12 py-4 text-lg font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200"
-              >
-                Apply now
-              </button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-white text-black border-black hover:bg-gray-50 px-8 py-3"
-              >
-                View Program Details
-              </Button>
+    <div className="min-h-screen bg-gradient-to-br from-white-200 via-white-50 to-white">
+      <div className="container mx-auto px-4 py-16 pt-50">
+        <div className="grid lg:grid-cols-2 gap- items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+            <h2 className="text-4xl lg:text-6xl font-bold text-black leading-tight">
+            Pre-Acceleration
+              </h2>
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">
+              Accelerate Your  Startup Journey
+              </h1>
+             
+              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+                Transform your innovative ideas into successful ventures with our comprehensive pre-acceleration program
+                designed to fast-track your startup's growth.
+              </p>
             </div>
 
-            {/* Rocket Launch Illustration */}
-            <div className="relative max-w-4xl mx-auto">
-              <div className="flex items-end justify-center space-x-8 opacity-20">
-                {/* Growth Curve */}
-                <div className="flex flex-col items-center space-y-4">
-                  <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center">
-                    <Building className="w-6 h-6" />
-                  </div>
-                  <div className="w-16 h-16 border-2 border-black rounded-full flex items-center justify-center">
-                    <TrendingUp className="w-8 h-8" />
-                  </div>
-                  <div className="w-20 h-20 border-4 border-black rounded-full flex items-center justify-center">
-                    <Rocket className="w-10 h-10" />
-                  </div>
-                </div>
-
-                {/* Launch Trail */}
-                <div className="flex flex-col items-center space-y-2">
-                  <div className="w-2 h-8 bg-black opacity-30"></div>
-                  <div className="w-3 h-12 bg-black opacity-50"></div>
-                  <div className="w-4 h-16 bg-black opacity-70"></div>
-                  <div className="w-6 h-20 bg-black"></div>
-                </div>
-
-                {/* Success Indicators */}
-                <div className="flex flex-col items-center space-y-4">
-                  <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center">
-                    <DollarSign className="w-6 h-6" />
-                  </div>
-                  <div className="w-16 h-16 border-2 border-black rounded-full flex items-center justify-center">
-                    <Award className="w-8 h-8" />
-                  </div>
-                  <div className="w-20 h-20 border-4 border-black rounded-full flex items-center justify-center">
-                    <Globe className="w-10 h-10" />
-                  </div>
-                </div>
+            <div className="space-y-4">
+              <div className="hidden lg:flex">
+                <Link href="/apply">
+                  <button className="bg-red-600 text-white px-4 xl:px-6 py-2 xl:py-3 text-sm xl:text-base font-bold border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-200 whitespace-nowrap">
+                    Apply For Pre-Acceleration
+                  </button>
+                </Link>
               </div>
+              <p className="text-gray-500 text-sm">Application deadline approaching</p>
             </div>
           </div>
+
+          {/* Right Content - Widget Examples */}
+          <div className="space-y-6">
+            {/* Main Stats Card */}
+            <Card className="relative z-10 p-6 bg-white/90 backdrop-blur-md rounded-2xl pt-10 px-20 shadow-[12px_12px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-300 ease-in-out">
+  <div className="grid grid-cols-3 gap-6 text-center">
+    <div>
+      <div className="text-3xl font-bold text-gray-900">500+</div>
+      <div className="text-sm text-gray-600 mt-1">Startups we've accelerated</div>
+    </div>
+    <div>
+      <div className="text-3xl font-bold text-gray-900">85%</div>
+      <div className="text-sm text-gray-600 mt-1">Success rate of our graduates</div>
+    </div>
+    <div>
+      <div className="text-3xl font-bold text-gray-900">5+</div>
+      <div className="text-sm text-gray-600 mt-1">Years of startup mentoring</div>
+    </div>
+  </div>
+</Card>
+
+
+            {/* Blue Highlight Card */}
+            <Card className="relative z-10 p-6 bg-red-600 text-white rounded-2xl shadow-[12px_12px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-300 ease-in-out">
+  <div className="text-center">
+    <div className="text-4xl font-bold">₹2.5Cr+</div>
+    <div className="text-blue-100 mt-2">Total Funding Raised</div>
+  </div>
+</Card>
+
+
+            {/* Individual Stats Row */}
+           
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* About the Pre-Acceleration Program */}
       <section id="about" className="py-20 bg-white">
@@ -141,24 +135,7 @@ export default function PreAccelerationPage() {
             </p>
 
             {/* Key Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">4-6</div>
-                <div className="text-gray-600">Weeks Intensive</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">90%</div>
-                <div className="text-gray-600">Funding Success</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">₹2.5Cr+</div>
-                <div className="text-gray-600">Total Funding Raised</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">25+</div>
-                <div className="text-gray-600">Startups Accelerated</div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
@@ -169,49 +146,63 @@ export default function PreAccelerationPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-12">Who Should Apply?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="border-2 border-gray-200 hover:border-black transition-colors">
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle>Working MVP</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-center">
-                    Student-led startups with a working MVP and initial traction
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="flex justify-center my-12">
+        <div className="w-[320px] border-4 border-black bg-white p-6 shadow-[10px_10px_0_#ff0000] font-sans">
+          <div className="flex items-center gap-4 mb-4 border-b-2 border-black pb-4">
+           
+            <div className="text-2xl font-black text-black uppercase"> Startups with MVP  </div>
+          </div>
 
-              <Card className="border-2 border-gray-200 hover:border-black transition-colors">
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Globe className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle>Market Ready</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-center">Founders ready to enter the market and scale operations</p>
-                </CardContent>
-              </Card>
+          <div className="mt-4 text-black text-sm font-semibold leading-relaxed border-b-2 border-black pb-4">
+          Startups founded by students that have developed a working Minimum Viable Product (MVP) and are ready to refine, validate, and prepare for market entry.
+          </div>
+          
 
-              <Card className="border-2 border-gray-200 hover:border-black transition-colors">
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                    <DollarSign className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle>Investor Ready</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-center">
-                    Teams seeking investor readiness & startup acceleration support
-                  </p>
-                </CardContent>
-              </Card>
+        
+        </div>
+      </div>
+      <div className="flex justify-center my-12">
+        <div className="w-[320px] border-4 border-black bg-white p-6 shadow-[10px_10px_0_#ff0000] font-sans">
+          <div className="flex items-center gap-4 mb-4 border-b-2 border-black pb-4">
+           
+            <div className="text-2xl font-black text-black uppercase">Startups Early Traction</div>
+          </div>
+
+          <div className="mt-4 text-black text-sm font-semibold leading-relaxed border-b-2 border-black pb-4">
+          Teams that have begun getting user feedback, initial signups, or revenue and are looking to scale operations, optimize product-market fit, and prepare for funding.
+
+
+          </div>
+
+          
+        </div>
+      </div>
+      <div className="flex justify-center my-12">
+        <div className="w-[320px] border-4 border-black bg-white p-6 shadow-[10px_10px_0_#ff0000] font-sans">
+          <div className="flex items-center gap-4 mb-4 border-b-2 border-black pb-4">
+            
+            <div className="text-2xl font-black text-black uppercase">Founders Structured Growth</div>
+          </div>
+
+          <div className="mt-4 text-black text-sm font-semibold leading-relaxed border-b-2 border-black pb-4">
+          Student founders who need hands-on guidance, mentoring, and strategy to build a scalable business model and become investor-ready.
+          </div>
+
+          
+        </div>
+      </div>
+              
+             
+
+            
+             
             </div>
           </div>
         </div>
       </section>
+
+      {/* Custom 3D Card Example */}
+      
 
       {/* What You'll Get (Key Offerings) */}
       <section id="offerings" className="py-20 bg-white">
@@ -382,57 +373,7 @@ export default function PreAccelerationPage() {
         </div>
       </section>
 
-      {/* FAQs Section */}
-      <section id="faq" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
-            <Accordion className="space-y-4">
-              <AccordionItem value="item-1" className="border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold">
-                  What's the difference between pre-incubation, bridge, and pre-acceleration?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  Pre-incubation is for raw ideas, Bridge helps transition validated concepts, and Pre-acceleration is
-                  for startups with working MVPs ready to scale and raise funding. Each program builds on the previous
-                  stage of startup maturity.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-2" className="border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold">Do I need revenue to join?</AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  While revenue is not mandatory, we prefer startups with some initial traction, user validation, or
-                  early revenue indicators. The program is designed for market-ready startups preparing for growth and
-                  investment.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-3" className="border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold">
-                  What's expected at the end of the program?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  You'll present a comprehensive pitch to our angel network on Demo Day, have a refined business model,
-                  clear growth strategy, and be investor-ready. Many graduates secure funding within 3-6 months of
-                  completion.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-4" className="border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold">
-                  Is this program only for tech startups?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  No, we welcome startups from all sectors including tech, healthcare, fintech, edtech, social impact,
-                  and traditional businesses with innovative approaches. The key is having a scalable business model and
-                  growth potential.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </div>
-      </section>
+      <FAQSection />
 
       {/* Final CTA */}
       
@@ -531,7 +472,64 @@ const ProgramStructure = () => {
         .animate-slide-left-right {
           animation: slideLeftRight 15s linear infinite;
         }
+        .custom-3d-card-shadow {
+          box-shadow: 0 8px 32px 0 rgba(0,0,0,0.35), 0 0 0 8px rgba(0,0,0,0.10);
+          border: 2px solid #111;
+        }
       `}</style>
+    </section>
+  );
+};
+
+const FAQSection = () => {
+  const faqs = [
+    {
+      question: "What's the difference between pre-incubation, bridge, and pre-acceleration?",
+      answer:
+        "Pre-incubation is for raw ideas, Bridge helps transition validated concepts, and Pre-acceleration is for startups with working MVPs ready to scale and raise funding. Each program builds on the previous stage of startup maturity.",
+    },
+    {
+      question: "Do I need revenue to join?",
+      answer:
+        "While revenue is not mandatory, we prefer startups with some initial traction, user validation, or early revenue indicators. The program is designed for market-ready startups preparing for growth and investment.",
+    },
+    {
+      question: "What's expected at the end of the program?",
+      answer:
+        "You'll present a comprehensive pitch to our angel network on Demo Day, have a refined business model, clear growth strategy, and be investor-ready. Many graduates secure funding within 3-6 months of completion.",
+    },
+    {
+      question: "Is this program only for tech startups?",
+      answer:
+        "No, we welcome startups from all sectors including tech, healthcare, fintech, edtech, social impact, and traditional businesses with innovative approaches. The key is having a scalable business model and growth potential.",
+    },
+  ];
+
+  return (
+    <section id="faq" className="py-20 bg-white">
+      <div className="max-w-4xl mx-auto">
+        <div className="border-4 border-black p-8">
+          <h1 className="text-2xl font-bold text-red-600 mb-8 tracking-wide">FREQUENTLY ASKED QUESTIONS</h1>
+          <div className="space-y-8">
+            {faqs.map((faq, index) => (
+              <div key={index} className="space-y-4">
+                <h2 className="text-lg font-bold text-black">{faq.question}</h2>
+                <div className="border-2 border-black p-4 bg-white">
+                  <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 pt-8 border-t-2 border-black">
+            <h2 className="text-lg font-bold text-black mb-4">Have More Questions?</h2>
+            <div className="border-2 border-black p-4 bg-white">
+              <p className="text-gray-700">
+                {"If you have additional questions not covered here, please don't hesitate to contact our team. We're here to help you understand our programs and find the right fit for your startup journey."}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }; 

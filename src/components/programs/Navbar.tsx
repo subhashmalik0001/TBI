@@ -24,7 +24,7 @@ const Navbar = () => {
   }, [scrolled]);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black shadow-lg border-black border-b-1`}>
+    <header className={`fixed top-50 left-0 w-full z-40 transition-all duration-300 bg-white text-black shadow-lg border-black border-b-1`}>
       <nav className="flex items-center justify-between">
         <div className={`flex items-center gap-4 p-8 border-black border-r-1`}>
           <Image

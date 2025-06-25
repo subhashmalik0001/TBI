@@ -178,6 +178,7 @@ const Navbar = ({ forceWhiteBg = false, hideOnInsights = false }: NavbarProps) =
             </button>
           </Link>
         </div>
+      
 
         {/* Mobile Hamburger Menu */}
         <button
