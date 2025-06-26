@@ -245,7 +245,7 @@ const Navbar = ({ forceWhiteBg = false, hideOnInsights = false }: NavbarProps) =
                       <ProgramGrid onLinkClick={() => {
                         setShowMobilePrograms(false);
                         setMobileMenuOpen(false);
-                      }} isMobile />
+                      }} />
                     </div>
                   )}
                   <Link
