@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="flex-1 flex items-center justify-start pt-20">
           <h1 className="text-white text-4xl sm:text-5xl font-bold leading-tight text-left pl-0 ml-0">
             Build. <br /> Connect .
-            <br /> Grow.
+            <br /> 
           </h1>
         </div>
 
@@ -51,7 +51,7 @@ const Hero = () => {
         <div className="col-span-2 row-span-2 flex items-center justify-start pl-8 lg:pl-12">
           <h1 className="text-white text-5xl lg:text-6xl xl:text-7xl mt-20 font-bold leading-tight">
             Build. <br /> Connect.
-            <br /> Grow.
+            <br /> 
           </h1>
         </div>
 
