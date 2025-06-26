@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 
 export default function PreIncubationPage() {
@@ -116,8 +117,8 @@ export default function PreIncubationPage() {
       </section>
 
       {/* Who is it For */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section className="py-30 bg-gray-50">
+        <div className="container mx-auto px-5">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-red-600 text-center mb-12">Who is it For?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -157,8 +158,99 @@ export default function PreIncubationPage() {
         </div>
       </section>
 
+      {/* World Class Facilities Section */}
+      <div className="min-h-screen bg-gray-50 py-10 px-5">
+        <div className="max-w-7xl mx-auto">
+          {/* Header Section */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+              We provide World Class <span className="text-red-600 font-semibold">Facilities</span>
+            </h1>
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Chandigarh University houses various multifaceted Labs that gives our innovators & researchers a platform to
+              work with ease of technology.
+            </p>
+          </div>
+
+          {/* Labs Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Genetics Lab */}
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div className="aspect-[4/3] relative">
+                <Image
+                  src="https://naslefarda-clinic.com/en/wp-content/uploads/2023/08/shutterstock_1491119384_baixa-scaled-2.webp"
+                  alt="Genetics Lab - Researcher using microscope"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 bg-red-500 rounded-sm"></div>
+                  <h3 className="text-xl font-semibold text-gray-800">Genetics Lab</h3>
+                </div>
+              </div>
+            </div>
+
+            {/* SEM Lab */}
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div className="aspect-[4/3] relative">
+                <Image
+                 src="https://www.eas.ualberta.ca/sem/files/P1080549.JPG"
+                  alt="SEM Lab - Scanning Electron Microscope equipment"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 bg-red-500 rounded-sm"></div>
+                  <h3 className="text-xl font-semibold text-gray-800">SEM Lab</h3>
+                </div>
+              </div>
+            </div>
+
+            {/* XRD Lab */}
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div className="aspect-[4/3] relative">
+                <Image
+                  src="https://www.irec.cat/wp-content/uploads/2020/08/Field-Emission-Scanning-Electron-Microscope_FE-SEM.jpg"
+                  alt="XRD Lab - X-ray Diffraction equipment"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 bg-red-500 rounded-sm"></div>
+                  <h3 className="text-xl font-semibold text-gray-800">XRD Lab</h3>
+                </div>
+              </div>
+            </div>
+
+            {/* Artificial Intelligence Lab */}
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div className="aspect-[4/3] relative">
+                <Image
+                 src="https://imgcdn.stablediffusionweb.com/2024/12/19/d0a7139b-dd33-4f4e-a963-78394fe151e9.jpg"
+                  alt="Artificial Intelligence Lab - AI and robotics technology"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 bg-red-500 rounded-sm"></div>
+                  <h3 className="text-xl font-semibold text-gray-800">Artificial Intelligence Lab</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Program Benefits */}
-      <section id="benefits" className="py-20 bg-white">
+      <section id="benefits" className="py-5 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl text-red-600 font-bold text-center mb-16">Program Benefits</h2>

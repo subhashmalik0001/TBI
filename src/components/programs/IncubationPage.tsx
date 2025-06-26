@@ -169,6 +169,7 @@ export default function IncubationPage() {
           </div>
         </div>
       </section>
+      
 
       {/* What is TBI CU */}
       <section id="about" className="py-20 bg-white">
@@ -209,6 +210,35 @@ export default function IncubationPage() {
           </div>
         </div>
       </section>
+
+      {/* Red Info Strip Section */}
+      <div className="text-white py-3 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-4 w-full text-center">
+          {/* CU-TBI Section - Dark Red */}
+          <div className="flex flex-col items-center justify-center bg-red-600 py-10">
+            <h2 className="text-3xl font-extrabold mb-2">CU-TBI</h2>
+            <p className="text-base opacity-90 leading-tight">Opportunity to incubate</p>
+            <p className="text-base opacity-90 leading-tight">at CU-TBI</p>
+          </div>
+          {/* INR 500K Section - Light Red */}
+          <div className="flex flex-col items-center justify-center bg-red-700 py-10">
+            <h2 className="text-3xl font-extrabold mb-2">INR 500K</h2>
+            <p className="text-base opacity-90">Seed Money</p>
+          </div>
+          {/* 50+ Section - Dark Red */}
+          <div className="flex flex-col items-center justify-center bg-red-600 py-10">
+            <h2 className="text-3xl font-extrabold mb-2">50+</h2>
+            <p className="text-base opacity-90">Investors</p>
+          </div>
+          {/* Banks Section - Light Red */}
+          <div className="flex flex-col items-center justify-center bg-red-700 py-10">
+            <h2 className="text-3xl font-extrabold mb-2">Banks</h2>
+            <p className="text-base opacity-90 leading-tight">Showcase your</p>
+            <p className="text-base opacity-90 leading-tight">business idea in front of private</p>
+            <p className="text-base opacity-90 leading-tight">& national Banks </p>
+          </div>
+        </div>
+      </div>
 
       {/* How TBI Works - Animated Timeline */}
       <section id="process" className="py-20 bg-gray-50">
