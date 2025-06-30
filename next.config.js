@@ -7,6 +7,7 @@ module.exports = {
       'www.irec.cat',
       'naslefarda-clinic.com',
       'media.licdn.com',
+      'blogger.googleusercontent.com',
       // add other domains if needed
     ],
   },

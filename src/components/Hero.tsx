@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -74,8 +75,13 @@ const Hero = () => {
         
       </div>
       <div className="px-4 py-16 md:px-8 lg:px-16 border-t border-gray-200">
+      <div className="absolute left-[-50rem] right-[-5vw] top-348 h-px bg-black -translate-y-1/2"></div>
+      <div className="absolute left-[-50rem] right-[-5vw] top-255 h-px bg-black -translate-y-1/2"></div>
+      
         <div className="mb-12">
+          
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
+            
             Revolutionizing the Venture
             <br />
             Capital Ecosystem!
@@ -112,10 +118,14 @@ const Hero = () => {
 
           {/* Right Column - Community Image */}
           <div className="relative h-[300px] w-full overflow-hidden rounded-2xl">
+          <Image src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpl-YRnxYXVx78kFqnXIi9I5b5s3bmQZXlg_ae8zgnoCXJAa837sfpK7eI2xZPZclrXAr2mKs1B1gXlOrHZqvQo4naWenEKgnrPeq8-NBQ1BZBqgoQk2vx4lAglHHgE_SpSnMwhBFiCdH6k6KRiIiBcHF66VriJF_vQXOHTOa-3tHGdVzNLZWyEBqwxozw/s2048/473544912_1018141797016754_6719124790330598010_n.jpg" alt="Community of innovative companies" fill className="object-cover" />
            
             <div className="absolute inset-0 bg-black/30" />
-            <div className="absolute inset-0 flex items-center justify-center p-8">
-              <h3 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold text-center leading-tight">
+            
+            <div className="absolute inset-0 flex items-end justify-end p-6 pb-10">
+              
+              <h3 className="text-white text-lg md:text-2xl lg:text-3xl font-bold text-right leading-tight drop-shadow">
+              <div className="absolute left-[19.5rem] top-[-0rem] bottom-[-0rem] w-1 bg-white"></div>
                 Join A Community Of
                 <br />
                 Smart & Innovative
