@@ -56,14 +56,14 @@ const IHNavbar = () => {
   return (
     <>
       {/* Thin black accent bar at the top */}
-      <div className="w-full h-28 bg-black"></div>
+      <div className="w-full h-20 bg-black"></div>
       <div
         className="bg-[url('/pattern.svg')] bg-white bg-repeat w-full"
         style={{ height: "7px" }}
       />
       {/* Main navbar */}
       <nav
-        className="bg-[url('/pattern.svg')] bg-white bg-repeat border-b border-[#1a2a3a] shadow h-[62px] flex items-center text-lg font-semibold whitespace-nowrap w-full sticky top-30"
+        className="bg-[url('/pattern.svg')] bg-white bg-repeat border-b border-[#1a2a3a] shadow h-[62px] flex items-center text-lg font-semibold whitespace-nowrap w-full sticky top-20"
         style={{ fontFamily: "'Poppins', sans-serif" }}
       >
         <div className="w-full flex items-center h-full justify-between px-7">
