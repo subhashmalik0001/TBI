@@ -136,7 +136,62 @@ const Hero = () => {
           </div>
           </div>
           </div>
-      
+      <div className="px-4 py-16 md:px-8 lg:px-16 bg-gray-50">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Left Column - Services Content */}
+          <div className="space-y-8">
+            {/* Service Tag */}
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 border border-gray-400 rounded-full"></div>
+              <span className="text-xs text-gray-600 uppercase tracking-wide">What Service We Offer</span>
+            </div>
+
+            {/* Main Heading */}
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black leading-tight">
+              Unleashing the Artistry of Block Studio's Services
+            </h2>
+
+            {/* Description */}
+            <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+              Discover Block Studio's dynamic ecosystem, empowering startups with cutting-edge resources, expert
+              mentorship, and innovative solutions. We nurture your vision through personalized guidance, strategic
+              growth support, and a collaborative community—where every idea matters, and every venture tells a unique
+              story. At Block Studio, we don't just incubate startups; we build the future.
+            </p>
+
+            {/* Services List */}
+            <div className="space-y-6 pt-8">
+              <div className="text-lg md:text-xl font-semibold text-gray-800">Mentoring</div>
+              <div className="text-lg md:text-xl font-semibold text-gray-800">Coworking Space</div>
+              <div className="text-lg md:text-xl font-semibold text-gray-800">Creative Studio</div>
+              <div className="text-lg md:text-xl font-semibold text-gray-800">Product Studio</div>
+              <div className="text-lg md:text-xl font-semibold text-gray-800">X | Labs</div>
+              <div className="text-lg md:text-xl font-semibold text-gray-800">House Renovation</div>
+            </div>
+          </div>
+
+          {/* Right Column - Image with Overlay */}
+          
+          <div className="relative left-[8rem] h-[500px] top-30 w-[500px] overflow-hidden ">
+            <Image src="https://media.licdn.com/dms/image/v2/D5605AQFF8a6PY2Kltw/feedshare-thumbnail_720_1280/B56ZZhzaO5HUAw-/0/1745397591544?e=2147483647&v=beta&t=Ml4Y3aWM9rqdPLCPjxL1NJFOmO1wcO7OYN4QtMCI4dE" alt="Team collaboration workspace" fill className="object-cover" />
+
+            
+          </div>
+          <div className="absolute top-468 left-[39rem] bg-black/90 p-6  max-w-sm">
+              <h3 className="text-white text-lg md:text-xl font-bold mb-4">Interior Design</h3>
+              <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                Elevate any space with our unparalleled mastery, harmonizing the perfect balance between captivating
+                aesthetics and flawless functionality, enriching every environment with a touch of
+              </p>
+              <button className="flex items-center gap-2 text-white text-sm uppercase tracking-wide hover:text-gray-300 transition-colors">
+                <span>LET'S BUILD</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+        </div>
+    </div>
     </div>
     
   );
