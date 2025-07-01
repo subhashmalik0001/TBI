@@ -112,36 +112,18 @@ const Navbar = ({ forceWhiteBg = false, hideOnInsights = false }: NavbarProps) =
             onBlur={() => setShowAboutPopover(false)}
             tabIndex={0}
           >
-            <a href="/about" className="py-2 text-black bg-white hover:underline focus:outline-none">
-              About
-            </a>
+            
+            <a href="/about" className="text-black hover:underline focus:outline-none">About</a>
             <div
-              className={`absolute left-1/2 -translate-x-1/2 mt-2 z-50 transition-all duration-300 ${
-                showAboutPopover ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-              }`}
-              style={{ minWidth: '280px' }}
+              className={`absolute left-1/2 -translate-x-1/2 mt-4 z-50 transition-all duration-300 ${showAboutPopover ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
+              style={{ minWidth: '320px' }}
             >
-              <div className="bg-white/95 backdrop-blur-sm py-4 px-2 flex flex-col rounded-lg shadow-xl border">
-                <Link
-                  href="/about#journey"
-                  className="block py-2 px-4 rounded-md transition-colors font-medium text-black bg-white hover:bg-gray-100"
-                >
-                  Our Journey
-                </Link>
-                <Link
-                  href="/about#leadership"
-                  className="block py-2 px-4 rounded-md transition-colors font-medium text-black bg-white hover:bg-gray-100"
-                >
-                  Leadership
-                </Link>
-                <Link
-                  href="/about#team"
-                  className="block py-2 px-4 rounded-md transition-colors font-medium text-black bg-white hover:bg-gray-100"
-                >
-                  Our Team
-                </Link>
+              <div className="bg-white/20 backdrop-blur py-6 px-4 flex flex-col rounded-2xl shadow-xl text-black">
+                <Link href="/about#journey" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Our Journey</Link>
+                <Link href="/about#leadership" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Leadership</Link>
+                <Link href="/about#team" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Our Team</Link>
               </div>
-            </div>
+              </div>
           </div>
 
           <div
@@ -184,9 +166,10 @@ const Navbar = ({ forceWhiteBg = false, hideOnInsights = false }: NavbarProps) =
       
 
         {/* Mobile Hamburger Menu */}
-        <button
-          className={`lg:hidden flex flex-col justify-center items-center w-15 h-8 pr-75 focus:outline-none transition-colors duration-200 ${
-            mounted && scrolled && !forceWhiteBg ? 'text-black' : 'text-white'
+        <button style={{marginLeft:'200px'
+        }}
+          className={`ml-auto lg:hidden flex flex-col justify-center items-center w-15 h-8 pr-75 focus:outline-none transition-colors duration-200 ${
+            mounted && scrolled && !forceWhiteBg ? 'text-black' : 'text-black'
           }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
@@ -243,7 +226,7 @@ const Navbar = ({ forceWhiteBg = false, hideOnInsights = false }: NavbarProps) =
                     Programs
                   </button>
                   {showMobilePrograms && (
-                    <div className="w-full py-4">
+                    <div className="w-full py-4 mx-auto">
                       <ProgramGrid onLinkClick={() => {
                         setShowMobilePrograms(false);
                         setMobileMenuOpen(false);

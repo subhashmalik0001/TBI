@@ -1,14 +1,12 @@
 module.exports = {
   images: {
     domains: [
-      'www.cuchd.in',
-      'imgcdn.stablediffusionweb.com',
-      'www.eas.ualberta.ca',
-      'www.irec.cat',
-      'naslefarda-clinic.com',
+      'pbs.twimg.com',
+      'images.pexels.com',
+      'imageio.forbes.com',
       'media.licdn.com',
-      'blogger.googleusercontent.com',
-      // add other domains if needed
+      'images.ctfassets.net',
+      'blogger.googleusercontent.com'
     ],
   },
-}; 
+};
