@@ -35,6 +35,43 @@ const services = [
     description: "Transforming spaces with a perfect blend of aesthetics and functionality.",
   },
 ];
+const processSteps = [
+  {
+    day: "DAY 0",
+    title: "Your Initial Hypothesis",
+    description: "Before you invest a single dollar, we analyze your data and objectives to ensure that our partnership is a good match."
+  },
+  {
+    day: "DAY 1",
+    title: "We Align With You",
+    description: "We hold breakouts with you and internal experts, quickly documenting and understanding nuances and messaging angles for your product and industry."
+  },
+  {
+    day: "DAY 7",
+    title: "We Research for You",
+    description: "We conduct two focused research types: external research, which examines your market, competitors, and existing gaps, and internal research, which searches your data for areas of immediate enhancement."
+  },
+  {
+    day: "DAY 30",
+    title: "We Deliver your Blueprint",
+    description: "We provide a blueprint with a detailed 90-day plan for growth initiatives, including activation, optimization, or overhaul. On this day, we align, approve, and launch our first campaigns and efforts."
+  },
+  {
+    day: "DAY 30+",
+    title: "Your Dashboards Go Live",
+    description: "Your key data is visualized in one place, updated in real time, allowing you to track initiatives and confidently make informed decisions. We continually enhance and refine these dashboards over time."
+  },
+  {
+    day: "DAY 45",
+    title: "We Have Weekly War Rooms",
+    description: "Throughout our partnership we'll meet every week to review data, trade notes on progress, and war-room future strategies, ensuring close collaboration every step of the way."
+  },
+  {
+    day: "DAY 90+",
+    title: "We Iterate and Pivot to Success",
+    description: "Each quarter, we meet to review past performance data and present prospective blueprint. Aiming for substantial growth over incremental, we deliver a path forward we're all excited about."
+  }
+];
 
 const Hero = () => {
   const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -74,7 +111,7 @@ const Hero = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[630px] w-full xl:max-w-[1700px] mx-auto overflow-hidden rounded-3xl mt-9 md:mt-25 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
+      <div className="relative h-[620px] w-full xl:max-w-[1800px] mx-auto overflow-hidden rounded-3xl mt-9 md:mt-25 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
         <video
           autoPlay
           loop
@@ -101,7 +138,7 @@ const Hero = () => {
       <div className="px-4 pt-4 pb-6 md:px-8 lg:px-16">
         <div className="flex flex-col md:flex-row gap-8 items-start md:justify-end">
           {/* Left Column - Description */}
-          <div className="space-y-5 md:w-1/2">
+          <div className="space-y-5 md:w-[75rem]">
           <p className="text-lg md:text-2xl text-gray-700 leading-relaxed">
   We believe that to maximize returns, you need a fundamental, first-principles understanding of every asset
   in your portfolio. That's why we focus on providing granular-level visibility and insight, so you can
@@ -111,13 +148,13 @@ const Hero = () => {
           </div>
 
           {/* Right Column - Statistics */}
-          <div className="relative md:w-1/2 md:pl-16">
+          <div className="relative md:w-1/2 md:pl-36 lg:pl-52">
             {/* Vertical line on the left - full height, thicker */}
-            <div className="absolute left-20 top-[-1rem] bottom-[-1.23rem] w-px bg-black hidden md:block"></div>
+            <div className="absolute left-40 lg:left-56 top-[-1rem] bottom-[-1.23rem] w-px bg-gray-500 hidden md:block"></div>
 
             {/* Horizontal line in the middle - full width, thicker */}
-            <div className="absolute left-20 right-[-4vw] top-1/2 h-px bg-black -translate-y-1/2 hidden md:block"></div>
-            <div className="absolute left-[-90rem] right-[-5vw] top-57 h-px bg-black -translate-y-1/2 hidden md:block"></div>
+            <div className="absolute left-40 lg:left-56 right-[-4vw] top-1/2 h-px bg-gray-500 -translate-y-1/2 hidden md:block"></div>
+            <div className="absolute left-[-90rem] right-[-4vw] top-56 h-px bg-gray-500 -translate-y-1/2 hidden md:block"></div>
 
             <div className="grid grid-cols-2 gap-3 pl-0 md:pl-6">
               <div className="text-center py-2">
@@ -180,7 +217,10 @@ const Hero = () => {
                 Our companies have a track record of becoming billion dollar companies.
               </p>
             </div>
+            <div className="absolute left-100 lg:left-235 top-[75rem] bottom-[-38.6rem] w-px bg-gray-500 hidden md:block"></div>
+            
           </div>
+          
 
           {/* Right Column - Community Image */}
           <div className="relative h-[300px] w-full overflow-hidden rounded-2xl">
@@ -200,8 +240,12 @@ const Hero = () => {
               </h3>
             </div>
           </div>
+          
           </div>
+          
           </div>
+          <div className="absolute left-[-90rem] right-[-4vw] top-300 h-px bg-gray-500 -translate-y-1/2 hidden md:block"></div>
+          <div className="absolute left-[-90rem] right-[-4vw] top-390 h-px bg-gray-500 -translate-y-1/2 hidden md:block"></div>
           <div className="px-4 py-16 md:px-8 lg:px-16 bg-white">
           <div
             ref={servicesContainerRef}
@@ -210,21 +254,21 @@ const Hero = () => {
             <div
               style={{
                 position: isSticky ? "fixed" : "static",
-                top: 0,
-                left: 0,
+                top: 10,
+                left: 63,
+                right: 63,
                 zIndex: 10,
-                background: "#f9fafb",
+                background: "#ffffff",
                 height: "100vh",
-                alignItems: "center",
-                justifyContent: "center",
+                
               }}
             >
-              <div className="grid lg:grid-cols-2 gap-16 items-start w-full px-4 md:px-8 lg:px-16">
+             <div  className="grid lg:grid-cols-2 gap-16 items-start px-8 md:px-8 lg:px-16">
                 {/* Left Column - Services Content */}
                 <div className="space-y-8">
                   {/* Service Tag */}
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 border border-gray-400 rounded-full"></div>
+                  <div className="flex items-center gap-1">
+                    <div className="w-2 h-2 border border-white-400 rounded-full"></div>
                     <span className="text-xs text-gray-600 uppercase tracking-wide">What Service We Offer</span>
                   </div>
                   {/* Main Heading */}
@@ -258,15 +302,17 @@ const Hero = () => {
                   </div>
                 </div>
                 {/* Right Column - Image with Overlay */}
-                <div className="relative left-[8rem] h-[500px] top-30 w-[500px] overflow-hidden rounded-2xl">
+                <div className="relative left-[8rem] h-[500px] top-30 w-[500px] ">
                   <Image
                     src={services[activeIndex].image}
                     alt={services[activeIndex].name}
                     fill
                     className="object-cover transition-all duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/30" />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/90 p-6">
+                  {/* Black overlay at bottom left */}
+                  <div  className="absolute left-10 bottom-0 w-24 h-24 bg-black/70 z-10 rounded-bl-2xl -ml-10" />
+                  {/* Other overlays or content */}
+                  <div style={{marginLeft:'-300px'}}className="absolute bottom-0 left-0 right-90 bg-black/90 p-6 z-20">
                     <h3 className="text-white text-lg md:text-xl font-bold mb-4">{services[activeIndex].name}</h3>
                     <p className="text-gray-300 text-sm leading-relaxed mb-6">
                       {services[activeIndex].description}
@@ -281,9 +327,14 @@ const Hero = () => {
                 </div>
               </div>
             </div>
+            
           </div>
+          
+          
         </div>
+        
       </div>
+      
 
    
       
