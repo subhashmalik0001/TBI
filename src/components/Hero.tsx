@@ -111,7 +111,7 @@ const Hero = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[620px] w-full xl:max-w-[1800px] mx-auto overflow-hidden rounded-3xl mt-9 md:mt-25 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
+      <div className="relative h-[620px] w-full xl:max-w-[1600px] mx-auto overflow-hidden rounded-3xl mt-9 md:mt-25 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
         <video
           autoPlay
           loop
@@ -249,23 +249,23 @@ const Hero = () => {
           <div className="px-4 py-16 md:px-8 lg:px-16 bg-white">
           <div
             ref={servicesContainerRef}
-            style={{ height: `calc(100vh * ${services.length})`, position: "relative" }}
+            style={{ height: `calc(98vh * ${services.length})`, position: "relative" }}
           >
             <div
               style={{
                 position: isSticky ? "fixed" : "static",
-                top: 10,
+                top: 15,
+                paddingTop:'50px',
                 left: 63,
                 right: 63,
                 zIndex: 10,
                 background: "#ffffff",
                 height: "100vh",
-                
               }}
             >
              <div  className="grid lg:grid-cols-2 gap-16 items-start px-8 md:px-8 lg:px-16">
                 {/* Left Column - Services Content */}
-                <div className="space-y-8">
+                <div style={{paddingTop:'100px'}} className="space-y-4">
                   {/* Service Tag */}
                   <div className="flex items-center gap-1">
                     <div className="w-2 h-2 border border-white-400 rounded-full"></div>
@@ -283,7 +283,7 @@ const Hero = () => {
                     story. At Block Studio, we don't just incubate startups; we build the future.
                   </p>
                   {/* Services List */}
-                  <div className="space-y-6 pt-8">
+                  <div  style={{paddingTop:'10px'}} className="space-y-4 pt-2">
                     {services.map((service, idx) => (
                       <div
                         key={service.name}
@@ -302,13 +302,15 @@ const Hero = () => {
                   </div>
                 </div>
                 {/* Right Column - Image with Overlay */}
-                <div className="relative left-[8rem] h-[500px] top-30 w-[500px] ">
-                  <Image
-                    src={services[activeIndex].image}
-                    alt={services[activeIndex].name}
-                    fill
-                    className="object-cover transition-all duration-500"
-                  />
+                <div className="relative left-[8rem] h-[500px] top-35 w-[500px] ">
+                  {services[activeIndex] && (
+                    <Image
+                      src={services[activeIndex].image}
+                      alt={services[activeIndex].name}
+                      fill
+                      className="object-cover transition-all duration-500"
+                    />
+                  )}
                   {/* Black overlay at bottom left */}
                   <div  className="absolute left-10 bottom-0 w-24 h-24 bg-black/70 z-10 rounded-bl-2xl -ml-10" />
                   {/* Other overlays or content */}
@@ -334,7 +336,6 @@ const Hero = () => {
         </div>
         
       </div>
-      
 
    
       

@@ -77,7 +77,7 @@ const Navbar = ({ forceWhiteBg = false, hideOnInsights = false }: NavbarProps) =
     ? 'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black border-black border-b shadow-lg'
     : mounted 
       ? `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white text-black shadow-lg border-black' : 'bg-transparent text-white border-white'} border-b`
-      : 'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent text-white border-white border-b';
+      : 'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white border-white border-b';
 
   const aboutLinkClasses = (baseClasses: string) => mounted
     ? `${baseClasses} ${scrolled ? 'hover:bg-black/70 hover:text-white' : 'hover:bg-white/30'}`
