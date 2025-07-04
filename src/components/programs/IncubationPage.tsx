@@ -3,7 +3,7 @@
 import { Button } from "@/components/programs/Button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/programs/Card"
 import { Badge } from "@/components/programs/Badge"
-import Navbar from "./Navbar"
+import Navbar from "@/components/Navbar"
 import Footer from "./Footer"
 import { useEffect, useState } from "react"
 import {
