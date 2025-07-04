@@ -6,7 +6,8 @@ module.exports = {
       'imageio.forbes.com',
       'media.licdn.com',
       'images.ctfassets.net',
-      'blogger.googleusercontent.com'
+      'blogger.googleusercontent.com',
+      'naslefarda-clinic.com'
     ],
   },
 };

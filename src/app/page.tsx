@@ -7,9 +7,11 @@ import ArticlesAndNewsletter from "@/components/ArticlesAndNewsletter";
 export default function Home() {
   return (
     <main>
-      <Hero />
-      <ProcessSection />
-      <ArticlesAndNewsletter />
+      <div className="max-w-screen-2xl mx-auto px-4">
+        <Hero />
+        <ProcessSection />
+        <ArticlesAndNewsletter />
+      </div>
     </main>
   );
 }

@@ -43,15 +43,34 @@ const processSteps = [
 
 const ProcessSection = () => {
   return (
-    <section className="bg-white text-black py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <p className="text-sm font-bold tracking-widest text-gray-500 mb-2">PROCESS</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter px-4">
-            Together as a team <br /> every step of the way
-          </h2>
+    <section className="bg-white text-black py-20">
+      <div className="w-full bg-white mb-20">
+        {/* Main Grid Container - Left and Right Layout (full width) */}
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] relative">
+          {/* Left Section */}
+          <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center relative">
+            <div className="relative w-full">
+              <img src="/assets/image1.png" alt="Process Icon" className="w-8 h-6 absolute -top-[-1.1rem] left-0" />
+              <h1 className="text-2xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight pl-10">
+                Alongside You at<br />
+                Every Stage
+              </h1>
+            </div>
+          </div>
+
+          {/* Right Section */}
+          <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center">
+            <div className="w-full">
+              <h2 className="text-xs lg:text-sm font-semibold text-gray-900 tracking-wider uppercase">PROCESS</h2>
+            </div>
+          </div>
+
+          {/* Vertical Divider for large screens */}
+          <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 w-px bg-gray-300" style={{transform: 'translateX(-0.5px)'}} />
         </div>
-        
+      </div>
+      
+      <div className="max-w-7xl mx-auto lg:ml-2 px-4 sm:px-6 lg:px-8">
         {/* Mobile Layout */}
         <div className="block md:hidden space-y-12">
           {processSteps.map((step, index) => (

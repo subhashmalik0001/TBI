@@ -27,7 +27,7 @@ import {
   Diamond,
   BarChart3,
 } from "lucide-react"
-import Navbar from "./Navbar"
+
 import Footer from "./Footer"
 import { ReactNode } from "react"
 import Link from "next/link"

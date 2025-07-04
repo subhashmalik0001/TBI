@@ -1,66 +1,150 @@
+'use client';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
+import { Accordion, AccordionItem } from "@/components/programs/Accordion";
+import { Button } from "@/components/programs/Button";
+import { Card, CardContent } from "@/components/programs/Card";
+
+const faqData = [
+  {
+    question: "Who Are we",
+    answer: "We are a technology business incubator focused on supporting innovative startups and entrepreneurs."
+  },
+  {
+    question: "What do we do",
+    answer: "We provide mentorship, resources, and support to help technology startups grow and succeed."
+  },
+  {
+    question: "How can we help you?",
+    answer: "We can help you with business development, technical guidance, funding opportunities, and networking."
+  },
+  {
+    question: "What do we do",
+    answer: "We foster innovation and entrepreneurship in the technology sector through our comprehensive incubation programs."
+  }
+];
 
 const Footer = () => {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
   return (
-    <footer className="bg-black text-white pt-20 pb-8 px-8">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Logo and Description */}
-          <div className="space-y-4">
-            <Image 
-              src="/logo.svg" 
-              alt="TBI Logo" 
-              width={250} 
-              height={80} 
-              className="" 
-            />
-            <p className="text-sm">
-              The range of research activities at Chandigarh University is wide-ranging and profound. University scholars conduct research in practically every domain, and pursue to develop human knowledge through investigation, invention
-            </p>
-          </div>
+    <div className="min-h-screen bg-white">
+    {/* FAQ Section */}
+    <div className="max-w-screen-2xl mx-auto px-1">
+      <h1 className="text-9xl font-extrabold text-left ml-10 mt-10 text-black">FAQ</h1>
+      <Accordion className="w-full max-w-12xl mx-auto my-8">
+        {faqData.map((item, idx) => {
+          let hoverBg = '';
+          if (item.question === 'Who Are we') hoverBg = 'hover:bg-green-200';
+          else if (item.question === 'What do we do') hoverBg = 'hover:bg-yellow-200';
+          else if (item.question === 'How can we help you?') hoverBg = 'hover:bg-orange-200';
+          const isOpen = openIdx === idx;
+          let openBg = '';
+          if (isOpen && item.question === 'Who Are we') openBg = 'bg-green-200';
+          else if (isOpen && item.question === 'What do we do') openBg = 'bg-yellow-200';
+          else if (isOpen && item.question === 'How can we help you?') openBg = 'bg-orange-200';
+          return (
+            <AccordionItem
+              key={idx}
+              className={`border-4 border-black rounded-tl-3xl rounded-tr-3xl mb-2 border-b-white p-0 ${isOpen ? openBg : ''}`}
+            >
+              <button
+                className={`w-full text-left text-xl font-medium flex items-center focus:outline-none text-black ${hoverBg} rounded-tl-3xl rounded-tr-3xl p-6 min-h-[80px]`}
+                style={{margin: 0, borderRadius: '1.5rem 1.5rem 0 0'}}
+                onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
+                onMouseEnter={() => { if (openIdx !== null && openIdx !== idx) setOpenIdx(null); }}
+              >
+                <span className="flex-grow text-black">{item.question}</span>
+                <span className="ml-4 flex items-center justify-center w-10 h-10 rounded-full border border-black text-2xl font-bold flex-shrink-0 text-black">
+                  {openIdx === idx ? '-' : '+'}
+                </span>
+              </button>
+              {isOpen && (
+                <div className="px-6 pb-4 text-black">
+                  {item.answer}
+                </div>
+              )}
+            </AccordionItem>
+          );
+        })}
+      </Accordion>
+    </div>
+    <img src="/assets/Screenshot 2025-07-03 153915.png.png" alt="FAQ" className="w-full h-auto" />
 
-          {/* Address */}
-          <div>
-            <h3 className="text-xl font-bold mb-4 border-b-2 border-gray-500 pb-2">Address</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <FaMapMarkerAlt className="text-red-500 mt-1 mr-3" />
-                <span>NH-05, Ludhiana - Chandigarh State Hwy, Punjab 140413</span>
-              </li>
-              <li className="flex items-center">
-                <FaEnvelope className="text-red-500 mr-3" />
-                <span>tbi@cumail.in</span>
-              </li>
-              <li className="flex items-center">
-                <FaPhoneAlt className="text-red-500 mr-3" />
-                <span>+91-9463194946</span>
-              </li>
-            </ul>
-          </div>
+    {/* Blue Banner Section */}
+    <div className="relative">
+      
+    </div>
 
-          {/* Resources */}
+    {/* Technology Business Incubator Section */}
+    
+    <div style={{backgroundImage:"url('/assets/Screenshot 2025-07-03 160733.png.png')"}}>
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-xl font-bold mb-4 border-b-2 border-gray-500 pb-2">Resources</h3>
-            <ul className="space-y-2">
-              {['Home', 'About', 'Programs', 'Insights', 'Events'].map(item => (
-                <li key={item} className="flex items-center">
-                  <span className="text-red-500 mr-2">▶</span>
-                  <a href="#" className="hover:underline">{item}</a>
-                </li>
-              ))}
-            </ul>
-            <button className="bg-white text-black font-bold py-3 px-6 rounded-lg mt-6 hover:bg-gray-200">
-              Apply To Incubate
+            <h1
+              style={{
+                backgroundImage: "url('/assets/Screenshot 2025-07-03 155807.png.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                color: "transparent",
+                marginLeft: "-200px"
+              }}
+              className="text-6xl font-bold leading-tight"
+            >
+              Technology<br />
+              <span style={{
+                backgroundImage: "url('/assets/Screenshot 2025-07-03 155807.png.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                color: "transparent",
+                marginRight: "-100px"
+              }}>
+                Business
+              </span><br />
+              <span style={{
+                backgroundImage: "url('/assets/Screenshot 2025-07-03 155807.png.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                color: "transparent",
+                marginRight: "-100px"
+              }}>
+                Incubator
+              </span>
+              <span style={{
+                backgroundImage: "url('/assets/Screenshot 2025-07-03 160206.png.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                color: "transparent",
+                marginLeft: "100px"
+              }}>
+                <b> @ CU</b>
+              </span>
+            </h1>
+          </div>
+          
+          <div className="flex items-center space-x-2">
+            <button className="flex items-center space-x-2 bg-transparent border border-black text-black px-6 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition">
+              <div className="w-3 h-3 bg-black rounded-full"></div>
+              <span>Get in touch</span>
             </button>
           </div>
         </div>
-
-        <div className="border-t border-red-500 mt-12 pt-6 text-center text-sm">
-          <p>Copyright 2025 CHANDIGARH UNIVERSITY | TBI</p>
-        </div>
       </div>
-    </footer>
+    </div>
+  </div>
   );
 };
 
