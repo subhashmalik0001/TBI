@@ -7,7 +7,8 @@ module.exports = {
       'media.licdn.com',
       'images.ctfassets.net',
       'blogger.googleusercontent.com',
-      'naslefarda-clinic.com'
+      'naslefarda-clinic.com',
+      'www.eas.ualberta.ca',
     ],
   },
 };

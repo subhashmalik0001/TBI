@@ -3575,14 +3575,6 @@
       line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
-
-  .\[\&\[data-state\=open\]\]\:hidden[data-state="open"] {
-    display: none;
-  }
-
-  .\[\&\[data-state\=open\]\]\:inline[data-state="open"] {
-    display: inline;
-  }
 }
 
 :root {
