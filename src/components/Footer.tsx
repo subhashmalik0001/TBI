@@ -5,6 +5,7 @@ import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../components/programs/Accordion"
 import { Button } from "../components/programs/Button"
 import { Card, CardContent } from "../components/programs/Card"
+import Navbar from "@/components/Navbar"
 
 const faqData = [
   {
