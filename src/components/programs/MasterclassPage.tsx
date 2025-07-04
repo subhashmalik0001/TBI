@@ -24,8 +24,7 @@ import {
   Globe,
   Zap,
 } from "lucide-react"
-import Footer from "./Footer"
-import Navbar from "@/components/Navbar";
+
 
 
 export default function MasterclassPage() {
