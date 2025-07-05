@@ -151,17 +151,22 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Grid/Border Section */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] relative">
-        <div className="px-4 py-16 md:px-8 lg:px-16 w-full col-span-2">
-          <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-              Revolutionizing the Venture
-              <br />
-              Capital Ecosystem!
-            </h2>
+      {/* Add padding and a border before the grid section */}
+      <div className="pt-12"></div>
+  
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[250px] lg:min-h-[130px] relative pt-0">
+        <div className="px-2 py-5 md:px-8 lg:px-16 w-full col-span-2">
+          <div className="mb-7">
+            <h2 className="text-3xl md:text-2xl lg:text-5xl font-bold text-black leading-tight">
+               Revolutionizing the Venture
+               <br />
+               Capital Ecosystem!
+             </h2>
+             <div className="fixed left-0 w-screen border-t border-gray-300 min-h-[100px] lg:min-h-[40px] pt-1"></div>
           </div>
-          <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-b border-gray-300 min-h-[120px] lg:min-h-[30px] relative mb-12 -mx-4 md:-mx-10 lg:-mx-[0rem]"></div>
+          <div className="w-340  border-t  border-gray-300 min-h-[100px] lg:min-h-[40px] relative pt-1">
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Features */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
