@@ -45,6 +45,7 @@ export default function Hero() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const [isDesktop, setIsDesktop] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     let accumulatedScroll = 0;
@@ -115,6 +116,7 @@ export default function Hero() {
   useEffect(() => {
     function handleResize() {
       setIsDesktop(window.innerWidth >= 1024); // lg breakpoint
+      setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
     }
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -128,6 +130,9 @@ export default function Hero() {
   // Split grey text into individual characters for letter-by-letter animation
   const greyChars = greyText.split("")
   const totalChars = greyChars.length
+
+  // Use a smaller delay on mobile for smoother animation
+  const animationDelay = isMobile ? 10 : 30;
 
   return (
     <div className="min-h-screen bg-white">
@@ -178,7 +183,7 @@ export default function Hero() {
                         shouldBeBlack ? "text-black" : "text-gray-400"
                       }`}
                       style={{
-                        transitionDelay: `${index * 2}ms`, // Slight delay for smoother wave effect
+                        transitionDelay: `${index * animationDelay}ms`,
                       }}
                     >
                       {char}
