@@ -164,7 +164,7 @@ export default function Hero() {
       <div className="px-4 pt-4 pb-6 md:px-8 lg:px-16">
         <div className="flex flex-col md:flex-row gap-8 items-start md:justify-end">
           {/* Left Column - Description */}
-          <div className="space-y-5 md:w-[75rem]">
+          <div className="space-y-5 md:w-[90rem]">
             <div className="max-w-5xl w-full mx-auto pt-16 md:pt-0">
               {isMobile ? (
                 <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-light text-center text-black">
@@ -172,9 +172,7 @@ export default function Hero() {
                 </p>
               ) : (
                 <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-light text-center">
-                  {/* Black text part - always black */}
                   <span className="text-black">{blackText}</span>
-                  {/* Grey text part - animates letter by letter */}
                   {greyChars.map((char, index) => {
                     const charProgress = index / totalChars;
                     const shouldBeBlack = scrollProgress > charProgress;
