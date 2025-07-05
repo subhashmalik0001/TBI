@@ -106,7 +106,7 @@ const Footer = () => {
       <div
         className="relative w-full bg-cover bg-center flex flex-col items-center justify-center"
         style={{
-          backgroundImage: "url('assets/container (2).png')",
+          backgroundImage: "url('/container (2).png')",
           minHeight: "400px",
           paddingBottom:"100px"
         }}
