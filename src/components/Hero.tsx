@@ -146,33 +146,8 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Right Column - Statistics */}
-          <div className="relative md:w-1/2 md:pl-36 lg:pl-52">
-            {/* Vertical line on the left - full height, thicker */}
-            <div className="absolute left-40 lg:left-56 top-[-1rem] bottom-[-1.23rem] w-px bg-gray-500 hidden md:block"></div>
 
-            {/* Horizontal line in the middle - full width, thicker */}
-            <div className="absolute left-40 lg:left-56 right-[-4vw] top-1/2 h-px bg-gray-500 -translate-y-1/2 hidden md:block"></div>
-
-            <div className="grid grid-cols-2 gap-3 pl-0 md:pl-6">
-              <div className="text-center py-2">
-                <div className="text-4xl md:text-4xl font-bold text-red-500 mb-1">10+</div>
-                <div className="text-gray-600 text-xs md:text-sm">Startups Incubated</div>
-              </div>
-              <div className="text-center py-4">
-                <div className="text-4xl md:text-4xl font-bold text-red-500 mb-1">25+</div>
-                <div className="text-gray-600 text-xs md:text-sm">Startups Accelerated</div>
-              </div>
-              <div className="text-center py-4">
-                <div className="text-4xl md:text-4xl font-bold text-red-500 mb-1">₹2.5Cr+</div>
-                <div className="text-gray-600 text-xs md:text-sm">Total Funding Raised</div>
-              </div>
-              <div className="text-center py-4">
-                <div className="text-4xl md:text-4xl font-bold text-red-500 mb-1">2000+</div>
-                <div className="text-gray-600 text-xs md:text-sm">Students Trained</div>
-              </div>
-            </div>
-          </div>
+         
         </div>
       </div>
 
