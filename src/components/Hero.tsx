@@ -237,7 +237,7 @@ export default function Hero() {
               </div>
             </div>
             {/* Right Column - Community Image */}
-            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl">
+            <div className="relative w-full aspect-[4/3] h-75 overflow-hidden rounded-2xl">
               <Image src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpl-YRnxYXVx78kFqnXIi9I5b5s3bmQZXlg_ae8zgnoCXJAa837sfpK7eI2xZPZclrXAr2mKs1B1gXlOrHZqvQo4naWenEKgnrPeq8-NBQ1BZBqgoQk2vx4lAglHHgE_SpSnMwhBFiCdH6k6KRiIiBcHF66VriJF_vQXOHTOa-3tHGdVzNLZWyEBqwxozw/s2048/473544912_1018141797016754_6719124790330598010_n.jpg" alt="Community of innovative companies" fill className="object-cover" />
               <div className="absolute inset-0 bg-black/30" />
               <div className="absolute inset-0 flex items-end justify-end p-6 pb-10">

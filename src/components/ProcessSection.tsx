@@ -46,7 +46,7 @@ const ProcessSection = () => {
     <section className="bg-white text-black py-20">
       <div className="w-full bg-white mb-20">
         {/* Main Grid Container - Left and Right Layout (full width) */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] relative">
+       
           {/* Left Section */}
           <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center relative">
             <div className="relative w-full">
@@ -56,8 +56,7 @@ const ProcessSection = () => {
                 Every Stage
               </h1>
             </div>
-          </div>
-
+     
           {/* Right Section */}
           <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center">
             <div className="w-full">
