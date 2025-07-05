@@ -28,7 +28,7 @@ import {
   BarChart3,
 } from "lucide-react"
 
-import Footer from "./Footer"
+import Footer from "@/components/Footer"
 import { ReactNode } from "react"
 import Link from "next/link"
 

@@ -4,7 +4,7 @@ import { Button } from "@/components/programs/Button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/programs/Card"
 import { Badge } from "@/components/programs/Badge"
 import Navbar from "@/components/Navbar"
-import Footer from "./Footer"
+import Footer from "@/components/Footer"
 import { useEffect, useState } from "react"
 import {
   ArrowRight,

@@ -1,0 +1,298 @@
+// 'use client';
+
+// import React, { useRef, useState, useEffect } from "react";
+// import Image from "next/image";
+// import Navbar from "@/components/Navbar";
+
+// const services = [
+//   {
+//     name: "Mentoring",
+//     image: "https://media.licdn.com/dms/image/v2/D5605AQFF8a6PY2Kltw/feedshare-thumbnail_720_1280/B56ZZhzaO5HUAw-/0/1745397591544?e=2147483647&v=beta&t=Ml4Y3aWM9rqdPLCPjxL1NJFOmO1wcO7OYN4QtMCI4dE",
+//     description: "Personalized guidance and expert mentorship to help you grow your startup.",
+//   },
+//   {
+//     name: "Coworking Space",
+//     image: "https://pbs.twimg.com/media/Gre7cpwbwAAPfiy?format=jpg&name=4096x4096",
+//     description: "Collaborative and creative coworking spaces designed for productivity.",
+//   },
+//   {
+//     name: "Creative Studio",
+//     image: "https://imageio.forbes.com/specials-images/imageserve/60638bbdbe8ac107c34ae7fc/Developers-Working-From-Home-Office-/960x0.jpg?height=473&width=711&fit=bounds",
+//     description: "A studio for creative minds to bring their ideas to life with the latest tools.",
+//   },
+//   {
+//     name: "Product Studio",
+//     image: "https://images.ctfassets.net/y4cma050c2bp/782rVF82Aj4LLJ2VT2BSch/10a4728e9912371d282a000af8f89be6/2.jpg",
+//     description: "From concept to launch, we help you build and refine your product.",
+//   },
+//   {
+//     name: "X | Labs",
+//     image: "https://media.licdn.com/dms/image/v2/D5605AQFF8a6PY2Kltw/feedshare-thumbnail_720_1280/B56ZZhzaO5HUAw-/0/1745397591544?e=2147483647&v=beta&t=Ml4Y3aWM9rqdPLCPjxL1NJFOmO1wcO7OYN4QtMCI4dE",
+//     description: "Experimental labs for innovation and breakthrough solutions.",
+//   },
+//   {
+//     name: "House Renovation",
+//     image: "https://pbs.twimg.com/media/Gre7cpwbwAAPfiy?format=jpg&name=4096x4096",
+//     description: "Transforming spaces with a perfect blend of aesthetics and functionality.",
+//   },
+// ];
+
+// export default function Hero() {
+//   const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
+//   const [activeIndex, setActiveIndex] = useState(0);
+//   const servicesContainerRef = useRef<HTMLDivElement | null>(null);
+//   const [isSticky, setIsSticky] = useState(false);
+//   const [scrollProgress, setScrollProgress] = useState(0);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       if (!servicesContainerRef.current) return;
+//       const container = servicesContainerRef.current;
+//       const rect = container.getBoundingClientRect();
+//       const windowHeight = window.innerHeight;
+//       const totalServices = services.length;
+//       const containerTop = rect.top + window.scrollY;
+//       const scrollY = window.scrollY;
+//       const start = containerTop;
+//       const end = containerTop + windowHeight * totalServices;
+//       if (scrollY >= start && scrollY < end - windowHeight) {
+//         setIsSticky(true);
+//         const scrolled = scrollY - start;
+//         const index = Math.floor(scrolled / (windowHeight / 2));
+//         setActiveIndex(Math.min(index, totalServices - 1));
+//       } else {
+//         setIsSticky(false);
+//         if (scrollY < start) {
+//           setActiveIndex(0);
+//         } else {
+//           setActiveIndex(totalServices - 1);
+//         }
+//       }
+
+//       const scrollPosition = window.scrollY;
+//       const maxScroll = 800; // Total scroll distance for complete animation
+//       const progress = Math.min(scrollPosition / maxScroll, 1);
+//       setScrollProgress(progress);
+//     };
+//     window.addEventListener("scroll", handleScroll, { passive: true });
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   const blackText = "We believe that to maximize retimes, "
+//   const greyText =
+//     "you need a fundamental, first-principles understanding of every asset in your portfolio. That's why we focus on providing granular-level visibility and insight, so you can develop winning strategies for every single investment."
+
+//   // Split grey text into individual characters for letter-by-letter animation
+//   const greyChars = greyText.split("")
+//   const totalChars = greyChars.length
+
+//   return (
+//     <div className="min-h-screen bg-white">
+//       {/* Hero Section */}
+//       <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px] w-full xl:max-w-[1400px] mx-auto overflow-hidden rounded-2xl sm:rounded-3xl mt-4 sm:mt-6 md:mt-8 lg:mt-32 px-3 sm:px-6 md:px-12 lg:px-32 shadow-xl sm:shadow-2xl border-b-4 sm:border-b-6 md:border-b-8 border-r-4 sm:border-r-6 md:border-r-8 border-gray-400">
+//         <video
+//           autoPlay
+//           loop
+//           muted
+//           playsInline
+//           className="absolute top-0 left-0 w-full h-full object-cover"
+//         >
+//           <source src="/hero.mp4" type="video/mp4" />
+//         </video>
+//         <div className="absolute inset-0 bg-black/20" />
+//         <div className="absolute left-1/2 bottom-4 sm:bottom-6 md:bottom-8 -translate-x-1/2 w-full px-2 md:left-16 md:bottom-8 md:top-auto md:-translate-x-0">
+//           <div className="text-white">
+//             <div className="absolute left-[-1rem] sm:left-[-1.5rem] md:left-[-2rem] top-[-0rem] bottom-[-0.1rem] w-[0.05rem] sm:w-[0.08rem] md:w-[0.1rem] bg-white"></div>
+//             <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-['SF Pro',__sans-serif]">
+//               <div>Build</div>
+//               <div>Connect</div>
+//               <div>Grow</div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Content Section */}
+//       <div className="px-3 sm:px-4 md:px-8 lg:px-16 pt-3 sm:pt-4 md:pt-4 pb-4 sm:pb-6">
+//         <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 items-start md:justify-end">
+//           {/* Left Column - Description */}
+//           <div className="space-y-3 sm:space-y-4 md:space-y-5 md:w-[75rem]">
+//             <div className="max-w-5xl w-full mx-auto">
+//               <p className="text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-light text-center">
+//                 {/* Black text part - always black */}
+//                 <span className="text-black">{blackText}</span>
+
+//                 {/* Grey text part - animates letter by letter */}
+//                 {greyChars.map((char, index) => {
+//                   // Calculate if this character should be black based on scroll progress
+//                   const charProgress = index / totalChars
+//                   const shouldBeBlack = scrollProgress > charProgress
+
+//                   return (
+//                     <span
+//                       key={index}
+//                       className={`transition-colors duration-300 ease-out ${
+//                         shouldBeBlack ? "text-black" : "text-gray-400"
+//                       }`}
+//                       style={{
+//                         transitionDelay: `${index * 2}ms`, // Slight delay for smoother wave effect
+//                       }}
+//                     >
+//                       {char}
+//                     </span>
+//                   )
+//                 })}
+//               </p>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Add padding and a border before the grid section */}
+//       <div className="pt-6 sm:pt-8 md:pt-12"></div>
+  
+//       <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[150px] sm:min-h-[200px] md:min-h-[250px] lg:min-h-[130px] relative pt-0">
+//         <div className="px-2 sm:px-3 md:px-8 lg:px-16 py-3 sm:py-4 md:py-5 w-full col-span-2">
+//           <div className="mb-4 sm:mb-5 md:mb-7">
+//             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black leading-tight">
+//                Revolutionizing the Venture
+//                <br />
+//                Capital Ecosystem!
+//              </h2>
+//              <div className="fixed left-0 w-screen border-t border-gray-300 min-h-[60px] sm:min-h-[80px] md:min-h-[100px] lg:min-h-[40px] pt-1"></div>
+//           </div>
+//           <div className="w-full sm:w-80 md:w-96 lg:w-340 border-t border-gray-300 min-h-[60px] sm:min-h-[80px] md:min-h-[100px] lg:min-h-[40px] relative pt-1">
+//           </div>
+
+//           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
+//             {/* Left Column - Features */}
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+//               <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+//                 <div className="w-1 h-12 sm:h-16 md:h-20 bg-red-500 flex-shrink-0 mt-1"></div>
+//                 <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
+//                   We help founders at their earliest stages regardless of their age.
+//                 </p>
+//               </div>
+//               <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+//                 <div className="w-1 h-10 sm:h-12 md:h-16 bg-red-500 flex-shrink-0 mt-1"></div>
+//                 <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">We give startups a huge fundraising advantage.</p>
+//               </div>
+//               <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+//                 <div className="w-1 h-10 sm:h-12 md:h-16 bg-red-500 flex-shrink-0 mt-1"></div>
+//                 <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">We improve the success rate of our startups.</p>
+//               </div>
+//               <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+//                 <div className="w-1 h-12 sm:h-16 md:h-20 bg-red-500 flex-shrink-0 mt-1"></div>
+//                 <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
+//                   Our companies have a track record of becoming billion dollar companies.
+//                 </p>
+//               </div>
+//             </div>
+//             {/* Right Column - Community Image */}
+//             <div className="relative h-[200px] sm:h-[250px] md:h-[300px] w-full overflow-hidden rounded-xl sm:rounded-2xl">
+//               <Image src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpl-YRnxYXVx78kFqnXIi9I5b5s3bmQZXlg_ae8zgnoCXJAa837sfpK7eI2xZPZclrXAr2mKs1B1gXlOrHZqvQo4naWenEKgnrPeq8-NBQ1BZBqgoQk2vx4lAglHHgE_SpSnMwhBFiCdH6k6KRiIiBcHF66VriJF_vQXOHTOa-3tHGdVzNLZWyEBqwxozw/s2048/473544912_1018141797016754_6719124790330598010_n.jpg" alt="Community of innovative companies" fill className="object-cover" />
+//               <div className="absolute inset-0 bg-black/30" />
+//               <div className="absolute inset-0 flex items-end justify-end p-3 sm:p-4 md:p-6 pb-6 sm:pb-8 md:pb-10">
+//                 <h3 className="text-white text-sm sm:text-base md:text-lg lg:text-2xl xl:text-3xl font-bold text-right leading-tight drop-shadow">
+//                   <div className="absolute left-[8rem] sm:left-[12rem] md:left-[16rem] lg:left-[19.5rem] top-[-0rem] bottom-[-0rem] w-0.5 sm:w-1 bg-white"></div>
+//                   Join A Community Of
+//                   <br />
+//                   Smart & Innovative
+//                   <br />
+//                   Companies
+//                 </h3>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Services Section (unchanged) */}
+//       <div className="px-3 sm:px-4 md:px-8 lg:px-16 py-8 sm:py-12 md:py-16 bg-white">
+//         <div
+//           ref={servicesContainerRef}
+//           style={{ height: `calc(98vh * ${services.length})`, position: "relative" }}
+//         >
+//           <div
+//             style={{
+//               position: isSticky ? "fixed" : "static",
+//               top: 15,
+//               paddingTop: '30px sm:pt-[40px] md:pt-[50px]',
+//               left: 20,
+//               right: 20,
+//               zIndex: 10,
+//               background: "#ffffff",
+//               height: "100vh",
+//             }}
+//           >
+//             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-start px-4 sm:px-6 md:px-8 lg:px-16">
+//               {/* Left Column - Services Content */}
+//               <div style={{ paddingTop: '60px sm:pt-[80px] md:pt-[100px]' }} className="space-y-3 sm:space-y-4">
+//                 {/* Service Tag */}
+//                 <div className="flex items-center gap-1">
+//                   <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 border border-white-400 rounded-full"></div>
+//                   <span className="text-xs text-gray-600 uppercase tracking-wide">What Service We Offer</span>
+//                 </div>
+//                 {/* Main Heading */}
+//                 <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-black leading-tight">
+//                   Unleashing the Artistry of Block Studio's Services
+//                 </h2>
+//                 {/* Description */}
+//                 <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
+//                   Discover Block Studio's dynamic ecosystem, empowering startups with cutting-edge resources, expert
+//                   mentorship, and innovative solutions. We nurture your vision through personalized guidance, strategic
+//                   growth support, and a collaborative community—where every idea matters, and every venture tells a unique
+//                   story. At Block Studio, we don't just incubate startups; we build the future.
+//                 </p>
+//                 {/* Services List */}
+//                 <div style={{ paddingTop: '8px sm:pt-[10px]' }} className="space-y-3 sm:space-y-4 pt-2">
+//                   {services.map((service, idx) => (
+//                     <div
+//                       key={service.name}
+//                       ref={(el) => {
+//                         serviceRefs.current[idx] = el;
+//                       }}
+//                       className={`transition-all duration-300 cursor-pointer ${
+//                         activeIndex === idx
+//                           ? "border-l-4 border-red-500 pl-3 sm:pl-4 text-red-600 font-bold"
+//                           : "border-l-4 border-transparent pl-3 sm:pl-4 text-gray-800 hover:text-gray-600"
+//                       }`}
+//                     >
+//                       <div className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold">{service.name}</div>
+//                     </div>
+//                   ))}
+//                 </div>
+//               </div>
+//               {/* Right Column - Image with Overlay */}
+//               <div className="relative left-[2rem] sm:left-[4rem] md:left-[6rem] lg:left-[8rem] h-[300px] sm:h-[400px] md:h-[500px] top-20 sm:top-25 md:top-35 w-[300px] sm:w-[400px] md:w-[500px]">
+//                 {services[activeIndex] && (
+//                   <Image
+//                     src={services[activeIndex].image}
+//                     alt={services[activeIndex].name}
+//                     fill
+//                     className="object-cover transition-all duration-500"
+//                   />
+//                 )}
+//                 {/* Black overlay at bottom left */}
+//                 <div className="absolute left-6 sm:left-8 md:left-10 bottom-0 w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-black/70 z-10 rounded-bl-xl sm:rounded-bl-2xl -ml-6 sm:-ml-8 md:-ml-10" />
+//                 {/* Other overlays or content */}
+//                 <div style={{ marginLeft: '-100px sm:-ml-[250px] md:-ml-[300px]' }} className="absolute bottom-0 left-0 right-60 sm:right-70 md:right-90 bg-black/90 p-3 sm:p-4 md:p-6 z-20">
+//                   <h3 className="text-white text-sm sm:text-base md:text-lg lg:text-xl font-bold mb-2 sm:mb-3 md:mb-4">{services[activeIndex].name}</h3>
+//                   <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 md:mb-6">
+//                     {services[activeIndex].description}
+//                   </p>
+//                   <button className="flex items-center gap-1 sm:gap-2 text-white text-xs sm:text-sm uppercase tracking-wide hover:text-gray-300 transition-colors">
+//                     <span>LEARN MORE</span>
+//                     <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+//                     </svg>
+//                   </button>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }

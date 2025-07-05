@@ -4,6 +4,44 @@ import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 
+export function useDeviceDetection() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      const width = window.innerWidth;
+      
+      // Mobile: < 768px
+      // Tablet: 768px - 1024px  
+      // Desktop: > 1024px
+      const mobileDevice = width < 768 || 
+                          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const tabletDevice = width >= 768 && width < 1024;
+      const desktopDevice = width >= 1024;
+
+      setIsMobile(mobileDevice);
+      setIsTablet(tabletDevice);
+      setIsDesktop(desktopDevice);
+      setIsLoading(false);
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
+  return {
+    isMobile,
+    isTablet,
+    isDesktop,
+    isLoading
+  };
+} 
+
 const services = [
   {
     name: "Mentoring",
@@ -38,13 +76,26 @@ const services = [
 ];
 
 export default function Hero() {
+  const { isMobile, isDesktop } = useDeviceDetection();
   const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const servicesContainerRef = useRef<HTMLDivElement | null>(null);
   const [isSticky, setIsSticky] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // Force scroll progress to 0 on mobile
+  const effectiveScrollProgress = isMobile ? 0 : scrollProgress;
+
   useEffect(() => {
+    // Only enable scroll effects on desktop
+    if (!isDesktop) {
+      // Reset scroll progress to 0 on mobile and ensure no sticky state
+      setScrollProgress(0);
+      setIsSticky(false);
+      setActiveIndex(0);
+      return;
+    }
+
     const handleScroll = () => {
       if (!servicesContainerRef.current) return;
       const container = servicesContainerRef.current;
@@ -76,7 +127,7 @@ export default function Hero() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isDesktop]);
 
   const blackText = "We believe that to maximize retimes, "
   const greyText =
@@ -122,32 +173,34 @@ export default function Hero() {
                 {/* Black text part - always black */}
                 <span className="text-black">{blackText}</span>
 
-                {/* Grey text part - animates letter by letter */}
-                {greyChars.map((char, index) => {
-                  // Calculate if this character should be black based on scroll progress
-                  const charProgress = index / totalChars
-                  const shouldBeBlack = scrollProgress > charProgress
+                {/* Grey text part - animates letter by letter (only on desktop) */}
+                {isDesktop ? (
+                  greyChars.map((char, index) => {
+                    // Calculate if this character should be black based on scroll progress
+                    const charProgress = index / totalChars
+                    const shouldBeBlack = effectiveScrollProgress > charProgress
 
-                  return (
-                    <span
-                      key={index}
-                      className={`transition-colors duration-300 ease-out ${
-                        shouldBeBlack ? "text-black" : "text-gray-400"
-                      }`}
-                      style={{
-                        transitionDelay: `${index * 2}ms`, // Slight delay for smoother wave effect
-                      }}
-                    >
-                      {char}
-                    </span>
-                  )
-                })}
+                    return (
+                      <span
+                        key={index}
+                        className={`transition-colors duration-300 ease-out ${
+                          shouldBeBlack ? "text-black" : "text-gray-400"
+                        }`}
+                        style={{
+                          transitionDelay: `${index * 2}ms`, // Slight delay for smoother wave effect
+                        }}
+                      >
+                        {char}
+                      </span>
+                    )
+                  })
+                ) : (
+                  // On mobile, show all text in black immediately
+                  <span className="text-black">{greyText}</span>
+                )}
               </p>
             </div>
           </div>
-
-
-         
         </div>
       </div>
 
@@ -210,92 +263,94 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Services Section (unchanged) */}
-      <div className="px-4 py-16 md:px-8 lg:px-16 bg-white">
-        <div
-          ref={servicesContainerRef}
-          style={{ height: `calc(98vh * ${services.length})`, position: "relative" }}
-        >
+      {/* Services Section - Only show on desktop */}
+      {isDesktop && (
+        <div className="px-4 py-16 md:px-8 lg:px-16 bg-white">
           <div
-            style={{
-              position: isSticky ? "fixed" : "static",
-              top: 15,
-              paddingTop: '50px',
-              left: 63,
-              right: 63,
-              zIndex: 10,
-              background: "#ffffff",
-              height: "100vh",
-            }}
+            ref={servicesContainerRef}
+            style={{ height: `calc(98vh * ${services.length})`, position: "relative" }}
           >
-            <div className="grid lg:grid-cols-2 gap-16 items-start px-8 md:px-8 lg:px-16">
-              {/* Left Column - Services Content */}
-              <div style={{ paddingTop: '100px' }} className="space-y-4">
-                {/* Service Tag */}
-                <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 border border-white-400 rounded-full"></div>
-                  <span className="text-xs text-gray-600 uppercase tracking-wide">What Service We Offer</span>
-                </div>
-                {/* Main Heading */}
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black leading-tight">
-                  Unleashing the Artistry of Block Studio's Services
-                </h2>
-                {/* Description */}
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                  Discover Block Studio's dynamic ecosystem, empowering startups with cutting-edge resources, expert
-                  mentorship, and innovative solutions. We nurture your vision through personalized guidance, strategic
-                  growth support, and a collaborative community—where every idea matters, and every venture tells a unique
-                  story. At Block Studio, we don't just incubate startups; we build the future.
-                </p>
-                {/* Services List */}
-                <div style={{ paddingTop: '10px' }} className="space-y-4 pt-2">
-                  {services.map((service, idx) => (
-                    <div
-                      key={service.name}
-                      ref={(el) => {
-                        serviceRefs.current[idx] = el;
-                      }}
-                      className={`transition-all duration-300 cursor-pointer ${
-                        activeIndex === idx
-                          ? "border-l-4 border-red-500 pl-4 text-red-600 font-bold"
-                          : "border-l-4 border-transparent pl-4 text-gray-800 hover:text-gray-600"
-                      }`}
-                    >
-                      <div className="text-lg md:text-xl font-semibold">{service.name}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {/* Right Column - Image with Overlay */}
-              <div className="relative left-[8rem] h-[500px] top-35 w-[500px] ">
-                {services[activeIndex] && (
-                  <Image
-                    src={services[activeIndex].image}
-                    alt={services[activeIndex].name}
-                    fill
-                    className="object-cover transition-all duration-500"
-                  />
-                )}
-                {/* Black overlay at bottom left */}
-                <div className="absolute left-10 bottom-0 w-24 h-24 bg-black/70 z-10 rounded-bl-2xl -ml-10" />
-                {/* Other overlays or content */}
-                <div style={{ marginLeft: '-300px' }} className="absolute bottom-0 left-0 right-90 bg-black/90 p-6 z-20">
-                  <h3 className="text-white text-lg md:text-xl font-bold mb-4">{services[activeIndex].name}</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                    {services[activeIndex].description}
+            <div
+              style={{
+                position: isSticky ? "fixed" : "static",
+                top: 15,
+                paddingTop: '50px',
+                left: 63,
+                right: 63,
+                zIndex: 10,
+                background: "#ffffff",
+                height: "100vh",
+              }}
+            >
+              <div className="grid lg:grid-cols-2 gap-16 items-start px-8 md:px-8 lg:px-16">
+                {/* Left Column - Services Content */}
+                <div style={{ paddingTop: '100px' }} className="space-y-4">
+                  {/* Service Tag */}
+                  <div className="flex items-center gap-1">
+                    <div className="w-2 h-2 border border-white-400 rounded-full"></div>
+                    <span className="text-xs text-gray-600 uppercase tracking-wide">What Service We Offer</span>
+                  </div>
+                  {/* Main Heading */}
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black leading-tight">
+                    Unleashing the Artistry of Block Studio's Services
+                  </h2>
+                  {/* Description */}
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                    Discover Block Studio's dynamic ecosystem, empowering startups with cutting-edge resources, expert
+                    mentorship, and innovative solutions. We nurture your vision through personalized guidance, strategic
+                    growth support, and a collaborative community—where every idea matters, and every venture tells a unique
+                    story. At Block Studio, we don't just incubate startups; we build the future.
                   </p>
-                  <button className="flex items-center gap-2 text-white text-sm uppercase tracking-wide hover:text-gray-300 transition-colors">
-                    <span>LEARN MORE</span>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
+                  {/* Services List */}
+                  <div style={{ paddingTop: '10px' }} className="space-y-4 pt-2">
+                    {services.map((service, idx) => (
+                      <div
+                        key={service.name}
+                        ref={(el) => {
+                          serviceRefs.current[idx] = el;
+                        }}
+                        className={`transition-all duration-300 cursor-pointer ${
+                          activeIndex === idx
+                            ? "border-l-4 border-red-500 pl-4 text-red-600 font-bold"
+                            : "border-l-4 border-transparent pl-4 text-gray-800 hover:text-gray-600"
+                        }`}
+                      >
+                        <div className="text-lg md:text-xl font-semibold">{service.name}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* Right Column - Image with Overlay */}
+                <div className="relative left-[8rem] h-[500px] top-35 w-[500px] ">
+                  {services[activeIndex] && (
+                    <Image
+                      src={services[activeIndex].image}
+                      alt={services[activeIndex].name}
+                      fill
+                      className="object-cover transition-all duration-500"
+                    />
+                  )}
+                  {/* Black overlay at bottom left */}
+                  <div className="absolute left-10 bottom-0 w-24 h-24 bg-black/70 z-10 rounded-bl-2xl -ml-10" />
+                  {/* Other overlays or content */}
+                  <div style={{ marginLeft: '-300px' }} className="absolute bottom-0 left-0 right-90 bg-black/90 p-6 z-20">
+                    <h3 className="text-white text-lg md:text-xl font-bold mb-4">{services[activeIndex].name}</h3>
+                    <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                      {services[activeIndex].description}
+                    </p>
+                    <button className="flex items-center gap-2 text-white text-sm uppercase tracking-wide hover:text-gray-300 transition-colors">
+                      <span>LEARN MORE</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
