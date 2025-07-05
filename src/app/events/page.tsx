@@ -3,7 +3,7 @@ import Navbar from '../../components/Navbar';
 export default function EventsPage() {
   return (
     <>
-      <Navbar forceWhiteBg={true} />
+      <Navbar />
       <div className="h-31 bg-black">
 
       </div>
