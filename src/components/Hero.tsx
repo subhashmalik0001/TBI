@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
 
 const services = [
   {
