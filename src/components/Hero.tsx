@@ -165,37 +165,37 @@ export default function Hero() {
         <div className="flex flex-col md:flex-row gap-8 items-start md:justify-end">
           {/* Left Column - Description */}
           <div className="space-y-5 md:w-[75rem]">
-            <div className="max-w-5xl w-full mx-auto">
-              <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-light text-center">
-                {/* Black text part - always black */}
-                <span className="text-black">{blackText}</span>
-
-                {/* Grey text part - animates letter by letter */}
-                {greyChars.map((char, index) => {
-                  // Calculate if this character should be black based on scroll progress
-                  const charProgress = index / totalChars
-                  const shouldBeBlack = scrollProgress > charProgress
-
-                  return (
-                    <span
-                      key={index}
-                      className={`transition-colors duration-300 ease-out ${
-                        shouldBeBlack ? "text-black" : "text-gray-400"
-                      }`}
-                      style={{
-                        transitionDelay: `${index * animationDelay}ms`,
-                      }}
-                    >
-                      {char}
-                    </span>
-                  )
-                })}
-              </p>
+            <div className="max-w-5xl w-full mx-auto pt-16 md:pt-0">
+              {isMobile ? (
+                <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-light text-center text-black">
+                  {blackText}{greyText}
+                </p>
+              ) : (
+                <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-light text-center">
+                  {/* Black text part - always black */}
+                  <span className="text-black">{blackText}</span>
+                  {/* Grey text part - animates letter by letter */}
+                  {greyChars.map((char, index) => {
+                    const charProgress = index / totalChars;
+                    const shouldBeBlack = scrollProgress > charProgress;
+                    return (
+                      <span
+                        key={index}
+                        className={`transition-colors duration-300 ease-out ${
+                          shouldBeBlack ? "text-black" : "text-gray-400"
+                        }`}
+                        style={{
+                          transitionDelay: `${index * 2}ms`,
+                        }}
+                      >
+                        {char}
+                      </span>
+                    );
+                  })}
+                </p>
+              )}
             </div>
           </div>
-
-
-         
         </div>
       </div>
 

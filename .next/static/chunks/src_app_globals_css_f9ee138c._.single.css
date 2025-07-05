@@ -2088,8 +2088,16 @@
     padding-top: calc(var(--spacing) * 16);
   }
 
+  .pt-19 {
+    padding-top: calc(var(--spacing) * 19);
+  }
+
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
+  }
+
+  .pt-32 {
+    padding-top: calc(var(--spacing) * 32);
   }
 
   .pt-50 {
@@ -3077,6 +3085,12 @@
   }
 
   @media (width >= 48rem) {
+    .md\:w-\[79rem\] {
+      width: 79rem;
+    }
+  }
+
+  @media (width >= 48rem) {
     .md\:w-auto {
       width: auto;
     }
@@ -3158,6 +3172,18 @@
   @media (width >= 48rem) {
     .md\:px-12 {
       padding-inline: calc(var(--spacing) * 12);
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:pt-0 {
+      padding-top: calc(var(--spacing) * 0);
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:pt-3 {
+      padding-top: calc(var(--spacing) * 3);
     }
   }
 
