@@ -104,29 +104,29 @@ const Footer = () => {
 
       {/* Mobile Work Section */}
       <div
-        className="relative w-full bg-cover bg-center flex flex-col items-center justify-center"
+        className="relative w-full bg-cover bg-center flex flex-col items-start justify-center"
         style={{
-          backgroundImage: "url('/container (2).png')",
+          backgroundImage: "url('assets/container (2).png')",
           minHeight: "400px",
           paddingBottom:"100px"
         }}
       >
-        <div className="text-center text-[#D6E4FA] font-bold text-base mb-4" style={{fontFamily: "var(--font-geist-sans)", marginBottom: "50px"}}>
-          <b>want to work next to the with</b><br/>
-          <b>the best team</b><br/>
-          <b>in the world</b>
+        <div className="text-center text-[#D6E4FA] font-bold text-base mb-0 w-full flex flex-col items-center justify-center leading-tight" style={{fontFamily: "var(--font-geist-sans)", marginBottom: "60px"}}>
+          <b>Want to work next to the with</b><br/>
+          <b>The best team</b><br/>
+          <b>In the world</b>
         </div>
         <button
-          className="group flex items-center h-8 w-60 max-w-xs bg-transparent border border-black text-black pl-2 pr-6 py-2 rounded-full font-medium text-xs hover:bg-gray-800 hover:text-white transition"
+          className="group flex items-center h-8 w-60 max-w-xs bg-transparent border border-black text-black pl-2 pr-6 py-2 rounded-full font-medium text-xs hover:bg-gray-800 hover:text-white transition self-center ml-auto mr-auto"
           style={{
             backgroundColor: "#B0C8F2",
             color: "black",
             fontFamily: "var(--font-geist-sans)",
-            marginTop: "-20px",
+            marginTop: "-40px",
           }}
         >
-          <div className="w-6 h-6 bg-black rounded-full ml-2 transition-colors duration-200 group-hover:bg-white"></div>
-          <span className="truncate">* CONNECT WITH US TODAY</span>
+          <div className="w-6 h-6 bg-black rounded-full ml-0 transition-colors duration-200 group-hover:bg-white"></div>
+          <span className="truncate"> CONNECT WITH US TODAY</span>
         </button>
       </div>
 
@@ -140,7 +140,7 @@ const Footer = () => {
         }}
       >
         <div className="max-w-2xl mx-auto px-4" style={{ marginTop: "10px" }}>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-start">
             <div>
               <h1
                 style={{
@@ -154,7 +154,7 @@ const Footer = () => {
                   fontFamily: "var(--font-geist-sans)",
                   paddingBottom: "10px"
                 }}
-                className="text-3xl font-black leading-tight text-center"
+                className="text-3xl font-black leading-tight text-left"
               >
                 Technology<br />
                 <span style={{
@@ -275,9 +275,9 @@ const Footer = () => {
         }}
       >
         <div className="text-left text-[#D6E4FA] font-bold text-lg mr-200 sm:text-xl md:text-2xl mb-4" style={{fontFamily: "var(--font-geist-sans)", marginBottom: "100px"}}>
-          <b>want to work next to the with</b><br/>
-          <b>the best team</b><br/>
-          <b>in the world</b>
+          <b>Want to work next to the with</b><br/>
+          <b>The best team</b><br/>
+          <b>In the world</b>
         </div>
         <button
           className="group flex items-center ml-100 h-10 w-full max-w-xs min-w-fit sm:w-1/2 md:w-1/3 lg:w-1/4 bg-transparent border border-black text-black pl-2 pr-8 py-2 rounded-full font-medium text-xs sm:text-sm md:text-base hover:bg-gray-800 hover:text-white transition"

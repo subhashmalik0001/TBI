@@ -41,11 +41,11 @@ export default function Hero() {
   const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const servicesContainerRef = useRef<HTMLDivElement | null>(null);
+  const scrollSectionRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const [isDesktop, setIsDesktop] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     let accumulatedScroll = 0;
@@ -86,29 +86,37 @@ export default function Hero() {
   useEffect(() => {
     if (!isAnimationComplete) return;
     function handleScroll() {
-      if (!servicesContainerRef.current) return;
-      const container = servicesContainerRef.current;
+      if (!scrollSectionRef.current) return;
+    
+      const container = scrollSectionRef.current;
       const rect = container.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      const totalServices = services.length;
-      const containerTop = rect.top + window.scrollY;
       const scrollY = window.scrollY;
+      const containerTop = rect.top + scrollY;
+      const containerHeight = container.offsetHeight;
       const start = containerTop;
-      const end = containerTop + windowHeight * totalServices;
-      if (scrollY >= start && scrollY < end - windowHeight) {
+      const end = containerTop + containerHeight;
+    
+      if (scrollY >= start && scrollY < end) {
         setIsSticky(true);
+    
+        // ✅ Updated scroll logic for new structure
         const scrolled = scrollY - start;
-        const index = Math.floor(scrolled / (windowHeight / 2));
-        setActiveIndex(Math.min(index, totalServices - 1));
+        const index = Math.floor(scrolled / window.innerHeight);
+    
+        setActiveIndex(Math.min(index, services.length - 1));
       } else {
         setIsSticky(false);
         if (scrollY < start) {
           setActiveIndex(0);
         } else {
-          setActiveIndex(totalServices - 1);
+          setActiveIndex(services.length - 1);
         }
       }
     }
+    
+    
+    
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isAnimationComplete]);
@@ -116,12 +124,21 @@ export default function Hero() {
   useEffect(() => {
     function handleResize() {
       setIsDesktop(window.innerWidth >= 1024); // lg breakpoint
-      setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
     }
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    if (!scrollSectionRef.current) return;
+    scrollSectionRef.current.style.height = `${window.innerHeight * services.length}px`;
+  }, [services.length]);
+
+  useEffect(() => {
+    if (!scrollSectionRef.current) return;
+    scrollSectionRef.current.style.height = `${window.innerHeight * services.length}px`;
+  }, [isAnimationComplete, services.length]);
 
   const blackText = "We  "
   const greyText =
@@ -131,13 +148,10 @@ export default function Hero() {
   const greyChars = greyText.split("")
   const totalChars = greyChars.length
 
-  // Use a smaller delay on mobile for smoother animation
-  const animationDelay = isMobile ? 10 : 30;
-
   return (
-    <div className="min-h-screen bg-white pt-16 md:pt-0">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[550px] w-full xl:max-w-[1400px] mx-auto overflow-hidden rounded-3xl mt-8 md:mt-32 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400 pt-20 md:pt-0">
+      <div className="relative h-[550px] w-full xl:max-w-[1400px] mx-auto overflow-hidden rounded-3xl mt-8 md:mt-32 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
         <video
           autoPlay
           loop
@@ -164,36 +178,38 @@ export default function Hero() {
       <div className="px-4 pt-4 pb-6 md:px-8 lg:px-16">
         <div className="flex flex-col md:flex-row gap-8 items-start md:justify-end">
           {/* Left Column - Description */}
-          <div className="space-y-5 md:w-[90rem]">
-            <div className="max-w-5xl w-full mx-auto pt-16 md:pt-0">
-              {isMobile ? (
-                <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-light text-center text-black">
-                  {blackText}{greyText}
-                </p>
-              ) : (
-                <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-light text-center">
-                  <span className="text-black">{blackText}</span>
-                  {greyChars.map((char, index) => {
-                    const charProgress = index / totalChars;
-                    const shouldBeBlack = scrollProgress > charProgress;
-                    return (
-                      <span
-                        key={index}
-                        className={`transition-colors duration-300 ease-out ${
-                          shouldBeBlack ? "text-black" : "text-gray-400"
-                        }`}
-                        style={{
-                          transitionDelay: `${index * 2}ms`,
-                        }}
-                      >
-                        {char}
-                      </span>
-                    );
-                  })}
-                </p>
-              )}
+          <div className="space-y-5 md:w-[75rem]">
+            <div className="max-w-5xl w-full mx-auto">
+              <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-light text-center">
+                {/* Black text part - always black */}
+                <span className="text-black">{blackText}</span>
+
+                {/* Grey text part - animates letter by letter */}
+                {greyChars.map((char, index) => {
+                  // Calculate if this character should be black based on scroll progress
+                  const charProgress = index / totalChars
+                  const shouldBeBlack = scrollProgress > charProgress
+
+                  return (
+                    <span
+                      key={index}
+                      className={`transition-colors duration-300 ease-out ${
+                        shouldBeBlack ? "text-black" : "text-gray-400"
+                      }`}
+                      style={{
+                        transitionDelay: `${index * 2}ms`, // Slight delay for smoother wave effect
+                      }}
+                    >
+                      {char}
+                    </span>
+                  )
+                })}
+              </p>
             </div>
           </div>
+
+
+         
         </div>
       </div>
 
@@ -237,7 +253,7 @@ export default function Hero() {
               </div>
             </div>
             {/* Right Column - Community Image */}
-            <div className="relative w-full aspect-[4/3] h-75 overflow-hidden rounded-2xl">
+            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl">
               <Image src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpl-YRnxYXVx78kFqnXIi9I5b5s3bmQZXlg_ae8zgnoCXJAa837sfpK7eI2xZPZclrXAr2mKs1B1gXlOrHZqvQo4naWenEKgnrPeq8-NBQ1BZBqgoQk2vx4lAglHHgE_SpSnMwhBFiCdH6k6KRiIiBcHF66VriJF_vQXOHTOa-3tHGdVzNLZWyEBqwxozw/s2048/473544912_1018141797016754_6719124790330598010_n.jpg" alt="Community of innovative companies" fill className="object-cover" />
               <div className="absolute inset-0 bg-black/30" />
               <div className="absolute inset-0 flex items-end justify-end p-6 pb-10">
@@ -258,23 +274,12 @@ export default function Hero() {
       {/* Services Section - Responsive */}
       {isDesktop ? (
         <div className="px-4 py-16 md:px-8 lg:px-16 bg-white">
-          <div
-            ref={servicesContainerRef}
-            style={{ height: `calc(98vh * ${services.length})`, position: "relative" }}
-          >
+          <div ref={scrollSectionRef} className="relative w-full">
             <div
-              style={{
-                position: isSticky ? "fixed" : "static",
-                top: 15,
-                paddingTop: '50px',
-                left: 63,
-                right: 63,
-                zIndex: 10,
-                background: "#ffffff",
-                height: "100vh",
-              }}
+              ref={servicesContainerRef}
+              className="sticky top-0 h-screen flex items-center justify-center bg-white  "
             >
-              <div className="grid lg:grid-cols-2 gap-16 items-start px-8 md:px-8 lg:px-16">
+              <div className="grid lg:grid-cols-2 gap-16 items-start px-8 md:px-8 lg:px-16 ">
                 {/* Left Column - Services Content */}
                 <div style={{ paddingTop: '100px' }} className="space-y-4">
                   {/* Service Tag */}
@@ -322,6 +327,7 @@ export default function Hero() {
                       className="object-cover transition-all duration-500"
                     />
                   )}
+                
                   {/* Black overlay at bottom left */}
                   <div className="absolute left-10 bottom-0 w-24 h-24 bg-black/70 z-10 rounded-bl-2xl -ml-10" />
                   {/* Other overlays or content */}
@@ -342,7 +348,9 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      ) : (
+        
+      ) :
+       (
         // Mobile: show static first service only
         <div className="px-4 py-8 md:px-8 lg:px-16 bg-white">
           <div className="grid gap-8">
@@ -387,6 +395,7 @@ export default function Hero() {
           </div>
         </div>
       )}
+     
     </div>
   );
 }
