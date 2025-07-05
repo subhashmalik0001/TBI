@@ -43,9 +43,47 @@ export default function Hero() {
   const servicesContainerRef = useRef<HTMLDivElement | null>(null);
   const [isSticky, setIsSticky] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let accumulatedScroll = 0;
+    const maxAnimationScroll = 800;
+
+    function lockScroll(e: Event) {
+      if (!isAnimationComplete) {
+        e.preventDefault();
+        window.scrollTo(0, 0);
+        accumulatedScroll += Math.abs((e as WheelEvent).deltaY || 1);
+        const progress = Math.min(accumulatedScroll / maxAnimationScroll, 1);
+        setScrollProgress(progress);
+        if (progress >= 1) setIsAnimationComplete(true);
+      }
+    }
+
+    function lockWheel(e: WheelEvent) {
+      if (!isAnimationComplete) {
+        e.preventDefault();
+        accumulatedScroll += Math.abs(e.deltaY);
+        const progress = Math.min(accumulatedScroll / maxAnimationScroll, 1);
+        setScrollProgress(progress);
+        if (progress >= 1) setIsAnimationComplete(true);
+      }
+    }
+
+    if (!isAnimationComplete) {
+      window.addEventListener("wheel", lockWheel, { passive: false });
+      window.addEventListener("scroll", lockScroll, { passive: false });
+    }
+
+    return () => {
+      window.removeEventListener("wheel", lockWheel);
+      window.removeEventListener("scroll", lockScroll);
+    };
+  }, [isAnimationComplete]);
+
+  useEffect(() => {
+    if (!isAnimationComplete) return;
+    function handleScroll() {
       if (!servicesContainerRef.current) return;
       const container = servicesContainerRef.current;
       const rect = container.getBoundingClientRect();
@@ -68,19 +106,14 @@ export default function Hero() {
           setActiveIndex(totalServices - 1);
         }
       }
-
-      const scrollPosition = window.scrollY;
-      const maxScroll = 800; // Total scroll distance for complete animation
-      const progress = Math.min(scrollPosition / maxScroll, 1);
-      setScrollProgress(progress);
-    };
+    }
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isAnimationComplete]);
 
-  const blackText = "We believe that to maximize retimes, "
+  const blackText = "We  "
   const greyText =
-    "you need a fundamental, first-principles understanding of every asset in your portfolio. That's why we focus on providing granular-level visibility and insight, so you can develop winning strategies for every single investment."
+    "believe that to maximize retimes, you need a fundamental, first-principles understanding of every asset in your portfolio. That's why we focus on providing granular-level visibility and insight, so you can develop winning strategies for every single investment."
 
   // Split grey text into individual characters for letter-by-letter animation
   const greyChars = greyText.split("")
@@ -162,10 +195,9 @@ export default function Hero() {
                <br />
                Capital Ecosystem!
              </h2>
-             <div className="fixed left-0 w-screen border-t border-gray-300 min-h-[100px] lg:min-h-[40px] pt-1"></div>
+             <div className="fixed left-0 w-screen border-t border-gray-300 min-h-[100px] lg:min-h-[40px] pt-10"></div>
           </div>
-          <div className="w-340  border-t  border-gray-300 min-h-[100px] lg:min-h-[40px] relative pt-1">
-          </div>
+          <div className="w-377 border-t border-gray-300 min-h-[100px] lg:min-h-[40px] relative pt-3 -ml-4 md:-ml-8 lg:-ml-16"></div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Features */}
@@ -192,7 +224,7 @@ export default function Hero() {
               </div>
             </div>
             {/* Right Column - Community Image */}
-            <div className="relative h-[300px] w-full overflow-hidden rounded-2xl">
+            <div className="relative h-[300px] w-full overflow-hidden rounded-2xl ml-10">
               <Image src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpl-YRnxYXVx78kFqnXIi9I5b5s3bmQZXlg_ae8zgnoCXJAa837sfpK7eI2xZPZclrXAr2mKs1B1gXlOrHZqvQo4naWenEKgnrPeq8-NBQ1BZBqgoQk2vx4lAglHHgE_SpSnMwhBFiCdH6k6KRiIiBcHF66VriJF_vQXOHTOa-3tHGdVzNLZWyEBqwxozw/s2048/473544912_1018141797016754_6719124790330598010_n.jpg" alt="Community of innovative companies" fill className="object-cover" />
               <div className="absolute inset-0 bg-black/30" />
               <div className="absolute inset-0 flex items-end justify-end p-6 pb-10">
