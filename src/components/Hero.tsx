@@ -35,49 +35,13 @@ const services = [
     description: "Transforming spaces with a perfect blend of aesthetics and functionality.",
   },
 ];
-const processSteps = [
-  {
-    day: "DAY 0",
-    title: "Your Initial Hypothesis",
-    description: "Before you invest a single dollar, we analyze your data and objectives to ensure that our partnership is a good match."
-  },
-  {
-    day: "DAY 1",
-    title: "We Align With You",
-    description: "We hold breakouts with you and internal experts, quickly documenting and understanding nuances and messaging angles for your product and industry."
-  },
-  {
-    day: "DAY 7",
-    title: "We Research for You",
-    description: "We conduct two focused research types: external research, which examines your market, competitors, and existing gaps, and internal research, which searches your data for areas of immediate enhancement."
-  },
-  {
-    day: "DAY 30",
-    title: "We Deliver your Blueprint",
-    description: "We provide a blueprint with a detailed 90-day plan for growth initiatives, including activation, optimization, or overhaul. On this day, we align, approve, and launch our first campaigns and efforts."
-  },
-  {
-    day: "DAY 30+",
-    title: "Your Dashboards Go Live",
-    description: "Your key data is visualized in one place, updated in real time, allowing you to track initiatives and confidently make informed decisions. We continually enhance and refine these dashboards over time."
-  },
-  {
-    day: "DAY 45",
-    title: "We Have Weekly War Rooms",
-    description: "Throughout our partnership we'll meet every week to review data, trade notes on progress, and war-room future strategies, ensuring close collaboration every step of the way."
-  },
-  {
-    day: "DAY 90+",
-    title: "We Iterate and Pivot to Success",
-    description: "Each quarter, we meet to review past performance data and present prospective blueprint. Aiming for substantial growth over incremental, we deliver a path forward we're all excited about."
-  }
-];
 
-const Hero = () => {
+export default function Hero() {
   const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const servicesContainerRef = useRef<HTMLDivElement | null>(null);
   const [isSticky, setIsSticky] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,15 +67,28 @@ const Hero = () => {
           setActiveIndex(totalServices - 1);
         }
       }
+
+      const scrollPosition = window.scrollY;
+      const maxScroll = 800; // Total scroll distance for complete animation
+      const progress = Math.min(scrollPosition / maxScroll, 1);
+      setScrollProgress(progress);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const blackText = "We believe that to maximize retimes, "
+  const greyText =
+    "you need a fundamental, first-principles understanding of every asset in your portfolio. That's why we focus on providing granular-level visibility and insight, so you can develop winning strategies for every single investment."
+
+  // Split grey text into individual characters for letter-by-letter animation
+  const greyChars = greyText.split("")
+  const totalChars = greyChars.length
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[620px] w-full xl:max-w-[1600px] mx-auto overflow-hidden rounded-3xl mt-9 md:mt-25 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
+      <div className="relative h-[550px] w-full xl:max-w-[1400px] mx-auto overflow-hidden rounded-3xl mt-8 md:mt-32 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
         <video
           autoPlay
           loop
@@ -139,11 +116,33 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row gap-8 items-start md:justify-end">
           {/* Left Column - Description */}
           <div className="space-y-5 md:w-[75rem]">
-            <p className="text-lg md:text-2xl text-gray-700 leading-relaxed">
-              We believe that to maximize returns, you need a fundamental, first-principles understanding of every asset
-              in your portfolio. That's why we focus on providing granular-level visibility and insight, so you can
-              develop winning strategies for every single investment.
-            </p>
+            <div className="max-w-5xl w-full mx-auto">
+              <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-light text-center">
+                {/* Black text part - always black */}
+                <span className="text-black">{blackText}</span>
+
+                {/* Grey text part - animates letter by letter */}
+                {greyChars.map((char, index) => {
+                  // Calculate if this character should be black based on scroll progress
+                  const charProgress = index / totalChars
+                  const shouldBeBlack = scrollProgress > charProgress
+
+                  return (
+                    <span
+                      key={index}
+                      className={`transition-colors duration-300 ease-out ${
+                        shouldBeBlack ? "text-black" : "text-gray-400"
+                      }`}
+                      style={{
+                        transitionDelay: `${index * 2}ms`, // Slight delay for smoother wave effect
+                      }}
+                    >
+                      {char}
+                    </span>
+                  )
+                })}
+              </p>
+            </div>
           </div>
 
 
@@ -293,6 +292,4 @@ const Hero = () => {
       </div>
     </div>
   );
-};
-
-export default Hero;
+}
