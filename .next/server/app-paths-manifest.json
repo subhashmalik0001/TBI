@@ -1,12 +1,6 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/about/page": "app/about/page.js",
-  "/events/page": "app/events/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/insights/page": "app/insights/page.js",
   "/page": "app/page.js",
-  "/programs/bridge-program/page": "app/programs/bridge-program/page.js",
-  "/programs/master-class/page": "app/programs/master-class/page.js",
-  "/programs/pre-acceleration/page": "app/programs/pre-acceleration/page.js",
-  "/programs/preincubation/page": "app/programs/preincubation/page.js"
+  "/programs/pre-acceleration/page": "app/programs/pre-acceleration/page.js"
 }

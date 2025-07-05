@@ -46,17 +46,20 @@ const Navbar = () => {
     <header className={headerClasses}>
       <nav className="flex items-center justify-between relative">
         <Link href={`/`}>
-        <div className="flex items-center py-3 relative h-full">
+        <div className="flex items-center py-0 relative h-full ml-6">
           <Image
             src="/logo.svg"
             alt="Logo"
             width={100}
             height={40}
-            className="w-32 h-12 sm:w-40 sm:h-14 md:w-48 md:h-16"
+            className="w-40 h-12 sm:w-50 sm:h-10 md:w-50 md:h-20"
             priority
           />
         </div>
         </Link>
+
+        {/* Vertical divider after logo */}
+        <div className="hidden lg:block h-25 border-l border-gray-300 mx-4"></div>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-base xl:text-lg bg-white p-6">
@@ -204,6 +207,7 @@ const Navbar = () => {
           </div>
         )}
       </nav>
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-b border-gray-300 min-h-[0px] lg:min-h-[0px] relative -mx-4 md:-mx-10 lg:-mx-[0rem]"></div>
     </header>
   );
 };
