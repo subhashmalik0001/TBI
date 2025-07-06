@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { name: "☰", to: "#", isIcon: true },
-  { name: "PLUS", to: "#", isPlus: true },
   { name: "Starting Up", to: "/startingup" },
   { name: "Tech", to: "/tech" },
   { name: "A.I.", to: "/ai" },
@@ -13,22 +12,17 @@ const navItems = [
   { name: "Creators", to: "/creators" },
   { name: "Lifestyle", to: "/lifestyle" },
   { name: "Money", to: "/money" },
-  { name: "Join", to: "/join", isJoin: true },
 ];
 
-// Perfectly square logo, increased padding
 const IHLogo = () => (
   <span
     className="flex items-center justify-center bg-white text-[#1a3552] font-extrabold text-base mr-3"
     style={{
       width: 44,
       height: 100,
-      borderRadius: 0, // Square
       fontFamily: "'Poppins', sans-serif",
-      letterSpacing: "0.02em",
       fontSize: "1.35rem",
-      padding: "8px", // Increased padding
-      boxSizing: "border-box",
+      padding: "8px",
     }}
   >
     IH
@@ -37,98 +31,103 @@ const IHLogo = () => (
 
 const IHNavbar = () => {
   const pathname = usePathname();
-  // Track which tab is selected (clicked)
-  const [selectedTab, setSelectedTab] = React.useState<number | null>(() => {
-    const idx = navItems
-      .slice(2, -1)
-      .findIndex((item) => item.to === pathname);
+  const [selectedTab, setSelectedTab] = useState<number | null>(() => {
+    const idx = navItems.findIndex((item) => item.to === pathname);
     return idx >= 0 ? idx : null;
   });
 
-  // Update selectedTab if pathname changes (e.g. via browser nav)
-  React.useEffect(() => {
-    const idx = navItems
-      .slice(2, -1)
-      .findIndex((item) => item.to === pathname);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const idx = navItems.findIndex((item) => item.to === pathname);
     if (idx >= 0) setSelectedTab(idx);
   }, [pathname]);
 
   return (
     <>
-      {/* Thin black accent bar at the top */}
       <div className="w-full h-20 bg-black"></div>
-      <div
-        className="bg-[url('/pattern.svg')] bg-white bg-repeat w-full"
-        style={{ height: "7px" }}
-      />
-      {/* Main navbar */}
-      <nav
-        className="bg-[url('/pattern.svg')] bg-white bg-repeat border-b border-[#1a2a3a] shadow h-[62px] flex items-center text-lg font-semibold whitespace-nowrap w-full sticky top-20"
-        style={{ fontFamily: "'Poppins', sans-serif" }}
-      >
-        <div className="w-full flex items-center h-full justify-between px-7">
-          {/* Triple line and PLUS left, very close, left aligned, increased x padding for both but close together */}
-          
-          {/* Main nav tabs */}
-          <div className="flex flex-1 items-center justify-center gap-1 h-full">
-            {navItems.slice(2, -1).map((item, idx) => {
-              // Custom padding for Tech, A.I., and Indie Hackers
-              let paddingClass = "px-5";
-              let content: React.ReactNode = item.name;
-              let extraClass = "";
-              if (item.name === "Tech") {
-                paddingClass = "px-2";
-              }
-              if (item.name === "A.I.") {
-                paddingClass = "px-1";
-              }
-              if (item.isIH) {
-                paddingClass = "px-16";
-                extraClass = "flex items-center font-bold";
-                content = (
-                  <>
-                    <IHLogo />
-                    <span
-                      className="tracking-wide"
-                      style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: "1.13rem",
-                      }}
-                    >
-                      INDIE HACKERS
-                    </span>
-                  </>
+      <div className="bg-[url('/pattern.svg')] bg-white bg-repeat w-full" style={{ height: "7px" }} />
+
+      <nav className="bg-white border-b border-[#1a2a3a] shadow sticky top-20 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-[62px]">
+            {/* Mobile Menu Toggle */}
+            <div className="flex items-center md:hidden">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-black hover:text-gray-700 focus:outline-none"
+              >
+                {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
+
+            {/* Centered Tabs (Desktop only) */}
+            <div className="hidden md:flex flex-1 items-center justify-center gap-1 h-full">
+              {navItems.map((item, idx) => {
+                let paddingClass = "px-4";
+                let content: React.ReactNode = item.name;
+                let extraClass = "";
+
+                if (item.name === "Tech") paddingClass = "px-2";
+                if (item.name === "A.I.") paddingClass = "px-1";
+                if (item.isIH) {
+                  paddingClass = "px-10";
+                  extraClass = "flex items-center font-bold";
+                  content = (
+                    <>
+                      <IHLogo />
+                      <span className="tracking-wide text-[1.13rem] font-semibold">INDIE HACKERS</span>
+                    </>
+                  );
+                }
+
+                const isSelected = selectedTab === idx;
+
+                return (
+                  <Link
+                    key={idx}
+                    href={`/insights${item.to}`}
+                    tabIndex={0}
+                    onClick={() => setSelectedTab(idx)}
+                    className={`text-center h-full flex items-center justify-center transition ${paddingClass} whitespace-nowrap
+                      ${isSelected ? "bg-black text-white" : "text-gray-700 hover:bg-black hover:text-white"}
+                      ${extraClass} font-semibold rounded-t-md`}
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: "1.13rem",
+                    }}
+                  >
+                    {content}
+                  </Link>
                 );
-              }
-              // If selected, keep dark blue background and white text
-              const isSelected = selectedTab === idx;
-              return (
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-200">
+            <div className="px-4 pt-2 pb-4 space-y-1">
+              {navItems.map((item, idx) => (
                 <Link
                   key={idx}
                   href={`/insights${item.to}`}
-                  tabIndex={0}
-                  className={`flex-1 text-center h-full flex items-center justify-center transition rounded-t-md text-lg ${paddingClass} whitespace-nowrap min-w-0 overflow-hidden text-ellipsis
-                    ${isSelected
-                      ? "bg-black text-white"
-                      : "text-gray-700 hover:bg-black hover:text-white active:bg-white"
-                    }
-                    transition-all duration-150 ${extraClass}`}
-                  style={{
-                    minWidth: 0,
-                    height: "100%",
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: "1.13rem",
+                  onClick={() => {
+                    setSelectedTab(idx);
+                    setIsMobileMenuOpen(false);
                   }}
-                  onClick={() => setSelectedTab(idx)}
+                  className={`block px-3 py-2 rounded-md text-base font-medium ${
+                    selectedTab === idx ? "bg-black text-white" : "text-gray-700 hover:bg-black hover:text-white"
+                  }`}
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
-                  {content}
+                  {item.name}
                 </Link>
-              );
-            })}
+              ))}
+            </div>
           </div>
-          {/* Join right, right aligned, reduced height */}
-          
-        </div>
+        )}
       </nav>
     </>
   );

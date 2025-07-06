@@ -9,6 +9,10 @@ module.exports = {
       'blogger.googleusercontent.com',
       'naslefarda-clinic.com',
       'www.eas.ualberta.ca',
+      'www.irec.cat',
+      'naslefarda-clinic.com',
+      'www.eas.ualberta.ca',
+      'imgcdn.stablediffusionweb.com'
     ],
   },
 };

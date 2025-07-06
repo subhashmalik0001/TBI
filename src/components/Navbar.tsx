@@ -34,7 +34,7 @@ const Navbar = () => {
   // Prevent hydration mismatch by not rendering scroll-dependent styles until mounted
   const headerClasses = 'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black border-b-1';
 
-  const logoClasses = 'flex items-center gap-4 p-3 border-r-1';
+  const logoClasses = 'flex items-center gap-4 p-4 border-r-1';
 
   const logoImageClasses = 'w-38';
 
@@ -42,7 +42,113 @@ const Navbar = () => {
 
   const aboutLinkClasses = (baseClasses: string) => `${baseClasses} hover:bg-black/70 hover:text-white`;
 
-  return (
+  // Mobile-specific render function
+  const renderMobileView = () => (
+    <header className={headerClasses}>
+      <nav className="flex items-center justify-between relative">
+        <Link href={`/`}>
+        <div className="flex items-center py-0 relative h-full ml-0">
+          <Image
+            src="/logo.svg"
+            alt="Logo"
+            width={100}
+            height={40}
+            className="w-40 h-12 sm:w-50 sm:h-10 md:w-50 md:h-20"
+            priority
+          />
+        </div>
+        </Link>
+
+        {/* Mobile Hamburger Menu */}
+        <button
+          className="ml-auto lg:hidden flex flex-col justify-center items-center w-10 h-8 focus:outline-none transition-colors duration-200 text-black"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <Image src="/assets/line.png" alt="Menu" width={30} height={40} />
+        </button>
+
+        {/* Mobile Menu Overlay */}
+        {mobileMenuOpen && (
+          <div className="mobile-menu fixed inset-0 bg-white z-50 lg:hidden">
+            <div className="flex flex-col h-full">
+              {/* Mobile Menu Header */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-700 bg-white">
+                <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                  <Image
+                    src="/logo.svg"
+                    alt="Logo"
+                    width={100}
+                    height={40}
+                    className="w-32 h-12"
+                  />
+                </Link>
+                <button
+                  className="text-black p-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <HiX className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Mobile Menu Content */}
+              <div className="flex-1 flex flex-col justify-center items-center px-6 bg-white">
+                <div className="flex flex-col gap-8 text-center w-full max-w-sm">
+                  <Link
+                    href="/about"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-black text-xl font-medium py-3 hover:text-red-400 transition-colors border-b border-gray-300 bg-white"
+                  >
+                    About
+                  </Link>
+                  <button
+                    onClick={() => setShowMobilePrograms((v) => !v)}
+                    className="text-black text-xl font-medium py-3 hover:text-red-400 transition-colors border-b border-gray-300  bg-white"
+                  >
+                    Programs
+                  </button>
+                  {showMobilePrograms && (
+                    <div className="w-full py-4 mx-auto">
+                      <ProgramGrid onLinkClick={() => {
+                        setShowMobilePrograms(false);
+                        setMobileMenuOpen(false);
+                      }} />
+                    </div>
+                  )}
+                  <Link
+                    href="/insights"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-black text-xl font-medium py-3 hover:text-red-400 transition-colors border-b border-gray-300 bg-white"
+                  >
+                    Insights
+                  </Link>
+                  <Link
+                    href="/events"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-black text-xl font-medium py-3 hover:text-red-400 transition-colors border-b border-gray-300 bg-white"
+                  >
+                    Events
+                  </Link>
+                  {/* Mobile Apply Button */}
+                  <div className="pt-6">
+                    <Link href="/apply" onClick={() => setMobileMenuOpen(false)}>
+                      <button className="w-full bg-red-600 text-white px-8 py-4 text-lg font-bold border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 rounded-md">
+                        APPLY TO INCUBATOR
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </nav>
+    </header>
+  );
+
+  // Desktop-specific render function
+  const renderDesktopView = () => (
     <header className={headerClasses}>
       <nav className="flex items-center justify-between relative">
         <Link href={`/`}>
@@ -119,96 +225,22 @@ const Navbar = () => {
             </button>
           </Link>
         </div>
-
-        {/* Mobile Hamburger Menu */}
-        <button
-          className="ml-auto lg:hidden flex flex-col justify-center items-center w-10 h-8 focus:outline-none transition-colors duration-200 text-black"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-          <span className={`block w-6 h-0.5 bg-current transition-all duration-300 mt-1.5 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`block w-6 h-0.5 bg-current transition-all duration-300 mt-1.5 ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
-        </button>
-
-        {/* Mobile Menu Overlay */}
-        {mobileMenuOpen && (
-          <div className="mobile-menu fixed inset-0 bg-white z-50 lg:hidden">
-            <div className="flex flex-col h-full">
-              {/* Mobile Menu Header */}
-              <div className="flex items-center justify-between p-4 border-b border-gray-700 bg-white">
-                <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-                  <Image
-                    src="/logo.svg"
-                    alt="Logo"
-                    width={100}
-                    height={40}
-                    className="w-32 h-12"
-                  />
-                </Link>
-                <button
-                  className="text-black p-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-label="Close menu"
-                >
-                  <HiX className="w-6 h-6" />
-                </button>
-              </div>
-
-              {/* Mobile Menu Content */}
-              <div className="flex-1 flex flex-col justify-center items-center px-6 bg-white">
-                <div className="flex flex-col gap-8 text-center w-full max-w-sm">
-                  <Link
-                    href="/about"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-black text-xl font-medium py-3 hover:text-red-400 transition-colors border-b border-gray-300 bg-white"
-                  >
-                    About
-                  </Link>
-                  <button
-                    onClick={() => setShowMobilePrograms((v) => !v)}
-                    className="text-black text-xl font-medium py-3 hover:text-red-400 transition-colors border-b border-gray-300 text-left bg-white"
-                  >
-                    Programs
-                  </button>
-                  {showMobilePrograms && (
-                    <div className="w-full py-4 mx-auto">
-                      <ProgramGrid onLinkClick={() => {
-                        setShowMobilePrograms(false);
-                        setMobileMenuOpen(false);
-                      }} />
-                    </div>
-                  )}
-                  <Link
-                    href="/insights"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-black text-xl font-medium py-3 hover:text-red-400 transition-colors border-b border-gray-300 bg-white"
-                  >
-                    Insights
-                  </Link>
-                  <Link
-                    href="/events"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-black text-xl font-medium py-3 hover:text-red-400 transition-colors border-b border-gray-300 bg-white"
-                  >
-                    Events
-                  </Link>
-                  {/* Mobile Apply Button */}
-                  <div className="pt-6">
-                    <Link href="/apply" onClick={() => setMobileMenuOpen(false)}>
-                      <button className="w-full bg-red-600 text-white px-8 py-4 text-lg font-bold border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 rounded-md">
-                        APPLY TO INCUBATOR
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </nav>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-b border-gray-300 min-h-[0px] lg:min-h-[0px] relative -mx-4 md:-mx-10 lg:-mx-[0rem]"></div>
     </header>
+  );
+
+  return (
+    <>
+      {/* Mobile View */}
+      <div className="lg:hidden">
+        {renderMobileView()}
+      </div>
+      
+      {/* Desktop View */}
+      <div className="hidden lg:block">
+        {renderDesktopView()}
+      </div>
+    </>
   );
 };
 

@@ -8,27 +8,7 @@ import { Button } from "../components/programs/Button"
 import { Card, CardContent } from "../components/programs/Card"
 import Navbar from "@/components/Navbar"
 
-const faqData = [
-  {
-    question: "Who Are we",
-    answer: "We are a technology business incubator focused on supporting innovative startups and entrepreneurs."
-  },
-  {
-    question: "What do we do",
-    answer: "We provide mentorship, resources, and support to help technology startups grow and succeed."
-  },
-  {
-    question: "How can we help you?",
-    answer: "We can help you with business development, technical guidance, funding opportunities, and networking."
-  },
-  {
-    question: "What do we do",
-    answer: "We foster innovation and entrepreneurship in the technology sector through our comprehensive incubation programs."
-  }
-];
-
 const Footer = () => {
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -61,47 +41,6 @@ const Footer = () => {
   // Mobile-specific render function
   const renderMobileView = () => (
     <div className="min-h-screen bg-white">
-      {/* Mobile FAQ Section */}
-      <div className="max-w-screen-2xl mx-auto px-2">
-        <h1 className="text-4xl font-extrabold text-left ml-4 mt-6 text-black">FAQ</h1>
-        <Accordion className="w-full max-w-12xl mx-auto my-4">
-          {faqData.map((item, idx) => {
-            let hoverBg = '';
-            if (item.question === 'Who Are we') hoverBg = 'hover:bg-green-200';
-            else if (item.question === 'What do we do') hoverBg = 'hover:bg-yellow-200';
-            else if (item.question === 'How can we help you?') hoverBg = 'hover:bg-orange-200';
-            const isOpen = openIdx === idx;
-            let openBg = '';
-            if (isOpen && item.question === 'Who Are we') openBg = 'bg-green-200';
-            else if (isOpen && item.question === 'What do we do') openBg = 'bg-yellow-200';
-            else if (isOpen && item.question === 'How can we help you?') openBg = 'bg-orange-200';
-            return (
-              <AccordionItem
-                key={idx}
-                className={`border-2 border-black rounded-tl-2xl rounded-tr-2xl mb-2 border-b-white p-0 ${isOpen ? openBg : ''}`}
-              >
-                <button
-                  className={`w-full text-left text-sm font-medium flex items-center focus:outline-none text-black ${hoverBg} rounded-tl-2xl rounded-tr-2xl p-4 min-h-[60px]`}
-                  style={{margin: 0, borderRadius: '1rem 1rem 0 0'}}
-                  onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-                  onMouseEnter={() => { if (openIdx !== null && openIdx !== idx) setOpenIdx(null); }}
-                >
-                  <span className="flex-grow text-black">{item.question}</span>
-                  <span className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-black text-lg font-bold flex-shrink-0 text-black">
-                    {openIdx === idx ? '-' : '+'}
-                  </span>
-                </button>
-                {isOpen && (
-                  <div className="px-4 pb-3 text-black text-sm">
-                    {item.answer}
-                  </div>
-                )}
-              </AccordionItem>
-            );
-          })}
-        </Accordion>
-      </div>
-
       {/* Mobile Work Section */}
       <div
         className="relative w-full bg-cover bg-center flex flex-col items-start justify-center"
@@ -224,47 +163,6 @@ const Footer = () => {
   // Desktop-specific render function
   const renderDesktopView = () => (
     <div className="min-h-screen bg-white">
-      {/* Desktop FAQ Section */}
-      <div className="max-w-screen-2xl mx-auto px-1">
-        <h1 className="text-9xl font-extrabold text-left ml-10 mt-10 text-black">FAQ</h1>
-        <Accordion className="w-full max-w-12xl mx-auto my-8">
-          {faqData.map((item, idx) => {
-            let hoverBg = '';
-            if (item.question === 'Who Are we') hoverBg = 'hover:bg-green-200';
-            else if (item.question === 'What do we do') hoverBg = 'hover:bg-yellow-200';
-            else if (item.question === 'How can we help you?') hoverBg = 'hover:bg-orange-200';
-            const isOpen = openIdx === idx;
-            let openBg = '';
-            if (isOpen && item.question === 'Who Are we') openBg = 'bg-green-200';
-            else if (isOpen && item.question === 'What do we do') openBg = 'bg-yellow-200';
-            else if (isOpen && item.question === 'How can we help you?') openBg = 'bg-orange-200';
-            return (
-              <AccordionItem
-                key={idx}
-                className={`border-4 border-black rounded-tl-3xl rounded-tr-3xl mb-2 border-b-white p-0 ${isOpen ? openBg : ''}`}
-              >
-                <button
-                  className={`w-full text-left text-xl font-medium flex items-center focus:outline-none text-black ${hoverBg} rounded-tl-3xl rounded-tr-3xl p-6 min-h-[80px]`}
-                  style={{margin: 0, borderRadius: '1.5rem 1.5rem 0 0'}}
-                  onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-                  onMouseEnter={() => { if (openIdx !== null && openIdx !== idx) setOpenIdx(null); }}
-                >
-                  <span className="flex-grow text-black">{item.question}</span>
-                  <span className="ml-4 flex items-center justify-center w-10 h-10 rounded-full border border-black text-2xl font-bold flex-shrink-0 text-black">
-                    {openIdx === idx ? '-' : '+'}
-                  </span>
-                </button>
-                {isOpen && (
-                  <div className="px-6 pb-4 text-black">
-                    {item.answer}
-                  </div>
-                )}
-              </AccordionItem>
-            );
-          })}
-        </Accordion>
-      </div>
-
       {/* Desktop Work Section */}
       <div
         className="relative w-full bg-cover bg-center flex flex-col items-center justify-center"
