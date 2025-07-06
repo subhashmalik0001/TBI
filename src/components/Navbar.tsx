@@ -32,7 +32,7 @@ const Navbar = () => {
   }, [scrolled]);
 
   // Prevent hydration mismatch by not rendering scroll-dependent styles until mounted
-  const headerClasses = 'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black border-b-1';
+  const headerClasses = 'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black border-b border-black';
 
   const logoClasses = 'flex items-center gap-4 p-4 border-r-1';
 
@@ -44,20 +44,21 @@ const Navbar = () => {
 
   // Mobile-specific render function
   const renderMobileView = () => (
-    <header className={headerClasses}>
-      <nav className="flex items-center justify-between relative">
-        <Link href={`/`}>
-        <div className="flex items-center py-0 relative h-full ml-0">
-          <Image
-            src="/logo.svg"
-            alt="Logo"
-            width={100}
-            height={40}
-            className="w-40 h-12 sm:w-50 sm:h-10 md:w-50 md:h-20"
-            priority
-          />
-        </div>
-        </Link>
+    <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black">
+      <div className="border-b-[2px] border-black max-w-screen-2xl mx-auto px-4">
+        <nav className="flex items-center justify-between relative">
+          <Link href={`/`}>
+          <div className="flex items-center py-0 relative h-full ml-0">
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              width={100}
+              height={40}
+              className="w-40 h-12 sm:w-50 sm:h-10 md:w-50 md:h-20"
+              priority
+            />
+          </div>
+          </Link>
 
         {/* Mobile Hamburger Menu */}
         <button
@@ -143,105 +144,113 @@ const Navbar = () => {
             </div>
           </div>
         )}
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 
   // Desktop-specific render function
   const renderDesktopView = () => (
-    <header className={headerClasses}>
-      <nav className="flex items-center justify-between relative">
-        <Link href={`/`}>
-        <div className="flex items-center py-0 relative h-full ml-6">
-          <Image
-            src="/logo.svg"
-            alt="Logo"
-            width={100}
-            height={40}
-            className="w-40 h-12 sm:w-50 sm:h-10 md:w-50 md:h-20"
-            priority
-          />
-        </div>
-        </Link>
-
-        {/* Vertical divider after logo */}
-        <div className="hidden lg:block h-25 border-l border-gray-300 mx-4"></div>
-
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-base xl:text-lg bg-white p-6">
-          <div
-            className="relative"
-            onMouseEnter={() => setShowAboutPopover(true)}
-            onMouseLeave={() => setShowAboutPopover(false)}
-            onFocus={() => setShowAboutPopover(true)}
-            onBlur={() => setShowAboutPopover(false)}
-            tabIndex={0}
-          >
-            <a href="/about" className="text-black hover:underline focus:outline-none">About</a>
-            <div
-              className={`absolute left-1/2 -translate-x-1/2 mt-4 z-50 transition-all duration-300 ${showAboutPopover ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
-              style={{ minWidth: '320px' }}
-            >
-              <div className="bg-white/20 backdrop-blur py-6 px-4 flex flex-col rounded-2xl shadow-xl text-black">
-                <Link href="/about#journey" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Our Journey</Link>
-                <Link href="/about#leadership" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Leadership</Link>
-                <Link href="/about#team" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Our Team</Link>
-              </div>
-              </div>
-          </div>
-          <div
-            className="relative"
-            onMouseEnter={() => setShowPrograms(true)}
-            onMouseLeave={() => setShowPrograms(false)}
-            onFocus={() => setShowPrograms(true)}
-            onBlur={() => setShowPrograms(false)}
-            tabIndex={0}
-          >
-            <a href="#" className="py-2 text-black bg-white hover:underline focus:outline-none">
-              Programs
-            </a>
-            <div
-              className={`absolute left-1/2 -translate-x-1/2 mt-2 z-50 transition-all duration-300 ${
-                showPrograms ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-              }`}
-              style={{ minWidth: '380px' }}
-            >
-              <ProgramGrid onLinkClick={() => setShowPrograms(false)} />
+  <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black">
+    <div className="max-w-screen-2xl mx-auto px-9 custom-15inch-padding">
+      <div className="border-b border-gray-300 px-6 lg:px-10">
+        <nav className="flex items-center justify-between relative">
+          <Link href={`/`}>
+            <div className="flex items-center py-0 relative h-full ml-6">
+              <Image
+                src="/logo.svg"
+                alt="Logo"
+                width={100}
+                height={40}
+                className="w-40 h-12 sm:w-50 sm:h-10 md:w-50 md:h-20"
+                priority
+              />
             </div>
-          </div>
-          <a href="/insights" className="py-2 text-black bg-white hover:underline">
-            Insights
-          </a>
-          <a href="/events" className="py-2 text-black bg-white hover:underline">
-            Events
-          </a>
-        </div>
-
-        {/* Desktop Apply Button */}
-        <div className="hidden lg:flex">
-          <Link href="/apply">
-            <button className="bg-red-600 text-white px-4 xl:px-6 py-2 xl:py-3 text-sm xl:text-base font-bold border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-200 whitespace-nowrap mr-9">
-              APPLY TO INCUBATOR
-            </button>
           </Link>
-        </div>
-      </nav>
-    </header>
-  );
 
-  return (
-    <>
-      {/* Mobile View */}
-      <div className="lg:hidden">
-        {renderMobileView()}
+          {/* Vertical divider after logo */}
+          <div className="hidden lg:block h-25 border-l border-gray-300 mx-4"></div>
+
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-base xl:text-lg bg-white p-6">
+            <div
+              className="relative"
+              onMouseEnter={() => setShowAboutPopover(true)}
+              onMouseLeave={() => setShowAboutPopover(false)}
+              onFocus={() => setShowAboutPopover(true)}
+              onBlur={() => setShowAboutPopover(false)}
+              tabIndex={0}
+            >
+              <a href="/about" className="text-black hover:underline focus:outline-none">About</a>
+              <div
+                className={`absolute left-1/2 -translate-x-1/2 mt-4 z-50 transition-all duration-300 ${showAboutPopover ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
+                style={{ minWidth: '320px' }}
+              >
+                <div className="bg-white/20 backdrop-blur py-6 px-4 flex flex-col rounded-2xl shadow-xl text-black">
+                  <Link href="/about#journey" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Our Journey</Link>
+                  <Link href="/about#leadership" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Leadership</Link>
+                  <Link href="/about#team" className={aboutLinkClasses("block py-2 px-4 rounded-lg transition-colors font-semibold")}>Our Team</Link>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="relative"
+              onMouseEnter={() => setShowPrograms(true)}
+              onMouseLeave={() => setShowPrograms(false)}
+              onFocus={() => setShowPrograms(true)}
+              onBlur={() => setShowPrograms(false)}
+              tabIndex={0}
+            >
+              <a href="#" className="py-2 text-black bg-white hover:underline focus:outline-none">
+                Programs
+              </a>
+              <div
+                className={`absolute left-1/2 -translate-x-1/2 mt-2 z-50 transition-all duration-300 ${
+                  showPrograms ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                }`}
+                style={{ minWidth: '380px' }}
+              >
+                <ProgramGrid onLinkClick={() => setShowPrograms(false)} />
+              </div>
+            </div>
+
+            <a href="/insights" className="py-2 text-black bg-white hover:underline">
+              Insights
+            </a>
+            <a href="/events" className="py-2 text-black bg-white hover:underline">
+              Events
+            </a>
+          </div>
+
+          {/* Desktop Apply Button */}
+          <div className="hidden lg:flex">
+            <Link href="/apply">
+              <button className="bg-red-600 text-white px-4 xl:px-6 py-2 xl:py-3 text-sm xl:text-base font-bold border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-200 whitespace-nowrap mr-9">
+                APPLY TO INCUBATOR
+              </button>
+            </Link>
+          </div>
+        </nav>
       </div>
-      
-      {/* Desktop View */}
-      <div className="hidden lg:block">
-        {renderDesktopView()}
-      </div>
-    </>
-  );
+    </div>
+  </header>
+);
+
+return (
+  <>
+    {/* Mobile View */}
+    <div className="lg:hidden">
+      {renderMobileView()}
+    </div>
+
+    {/* Desktop View */}
+    <div className="hidden lg:block">
+      {renderDesktopView()}
+    </div>
+  </>
+);
+
 };
 
 export default Navbar;

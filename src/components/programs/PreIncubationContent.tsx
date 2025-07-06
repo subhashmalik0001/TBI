@@ -10,6 +10,9 @@ const PreIncubationContent = () => {
       {/* Hero Section */}
     
 
+      {/* Horizontal Line above About Section */}
+      <hr className="border-t-2 border-gray-200 my-8" />
+
       {/* About Section */}
       <section className="py-10 bg-white">
         <div className="container mx-auto px-4">

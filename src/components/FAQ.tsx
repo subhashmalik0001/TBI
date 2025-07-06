@@ -69,18 +69,19 @@ export default function Component() {
   };
 
   return (
-    <div className="w-full mx-auto mt-8 md:mt-16 lg:mt-20 px-4 sm:px-6 lg:px-8 2xl:max-w-7xl 2xl:px-16">
+    <div className="w-full  mt-9 md:mt-16 lg:mt-20">
       <div className="space-y-0">
         {capabilities.map((capability, index) => (
           <div
             key={capability.id}
-            className={`bg-white overflow-hidden relative rounded-2xl md:rounded-3xl border-t-2 border-t-black transition-all duration-300 ease-in-out ${
+            className={`bg-white overflow-hidden relative rounded-4xl md:rounded-6xl border-t-3 border-t-black transition-all duration-300 ease-in-out ${
               openItem === capability.id ? 'py-3 md:py-6' : `hover:py-3 md:hover:py-6 ${hoverColors[index]}`
             }`}
+            style={{ borderTopWidth: '3px', borderTopColor: '#000', width: '100vw', marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}
           >
             <button
               onClick={() => toggleItem(capability.id)}
-              className="w-full px-0 py-6 md:py-10 hover:no-underline group relative z-10 focus:outline-none rounded-2xl md:rounded-3xl"
+              className="w-full px-0 py-6 md:py-10 hover:no-underline group relative z-10 focus:outline-none rounded-4xl md:rounded-6xl"
             >
               <div className="flex items-center justify-between w-full px-4 sm:px-6 md:px-10 relative">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4">
@@ -107,6 +108,9 @@ export default function Component() {
                 openItem === capability.id ? 'max-h-screen opacity-100 pb-6' : 'max-h-0 opacity-0'
               }`}
             >
+              {openItem === capability.id && (
+                <div className="w-full border-t border-gray-200 my-2" />
+              )}
               <div className="px-4 sm:px-6 md:px-10 relative z-10 max-h-[70vh] overflow-y-auto">
                 {capability.id === "pre-incubation" ? (
                   <PreIncubationContent />

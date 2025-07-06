@@ -40,14 +40,15 @@ const Footer = () => {
 
   // Mobile-specific render function
   const renderMobileView = () => (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-100">
       {/* Mobile Work Section */}
       <div
-        className="relative w-full bg-cover bg-center flex flex-col items-start justify-center"
+        className="relative w-full bg-cover bg-center bg-no-repeat flex flex-col items-start justify-center max-w-screen-2xl mx-auto px-4"
         style={{
           backgroundImage: "url('assets/container (2).png')",
-          minHeight: "400px",
-          paddingBottom:"100px"
+          minHeight: "300px",
+          paddingBottom:"60px",
+          backgroundSize: "100% 100%"
         }}
       >
         <div className="text-center text-[#D6E4FA] font-bold text-base mb-0 w-full flex flex-col items-center justify-center leading-tight" style={{fontFamily: "var(--font-geist-sans)", marginBottom: "60px"}}>
@@ -71,11 +72,12 @@ const Footer = () => {
 
       {/* Mobile Technology Section */}
       <div
-        className="w-full bg-cover bg-center"
+        className="w-full bg-cover bg-center bg-no-repeat max-w-screen-2xl mx-auto px-4"
         style={{
           backgroundImage: "url('/assets/container (3).png')",
-          minHeight: "300px",
+          minHeight: "200px",
           paddingBottom: "2vh",
+          backgroundSize: "100% 100%"
         }}
       >
         <div className="max-w-2xl mx-auto px-4" style={{ marginTop: "10px" }}>
@@ -162,42 +164,45 @@ const Footer = () => {
 
   // Desktop-specific render function
   const renderDesktopView = () => (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-100">
       {/* Desktop Work Section */}
       <div
-        className="relative w-full bg-cover bg-center flex flex-col items-center justify-center"
+        className="relative w-full bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center max-w-screen-2xl mx-auto px-4"
         style={{
           backgroundImage: "url('assets/container (2).png')",
-          minHeight: "900px",
-          paddingBottom:"200px"
+          minHeight: "600px",
+          paddingBottom:"120px",
+          backgroundSize: "100% 100%"
         }}
       >
-        <div className="text-left text-[#D6E4FA] font-bold text-lg mr-200 sm:text-xl md:text-2xl mb-4" style={{fontFamily: "var(--font-geist-sans)", marginBottom: "100px"}}>
+        <div className="text-left text-[#D6E4FA] font-bold text-lg sm:text-xl md:text-2xl mb-3 px-4 sm:px-8 lg:px-16 ml-2 sm:ml-12 lg:ml-[-25rem]" style={{fontFamily: "var(--font-geist-sans)", marginBottom: "100px", marginTop: "-50px"}}>
           <b>Want to work next to the with</b><br/>
           <b>The best team</b><br/>
           <b>In the world</b>
         </div>
-        <button
-          className="group flex items-center ml-100 h-10 w-full max-w-xs min-w-fit sm:w-1/2 md:w-1/3 lg:w-1/4 bg-transparent border border-black text-black pl-2 pr-8 py-2 rounded-full font-medium text-xs sm:text-sm md:text-base hover:bg-gray-800 hover:text-white transition"
-          style={{
-            backgroundColor: "#B0C8F2",
-            color: "black",
-            fontFamily: "var(--font-geist-sans)",
-            marginTop: "-40px",
-          }}
-        >
-          <div className="w-8 h-8 bg-black rounded-full ml-4 transition-colors duration-200 group-hover:bg-white"></div>
-          <span className="truncate">* CONNECT WITH US TODAY</span>
-        </button>
+                                      <button
+            className="group flex items-center h-10 w-full max-w-xs min-w-fit sm:w-1/2 md:w-1/3 lg:w-1/4 bg-transparent border border-black text-black pl-10 pr-8 py-3 rounded-full font-medium text-xs sm:text-sm md:text-base hover:bg-gray-800 hover:text-white transition px-4 sm:px-8 lg:px-16 ml-auto mr-70"
+            style={{
+              backgroundColor: "#B0C8F2",
+              color: "black",
+              fontFamily: "var(--font-geist-sans)",
+              marginTop: "-80px",
+              
+            }}
+          >
+
+            <span className="truncate">CONNECT WITH US TODAY</span>
+          </button>
       </div>
 
       {/* Desktop Technology Section */}
       <div
-        className="w-full bg-cover bg-center"
+        className="w-full bg-cover bg-center bg-no-repeat max-w-screen-2xl mx-auto px-4"
         style={{
           backgroundImage: "url('/assets/container (3).png')",
-          minHeight: "500px",
+          minHeight: "350px",
           paddingBottom: "3vh",
+          backgroundSize: "100% 100%"
         }}
       >
         <div className="max-w-2xl mx-auto px-4" style={{ marginTop: "10px" }}>
@@ -276,7 +281,7 @@ const Footer = () => {
                 </span>
               </h1>
             </div>
-            <div style={{ marginTop: "80px", marginLeft: "100px" }} className="flex items-center space-x-8">
+            <div style={{ marginTop: "80px" }} className="flex items-center space-x-8 px-4 sm:px-8 lg:px-16">
               <button className="group flex items-center h-10 w-50 bg-transparent border border-black text-black pl-0 pr-8 py-2 rounded-full font-medium text-sm hover:bg-gray-800 hover:text-white transition">
                 <div className="w-8 h-8 ml-2 bg-black rounded-full mr-4"></div>
                 <span className="truncate">Get in touch</span>
