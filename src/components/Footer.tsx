@@ -149,6 +149,7 @@ const Footer = () => {
                   <b> CU </b>
                 </span>
               </h1>
+
             </div>
             <div style={{ marginTop: "20px" }} className="flex items-center">
               <button className="group flex items-center h-8 w-40 bg-transparent border border-black text-black pl-0 pr-6 py-2 rounded-full font-medium text-xs hover:bg-gray-800 hover:text-white transition">
@@ -206,7 +207,11 @@ const Footer = () => {
         }}
       >
         <div className="max-w-2xl mx-auto px-4" style={{ marginTop: "10px" }}>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between relative">
+            {/* Horizontal grid line above Technology heading */}
+            <div className="absolute top-[-2rem] left-[-100vw] right-[-29vw] h-px bg-gray-300"></div>
+
+
             <div>
               <h1
                 style={{
@@ -281,6 +286,8 @@ const Footer = () => {
                 </span>
               </h1>
             </div>
+            {/* Vertical line */}
+            <div className="absolute left-150 right-1/2 top-[-2rem] bottom-0 w-px bg-gray-300 hidden lg:block"></div>
             <div style={{ marginTop: "80px" }} className="flex items-center space-x-8 px-4 sm:px-8 lg:px-16">
               <button className="group flex items-center h-10 w-50 bg-transparent border border-black text-black pl-0 pr-8 py-2 rounded-full font-medium text-sm hover:bg-gray-800 hover:text-white transition">
                 <div className="w-8 h-8 ml-2 bg-black rounded-full mr-4"></div>
