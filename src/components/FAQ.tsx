@@ -63,7 +63,7 @@ export default function Component() {
   ];
 
   const hoverColors = [
-    'hover:bg-blue-50',
+    'hover:bg-green-300',
     'hover:bg-green-50',
     'hover:bg-purple-50',
     'hover:bg-orange-50',
@@ -89,30 +89,14 @@ export default function Component() {
             onMouseEnter={() => setHoveredItem(capability.id)}
             onMouseLeave={() => setHoveredItem(null)}
           >
-            {/* Preview on hover, only if not open */}
-            {hoveredItem === "pre-incubation" && openItem !== "pre-incubation" && (
-              <div className="absolute left-1/2 -translate-x-1/2 bg-stone-100 text-stone-700 text-xs px-4 py-3 rounded-xl shadow-md z-20 w-max pointer-events-none animate-fade-in" style={{top: '100%'}}>
-                <div className="font-bold mb-1">INCLUDING:</div>
-                <div>DATA MATURITY +</div>
-                <div>DATA STRATEGY +</div>
-                <div className="mt-2">
-                  We understand that data is more than a by-product of business operations, it is the key to unlocking competitive advantage and innovation. But making the leap from raw data to valuable insights requires more
-                </div>
-              </div>
-            )}
-            {hoveredItem !== "pre-incubation" && hoveredItem === capability.id && openItem !== capability.id && (
-              <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-stone-100 text-stone-700 text-xs px-4 py-2 rounded-xl shadow-md z-20 whitespace-nowrap pointer-events-none animate-fade-in">
-                {capability.preview}
-              </div>
-            )}
             <button
               onClick={() => toggleItem(capability.id)}
               className="w-full px-0 py-6 md:py-10 hover:no-underline group relative z-10 focus:outline-none rounded-4xl md:rounded-6xl"
             >
               <div className="flex items-center justify-between w-full px-4 sm:px-6 md:px-10 relative">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-                  <span className="text-[10px] sm:text-xs font-medium text-stone-500 uppercase tracking-wider">
-                    Capabilities
+                  <span className="text-[10px] sm:text-xs font-medium text-stone-500 uppercase tracking-wider ml-50">
+                    Capabilities /
                   </span>
                 </div>
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-stone-900 text-center sm:text-left flex-1 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 md:w-max md:text-center z-10">
@@ -129,6 +113,17 @@ export default function Component() {
                 </div>
               </div>
             </button>
+            {/* Inline preview for all capabilities on hover, only if not open, and after the button */}
+            {hoveredItem === capability.id && openItem !== capability.id && (
+              <div className="mt-[-1rem] px-10 sm:px-6 md:px-10">
+                <div className="text-stone-700 text-base w-full animate-fade-in text-left">
+                  <div className="text-[10px] sm:text-xs font-medium text-stone-500 uppercase tracking-wider ml-50">INCLUDING:</div>
+                  <div className="ml-148 mb-1">We understand that data is more than a by-product of business operations, </div>
+                  <div className="mb-1 ml-50">DATA MATURITY +</div>
+                  <div className="mb-1 ml-50">DATA STRATEGY +</div>
+                </div>
+              </div>
+            )}
             <div
               className={`transition-all duration-300 ease-in-out overflow-hidden ${
                 openItem === capability.id ? 'max-h-screen opacity-100 pb-6' : 'max-h-0 opacity-0'
