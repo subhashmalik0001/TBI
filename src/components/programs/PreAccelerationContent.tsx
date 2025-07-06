@@ -145,275 +145,157 @@ const ProgramStructure = () => {
 
 const PreAccelerationContent = () => {
   return (
-    <div className="bg-gradient-to-br from-white-200 via-white-50 to-white">
-      <div className="container mx-auto px-4 py-16 pt-50">
-        <div className="grid lg:grid-cols-2 gap- items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <h2 className="text-4xl lg:text-6xl font-bold text-black leading-tight">
-                Pre-Acceleration
-              </h2>
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">
-                Accelerate Your  Startup Journey
-              </h1>
-              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
-                Transform your innovative ideas into successful ventures with our comprehensive pre-acceleration program
-                designed to fast-track your startup's growth.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <div className="hidden lg:flex">
-                <Link href="/apply">
-                  <button className="bg-red-600 text-white px-4 xl:px-6 py-2 xl:py-3 text-sm xl:text-base font-bold border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-200 whitespace-nowrap">
-                    Apply For Pre-Acceleration
-                  </button>
-                </Link>
-              </div>
-              <p className="text-gray-500 text-sm">Application deadline approaching</p>
+    <div className="min-h-screen bg-white ml-50">
+      <div className="flex">
+        {/* Left Navigation */}
+        <div className="w-80 p-8">
+          <div className="space-y-4">
+            <div className="text-gray-500 text-sm font-normal mb-6">INCLUDING:</div>
+            <div className="space-y-3">
+              <div className="text-black font-medium">DATA MATURITY +</div>
+              <div className="text-black font-medium">DATA STRATEGY +</div>
+              <div className="text-black font-medium">DATA ARCHITECTURE</div>
+              <div className="text-black font-medium">ANALYTICS & INSIGHTS</div>
+              <div className="text-black font-medium">DATA GOVERNANCE</div>
+              <div className="text-black font-medium">DATA QUALITY ASSESSMENT</div>
+              <div className="text-black font-medium">+ MANY MORE</div>
             </div>
           </div>
-          {/* Right Content - Widget Examples */}
-          <div className="space-y-6">
-            {/* Main Stats Card */}
-            <Card className="relative z-10 p-6 bg-white/90 backdrop-blur-md rounded-2xl pt-10 px-20 shadow-[12px_12px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-300 ease-in-out">
-              <div className="grid grid-cols-3 gap-6 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-gray-900">500+</div>
-                  <div className="text-sm text-gray-600 mt-1">Startups we've accelerated</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-gray-900">85%</div>
-                  <div className="text-sm text-gray-600 mt-1">Success rate of our graduates</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-gray-900">5+</div>
-                  <div className="text-sm text-gray-600 mt-1">Years of startup mentoring</div>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 p-8 pr-16">
+          <div className="max-w-4xl space-y-8">
+            <p className="text-black text-lg leading-relaxed">
+              We understand that data is more than a by-product of business operations, it is the key to unlocking
+              competitive advantage and innovation. But making the leap from raw data to valuable insights requires more
+              than just tools. It demands a clear vision, a robust foundation, and the right expertise.
+            </p>
+
+            <p className="text-black text-lg leading-relaxed">
+              We have, and continue to help organisations build strong data foundations through smart governance,
+              quality management, and aligned data strategy, the essentials for trusted, scalable insight generation.
+              With these basics in place, we enable teams to move beyond compliance and control, ensuring that they can
+              use data confidently and creatively.
+            </p>
+
+            <p className="text-black text-lg leading-relaxed">
+              From establishing governance frameworks to enabling self-service analytics and advanced data science, we
+              partner with teams across every stage of your data journey. Our experts bring real-life knowledge of
+              leading technologies and tools, helping businesses unlock insights that are accessible, timely, and
+              directly connected to their strategic goals.
+            </p>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col items-center gap-4 mt-16 mb-16">
+            <button className="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-full bg-white hover:bg-gray-50">
+              <div className="w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center">
+                <div className="w-0 h-0 border-l-[6px] border-l-gray-400 border-t-[3px] border-t-transparent border-b-[3px] border-b-transparent ml-0.5"></div>
+              </div>
+              View Guides + Articles
+            </button>
+            <button className="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-full bg-white hover:bg-gray-50">
+              <div className="w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center">
+                <div className="w-0 h-0 border-l-[6px] border-l-gray-400 border-t-[3px] border-t-transparent border-b-[3px] border-b-transparent ml-0.5"></div>
+              </div>
+              AI in the Data space
+            </button>
+          </div>
+
+          {/* Case Studies Grid */}
+          <div className="grid grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {/* Experian Case Study */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+              <div className="relative">
+                <img
+                  src="/placeholder.svg?height=200&width=400"
+                  alt="Modern building architecture"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 rounded">CASE STUDY</span>
                 </div>
               </div>
-            </Card>
-            {/* Blue Highlight Card */}
-            <Card className="relative z-10 p-6 bg-red-600 text-white rounded-2xl shadow-[12px_12px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-300 ease-in-out">
-              <div className="text-center">
-                <div className="text-4xl font-bold">₹2.5Cr+</div>
-                <div className="text-blue-100 mt-2">Total Funding Raised</div>
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-black mb-6">
+                  Creating a Scalable Data Management Governance Framework for Experian
+                </h3>
+                <div className="flex items-center justify-between">
+                  <img src="/placeholder.svg?height=24&width=80" alt="Experian logo" className="h-6" />
+                  <div className="w-5 h-5 text-gray-400">→</div>
+                </div>
               </div>
-            </Card>
+            </div>
+
+            {/* UK Food & Drink Manufacturer Case Study */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+              <div className="relative">
+                <img
+                  src="/placeholder.svg?height=200&width=400"
+                  alt="Industrial manufacturing equipment"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 rounded">CASE STUDY</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-black mb-6">
+                  Strategy for Data Governance Optimisation for a UK Food & Drink Manufacturer
+                </h3>
+                <div className="flex justify-end">
+                  <div className="w-5 h-5 text-gray-400">→</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Wilson James Case Study */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+              <div className="relative">
+                <img
+                  src="/placeholder.svg?height=200&width=400"
+                  alt="City skyline"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 rounded">CASE STUDY</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-black mb-6">Digital Due Diligence for Wilson James</h3>
+                <div className="flex items-center justify-between">
+                  <img src="/placeholder.svg?height=24&width=80" alt="Wilson James logo" className="h-6" />
+                  <div className="w-5 h-5 text-gray-400">→</div>
+                </div>
+              </div>
+            </div>
+
+            {/* FitFlop Case Study */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+              <div className="relative">
+                <img
+                  src="/placeholder.svg?height=200&width=400"
+                  alt="Shoes and sneakers"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 rounded">CASE STUDY</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-black mb-6">
+                  Maximising GDPR Compliance; Minimising Cyber Security Risks for FitFlop
+                </h3>
+                <div className="flex items-center justify-between">
+                  <img src="/placeholder.svg?height=24&width=80" alt="FitFlop logo" className="h-6" />
+                  <div className="w-5 h-5 text-gray-400">→</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      {/* About the Pre-Acceleration Program */}
-      <section id="about" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-red-600 text-3xl md:text-4xl font-bold mb-8">About the Pre-Acceleration Program</h2>
-            <p className="text-lg text-gray-700 leading-relaxed mb-12">
-              The Pre-Acceleration Program at TBI CU is for early-stage startups who have validated their product and
-              are now ready to scale, refine their go-to-market strategy, and prepare for investor pitches. This program
-              builds business maturity before full acceleration.
-            </p>
-          </div>
-        </div>
-      </section>
-      {/* Who Should Apply */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-12">Who Should Apply?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex justify-center my-12">
-                <div className="w-[320px] border-4 border-black bg-white p-6 shadow-[10px_10px_0_#ff0000] font-sans">
-                  <div className="flex items-center gap-4 mb-4 border-b-2 border-black pb-4">
-                    <div className="text-2xl font-black text-black uppercase"> Startups with MVP  </div>
-                  </div>
-                  <div className="mt-4 text-black text-sm font-semibold leading-relaxed border-b-2 border-black pb-4">
-                    Startups founded by students that have developed a working Minimum Viable Product (MVP) and are ready to refine, validate, and prepare for market entry.
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center my-12">
-                <div className="w-[320px] border-4 border-black bg-white p-6 shadow-[10px_10px_0_#ff0000] font-sans">
-                  <div className="flex items-center gap-4 mb-4 border-b-2 border-black pb-4">
-                    <div className="text-2xl font-black text-black uppercase">Startups Early Traction</div>
-                  </div>
-                  <div className="mt-4 text-black text-sm font-semibold leading-relaxed border-b-2 border-black pb-4">
-                    Teams that have begun getting user feedback, initial signups, or revenue and are looking to scale operations, optimize product-market fit, and prepare for funding.
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center my-12">
-                <div className="w-[320px] border-4 border-black bg-white p-6 shadow-[10px_10px_0_#ff0000] font-sans">
-                  <div className="flex items-center gap-4 mb-4 border-b-2 border-black pb-4">
-                    <div className="text-2xl font-black text-black uppercase"> Founders Structured Growth</div>
-                  </div>
-                  <div className="mt-4 text-black text-sm font-semibold leading-relaxed border-b-2 border-black pb-4">
-                    Student founders who need hands-on guidance, mentoring, and strategy to build a scalable business model and become investor-ready.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* What You'll Get (Key Offerings) */}
-      <section id="offerings" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className=" text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">What You'll Get</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="flex flex-col items-center text-center p-6 border border-gray-200 rounded-lg hover:border-black transition-colors">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-4">
-                  <Users className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">1-on-1 Growth Mentorship</h3>
-                <p className="text-gray-600">
-                  Personalized guidance from successful entrepreneurs and industry leaders
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center p-6 border border-gray-200 rounded-lg hover:border-black transition-colors">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-4">
-                  <TrendingUp className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Market Entry Strategy</h3>
-                <p className="text-gray-600">Comprehensive go-to-market planning and scalability roadmaps</p>
-              </div>
-              <div className="flex flex-col items-center text-center p-6 border border-gray-200 rounded-lg hover:border-black transition-colors">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-4">
-                  <Presentation className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Investor Pitch Training</h3>
-                <p className="text-gray-600">Professional pitch deck development and presentation coaching</p>
-              </div>
-              <div className="flex flex-col items-center text-center p-6 border border-gray-200 rounded-lg hover:border-black transition-colors">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-4">
-                  <Target className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Product-Market Fit Analysis</h3>
-                <p className="text-gray-600">Deep dive into customer validation and market positioning</p>
-              </div>
-              <div className="flex flex-col items-center text-center p-6 border border-gray-200 rounded-lg hover:border-black transition-colors">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-4">
-                  <Calculator className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Financial Modeling</h3>
-                <p className="text-gray-600">Revenue projections, unit economics, and financial planning sessions</p>
-              </div>
-              <div className="flex flex-col items-center text-center p-6 border border-gray-200 rounded-lg hover:border-black transition-colors">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-4">
-                  <Network className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Angel Network Access</h3>
-                <p className="text-gray-600">Direct access to investors and exclusive demo day opportunities</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Program Structure / Timeline */}
-      <ProgramStructure />
-      {/* Success Highlights */}
-      <section id="success" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-red-600 text-3xl md:text-4xl font-bold text-center mb-16">Success Highlights</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="border-2 border-gray-200">
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-                      <span className="text-lg font-bold">RJ</span>
-                    </div>
-                    <div>
-                      <CardTitle className="text-lg">Rajesh Jain</CardTitle>
-                      <CardContent>
-                        <div className="flex mb-3">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-black" />
-                          ))}
-                        </div>
-                        <p className="text-gray-600 italic mb-4">
-                          "Pre-Acceleration transformed our startup from idea to funded company. We raised ₹50L in seed
-                          funding within 2 months of graduation!"
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          <Badge variant="outline" className="border-green-600 text-green-600">
-                            ₹50L Seed Funding
-                          </Badge>
-                          <Badge variant="outline" className="border-blue-600 text-blue-600">
-                            500+ Customers
-                          </Badge>
-                        </div>
-                      </CardContent>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-              <Card className="border-2 border-gray-200">
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-                      <span className="text-lg font-bold">NK</span>
-                    </div>
-                    <div>
-                      <CardTitle className="text-lg">Neha Kapoor</CardTitle>
-                      <CardContent>
-                        <div className="flex mb-3">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-black" />
-                          ))}
-                        </div>
-                        <p className="text-gray-600 italic mb-4">
-                          "The investor pitch training was game-changing. We went from nervous founders to confident
-                          entrepreneurs ready to scale globally!"
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          <Badge variant="outline" className="border-purple-600 text-purple-600">
-                            Series A Ready
-                          </Badge>
-                          <Badge variant="outline" className="border-orange-600 text-orange-600">
-                            International Expansion
-                          </Badge>
-                        </div>
-                      </CardContent>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-              <Card className="border-2 border-gray-200">
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-                      <span className="text-lg font-bold">AS</span>
-                    </div>
-                    <div>
-                      <CardTitle className="text-lg">Amit Singh</CardTitle>
-                      <CardContent>
-                        <div className="flex mb-3">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-black" />
-                          ))}
-                        </div>
-                        <p className="text-gray-600 italic mb-4">
-                          "From 0 to 10,000 users in 4 months! The customer acquisition strategies we learned were incredibly
-                          effective for our healthcare platform."
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          <Badge variant="outline" className="border-red-600 text-red-600">
-                            10K+ Users
-                          </Badge>
-                          <Badge variant="outline" className="border-teal-600 text-teal-600">
-                            ₹25L Revenue
-                          </Badge>
-                        </div>
-                      </CardContent>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

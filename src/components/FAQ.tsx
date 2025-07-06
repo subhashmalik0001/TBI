@@ -8,6 +8,7 @@ import PreAccelerationContent from "@/components/programs/PreAccelerationContent
 
 export default function Component() {
   const [openItem, setOpenItem] = useState<string | null>(null);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const capabilities = [
     {
@@ -15,42 +16,49 @@ export default function Component() {
       title: "Pre-Incubation",
       content:
         "Our pre-incubation program provides early-stage entrepreneurs with foundational support, mentorship, and resources to validate their business ideas and develop initial prototypes.",
+      preview: "Foundational support, mentorship, and resources for early-stage entrepreneurs.",
     },
     {
       id: "incubation",
       title: "Incubation",
       content:
         "The incubation phase offers comprehensive support including workspace, funding opportunities, expert mentorship, and access to our network of industry professionals.",
+      preview: "Comprehensive support, workspace, funding, and mentorship for startups.",
     },
     {
       id: "acceleration",
       title: "Acceleration",
       content:
         "Our acceleration program is designed for growth-stage startups, providing intensive mentorship, investment readiness training, and connections to potential investors.",
+      preview: "Intensive mentorship and investment readiness for growth-stage startups.",
     },
     {
       id: "venture-studio",
       title: "Venture Studio",
       content:
         "The venture studio model combines our expertise with entrepreneurial talent to build companies from the ground up, providing resources, funding, and operational support.",
+      preview: "Building companies from scratch with resources and operational support.",
     },
     {
       id: "insights",
       title: "Insights",
       content:
         "Access market research, industry trends, and data-driven insights to help inform your business decisions and strategic planning.",
+      preview: "Market research, industry trends, and data-driven insights for your business.",
     },
     {
       id: "networking",
       title: "Networking",
       content:
         "Connect with fellow entrepreneurs, industry experts, potential partners, and investors through our extensive network and regular networking events.",
+      preview: "Connect with entrepreneurs, experts, and investors through our network.",
     },
     {
       id: "faqs",
       title: "FAQ's",
       content:
         "Find answers to commonly asked questions about our programs, application processes, requirements, and what to expect during your journey with us.",
+      preview: "Answers to common questions about our programs and processes.",
     },
   ];
 
@@ -78,7 +86,25 @@ export default function Component() {
               openItem === capability.id ? 'py-3 md:py-6' : `hover:py-3 md:hover:py-6 ${hoverColors[index]}`
             }`}
             style={{ borderTopWidth: '3px', borderTopColor: '#000', width: '100vw', marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}
+            onMouseEnter={() => setHoveredItem(capability.id)}
+            onMouseLeave={() => setHoveredItem(null)}
           >
+            {/* Preview on hover, only if not open */}
+            {hoveredItem === "pre-incubation" && openItem !== "pre-incubation" && (
+              <div className="absolute left-1/2 -translate-x-1/2 bg-stone-100 text-stone-700 text-xs px-4 py-3 rounded-xl shadow-md z-20 w-max pointer-events-none animate-fade-in" style={{top: '100%'}}>
+                <div className="font-bold mb-1">INCLUDING:</div>
+                <div>DATA MATURITY +</div>
+                <div>DATA STRATEGY +</div>
+                <div className="mt-2">
+                  We understand that data is more than a by-product of business operations, it is the key to unlocking competitive advantage and innovation. But making the leap from raw data to valuable insights requires more
+                </div>
+              </div>
+            )}
+            {hoveredItem !== "pre-incubation" && hoveredItem === capability.id && openItem !== capability.id && (
+              <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-stone-100 text-stone-700 text-xs px-4 py-2 rounded-xl shadow-md z-20 whitespace-nowrap pointer-events-none animate-fade-in">
+                {capability.preview}
+              </div>
+            )}
             <button
               onClick={() => toggleItem(capability.id)}
               className="w-full px-0 py-6 md:py-10 hover:no-underline group relative z-10 focus:outline-none rounded-4xl md:rounded-6xl"
