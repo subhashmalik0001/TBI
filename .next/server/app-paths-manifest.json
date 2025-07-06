@@ -1,11 +1,5 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/insights/ai/page": "app/insights/ai/page.js",
-  "/insights/creators/page": "app/insights/creators/page.js",
-  "/insights/page": "app/insights/page.js",
-  "/insights/startingup/page": "app/insights/startingup/page.js",
-  "/insights/tech/page": "app/insights/tech/page.js",
-  "/page": "app/page.js",
-  "/programs/pre-acceleration/page": "app/programs/pre-acceleration/page.js"
+  "/page": "app/page.js"
 }

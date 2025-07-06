@@ -214,63 +214,86 @@ export default function Hero() {
       </div>
 
       {/* Add padding and a border before the grid section */}
-      <div className="pt-12"></div>
-  
+      <div className="pt-12">
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[250px] lg:min-h-[130px] relative pt-0">
-        <div className="px-2 py-5 md:px-8 lg:px-16 w-full col-span-2">
+        <div className="px-2 py-5 md:px-4 lg:px-8 xl:px-2 2xl:px-4 w-full col-span-2">
           <div className="mb-7">
-            <h2 className="text-3xl md:text-2xl lg:text-5xl font-bold text-black leading-tight">
-               Revolutionizing the Venture
-               <br />
-               Capital Ecosystem!
-             </h2>
-             <div className="fixed left-0 w-screen border-t border-gray-300 min-h-[100px] lg:min-h-[40px] pt-10"></div>
+            <h2 className="text-3xl md:text-2xl lg:text-6xl  text-black leading-tight">
+              Revolutionizing the Venture
+              <br />
+              Capital Ecosystem!
+            </h2>
+            {/* Horizontal grey line after the heading */}
+            <div className="w-full border-t border-gray-300 mt-6 mb-8"></div>
           </div>
 
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-0 overflow-visible">
             {/* Left Column - Features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pl-4 md:pl-8 lg:pl-16 relative">
               <div className="flex items-start gap-4">
                 <div className="w-1 h-20 bg-red-500 flex-shrink-0 mt-1"></div>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  We help founders at their earliest stages regardless of their age.
+                  We help founders at 
+                  <br/>
+                their earliest stages 
+                <br/>
+                regardless of their age.
                 </p>
               </div>
+
               <div className="flex items-start gap-4">
                 <div className="w-1 h-16 bg-red-500 flex-shrink-0 mt-1"></div>
                 <p className="text-lg text-gray-700 leading-relaxed">We give startups a huge fundraising advantage.</p>
               </div>
+
               <div className="flex items-start gap-4">
                 <div className="w-1 h-16 bg-red-500 flex-shrink-0 mt-1"></div>
-                <p className="text-lg text-gray-700 leading-relaxed">We improve the success rate of our startups.</p>
+                <p className="text-lg text-gray-700 leading-relaxed">We improve the success
+                <br/>
+                rate of our startups.
+                </p>
               </div>
+
               <div className="flex items-start gap-4">
                 <div className="w-1 h-20 bg-red-500 flex-shrink-0 mt-1"></div>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Our companies have a track record of becoming billion dollar companies.
+                  Our companies have a 
+                  <br/>
+                  becoming billion 
+                  <br/>
+                  dollar companies.
                 </p>
               </div>
+              {/* Vertical border line */}
+              <div className="absolute right-0 top-[-3rem] bottom-[-3rem] w-px bg-gray-300 hidden lg:block"></div>
             </div>
+
             {/* Right Column - Community Image */}
-            <div className="relative w-full h-65 aspect-[4/3] overflow-hidden rounded-2xl">
-              <Image src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpl-YRnxYXVx78kFqnXIi9I5b5s3bmQZXlg_ae8zgnoCXJAa837sfpK7eI2xZPZclrXAr2mKs1B1gXlOrHZqvQo4naWenEKgnrPeq8-NBQ1BZBqgoQk2vx4lAglHHgE_SpSnMwhBFiCdH6k6KRiIiBcHF66VriJF_vQXOHTOa-3tHGdVzNLZWyEBqwxozw/s2048/473544912_1018141797016754_6719124790330598010_n.jpg" alt="Community of innovative companies" fill className="object-cover" />
+            <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-65 aspect-[4/3] overflow-hidden rounded-2xl pr-4 md:pr-8 lg:pr-16">
+              <Image
+                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpl-YRnxYXVx78kFqnXIi9I5b5s3bmQZXlg_ae8zgnoCXJAa837sfpK7eI2xZPZclrXAr2mKs1B1gXlOrHZqvQo4naWenEKgnrPeq8-NBQ1BZBqgoQk2vx4lAglHHgE_SpSnMwhBFiCdH6k6KRiIiBcHF66VriJF_vQXOHTOa-3tHGdVzNLZWyEBqwxozw/s2048/473544912_1018141797016754_6719124790330598010_n.jpg"
+                alt="Community of innovative companies"
+                fill
+                className="object-cover"
+              />
               <div className="absolute inset-0 bg-black/30" />
               <div className="absolute inset-0 flex items-end justify-end p-6 pb-10">
-                <h3 className="text-white text-lg md:text-2xl lg:text-3xl font-bold text-right leading-tight drop-shadow">
-                  <div className="absolute left-[19.5rem] top-[-0rem] bottom-[-0rem] w-1 bg-white"></div>
-                  Join A Community Of
-                  <br />
-                  Smart & Innovative
-                  <br />
-                  Companies
-                </h3>
+                <div className="relative">
+                  <div className="absolute left-[-2rem] top-0 bottom-0 w-1 bg-white"></div>
+                  <h3 className="text-white text-lg md:text-2xl lg:text-3xl font-bold text-right leading-tight drop-shadow">
+                    Join A Community Of
+                    <br />
+                    Smart & Innovative
+                    <br />
+                    Companies
+                  </h3>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
+    </div>
       {/* Services Section - Responsive */}
       {isDesktop ? (
         <div className="px-4 py-16 md:px-8 lg:px-16 bg-white">

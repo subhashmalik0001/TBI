@@ -54,6 +54,16 @@ export default function Component() {
     },
   ];
 
+  const hoverColors = [
+    'hover:bg-blue-50',
+    'hover:bg-green-50',
+    'hover:bg-purple-50',
+    'hover:bg-orange-50',
+    'hover:bg-pink-50',
+    'hover:bg-indigo-50',
+    'hover:bg-yellow-50',
+  ];
+
   const toggleItem = (itemId: string) => {
     setOpenItem(openItem === itemId ? null : itemId);
   };
@@ -65,7 +75,7 @@ export default function Component() {
           <div
             key={capability.id}
             className={`bg-white overflow-hidden relative rounded-2xl md:rounded-3xl border-t-2 border-t-black transition-all duration-300 ease-in-out ${
-              openItem === capability.id ? 'py-3 md:py-6' : 'hover:py-3 md:hover:py-6'
+              openItem === capability.id ? 'py-3 md:py-6' : `hover:py-3 md:hover:py-6 ${hoverColors[index]}`
             }`}
           >
             <button
@@ -82,11 +92,11 @@ export default function Component() {
                   {capability.title}
                 </h3>
                 <div className="flex-shrink-0 ml-2 sm:ml-4">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-stone-400 flex items-center justify-center transition-transform duration-200">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-stone-400 flex items-center justify-center transition-transform duration-200 bg-white">
                     {openItem === capability.id ? (
-                      <Minus className="w-3 h-3 sm:w-4 sm:h-4 text-stone-600" />
+                      <Minus className="w-6 h-6 sm:w-8 sm:h-8 text-stone-600" />
                     ) : (
-                      <Plus className="w-3 h-3 sm:w-4 sm:h-4 text-stone-600" />
+                      <Plus className="w-6 h-6 sm:w-8 sm:h-8 text-stone-600" />
                     )}
                   </div>
                 </div>
