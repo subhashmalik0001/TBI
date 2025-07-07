@@ -136,3 +136,46 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 @custom-variant dark (&:is(.dark *));
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  @keyframes scroll-right-to-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes scroll-left-to-right {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-scroll-right-to-left {
+    animation: scroll-right-to-left 0.5s linear infinite;
+  }
+
+  .animate-scroll-left-to-right {
+    animation: scroll-left-to-right 0.5s linear infinite;
+  }
+}
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+} 

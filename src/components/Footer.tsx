@@ -209,7 +209,7 @@ const Footer = () => {
         <div className="max-w-2xl mx-auto px-4" style={{ marginTop: "10px" }}>
           <div className="flex items-center justify-between relative">
             {/* Horizontal grid line above Technology heading */}
-            <div className="absolute top-[-2rem] left-[-100vw] right-[-29vw] h-px bg-gray-300"></div>
+            <div className="absolute top-[-2rem] left-[-23vw] right-[-23vw] h-px bg-gray-300"></div>
 
 
             <div>
