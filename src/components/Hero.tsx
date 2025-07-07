@@ -219,6 +219,15 @@ export default function Hero() {
   const greyText =
     "believe that to maximize retimes, you need a fundamental, first-principles understanding of every asset in your portfolio. That's why we focus on providing granular-level visibility and insight, so you can develop winning strategies for every single investment."
 
+  // Detect mobile view
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Split grey text into individual characters for letter-by-letter animation
   const greyChars = greyText.split("")
   const totalChars = greyChars.length
@@ -259,21 +268,25 @@ export default function Hero() {
                 {/* Black text part - always black */}
                 <span className="text-black">{blackText}</span>
 
-                {/* Grey text part - animates letter by letter */}
-                {greyChars.map((char, index) => {
-                  const charProgress = index / greyChars.length;
-                  const shouldBeBlack = heroWheelProgress > charProgress;
-                  return (
-                    <span
-                      key={index}
-                      className={`transition-colors duration-300 ${
-                        shouldBeBlack ? "text-black" : "text-gray-400"
-                      }`}
-                    >
-                      {char}
-                    </span>
-                  );
-                })}
+                {/* Grey text part - animates letter by letter, or all black on mobile */}
+                {isMobile ? (
+                  <span className="text-black">{greyText}</span>
+                ) : (
+                  greyChars.map((char, index) => {
+                    const charProgress = index / greyChars.length;
+                    const shouldBeBlack = heroWheelProgress > charProgress;
+                    return (
+                      <span
+                        key={index}
+                        className={`transition-colors duration-300 ${
+                          shouldBeBlack ? "text-black" : "text-gray-400"
+                        }`}
+                      >
+                        {char}
+                      </span>
+                    );
+                  })
+                )}
               </p>
             </div>
           </div>
