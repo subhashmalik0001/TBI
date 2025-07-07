@@ -913,6 +913,10 @@
     height: calc(var(--spacing) * 4);
   }
 
+  .\!h-\[500px\] {
+    height: 500px !important;
+  }
+
   .h-0 {
     height: calc(var(--spacing) * 0);
   }
@@ -1059,6 +1063,10 @@
 
   .min-h-screen {
     min-height: 100vh;
+  }
+
+  .\!w-4\/5 {
+    width: 80% !important;
   }
 
   .w-0 {
@@ -1447,6 +1455,10 @@
 
   .gap-16 {
     gap: calc(var(--spacing) * 16);
+  }
+
+  .gap-\[16px\] {
+    gap: 16px;
   }
 
   :where(.space-y-0 > :not(:last-child)) {
