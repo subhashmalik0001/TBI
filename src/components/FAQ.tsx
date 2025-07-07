@@ -6,6 +6,26 @@ import PreIncubationContent from "@/components/programs/PreIncubationContent";
 import IncubationContent from "@/components/programs/IncubationContent";
 import PreAccelerationContent from "@/components/programs/PreAccelerationContent";
 
+function CapabilitiesLabelMobile() {
+  return (
+    <div className="flex flex-col w-full justify-center items-center text-center">
+      <span className="text-[10px] sm:text-xs font-medium text-stone-500 uppercase tracking-wider ml-0">
+        Capabilities /
+      </span>
+    </div>
+  );
+}
+
+function CapabilitiesLabelDesktop() {
+  return (
+    <div className="flex flex-row items-center gap-4">
+      <span className="text-xs font-medium text-stone-500 uppercase tracking-wider ml-50">
+        Capabilities /
+      </span>
+    </div>
+  );
+}
+
 export default function Component() {
   const [openItem, setOpenItem] = useState<string | null>(null);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -94,10 +114,11 @@ export default function Component() {
               className="w-full px-0 py-6 md:py-10 hover:no-underline group relative z-10 focus:outline-none rounded-4xl md:rounded-6xl"
             >
               <div className="flex items-center justify-between w-full px-4 sm:px-6 md:px-10 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 w-full justify-center items-center text-center">
-                  <span className="text-[10px] sm:text-xs font-medium text-stone-500 uppercase tracking-wider ml-0 sm:ml-50">
-                    Capabilities /
-                  </span>
+                <div className="block sm:hidden w-full">
+                  <CapabilitiesLabelMobile />
+                </div>
+                <div className="hidden sm:flex w-auto">
+                  <CapabilitiesLabelDesktop />
                 </div>
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-stone-900 text-center flex-1 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 md:w-max md:text-center z-10">
                   {capability.title}
