@@ -3786,6 +3786,12 @@
   }
 
   @media (width >= 48rem) {
+    .md\:gap-\[16px\] {
+      gap: 16px;
+    }
+  }
+
+  @media (width >= 48rem) {
     .md\:object-center {
       object-position: center;
     }
@@ -3806,6 +3812,12 @@
   @media (width >= 48rem) {
     .md\:px-12 {
       padding-inline: calc(var(--spacing) * 12);
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:px-\[40px\] {
+      padding-inline: 40px;
     }
   }
 
@@ -4034,6 +4046,12 @@
   @media (width >= 64rem) {
     .lg\:px-32 {
       padding-inline: calc(var(--spacing) * 32);
+    }
+  }
+
+  @media (width >= 64rem) {
+    .lg\:px-\[70px\] {
+      padding-inline: 70px;
     }
   }
 

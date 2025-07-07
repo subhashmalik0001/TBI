@@ -73,29 +73,46 @@ export default function FounderStories() {
   const columns = Array.from({ length: 4 }, (_, i) => stories.slice(i * 2, i * 2 + 2));
 
   return (
-    <div className="px-[70px]">
+    <div className="px-4 sm:px-8 md:px-[40px] lg:px-[70px]">
       <Header 
         leftText={<>Founder<br />Stories.</>}
         rightText="PROCESS"
         iconSrc="/assets/image1.png"
       />
-      <div className="w-full flex flex-row gap-[16px] mt-8">
-        {columns.map((colStories, colIdx) => (
-          <div key={colIdx} className="flex flex-col gap-[16px] flex-1">
-            {colStories.map((story, idx) => (
-              <StoryCard
-                key={idx}
-                image={story.image}
-                title={story.title}
-                description={story.description}
-                date={story.date}
-                link={story.link}
-                linkLabel={story.linkLabel}
-                className={`${colIdx === 3 && idx === 1 ? "!w-4/5" : ""} ${colIdx === 2 && idx === 0 ? "!h-[500px]" : ""}`}
-              />
-            ))}
-          </div>
-        ))}
+      <div className="w-full flex flex-col gap-6 mt-8 md:flex-row md:gap-[16px]">
+        {/* Mobile: single column, Tablet+: multi-column */}
+        <div className="flex flex-col gap-[16px] md:hidden">
+          {stories.map((story, idx) => (
+            <StoryCard
+              key={idx}
+              image={story.image}
+              title={story.title}
+              description={story.description}
+              date={story.date}
+              link={story.link}
+              linkLabel={story.linkLabel}
+            />
+          ))}
+        </div>
+        {/* Desktop: 4 columns */}
+        <>
+          {columns.map((colStories, colIdx) => (
+            <div key={colIdx} className="hidden md:flex flex-col gap-[16px] flex-1">
+              {colStories.map((story, idx) => (
+                <StoryCard
+                  key={idx}
+                  image={story.image}
+                  title={story.title}
+                  description={story.description}
+                  date={story.date}
+                  link={story.link}
+                  linkLabel={story.linkLabel}
+                  className={`${colIdx === 3 && idx === 1 ? "!w-4/5" : ""} ${colIdx === 2 && idx === 0 ? "!h-[500px]" : ""}`}
+                />
+              ))}
+            </div>
+          ))}
+        </>
       </div>
     </div>
   );
