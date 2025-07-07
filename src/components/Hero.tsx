@@ -181,15 +181,14 @@ export default function Hero() {
 
   // Lock scroll when hero text enters view
   useEffect(() => {
+    if (isMobile) return; // Disable scroll lock on mobile
     const onScroll = () => {
       if (isHeroScrollLocked || isHeroAnimationDone || !heroTextRef.current) return;
       const rect = heroTextRef.current.getBoundingClientRect();
       const isInMiddle = rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5;
       if (isInMiddle) {
         setIsHeroScrollLocked(true);
-        if (!isMobile) {
-          document.body.style.overflow = "hidden";
-        }
+        document.body.style.overflow = "hidden";
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -198,6 +197,7 @@ export default function Hero() {
 
   // Animate hero text with wheel while locked
   useEffect(() => {
+    if (isMobile) return; // Disable wheel animation on mobile
     if (!isHeroScrollLocked || isHeroAnimationDone) return;
     let accumulated = 0;
     const maxScroll = 800;
@@ -209,15 +209,11 @@ export default function Hero() {
       if (progress >= 1) {
         setIsHeroScrollLocked(false);
         setIsHeroAnimationDone(true);
-        if (!isMobile) {
-          document.body.style.overflow = "auto";
-        }
+        document.body.style.overflow = "auto";
       }
     };
-    if (!isMobile) {
-      window.addEventListener("wheel", onWheel, { passive: false });
-      return () => window.removeEventListener("wheel", onWheel);
-    }
+    window.addEventListener("wheel", onWheel, { passive: false });
+    return () => window.removeEventListener("wheel", onWheel);
   }, [isHeroScrollLocked, isHeroAnimationDone, isMobile]);
 
   // Prevent scroll jumps while hero is locked
@@ -229,6 +225,13 @@ export default function Hero() {
     window.addEventListener("scroll", lockPosition);
     return () => window.removeEventListener("scroll", lockPosition);
   }, [isHeroScrollLocked]);
+
+  // Always enable scroll on mobile
+  useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isMobile]);
 
   const blackText = "We  "
   const greyText =
