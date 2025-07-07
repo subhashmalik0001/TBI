@@ -145,10 +145,10 @@ const ProgramStructure = () => {
 
 const PreAccelerationContent = () => {
   return (
-    <div className="min-h-screen bg-white ml-50">
-      <div className="flex">
+    <div className="min-h-screen bg-white ml-0">
+      <div className="flex flex-col md:flex-row">
         {/* Left Navigation */}
-        <div className="w-80 p-8">
+        <div className="w-full md:w-80 p-4 md:p-8">
           <div className="space-y-4">
             <div className="text-gray-500 text-sm font-normal mb-6">INCLUDING:</div>
             <div className="space-y-3">
@@ -162,9 +162,8 @@ const PreAccelerationContent = () => {
             </div>
           </div>
         </div>
-
         {/* Main Content */}
-        <div className="flex-1 p-8 pr-16">
+        <div className="flex-1 p-4 md:p-8 md:pr-16">
           <div className="max-w-4xl space-y-8">
             <p className="text-black text-lg leading-relaxed">
               We understand that data is more than a by-product of business operations, it is the key to unlocking
@@ -204,7 +203,7 @@ const PreAccelerationContent = () => {
           </div>
 
           {/* Case Studies Grid */}
-          <div className="grid grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {/* Experian Case Study */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
               <div className="relative">

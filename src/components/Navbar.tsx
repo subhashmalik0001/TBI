@@ -45,7 +45,7 @@ const Navbar = () => {
   // Mobile-specific render function
   const renderMobileView = () => (
     <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black">
-      <div className="border-b-[2px] border-black max-w-screen-2xl mx-auto px-4">
+      <div className="border-b-[1px] border-white max-w-screen-2xl mx-auto px-4">
         <nav className="flex items-center justify-between relative">
           <Link href={`/`}>
           <div className="flex items-center py-0 relative h-full ml-0">
@@ -80,8 +80,8 @@ const Navbar = () => {
                     src="/logo.svg"
                     alt="Logo"
                     width={100}
-                    height={40}
-                    className="w-32 h-12"
+                    height={60}
+                    className="w-40 h-30"
                   />
                 </Link>
                 <button
@@ -160,8 +160,8 @@ const Navbar = () => {
               <Image
                 src="/logo.svg"
                 alt="Logo"
-                width={100}
-                height={40}
+                width={11}
+                height={50}
                 className="w-40 h-12 sm:w-50 sm:h-10 md:w-50 md:h-20"
                 priority
               />

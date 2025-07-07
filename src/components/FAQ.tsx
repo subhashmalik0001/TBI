@@ -94,12 +94,12 @@ export default function Component() {
               className="w-full px-0 py-6 md:py-10 hover:no-underline group relative z-10 focus:outline-none rounded-4xl md:rounded-6xl"
             >
               <div className="flex items-center justify-between w-full px-4 sm:px-6 md:px-10 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-                  <span className="text-[10px] sm:text-xs font-medium text-stone-500 uppercase tracking-wider ml-50">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 w-full justify-center items-center text-center">
+                  <span className="text-[10px] sm:text-xs font-medium text-stone-500 uppercase tracking-wider ml-0 sm:ml-50">
                     Capabilities /
                   </span>
                 </div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-stone-900 text-center sm:text-left flex-1 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 md:w-max md:text-center z-10">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-stone-900 text-center flex-1 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 md:w-max md:text-center z-10">
                   {capability.title}
                 </h3>
                 <div className="flex-shrink-0 ml-2 sm:ml-4">
@@ -115,7 +115,7 @@ export default function Component() {
             </button>
             {/* Inline preview for all capabilities on hover, only if not open, and after the button */}
             {hoveredItem === capability.id && openItem !== capability.id && (
-              <div className="mt-[-1rem] px-10 sm:px-6 md:px-10">
+              <div className="hidden sm:block mt-[-1rem] px-10 sm:px-6 md:px-10">
                 <div className="text-stone-700 text-base w-full animate-fade-in text-left">
                   <div className="text-[10px] sm:text-xs font-medium text-stone-500 uppercase tracking-wider ml-50">INCLUDING:</div>
                   <div className="ml-148 mb-1">We understand that data is more than a by-product of business operations, </div>
@@ -140,7 +140,7 @@ export default function Component() {
                 ) : capability.id === "acceleration" ? (
                   <PreAccelerationContent />
                 ) : (
-                  <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+                  <p className="text-sm sm:text-base md:text-lg text-stone-600 leading-relaxed break-words">
                     {capability.content}
                   </p>
                 )}

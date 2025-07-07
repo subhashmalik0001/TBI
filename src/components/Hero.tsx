@@ -68,6 +68,39 @@ const bottomRowTags = [
   "Kitchen",
 ];
 
+// Mobile Hero Section as a separate component
+function MobileHeroSection() {
+  return (
+    <div className="relative mt-[80px] h-[500px] w-full overflow-hidden rounded-3xl px-4 shadow-2xl border-b-8 border-r-8 border-gray-400">
+      {/* Video fills the entire box */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ display: 'block' }}
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/20" />
+      </div>
+      <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-full px-2 z-10">
+        <div className="text-white">
+          <div className="absolute left-[-2rem] top-0 bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
+          <div className="text-5xl leading-tight font-['SF Pro',__sans-serif]">
+            <div>Build</div>
+            <div>Connect</div>
+            <div>Grow</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 export default function Hero() {
   // Detect mobile view
   const [isMobile, setIsMobile] = useState(false);
@@ -244,28 +277,32 @@ export default function Hero() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[550px] w-full xl:max-w-[1400px] mx-auto overflow-hidden rounded-3xl mt-8 md:mt-32 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-full px-2 md:left-16 md:bottom-8 md:top-auto md:-translate-x-0">
-          <div className="text-white">
-            <div className="absolute left-[-2rem] top-[-0rem] bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
-            <div className="text-7xl md:text-7xl f leading-tight font-['SF Pro',__sans-serif]">
-              <div>Build</div>
-              <div>Connect</div>
-              <div>Grow</div>
+      {isMobile ? (
+        <MobileHeroSection />
+      ) : (
+        <div className="relative h-[550px] w-full xl:max-w-[1400px] mx-auto overflow-hidden rounded-3xl mt-8 md:mt-32 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute top-0 left-0 w-full h-full object-cover"
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-full px-2 md:left-16 md:bottom-8 md:top-auto md:-translate-x-0">
+            <div className="text-white">
+              <div className="absolute left-[-2rem] top-[-0rem] bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
+              <div className="text-7xl md:text-7xl f leading-tight font-['SF Pro',__sans-serif]">
+                <div>Build</div>
+                <div>Connect</div>
+                <div>Grow</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Content Section */}
       <div className="px-4 pt-4 pb-6 md:px-8 lg:px-16">
