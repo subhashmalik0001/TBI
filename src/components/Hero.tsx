@@ -69,6 +69,15 @@ const bottomRowTags = [
 ];
 
 export default function Hero() {
+  // Detect mobile view
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const servicesContainerRef = useRef<HTMLDivElement | null>(null);
@@ -178,12 +187,14 @@ export default function Hero() {
       const isInMiddle = rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5;
       if (isInMiddle) {
         setIsHeroScrollLocked(true);
-        document.body.style.overflow = "hidden";
+        if (!isMobile) {
+          document.body.style.overflow = "hidden";
+        }
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isHeroScrollLocked, isHeroAnimationDone]);
+  }, [isHeroScrollLocked, isHeroAnimationDone, isMobile]);
 
   // Animate hero text with wheel while locked
   useEffect(() => {
@@ -198,12 +209,16 @@ export default function Hero() {
       if (progress >= 1) {
         setIsHeroScrollLocked(false);
         setIsHeroAnimationDone(true);
-        document.body.style.overflow = "auto";
+        if (!isMobile) {
+          document.body.style.overflow = "auto";
+        }
       }
     };
-    window.addEventListener("wheel", onWheel, { passive: false });
-    return () => window.removeEventListener("wheel", onWheel);
-  }, [isHeroScrollLocked, isHeroAnimationDone]);
+    if (!isMobile) {
+      window.addEventListener("wheel", onWheel, { passive: false });
+      return () => window.removeEventListener("wheel", onWheel);
+    }
+  }, [isHeroScrollLocked, isHeroAnimationDone, isMobile]);
 
   // Prevent scroll jumps while hero is locked
   useEffect(() => {
@@ -218,15 +233,6 @@ export default function Hero() {
   const blackText = "We  "
   const greyText =
     "believe that to maximize retimes, you need a fundamental, first-principles understanding of every asset in your portfolio. That's why we focus on providing granular-level visibility and insight, so you can develop winning strategies for every single investment."
-
-  // Detect mobile view
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Split grey text into individual characters for letter-by-letter animation
   const greyChars = greyText.split("")
