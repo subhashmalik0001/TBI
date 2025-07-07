@@ -12,7 +12,8 @@ module.exports = {
       'www.irec.cat',
       'naslefarda-clinic.com',
       'www.eas.ualberta.ca',
-      'imgcdn.stablediffusionweb.com'
+      'imgcdn.stablediffusionweb.com',
+      'i.ytimg.com'
     ],
   },
 };

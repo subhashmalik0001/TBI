@@ -45,7 +45,7 @@ const Footer = () => {
       <div
         className="relative w-full bg-cover bg-center bg-no-repeat flex flex-col items-start justify-center max-w-screen-2xl mx-auto px-4"
         style={{
-          backgroundImage: "url('assets/container (2).png')",
+          backgroundImage: "url('/assets/container (2).png')",
           minHeight: "300px",
           paddingBottom:"60px",
           backgroundSize: "100% 100%"
@@ -170,7 +170,7 @@ const Footer = () => {
       <div
         className="relative w-full bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center max-w-screen-2xl mx-auto px-4"
         style={{
-          backgroundImage: "url('assets/container (2).png')",
+          backgroundImage: "url('/assets/container (2).png')",
           minHeight: "600px",
           paddingBottom:"120px",
           backgroundSize: "100% 100%"

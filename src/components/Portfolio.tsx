@@ -38,7 +38,7 @@ export default function Portfolio() {
                 <div className="flex-1 flex items-center justify-center mt-8 md:mt-0 w-full">
                     <div className="relative w-full max-w-xs sm:max-w-md md:max-w-xl aspect-[4/3] bg-[#f8faf8] rounded-xl overflow-hidden flex items-center justify-center">
                         <Image
-                            src="/assets/Screenshot 2025-07-03 153915.png.png"
+                            src="https://i.ytimg.com/vi/nuJFjx44ILM/maxresdefault.jpg"
                             alt="Stacked cards"
                             fill
                             style={{ objectFit: 'contain', opacity: 0.9 }}
