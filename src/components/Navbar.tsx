@@ -52,9 +52,9 @@ const Navbar = () => {
             <Image
               src="/logo.svg"
               alt="Logo"
-              width={100}
+              width={120}
               height={40}
-              className="w-40 h-12 sm:w-50 sm:h-10 md:w-50 md:h-20"
+              className="w-40 h-17 sm:w-50 sm:h-10 md:w-50 md:h-20"
               priority
             />
           </div>

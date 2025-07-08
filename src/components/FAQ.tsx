@@ -141,11 +141,11 @@ export default function Component() {
               
                 </div>
                 <div className="flex-shrink-0 ml-2 sm:ml-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-stone-400 flex items-center justify-center transition-transform duration-200 bg-white">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-stone-400 flex items-center justify-center transition-transform duration-200 bg-white">
                     {openItem === capability.id ? (
-                      <Minus className="w-6 h-6 sm:w-8 sm:h-8 text-stone-600" />
+                      <Minus className="w-14 h-14 sm:w-16 sm:h-16 text-stone-600" />
                     ) : (
-                      <Plus className="w-6 h-6 sm:w-8 sm:h-8 text-stone-600" />
+                      <Plus className="w-14 h-14 sm:w-16 sm:h-16 text-stone-600" />
                     )}
                   </div>
                 </div>
