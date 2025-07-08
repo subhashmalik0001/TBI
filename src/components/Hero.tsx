@@ -275,6 +275,8 @@ export default function Hero() {
   const greyChars = greyText.split("")
   const totalChars = greyChars.length
 
+  const [fade, setFade] = useState(false);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -550,7 +552,13 @@ export default function Hero() {
             {services.map((service, idx) => (
               <button
                 key={service.name}
-                onClick={() => setMobileActiveIndex(idx)}
+                onClick={() => {
+                  setFade(true);
+                  setTimeout(() => {
+                    setMobileActiveIndex(idx);
+                    setFade(false);
+                  }, 200); // 200ms fade duration
+                }}
                 className={`px-3 py-2 text-xs rounded-full border transition ${
                   mobileActiveIndex === idx
                     ? 'bg-red-600 text-white font-semibold'
@@ -563,7 +571,7 @@ export default function Hero() {
           </div>
 
           {/* IMAGE SECTION */}
-          <div className="relative w-full aspect-[3/4] overflow-hidden rounded-2xl transition-all duration-500">
+          <div className={`relative w-full aspect-[3/4] overflow-hidden rounded-2xl transition-all duration-500 ${fade ? 'opacity-0' : 'opacity-100'}`}>
             <Image
               src={services[mobileActiveIndex].image}
               alt={services[mobileActiveIndex].name}
@@ -596,8 +604,12 @@ export default function Hero() {
         {/* Animated Tag Rows for Mobile */}
         <div className="block md:hidden w-full bg-white py-2 z-10 px-4">
           {/* Top row */}
-          <div className="relative mb-2">
-            <div className="flex animate-scroll-right-to-left whitespace-nowrap overflow-x-auto max-w-full">
+          <div className="relative mb-2 w-full overflow-hidden">
+            {/* Gradient fade left */}
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-8 z-20" style={{background: 'linear-gradient(to right, white 70%, transparent)'}} />
+            {/* Gradient fade right */}
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-8 z-20" style={{background: 'linear-gradient(to left, white 70%, transparent)'}} />
+            <div className="flex animate-scroll-right-to-left whitespace-nowrap">
               {[...topRowTags, ...topRowTags].map((tag, index) => (
                 <span
                   key={index}
@@ -613,8 +625,12 @@ export default function Hero() {
             </div>
           </div>
           {/* Bottom row */}
-          <div className="relative">
-            <div className="flex animate-scroll-left-to-right whitespace-nowrap overflow-x-auto max-w-full">
+          <div className="relative w-full overflow-hidden">
+            {/* Gradient fade left */}
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-8 z-20" style={{background: 'linear-gradient(to right, white 70%, transparent)'}} />
+            {/* Gradient fade right */}
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-8 z-20" style={{background: 'linear-gradient(to left, white 70%, transparent)'}} />
+            <div className="flex animate-scroll-left-to-right whitespace-nowrap">
               {[...bottomRowTags, ...bottomRowTags].map((tag, index) => (
                 <span
                   key={index}

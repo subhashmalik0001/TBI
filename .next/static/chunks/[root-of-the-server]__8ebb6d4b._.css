@@ -1432,6 +1432,10 @@
     min-width: fit-content;
   }
 
+  .min-w-full {
+    min-width: 100%;
+  }
+
   .min-w-max {
     min-width: max-content;
   }
