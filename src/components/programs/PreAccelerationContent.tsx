@@ -148,7 +148,7 @@ const PreAccelerationContent = () => {
     <div className="min-h-screen bg-white ml-0">
       <div className="flex flex-col md:flex-row">
         {/* Left Navigation */}
-        <div className="w-full md:w-80 p-4 md:p-8">
+        <div className="w-full md:w-80 p-2 md:p-10 md:ml-39 ">
           <div className="space-y-4">
             <div className="text-gray-500 text-sm font-normal mb-6">INCLUDING:</div>
             <div className="space-y-3">
@@ -162,23 +162,24 @@ const PreAccelerationContent = () => {
             </div>
           </div>
         </div>
+
         {/* Main Content */}
-        <div className="flex-1 p-4 md:p-8 md:pr-16">
+        <div className="flex-1 p-4 md:pl-101 md:pr-20 md:py-10">
           <div className="max-w-4xl space-y-8">
-            <p className="text-black text-lg leading-relaxed">
+            <p className="text-black text-base md:text-lg leading-relaxed">
               We understand that data is more than a by-product of business operations, it is the key to unlocking
               competitive advantage and innovation. But making the leap from raw data to valuable insights requires more
               than just tools. It demands a clear vision, a robust foundation, and the right expertise.
             </p>
 
-            <p className="text-black text-lg leading-relaxed">
+            <p className="text-black text-base md:text-lg leading-relaxed">
               We have, and continue to help organisations build strong data foundations through smart governance,
               quality management, and aligned data strategy, the essentials for trusted, scalable insight generation.
               With these basics in place, we enable teams to move beyond compliance and control, ensuring that they can
               use data confidently and creatively.
             </p>
 
-            <p className="text-black text-lg leading-relaxed">
+            <p className="text-black text-base md:text-lg leading-relaxed">
               From establishing governance frameworks to enabling self-service analytics and advanced data science, we
               partner with teams across every stage of your data journey. Our experts bring real-life knowledge of
               leading technologies and tools, helping businesses unlock insights that are accessible, timely, and
@@ -187,7 +188,7 @@ const PreAccelerationContent = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col items-center gap-4 mt-16 mb-16">
+          <div className="flex flex-col items-center gap-4 mt-8 md:mt-16 mb-8 md:mb-16">
             <button className="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-full bg-white hover:bg-gray-50">
               <div className="w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center">
                 <div className="w-0 h-0 border-l-[6px] border-l-gray-400 border-t-[3px] border-t-transparent border-b-[3px] border-b-transparent ml-0.5"></div>

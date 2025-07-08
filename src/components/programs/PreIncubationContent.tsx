@@ -3,7 +3,7 @@ export default function Component() {
     <div className="min-h-screen bg-white ml-0">
       <div className="flex flex-col md:flex-row">
         {/* Left Navigation */}
-        <div className="w-full md:w-80 p-4 md:p-8">
+        <div className="w-full md:w-80 p-2 md:p-10 md:ml-39 ">
           <div className="space-y-4">
             <div className="text-gray-500 text-sm font-normal mb-6">INCLUDING:</div>
             <div className="space-y-3">
@@ -19,7 +19,7 @@ export default function Component() {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 p-4 md:p-8 md:pr-16">
+        <div className="flex-1 p-4 md:pl-101 md:pr-20 md:py-10">
           <div className="max-w-4xl space-y-8">
             <p className="text-black text-base md:text-lg leading-relaxed">
               We understand that data is more than a by-product of business operations, it is the key to unlocking

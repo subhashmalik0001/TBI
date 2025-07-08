@@ -347,8 +347,7 @@ export default function Hero() {
 
       {/* Add padding and a border before the grid section */}
       <div className="pt-12"></div>
-  
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[250px] lg:min-h-[130px] relative pt-0">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t  border-b border-gray-300 border-opacity-50 min-h-[250px] lg:min-h-[120px] relative pt-0 ">
         <div className="px-2 py-5 md:px-8 lg:px-16 w-full col-span-2">
           <div className="mb-7">
           <h2 className="text-3xl md:text-2xl lg:text-6xl text-black leading-tight">
@@ -357,7 +356,7 @@ export default function Hero() {
           Capital Ecosystem!
         </h2>
         {/* Horizontal grey line after the heading */}
-        <div className="w-full border-t border-gray-300 mt-6 mb-8"></div>
+        <div style={{marginLeft: "-60px", marginRight: "-60px"}} className=" border-t border-gray-300 mt-6 mb-8"></div>
              <div className="fixed left-0 w-screen border-t border-gray-300 min-h-[100px] lg:min-h-[40px] pt-10"></div>
           </div>
 

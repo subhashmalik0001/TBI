@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 
+
 const processSteps = [
   {
     day: "DAY 0",
@@ -42,8 +43,43 @@ const processSteps = [
 ];
 
 const ProcessSection = () => {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [sectionTop, setSectionTop] = useState(0);
+  const [sectionHeight, setSectionHeight] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    function updateSectionMetrics() {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      setSectionTop(window.scrollY + rect.top);
+      setSectionHeight(rect.height);
+    }
+    updateSectionMetrics();
+    window.addEventListener('resize', updateSectionMetrics);
+    return () => window.removeEventListener('resize', updateSectionMetrics);
+  }, []);
+
+  useEffect(() => {
+    function handleScroll() {
+      setScrollY(window.scrollY);
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Helper to get per-step progress (0 to 1) for the line between dot i and i+1
+  function getStepProgress(index: number) {
+    if (!sectionHeight) return 0;
+    const stepHeight = sectionHeight / processSteps.length;
+    const stepStart = sectionTop + index * stepHeight;
+    const stepEnd = stepStart + stepHeight;
+    const progress = (scrollY + window.innerHeight / 2 - stepStart) / (stepEnd - stepStart);
+    return Math.min(Math.max(progress, 0), 1);
+  }
+
   return (
-    <section className="bg-white text-black py-20">
+    <section ref={sectionRef} className="bg-white text-black py-20">
       <div className="w-full bg-white mb-20">
         {/* Main Grid Container - Left and Right Layout (full width) */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] relative">
@@ -97,11 +133,25 @@ const ProcessSection = () => {
               <div className="flex justify-end items-start pt-2">
                 <p className="text-base font-bold text-gray-600 whitespace-nowrap">{step.day}</p>
               </div>
-              {/* Vertical Line */}
+              {/* Vertical Line and Dot */}
               <div className="relative flex justify-center">
                 {/* Only show line for all but last step */}
                 {index !== processSteps.length - 1 && (
-                  <div className="absolute top-6 left-1/2 -translate-x-1/2 w-px h-full bg-gray-300" />
+                  (() => {
+                    const progress = getStepProgress(index);
+                    return (
+                      <div
+                        className="absolute top-6 left-1/2 -translate-x-1/2 w-px"
+                        style={{
+                          height: `${progress * 100}%`,
+                          background: `linear-gradient(to bottom, rgba(209,213,219,${1 - progress}), rgba(0,0,0,${progress}))`,
+                          transition: 'height 0.3s linear, background 0.3s linear',
+                          minHeight: '0px',
+                          maxHeight: '100%'
+                        }}
+                      />
+                    );
+                  })()
                 )}
                 {/* Dot */}
                 <div className="w-3 h-3 rounded-full bg-gray-400 z-10 mt-1" />
@@ -121,4 +171,4 @@ const ProcessSection = () => {
   );
 };
 
-export default ProcessSection; 
+export default ProcessSection;

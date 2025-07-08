@@ -153,10 +153,10 @@ const Navbar = () => {
   const renderDesktopView = () => (
   <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black">
     <div className="max-w-screen-2xl mx-auto px-9 custom-15inch-padding">
-      <div className="border-b border-gray-300 px-6 lg:px-10">
+      <div className="border-b ml-10 mr-10 border-gray-300 px-6 lg:px-10">
         <nav className="flex items-center justify-between relative">
           <Link href={`/`}>
-            <div className="flex items-center py-0 relative h-full ml-6">
+            <div className="flex items-center py-0 relative h-full ml-0">
               <Image
                 src="/logo.svg"
                 alt="Logo"

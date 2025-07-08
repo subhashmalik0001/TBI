@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Plus, Minus } from "lucide-react";
 import PreIncubationContent from "@/components/programs/PreIncubationContent";
 import IncubationContent from "@/components/programs/IncubationContent";
@@ -20,7 +20,7 @@ function CapabilitiesLabelDesktop() {
   return (
     <div className="flex flex-row items-center gap-4">
       <span className="text-xs font-medium text-stone-500 uppercase tracking-wider ml-50">
-        Capabilities /
+        Capabilities 
       </span>
     </div>
   );
@@ -29,6 +29,14 @@ function CapabilitiesLabelDesktop() {
 export default function Component() {
   const [openItem, setOpenItem] = useState<string | null>(null);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640); // sm breakpoint
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const capabilities = [
     {
@@ -84,12 +92,12 @@ export default function Component() {
 
   const hoverColors = [
     'hover:bg-green-300',
-    'hover:bg-green-50',
-    'hover:bg-purple-50',
-    'hover:bg-orange-50',
-    'hover:bg-pink-50',
-    'hover:bg-indigo-50',
-    'hover:bg-yellow-50',
+    'hover:bg-blue-200',
+    'hover:bg-purple-300',
+    'hover:bg-orange-300',
+    'hover:bg-pink-300',
+    'hover:bg-indigo-300',
+    'hover:bg-yellow-300',
   ];
 
   const toggleItem = (itemId: string) => {
@@ -102,12 +110,14 @@ export default function Component() {
         {capabilities.map((capability, index) => (
           <div
             key={capability.id}
-            className={`bg-white overflow-hidden relative rounded-4xl md:rounded-6xl border-t-3 border-t-black transition-all duration-300 ease-in-out ${
-              openItem === capability.id ? 'py-3 md:py-6' : `hover:py-3 md:hover:py-6 ${hoverColors[index]}`
+            className={`bg-white overflow-hidden relative rounded-4xl md:rounded-6xl border-t-3 border-t-black ${
+              openItem === capability.id
+                ? (isMobile ? 'py-3' : 'py-3 md:py-6')
+                : (isMobile ? '' : `hover:py-3 md:hover:py-6 ${hoverColors[index]}`)
             }`}
             style={{ borderTopWidth: '3px', borderTopColor: '#000', width: '100vw', marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}
-            onMouseEnter={() => setHoveredItem(capability.id)}
-            onMouseLeave={() => setHoveredItem(null)}
+            onMouseEnter={isMobile ? undefined : () => setHoveredItem(capability.id)}
+            onMouseLeave={isMobile ? undefined : () => setHoveredItem(null)}
           >
             <button
               onClick={() => toggleItem(capability.id)}
@@ -120,9 +130,16 @@ export default function Component() {
                 <div className="hidden sm:flex w-auto">
                   <CapabilitiesLabelDesktop />
                 </div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-stone-900 text-center flex-1 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 md:w-max md:text-center z-10">
-                  {capability.title}
-                </h3>
+                <div className="w-full flex flex-col sm:flex-row items-start sm:items-center">
+                  {/* Capabilities text - only show on mobile */}
+           
+                  {/* Title */}
+                  <h3 className="text-lg sm:text-2xl md:text-4xl lg:text-6xl text-stone-900 text-left ml-2 sm:ml-10 md:ml-150">
+                    {capability.title}
+                  </h3>
+                  {/* Capabilities text - only show on desktop */}
+              
+                </div>
                 <div className="flex-shrink-0 ml-2 sm:ml-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-stone-400 flex items-center justify-center transition-transform duration-200 bg-white">
                     {openItem === capability.id ? (
@@ -136,18 +153,21 @@ export default function Component() {
             </button>
             {/* Inline preview for all capabilities on hover, only if not open, and after the button */}
             {hoveredItem === capability.id && openItem !== capability.id && (
-              <div className="hidden sm:block mt-[-1rem] px-10 sm:px-6 md:px-10">
-                <div className="text-stone-700 text-base w-full animate-fade-in text-left">
-                  <div className="text-[10px] sm:text-xs font-medium text-stone-500 uppercase tracking-wider ml-50">INCLUDING:</div>
-                  <div className="ml-148 mb-1">We understand that data is more than a by-product of business operations, </div>
-                  <div className="mb-1 ml-50">DATA MATURITY +</div>
-                  <div className="mb-1 ml-50">DATA STRATEGY +</div>
+              <div className="hidden sm:block px-10 sm:px-6 md:px-10">
+                <div className="flex flex-col text-stone-700 text-base w-full animate-fade-in text-left">
+                  <div className="text-[12px] sm:text-lg font-semibold text-stone-500 uppercase tracking-wider ml-50">INCLUDING:</div>
+                  <div className="flex flex-col">
+                    <div className="mb-1 ml-50 text-base sm:text-lg font-medium">DATA MATURITY +</div>
+                    <div className="mb-1 ml-50 text-base sm:text-lg font-medium">DATA STRATEGY +</div>
+                  </div>
                 </div>
               </div>
             )}
             <div
-              className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                openItem === capability.id ? 'max-h-screen opacity-100 pb-6' : 'max-h-0 opacity-0'
+              className={`${
+                isMobile
+                  ? (openItem === capability.id ? 'block pb-6' : 'hidden')
+                  : `transition-all duration-300 ease-in-out overflow-hidden ${openItem === capability.id ? 'max-h-screen opacity-100 pb-6' : 'max-h-0 opacity-0'}`
               }`}
             >
               {openItem === capability.id && (
