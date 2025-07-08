@@ -21,7 +21,7 @@ const Footer = () => {
   }, []);
 
   const renderMobileView = () => (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="bg-white overflow-x-hidden">
       {/* First SVG Section */}
       <div
         className="relative w-full flex flex-col justify-center items-center h-[40vh] overflow-hidden"
@@ -48,7 +48,7 @@ const Footer = () => {
   );
   
   const renderDesktopView = () => (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       {/* First SVG Section */}
       <div
         className="relative w-screen bg-cover bg-center bg-no-repeat flex flex-col justify-center h-[150vh]"

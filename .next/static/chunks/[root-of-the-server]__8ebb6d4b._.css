@@ -1326,6 +1326,10 @@
     height: 674.19px;
   }
 
+  .h-auto {
+    height: auto;
+  }
+
   .h-full {
     height: 100%;
   }
