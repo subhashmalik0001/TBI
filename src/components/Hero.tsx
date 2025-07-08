@@ -385,7 +385,7 @@ export default function Hero() {
               </div>
             </div>
             {/* Right Column - Community Image */}
-            <div className="relative w-full sm:w-400 md:w-600 lg:w-800 h-48 sm:h-56 md:h-64 lg:h-70 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl ml-2 sm:ml-4 aspect-[4/3] overflow-hidden rounded-2xl">
+            <div className="relative w-full sm:w-[22rem] md:w-600 lg:w-600 h-55 sm:h-56 md:h-64 lg:h-70 md:max-w-lg lg:max-w-2xl sm:ml-4 aspect-[4/3] overflow-hidden rounded-2xl">
            <Image
              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpl-YRnxYXVx78kFqnXIi9I5b5s3bmQZXlg_ae8zgnoCXJAa837sfpK7eI2xZPZclrXAr2mKs1B1gXlOrHZqvQo4naWenEKgnrPeq8-NBQ1BZBqgoQk2vx4lAglHHgE_SpSnMwhBFiCdH6k6KRiIiBcHF66VriJF_vQXOHTOa-3tHGdVzNLZWyEBqwxozw/s2048/473544912_1018141797016754_6719124790330598010_n.jpg"
              alt="Community of innovative companies"
@@ -529,9 +529,9 @@ export default function Hero() {
        (
         // MOBILE SERVICES SECTION
         <>
-        <div className="bg-white px-4 pt-4 pb-2 block md:hidden">
+        <div className="bg-white px-4 pt-7 pb-2 block md:hidden ">
           {/* Section Title */}
-          <div className="space-y-1">
+          <div className="space-y-1 mb-6">
             <div className="flex items-center gap-1">
               <div className="w-2 h-2 border border-gray-400 rounded-full" />
               <span className="text-xs text-gray-600 uppercase tracking-wide">What Service We Offer</span>
@@ -546,7 +546,7 @@ export default function Hero() {
           </div>
 
           {/* SERVICES ROW (horizontal buttons) */}
-          <div className="flex flex-wrap gap-2 mb-1"> {/* Reduced margin-bottom */}
+          <div className="flex flex-wrap gap-4 mb-8">
             {services.map((service, idx) => (
               <button
                 key={service.name}
