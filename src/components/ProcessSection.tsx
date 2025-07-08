@@ -43,6 +43,7 @@ const processSteps = [
 ];
 
 const ProcessSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [sectionTop, setSectionTop] = useState(0);
   const [sectionHeight, setSectionHeight] = useState(0);
@@ -66,6 +67,32 @@ const ProcessSection = () => {
     }
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!videoRef.current || !sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const sectionHeight = rect.height;
+
+      // Calculate scroll progress for the section (0 = top, 1 = bottom)
+      let progress = 1 - Math.max(0, Math.min(1, (rect.bottom - windowHeight) / (sectionHeight+100 - windowHeight)));
+
+      // Clamp progress between 0 and 1
+      progress = Math.max(0, Math.min(1, progress));
+
+      // Set video currentTime based on progress
+      const duration = videoRef.current.duration || 1;
+      videoRef.current.currentTime = progress * duration;
+
+      // Move video down as you scroll (optional, adjust multiplier as needed)
+      videoRef.current.style.transform = `translateY(${progress * 1250}px)`;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Helper to get per-step progress (0 to 1) for the line between dot i and i+1
@@ -117,7 +144,27 @@ const ProcessSection = () => {
               </div>
               
               {/* Content */}
-              <div className="pl-6 border-l-2 border-gray-300">
+              <div className="relative pl-6">
+                {/* Animated vertical line for all but last step */}
+                {index !== processSteps.length - 1 && (
+                  (() => {
+                    const progress = getStepProgress(index);
+                    return (
+                      <div
+                        className="absolute left-0 top-6 w-px"
+                        style={{
+                          height: `${progress * 100}%`,
+                          background: `linear-gradient(to bottom, rgba(209,213,219,${1 - progress}), rgba(0,0,0,${progress}))`,
+                          transition: 'height 0.3s linear, background 0.3s linear',
+                          minHeight: '0px',
+                          maxHeight: '100%'
+                        }}
+                      />
+                    );
+                  })()
+                )}
+                {/* Dot */}
+                <div className="w-3 h-3 rounded-full bg-gray-400 absolute left-[-0.6rem] top-4 z-10" />
                 <h3 className="text-2xl font-semibold mb-3 text-gray-700 leading-tight">{step.title}</h3>
                 <p className="text-gray-600 text-base leading-relaxed">{step.description}</p>
               </div>
@@ -165,10 +212,33 @@ const ProcessSection = () => {
                <div></div>
             </React.Fragment>
           ))}
+          <div  className="w-full h-full hidden md:block">
+          <video
+            ref={videoRef}
+            src="/assets/animation.mp4"
+            autoPlay={false}
+            loop={false}
+            muted
+            style={{
+              borderColor: "white",
+              position: "relative",
+              top: "-1500px",
+              left: "1000px",
+              maxWidth: "100%",
+             
+              right: "0",
+              width: "100%",
+              height: "100%",
+              
+              transition: "transform 0.1s linear"
+            }}
+          />
+          </div>
+          
         </div>
       </div>
     </section>
   );
 };
 
-export default ProcessSection;
+export default ProcessSection; 
