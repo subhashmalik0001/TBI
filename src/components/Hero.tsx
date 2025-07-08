@@ -135,36 +135,37 @@ export default function Hero() {
   useEffect(() => {
     function handleScroll() {
       if (!scrollSectionRef.current) return;
-    
+  
       const container = scrollSectionRef.current;
       const rect = container.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       const scrollY = window.scrollY;
       const containerTop = rect.top + scrollY;
-      const containerHeight = container.offsetHeight;
-      const start = containerTop;
-      const end = containerTop + containerHeight;
-    
-      if (scrollY >= start && scrollY < end) {
-        setIsSticky(true);
-    
-        // ✅ Updated scroll logic for new structure
-        const scrolled = scrollY - start;
-        const sectionHeight = window.innerHeight * 0.5; // make each section 60% of screen height
-        const index = Math.floor(scrolled / sectionHeight);
-        
-    
-        setActiveIndex(Math.min(index, services.length - 1));
+      // Each service gets exactly one viewport height of scroll
+      const perServiceScroll = windowHeight ;
+      const totalScroll = perServiceScroll * (services.length - 1);
+
+      if (scrollY >= containerTop && scrollY < containerTop + totalScroll) {
+        // If we're at the last service, unstick and let user scroll
+        const scrolled = scrollY - containerTop;
+        const index = Math.round(scrolled / perServiceScroll);
+        if (index >= services.length - 1) {
+          setIsSticky(false);
+          setActiveIndex(services.length - 1);
+        } else {
+          setIsSticky(true);
+          setActiveIndex(index);
+        }
       } else {
         setIsSticky(false);
-        if (scrollY < start) {
+        if (scrollY < containerTop) {
           setActiveIndex(0);
         } else {
           setActiveIndex(services.length - 1);
         }
       }
     }
-    
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
