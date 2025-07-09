@@ -1,3 +1,4 @@
+'use client';
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import FounderStories from "@/components/FounderStories";
