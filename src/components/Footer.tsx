@@ -24,7 +24,7 @@ const Footer = () => {
     <div className="bg-white overflow-x-hidden flex flex-col pb-0 m-0">
       {/* First SVG Section */}
       <div
-        className="relative w-full flex flex-col justify-center items-center h-[40vh] overflow-hidden p-0 m-0"
+        className="relative w-full flex flex-col justify-center items-center h-[20vh] overflow-hidden p-0 m-0"
         style={{
           backgroundImage: "url('/assets/Container (2).svg')",
           backgroundRepeat: "no-repeat",
@@ -35,7 +35,7 @@ const Footer = () => {
       
       {/* Second SVG Section */}
       <div
-        className="relative w-full flex flex-col justify-center -mt-35 items-center h-[20vh] overflow-hidden"
+        className="relative w-full flex flex-col justify-center -mt-10 items-center h-[20vh] overflow-hidden"
         style={{
           backgroundImage: "url('/assets/container (5).svg')",
           backgroundRepeat: "no-repeat",
