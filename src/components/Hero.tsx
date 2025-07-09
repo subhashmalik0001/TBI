@@ -182,22 +182,26 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    if (!scrollSectionRef.current) return;
-  
     const updateHeight = () => {
+      if (!scrollSectionRef.current) return;
       if (window.innerWidth >= 1024) {
-        // Set scroll height for desktop
-        scrollSectionRef.current!.style.height = `${window.innerHeight * services.length}px`;
+        scrollSectionRef.current.style.height = `${window.innerHeight * services.length}px`;
       } else {
-        // Reset height for mobile
-        scrollSectionRef.current!.style.height = "auto";
+        scrollSectionRef.current.style.height = "auto";
       }
     };
-  
-    updateHeight(); // Run once on mount
-  
-    window.addEventListener("resize", updateHeight);
-    return () => window.removeEventListener("resize", updateHeight);
+
+    // Only add listener if ref is set
+    if (scrollSectionRef.current) {
+      updateHeight(); // Run once on mount
+      window.addEventListener("resize", updateHeight);
+    }
+    // Cleanup
+    return () => {
+      if (scrollSectionRef.current) {
+        window.removeEventListener("resize", updateHeight);
+      }
+    };
   }, [services.length]);
   
   useEffect(() => {
@@ -276,6 +280,23 @@ export default function Hero() {
   const totalChars = greyChars.length
 
   const [fade, setFade] = useState(false);
+
+  // Add state for marginLeft and marginRight to avoid SSR window usage
+  const [lineMargins, setLineMargins] = useState({ marginLeft: 0, marginRight: 0 });
+
+  useEffect(() => {
+    function updateLineMargins() {
+      if (typeof window !== 'undefined') {
+        setLineMargins({
+          marginLeft: window.innerWidth < 768 ? 0 : -60,
+          marginRight: window.innerWidth < 768 ? 0 : -60,
+        });
+      }
+    }
+    updateLineMargins();
+    window.addEventListener('resize', updateLineMargins);
+    return () => window.removeEventListener('resize', updateLineMargins);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -358,10 +379,7 @@ export default function Hero() {
         {/* Horizontal grey line after the heading */}
         <div
   className="border-t border-gray-300 mt-6 mb-8 mx-0 md:mx-[-10px] lg:mx-[-60px]"
-  style={{
-    marginLeft: window.innerWidth < 768 ? 0 : "-60px",
-    marginRight: window.innerWidth < 768 ? 0 : "-60px"
-  }}
+  style={lineMargins}
 ></div>
           </div>
 

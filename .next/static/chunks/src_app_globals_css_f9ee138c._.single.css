@@ -659,96 +659,12 @@
     margin-block: calc(var(--spacing) * 12);
   }
 
-  .-mt-0 {
-    margin-top: calc(var(--spacing) * 0);
-  }
-
-  .-mt-1 {
-    margin-top: calc(var(--spacing) * -1);
-  }
-
-  .-mt-3 {
-    margin-top: calc(var(--spacing) * -3);
-  }
-
   .-mt-10 {
     margin-top: calc(var(--spacing) * -10);
   }
 
-  .-mt-20 {
-    margin-top: calc(var(--spacing) * -20);
-  }
-
-  .-mt-25 {
-    margin-top: calc(var(--spacing) * -25);
-  }
-
-  .-mt-30 {
-    margin-top: calc(var(--spacing) * -30);
-  }
-
-  .-mt-35 {
-    margin-top: calc(var(--spacing) * -35);
-  }
-
-  .-mt-40 {
-    margin-top: calc(var(--spacing) * -40);
-  }
-
-  .-mt-50 {
-    margin-top: calc(var(--spacing) * -50);
-  }
-
   .-mt-60 {
     margin-top: calc(var(--spacing) * -60);
-  }
-
-  .-mt-70 {
-    margin-top: calc(var(--spacing) * -70);
-  }
-
-  .-mt-80 {
-    margin-top: calc(var(--spacing) * -80);
-  }
-
-  .-mt-90 {
-    margin-top: calc(var(--spacing) * -90);
-  }
-
-  .-mt-100 {
-    margin-top: calc(var(--spacing) * -100);
-  }
-
-  .-mt-120 {
-    margin-top: calc(var(--spacing) * -120);
-  }
-
-  .-mt-140 {
-    margin-top: calc(var(--spacing) * -140);
-  }
-
-  .-mt-150 {
-    margin-top: calc(var(--spacing) * -150);
-  }
-
-  .-mt-170 {
-    margin-top: calc(var(--spacing) * -170);
-  }
-
-  .-mt-180 {
-    margin-top: calc(var(--spacing) * -180);
-  }
-
-  .-mt-185 {
-    margin-top: calc(var(--spacing) * -185);
-  }
-
-  .-mt-189 {
-    margin-top: calc(var(--spacing) * -189);
-  }
-
-  .-mt-200 {
-    margin-top: calc(var(--spacing) * -200);
   }
 
   .mt-1 {
@@ -1059,10 +975,6 @@
     height: calc(var(--spacing) * 28);
   }
 
-  .h-30 {
-    height: calc(var(--spacing) * 30);
-  }
-
   .h-31 {
     height: calc(var(--spacing) * 31);
   }
@@ -1087,40 +999,8 @@
     height: calc(var(--spacing) * 96);
   }
 
-  .h-\[1vh\] {
-    height: 1vh;
-  }
-
-  .h-\[10vh\] {
-    height: 10vh;
-  }
-
   .h-\[20vh\] {
     height: 20vh;
-  }
-
-  .h-\[30vh\] {
-    height: 30vh;
-  }
-
-  .h-\[35vh\] {
-    height: 35vh;
-  }
-
-  .h-\[40vh\] {
-    height: 40vh;
-  }
-
-  .h-\[50vh\] {
-    height: 50vh;
-  }
-
-  .h-\[55vh\] {
-    height: 55vh;
-  }
-
-  .h-\[60vh\] {
-    height: 60vh;
   }
 
   .h-\[62px\] {
@@ -1135,22 +1015,6 @@
     height: 90vh;
   }
 
-  .h-\[100vh\] {
-    height: 100vh;
-  }
-
-  .h-\[120vh\] {
-    height: 120vh;
-  }
-
-  .h-\[130vh\] {
-    height: 130vh;
-  }
-
-  .h-\[150vh\] {
-    height: 150vh;
-  }
-
   .h-\[500px\] {
     height: 500px;
   }
@@ -1161,10 +1025,6 @@
 
   .h-\[674\.19px\] {
     height: 674.19px;
-  }
-
-  .h-\[vh\] {
-    height: vh;
   }
 
   .h-full {
@@ -1189,10 +1049,6 @@
 
   .max-h-screen {
     max-height: 100vh;
-  }
-
-  .min-h-\[100px\] {
-    min-height: 100px;
   }
 
   .min-h-\[120px\] {
@@ -2320,10 +2176,6 @@
     background-size: 16px 16px;
   }
 
-  .bg-contain {
-    background-size: contain;
-  }
-
   .bg-cover {
     background-size: cover;
   }
@@ -2956,11 +2808,6 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 
-  .shadow-\[4px_4px_0px_0px_rgba\(255\,255\,255\,0\.3\)\] {
-    --tw-shadow: 4px 4px 0px 0px var(--tw-shadow-color, #ffffff4d);
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-
   .shadow-\[8px_8px_0px_0px_rgba\(0\,0\,0\,1\)\] {
     --tw-shadow: 8px 8px 0px 0px var(--tw-shadow-color, #000);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -3326,12 +3173,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:text-red-400:hover {
-      color: var(--color-red-400);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:text-white:hover {
       color: var(--color-white);
     }
@@ -3358,13 +3199,6 @@
   @media (hover: hover) {
     .hover\:shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\]:hover {
       --tw-shadow: 2px 2px 0px 0px var(--tw-shadow-color, #000);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:shadow-\[2px_2px_0px_0px_rgba\(255\,255\,255\,0\.3\)\]:hover {
-      --tw-shadow: 2px 2px 0px 0px var(--tw-shadow-color, #ffffff4d);
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
@@ -4062,12 +3896,6 @@
   @media (width >= 64rem) {
     .lg\:h-70 {
       height: calc(var(--spacing) * 70);
-    }
-  }
-
-  @media (width >= 64rem) {
-    .lg\:min-h-\[40px\] {
-      min-height: 40px;
     }
   }
 

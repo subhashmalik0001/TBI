@@ -57,6 +57,7 @@ function AnimatedCounter({ end, suffix = "", label }: { end: number; suffix?: st
   const { count, setIsVisible } = useCounter(end);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
