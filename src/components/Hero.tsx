@@ -356,8 +356,13 @@ export default function Hero() {
           Capital Ecosystem!
         </h2>
         {/* Horizontal grey line after the heading */}
-        <div style={{marginLeft: "-60px", marginRight: "-60px"}} className=" border-t border-gray-300 mt-6 mb-8"></div>
-             <div className="fixed left-0 w-screen border-t border-gray-300 min-h-[100px] lg:min-h-[40px] pt-10"></div>
+        <div
+  className="border-t border-gray-300 mt-6 mb-8 mx-0 md:mx-[-10px] lg:mx-[-60px]"
+  style={{
+    marginLeft: window.innerWidth < 768 ? 0 : "-60px",
+    marginRight: window.innerWidth < 768 ? 0 : "-60px"
+  }}
+></div>
           </div>
 
 

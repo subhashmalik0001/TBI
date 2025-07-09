@@ -3577,6 +3577,12 @@
   }
 
   @media (width >= 48rem) {
+    .md\:mx-\[-10px\] {
+      margin-inline: -10px;
+    }
+  }
+
+  @media (width >= 48rem) {
     .md\:mx-\[188px\] {
       margin-inline: 188px;
     }
@@ -3970,6 +3976,12 @@
       .md\:hover\:py-6:hover {
         padding-block: calc(var(--spacing) * 6);
       }
+    }
+  }
+
+  @media (width >= 64rem) {
+    .lg\:mx-\[-60px\] {
+      margin-inline: -60px;
     }
   }
 
