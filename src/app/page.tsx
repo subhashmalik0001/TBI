@@ -1,4 +1,5 @@
 'use client';
+export const dynamic = "force-dynamic";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import FounderStories from "@/components/FounderStories";
