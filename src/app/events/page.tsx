@@ -4,7 +4,7 @@ export default function EventsPage() {
   return (
     <>
       <Navbar />
-      <div className="h-31 bg-black">
+      <div className="h-31 bg-white">
 
       </div>
       <div className="flex min-h-screen w-full bg-white">

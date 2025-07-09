@@ -45,7 +45,7 @@ const IHNavbar = () => {
 
   return (
     <>
-      <div className="w-full h-20 bg-black"></div>
+      <div className="w-full h-20 bg-white"></div>
       <div className="bg-[url('/pattern.svg')] bg-white bg-repeat w-full" style={{ height: "7px" }} />
 
       <nav className="bg-white border-b border-[#1a2a3a] shadow sticky top-20 z-50">

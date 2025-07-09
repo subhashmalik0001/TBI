@@ -21,21 +21,21 @@ const Footer = () => {
   }, []);
 
   const renderMobileView = () => (
-    <div className="bg-white overflow-x-hidden">
+    <div className="bg-white overflow-x-hidden flex flex-col pb-0 m-0">
       {/* First SVG Section */}
       <div
-        className="relative w-full flex flex-col justify-center items-center h-[40vh] overflow-hidden"
+        className="relative w-full flex flex-col justify-center items-center h-[40vh] overflow-hidden p-0 m-0"
         style={{
           backgroundImage: "url('/assets/Container (2).svg')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "100% 100%",
         }}
-      >
-      </div>
+      ></div>
+      
       {/* Second SVG Section */}
       <div
-        className="relative w-full flex flex-col justify-center -mt-60 items-center h-[40vh] overflow-hidden"
+        className="relative w-full flex flex-col justify-center -mt-35 items-center h-[20vh] overflow-hidden"
         style={{
           backgroundImage: "url('/assets/container (5).svg')",
           backgroundRepeat: "no-repeat",
@@ -44,6 +44,7 @@ const Footer = () => {
         }}
       >
       </div>
+      
     </div>
   );
   
@@ -51,7 +52,7 @@ const Footer = () => {
     <div className="bg-white">
       {/* First SVG Section */}
       <div
-        className="relative w-screen bg-cover bg-center bg-no-repeat flex flex-col justify-center h-[150vh]"
+        className="relative w-screen bg-cover bg-center bg-no-repeat flex flex-col justify-center h-[90vh]"
         style={{
           backgroundImage: "url('/assets/Container (2).svg')",
           backgroundSize: "cover"
@@ -60,7 +61,7 @@ const Footer = () => {
       </div>
       {/* Second SVG Section */}
       <div
-        className="relative w-screen bg-cover bg-center bg-no-repeat flex flex-col justify-center -mt-150 h-[70vh]"
+        className="relative w-screen bg-cover bg-center bg-no-repeat flex flex-col justify-center -mt-60 h-[70vh]"
         style={{
           backgroundImage: "url('/assets/container (5).svg')",
           backgroundSize: "cover"
