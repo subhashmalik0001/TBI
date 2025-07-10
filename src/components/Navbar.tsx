@@ -32,19 +32,29 @@ interface MenuItemProps {
   titleClassName?: string;
 }
 function MenuItem({ title, icon, onPress, className, titleClassName }: MenuItemProps) {
+  const isHome = title === "Home";
+  const isLeadership = title === "Leadership";
+  const isPrograms = title === "Programs";
+  const isBridgeProgram = title.trim() === "Bridge Program";
   return (
     <button
       onClick={onPress}
       className={`
         relative overflow-hidden
         transition-all duration-150
-        bg-[#AFAFAF]
+        ${isHome ? 'border-2 border-gray-400' : ''}
+        ${isHome ? '' : (isLeadership || isPrograms || isBridgeProgram ? '' : 'bg-[#AFAFAF]')}
         ${className}
+        ${isHome ? 'rounded-[2.3rem]' : ''} // Extra roundness for Home only
       `}
     >
-      {/* Remove/override radial glow background for solid color */}
-      <div className="absolute inset-0 rounded-[1.5rem] bg-[#AFAFAF] pointer-events-none" />
-      <div className="relative flex flex-col items-center justify-center h-full p-4">
+      {/* Gradient background for Home, Leadership, Programs, and Bridge Program button only */}
+      {(isHome || isLeadership || isPrograms || isBridgeProgram) ? (
+        <div className={`absolute inset-0 ${isHome ? 'rounded-[2em]' : 'rounded-[1.5rem]'} bg-gradient-to-br from-yellow-100  via-pink-100 to-gray-100 pointer-events-none z-0`} />
+      ) : (
+        <div className="absolute inset-0 rounded-[1.5rem] bg-[#AFAFAF] pointer-events-none z-0" />
+      )}
+      <div className="relative flex flex-col items-center justify-center h-full p-4 z-10">
         <div className="mb-2">{icon}</div>
         <span className={`font-medium text-center leading-tight ${titleClassName}`}>{title}</span>
       </div>
@@ -68,15 +78,15 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50 lg:hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-600 to-gray-700" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#F5E9F5] via-white to-[#fbfdfb]" />
 
       <div className="absolute top-0 right-0 p-4 z-20">
         <button
-          className="text-white p-2 rounded-full hover:bg-gray-800 focus:outline-none"
+          className="text-black p-2 rounded-full hover:bg-gray-200 focus:outline-none"
           onClick={onClose}
           aria-label="Close menu"
         >
-          <HiX className="w-7 h-7" />
+          <HiX className="w-7 h-7 text-black" />
         </button>
       </div>
 
@@ -87,7 +97,7 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
               title="Home"
               icon={<Image src="/assets/home.svg" alt="Home" width={35} height={35} />}
               onPress={() => handleMenuPress("Home")}
-              className={`flex-[2] ${glass}`}
+              className={`flex-1 border-4 border-gray-400 rounded-[1.5rem]`.replace('bg-[#AFAFAF]', '')}
               titleClassName="text-[#444] text-sm"
             />
             <div className="flex flex-col ml-auto gap-2">
@@ -96,20 +106,20 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
                   title="About"
                   icon={<Image src="/assets/about.svg" alt="Home" width={25} height={25} />}
                   onPress={() => handleMenuPress("X")}
-                  className={`w-16 ${glass}`}
+                  className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`}
                   titleClassName="text-[#444] text-xs"
                 />
                 <MenuItem
                   title="Offering"
                   icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />}
                   onPress={() => handleMenuPress("Instagram")}
-                  className={`w-16 ${glass}`}
+                  className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`}
                   titleClassName="text-[#444] text-xs"
                 />
               </div>
               <div className="flex gap-3 h-16">
-                <MenuItem title="Team"  icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("X")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
-                <MenuItem title="Insights" icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("Instagram")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
+                <MenuItem title="Team"  icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("X")} className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
+                <MenuItem title="Insights" icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("Instagram")} className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
               </div>
             </div>
           </div>
@@ -119,7 +129,7 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
               title="Events"
               icon={<Image src="/assets/team.svg" alt="Home" width={30} height={30} />}
               onPress={() => handleMenuPress("Events")}
-              className={`w-16 ${glass}`}
+              className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`}
               titleClassName="text-[#444] text-xs"
             />
           </div>
@@ -129,7 +139,7 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
               title="Leadership"
               icon={<Image src="/assets/home.svg" alt="Home" width={30} height={30} />}
               onPress={() => handleMenuPress("Leadership")}
-              className={`flex-1 ${glass}`}
+              className={`flex-1 border-3 border-gray-400 rounded-[1.5rem]`}
               titleClassName="text-[#444] text-sm"
             />
           </div>
@@ -139,7 +149,7 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
               title="Programs"
               icon={<Image src="/assets/home.svg" alt="Home" width={35} height={35} />}
               onPress={() => handleMenuPress("Programs")}
-              className={`flex-1 ${glass}`}
+              className={`flex-1 border-3 border-gray-400 rounded-[1.5rem]`}
               titleClassName="text-[#444] text-sm"
             />
             
@@ -149,7 +159,7 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
               title="Incubation"
               icon={<Image src="/assets/incubation.svg" alt="Home" width={35} height={35} />}
               onPress={() => handleMenuPress("Programs")}
-              className={`flex-1 ${glass}`}
+              className={`flex-1 border-5 border-gray-400 rounded-[1.5rem]`}
               titleClassName="text-[#444] text-sm"
             />
             
@@ -158,24 +168,24 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
           <div className="flex gap-3 h-16">
             <div className="flex gap-3 ml-63 h-17 mt-[-16rem]">
               <MenuItem 
-              title=""     icon={<Image src="/assets/X.svg" alt="Home" width={40} height={40} />} onPress={() => handleMenuPress("X")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
-              <MenuItem title="" icon={<Image src="/assets/instagram.svg" alt="Home" width={35} height={35} />}  onPress={() => handleMenuPress("Instagram")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
+              title=""     icon={<Image src="/assets/X.svg" alt="Home" width={50} height={40} />} onPress={() => handleMenuPress("X")} className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
+              <MenuItem title="" icon={<Image src="/assets/instagram.svg" alt="Home" width={35} height={35} />}  onPress={() => handleMenuPress("Instagram")} className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
             </div>
           </div>
 
           <div className="flex gap-3 h-16">
             <div className="flex gap-3 ml-63 h-17 mt-[-15.5rem]">
-              <MenuItem title="Master Class"  icon={<Image src="/assets/offering.svg" alt="Home" width={40} height={40} />} onPress={() => handleMenuPress("X")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
+              <MenuItem title="Master Class"  icon={<Image src="/assets/offering.svg" alt="Home" width={50} height={40} />} onPress={() => handleMenuPress("X")} className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
             </div>
           </div>
 
          
-          <div className="flex gap-3 ml-63 mt-[-15.4rem]  h-19">
+          <div className="flex gap-3 ml-63 mt-[-15.4rem]  h-22">
             <MenuItem
               title="Bridge Program "
               icon={<Image src="/assets/home.svg" alt="Home" width={30} height={30} />}
               onPress={() => handleMenuPress("Leadership")}
-              className={`flex-1 ${glass}`}
+              className={`flex-1 border-3 border-gray-400 rounded-[1.5rem]`}
               titleClassName="text-[#444] text-sm"
             />
         
@@ -184,10 +194,10 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
 
         <button
           onClick={handleApplyNow}
-          className="w-44 h-17 ml-100 mr-40 mt-[2rem] rounded-[15rem] overflow-hidden bg-[#AFAFAF] border border-white/30 shadow-[inset_0_0_0.5px_rgba(255,255,255,0.4),0_4px_30px_rgba(0,0,0,0.1)] hover:bg-[#BFBFBF] transition-all duration-300"
+          className="w-44 h-17 ml-50 mr-40 mt-[2rem] rounded-[15rem] overflow-hidden bg-[#AFAFAF] border border-white/30 shadow-[inset_0_0_0.5px_rgba(255,255,255,0.4),0_4px_30px_rgba(0,0,0,0.1)] hover:bg-[#BFBFBF] transition-all duration-300"
         >
           <div className="py-5 px-10 relative">
-            <div className="absolute inset-0 bg-gray-300 rounded-[1px]" />
+            <div className="absolute inset-0 bg-gray-200 rounded-[1px]" />
             <span className="relative text-[#444] text-lg font-bold drop-shadow-sm">Apply Now</span>
           </div>
         </button>
