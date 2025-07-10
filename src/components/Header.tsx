@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface HeaderProps {
   leftText: ReactNode;
-  rightText: string;
+  rightText: ReactNode;
   iconSrc?: string;
 }
 
@@ -30,9 +30,9 @@ export default function Header({ leftText, rightText, iconSrc }: HeaderProps) {
         {/* Right Section */}
         <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center">
           <div className="w-full">
-            <h2 className="text-xs lg:text-sm font-semibold text-gray-900 tracking-wider uppercase">
+            <div className="text-xs lg:text-sm font-semibold text-gray-900 tracking-wider uppercase">
               {rightText}
-            </h2>
+            </div>
           </div>
         </div>
 

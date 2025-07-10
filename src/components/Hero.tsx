@@ -3,6 +3,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
+import { Player } from '@lottiefiles/react-lottie-player';
+import { throttle } from 'lodash';
 
 const services = [
   {
@@ -217,6 +219,8 @@ export default function Hero() {
     return () => window.removeEventListener("scroll", handleHeroScroll);
   }, []);
 
+    
+
   // Lock scroll when hero text enters view
   useEffect(() => {
     if (isMobile) return; // Disable scroll lock on mobile
@@ -304,7 +308,7 @@ export default function Hero() {
       {isMobile ? (
         <MobileHeroSection />
       ) : (
-        <div className="relative h-[550px] w-full xl:max-w-[1400px] mx-auto overflow-hidden rounded-3xl mt-8 md:mt-32 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
+        <div className="relative h-[80vh] w-full xl:max-w-[1400px] mx-auto overflow-hidden rounded-3xl mt-8 md:mt-32 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
           <video
             autoPlay
             loop
@@ -315,6 +319,7 @@ export default function Hero() {
             <source src="/hero.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute left-0 right-0 bottom-0 h-1 bg-black/70 z-20" />
           <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-full px-2 md:left-16 md:bottom-8 md:top-auto md:-translate-x-0">
             <div className="text-white">
               <div className="absolute left-[-2rem] top-[-0rem] bottom-[-0.1rem] w-[0.1rem] bg-white"></div>

@@ -38,12 +38,9 @@ function MenuItem({ title, icon, onPress, className, titleClassName }: MenuItemP
       className={`
         relative overflow-hidden
         transition-all duration-150
-        bg-[#AFAFAF]
         ${className}
       `}
     >
-      {/* Remove/override radial glow background for solid color */}
-      <div className="absolute inset-0 rounded-[1.5rem] bg-[#AFAFAF] pointer-events-none" />
       <div className="relative flex flex-col items-center justify-center h-full p-4">
         <div className="mb-2">{icon}</div>
         <span className={`font-medium text-center leading-tight ${titleClassName}`}>{title}</span>
@@ -64,7 +61,7 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
     if (onClose) onClose();
   };
 
-  const glass = "backdrop-blur-xl bg-white/10 border border-white/30 shadow-[inset_0_0_0.5px_rgba(255,255,255,0.4),0_4px_30px_rgba(0,0,0,0.1)] rounded-[1.5rem] hover:bg-white/20 transition-all duration-300";
+  const glass = "bg-gradient-to-br from-pink-200/2 via-white-300 to-pink-300 rounded-[20px] backdrop-blur-[11px] border border-white/3 shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-1px_0_rgba(255,255,255,0.1),inset_0_0_44px_22px_rgba(255,182,193,0.3)] relative overflow-hidden hover:from-pink-200/30 hover:via-white/30 hover:to-pink-300/30 hover:shadow-[0_8px_32px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(255,255,255,0.15),inset_0_0_44px_22px_rgba(255,182,193,0.4)] transition-all duration-300";
 
   return (
     <div className="fixed inset-0 z-50 lg:hidden">
