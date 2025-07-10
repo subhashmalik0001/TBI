@@ -85,7 +85,7 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
           <div className="flex gap-10 h-35 w-full">
             <MenuItem
               title="Home"
-              icon={<Home size={24} color="#444" />}
+              icon={<Image src="/assets/home.svg" alt="Home" width={35} height={35} />}
               onPress={() => handleMenuPress("Home")}
               className={`flex-[2] ${glass}`}
               titleClassName="text-[#444] text-sm"
@@ -93,23 +93,23 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
             <div className="flex flex-col ml-auto gap-2">
               <div className="flex gap-3 h-16">
                 <MenuItem
-                  title="X"
-                  icon={<LucideX size={16} color="#444" />}
+                  title="About"
+                  icon={<Image src="/assets/about.svg" alt="Home" width={25} height={25} />}
                   onPress={() => handleMenuPress("X")}
                   className={`w-16 ${glass}`}
                   titleClassName="text-[#444] text-xs"
                 />
                 <MenuItem
-                  title="Instagram"
-                  icon={<Instagram size={16} color="#444" />}
+                  title="Offering"
+                  icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />}
                   onPress={() => handleMenuPress("Instagram")}
                   className={`w-16 ${glass}`}
                   titleClassName="text-[#444] text-xs"
                 />
               </div>
               <div className="flex gap-3 h-16">
-                <MenuItem title="X" icon={<LucideX size={16} color="#444" />} onPress={() => handleMenuPress("X")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
-                <MenuItem title="Instagram" icon={<Instagram size={16} color="#444" />} onPress={() => handleMenuPress("Instagram")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
+                <MenuItem title="Team"  icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("X")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
+                <MenuItem title="Insights" icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("Instagram")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
           <div className="flex gap-3 h-16">
             <MenuItem
               title="Events"
-              icon={<Calendar size={16} color="#444" />}
+              icon={<Image src="/assets/team.svg" alt="Home" width={30} height={30} />}
               onPress={() => handleMenuPress("Events")}
               className={`w-16 ${glass}`}
               titleClassName="text-[#444] text-xs"
@@ -127,7 +127,7 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
           <div className="flex gap-3 ml-63 mt-[-5rem]  h-19">
             <MenuItem
               title="Leadership"
-              icon={<Crown size={20} color="#444" />}
+              icon={<Image src="/assets/home.svg" alt="Home" width={30} height={30} />}
               onPress={() => handleMenuPress("Leadership")}
               className={`flex-1 ${glass}`}
               titleClassName="text-[#444] text-sm"
@@ -137,7 +137,7 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
           <div className="flex gap-3 h-20 w-53">
             <MenuItem
               title="Programs"
-              icon={<Code size={20} color="#444" />}
+              icon={<Image src="/assets/home.svg" alt="Home" width={35} height={35} />}
               onPress={() => handleMenuPress("Programs")}
               className={`flex-1 ${glass}`}
               titleClassName="text-[#444] text-sm"
@@ -146,8 +146,8 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
           </div>
           <div className="flex gap-3 h-40 w-53">
             <MenuItem
-              title="Programs"
-              icon={<Code size={20} color="#444" />}
+              title="Incubation"
+              icon={<Image src="/assets/incubation.svg" alt="Home" width={35} height={35} />}
               onPress={() => handleMenuPress("Programs")}
               className={`flex-1 ${glass}`}
               titleClassName="text-[#444] text-sm"
@@ -158,30 +158,36 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
           <div className="flex gap-3 h-16">
             <div className="flex gap-3 ml-63 h-17 mt-[-16rem]">
               <MenuItem 
-              title="X" icon={<LucideX size={16} color="#444" />} onPress={() => handleMenuPress("X")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
-              <MenuItem title="Instagram" icon={<Instagram size={16} color="#444" />} onPress={() => handleMenuPress("Instagram")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
+              title=""     icon={<Image src="/assets/X.svg" alt="Home" width={40} height={40} />} onPress={() => handleMenuPress("X")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
+              <MenuItem title="" icon={<Image src="/assets/instagram.svg" alt="Home" width={35} height={35} />}  onPress={() => handleMenuPress("Instagram")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
             </div>
           </div>
 
           <div className="flex gap-3 h-16">
             <div className="flex gap-3 ml-63 h-17 mt-[-15.5rem]">
-              <MenuItem title="X" icon={<LucideX size={16} color="#444" />} onPress={() => handleMenuPress("X")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
+              <MenuItem title="Master Class"  icon={<Image src="/assets/offering.svg" alt="Home" width={40} height={40} />} onPress={() => handleMenuPress("X")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
             </div>
           </div>
 
-          <div className="flex gap-3 h-16">
-            <div className="flex gap-3 ml-63 h-17 mt-[-15.5rem]">
-              <MenuItem title="X" icon={<LucideX size={16} color="#444" />} onPress={() => handleMenuPress("X")} className={`w-16 ${glass}`} titleClassName="text-[#444] text-xs" />
-            </div>
+         
+          <div className="flex gap-3 ml-63 mt-[-15.4rem]  h-19">
+            <MenuItem
+              title="Bridge Program "
+              icon={<Image src="/assets/home.svg" alt="Home" width={30} height={30} />}
+              onPress={() => handleMenuPress("Leadership")}
+              className={`flex-1 ${glass}`}
+              titleClassName="text-[#444] text-sm"
+            />
+        
           </div>
         </div>
 
         <button
           onClick={handleApplyNow}
-          className="w-40 h-20 ml-100 mr-40 mt-[-14rem] rounded-[2rem] overflow-hidden bg-[#AFAFAF] border border-white/30 shadow-[inset_0_0_0.5px_rgba(255,255,255,0.4),0_4px_30px_rgba(0,0,0,0.1)] hover:bg-[#BFBFBF] transition-all duration-300"
+          className="w-44 h-17 ml-100 mr-40 mt-[2rem] rounded-[15rem] overflow-hidden bg-[#AFAFAF] border border-white/30 shadow-[inset_0_0_0.5px_rgba(255,255,255,0.4),0_4px_30px_rgba(0,0,0,0.1)] hover:bg-[#BFBFBF] transition-all duration-300"
         >
           <div className="py-5 px-10 relative">
-            <div className="absolute inset-0 bg-[#AFAFAF] rounded-[2rem]" />
+            <div className="absolute inset-0 bg-gray-300 rounded-[1px]" />
             <span className="relative text-[#444] text-lg font-bold drop-shadow-sm">Apply Now</span>
           </div>
         </button>
