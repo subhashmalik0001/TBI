@@ -106,20 +106,20 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
                   title="About"
                   icon={<Image src="/assets/about.svg" alt="Home" width={25} height={25} />}
                   onPress={() => handleMenuPress("X")}
-                  className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`}
+                  className={`w-16 sm:w-14 xs:w-12 border-4 border-gray-400 rounded-[1.5rem]`}
                   titleClassName="text-[#444] text-xs"
                 />
                 <MenuItem
                   title="Offering"
                   icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />}
                   onPress={() => handleMenuPress("Instagram")}
-                  className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`}
+                  className={`w-16 sm:w-14 xs:w-12 border-4 border-gray-400 rounded-[1.5rem]`}
                   titleClassName="text-[#444] text-xs"
                 />
               </div>
               <div className="flex gap-3 h-16">
-                <MenuItem title="Team"  icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("X")} className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
-                <MenuItem title="Insights" icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("Instagram")} className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
+                <MenuItem title="Team"  icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("X")} className={`w-16 sm:w-14 xs:w-12 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
+                <MenuItem title="Insights" icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("Instagram")} className={`w-16 sm:w-14 xs:w-12 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
               </div>
             </div>
           </div>
@@ -133,7 +133,6 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
               titleClassName="text-[#444] text-xs"
             />
           </div>
-
           <div className="flex gap-3 ml-63 mt-[-5rem]  h-19">
             <MenuItem
               title="Leadership"
@@ -143,53 +142,83 @@ function MobileMenu({ onClose }: { onClose?: () => void }) {
               titleClassName="text-[#444] text-sm"
             />
           </div>
-
-          <div className="flex gap-3 h-20 w-53">
+          <div className="flex gap-10 h-20 w-full">
             <MenuItem
               title="Programs"
               icon={<Image src="/assets/home.svg" alt="Home" width={35} height={35} />}
-              onPress={() => handleMenuPress("Programs")}
-              className={`flex-1 border-3 border-gray-400 rounded-[1.5rem]`}
+              onPress={() => handleMenuPress("Home")}
+              className={`flex-1 border-4 border-gray-400 rounded-[1.5rem]`.replace('bg-[#AFAFAF]', '')}
               titleClassName="text-[#444] text-sm"
             />
+            <div className="flex flex-col ml-auto gap-2">
+              <div className="flex gap-3 h-16">
+                <MenuItem
+                  title=""
+                  icon={<Image src="/assets/X.svg" alt="Home" width={50} height={50} />}
+                  onPress={() => handleMenuPress("X")}
+                  className={`w-16 sm:w-14 xs:w-12 border-4 border-gray-400 rounded-[1.5rem]`}
+                  titleClassName="text-[#444] text-xs"
+                />
+                <MenuItem
+                  title=""
+                  icon={<Image src="/assets/instagram.svg" alt="Home" width={50} height={50} />}
+                  onPress={() => handleMenuPress("Instagram")}
+                  className={`w-16 sm:w-14 xs:w-12 border-4 border-gray-400 rounded-[1.5rem]`}
+                  titleClassName="text-[#444] text-xs"
+                />
+              </div>
+           
+            </div>
             
           </div>
-          <div className="flex gap-3 h-40 w-53">
+          
+            
+          
+
+         
+
+         
+
+         
+          <div className="flex gap-10 h-35 w-full">
             <MenuItem
               title="Incubation"
               icon={<Image src="/assets/incubation.svg" alt="Home" width={35} height={35} />}
-              onPress={() => handleMenuPress("Programs")}
-              className={`flex-1 border-5 border-gray-400 rounded-[1.5rem]`}
+              onPress={() => handleMenuPress("Home")}
+              className={`flex-1 border-4 border-gray-400 rounded-[1.5rem]`.replace('bg-[#AFAFAF]', '')}
               titleClassName="text-[#444] text-sm"
             />
-            
-          </div>
-
-          <div className="flex gap-3 h-16">
-            <div className="flex gap-3 ml-63 h-17 mt-[-16rem]">
-              <MenuItem 
-              title=""     icon={<Image src="/assets/X.svg" alt="Home" width={50} height={40} />} onPress={() => handleMenuPress("X")} className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
-              <MenuItem title="" icon={<Image src="/assets/instagram.svg" alt="Home" width={35} height={35} />}  onPress={() => handleMenuPress("Instagram")} className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
+             <div className="flex flex-col ml-auto gap-2">
+              <div className="flex gap-3 h-16">
+                <MenuItem
+                  title="About"
+                  icon={<Image src="/assets/about.svg" alt="Home" width={25} height={25} />}
+                  onPress={() => handleMenuPress("X")}
+                  className={`w-16 sm:w-14 xs:w-12 border-4 border-gray-400 rounded-[1.5rem]`}
+                  titleClassName="text-[#444] text-xs"
+                />
+                <MenuItem
+                  title="Offering"
+                  icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />}
+                  onPress={() => handleMenuPress("Instagram")}
+                  className={`w-16 sm:w-14 xs:w-12 border-4 border-gray-400 rounded-[1.5rem]`}
+                  titleClassName="text-[#444] text-xs"
+                />
+              </div>
+              <div className="flex gap-3 h-16">
+                <MenuItem title="Team"  icon={<Image src="/assets/offering.svg" alt="Home" width={25} height={25} />} onPress={() => handleMenuPress("X")} className={`w-16 sm:w-14 xs:w-12 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
+               
+              </div>
             </div>
-          </div>
-
-          <div className="flex gap-3 h-16">
-            <div className="flex gap-3 ml-63 h-17 mt-[-15.5rem]">
-              <MenuItem title="Master Class"  icon={<Image src="/assets/offering.svg" alt="Home" width={50} height={40} />} onPress={() => handleMenuPress("X")} className={`w-16 border-4 border-gray-400 rounded-[1.5rem]`} titleClassName="text-[#444] text-xs" />
-            </div>
+         
           </div>
 
          
-          <div className="flex gap-3 ml-63 mt-[-15.4rem]  h-22">
-            <MenuItem
-              title="Bridge Program "
-              icon={<Image src="/assets/home.svg" alt="Home" width={30} height={30} />}
-              onPress={() => handleMenuPress("Leadership")}
-              className={`flex-1 border-3 border-gray-400 rounded-[1.5rem]`}
-              titleClassName="text-[#444] text-sm"
-            />
-        
-          </div>
+
+         
+
+         
+          
         </div>
 
         <button
