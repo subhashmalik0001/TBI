@@ -65,21 +65,22 @@ const Footer = () => {
       <div className="relative w-full min-h-[400px]">
         {/* The SVG that should overlap */}
         <div
-          className="absolute inset-0 z-10 bg-cover bg-center bg-no-repeat"
+          className="absolute w-full inset-6 z-10 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url('/assets/container (5).svg')",
-            backgroundSize: "cover"
+            backgroundSize: "cover",
+            backgroundPosition: "center center"
           }}
         ></div>
         {/* Grid Section */}
-        <div className="relative z-20 w-full px-4 py-8 flex flex-col md:flex-row bg-transparent min-h-[200px] md:min-h-[400px]">
+        <div className="relative z-20 w-full px-4 py-8 flex flex-col md:flex-row bg-transparent min-h-[800px] md:min-h-[800px]">
           <div className="w-full md:w-1/2"></div>
           <div className="w-full md:w-1/2 grid grid-cols-1 gap-0 h-full md:h-80">
-            <div  style={{paddingBottom: "-100px"}} className="
+            <div className="
   h-[300px]
-  -mt-8 md:-mt-8 md:h-[300px]
-  lg:h-[400px] xl:h-[400px]
-  ml-30 md:ml-12 -mt-8 lg:ml-54 xl:ml-62 -mt-8
+  -mt-8 md:-mt-8 md:h-[800px]
+  lg:h-[800px] xl:h-[800px]
+  ml-20 md:ml-12 -mt-8 lg:ml-94 xl:ml-82 -mt-8
   border-t md:border-t-0 md:border-l border-gray-300
 "></div>
           </div>

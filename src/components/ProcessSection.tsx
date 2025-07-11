@@ -122,9 +122,9 @@ const ProcessSection = () => {
           </div>
 
           {/* Right Section */}
-          <div className="flex flex-col items-start w-full">
+          <div className="  mb-10 ml-5 sm:mb-10 mt-20 flex-col items-start w-full">
               <span>STARTUP CUTBI</span>
-              <div  className="h-[2px] bg-[#333] border-none w-full sm:w-full md:w-full lg:w-full mb-1" />
+              <div  style={{position: 'relative',width:'97%'}} className="h-[2px] bg-[#333] border-none w-full sm:w-full md:w-full lg:w-full mb-1" />
               </div>
                 
 
