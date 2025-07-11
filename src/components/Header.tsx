@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface HeaderProps {
   leftText: ReactNode;
-  rightText: string;
+  rightText: ReactNode;
   iconSrc?: string;
 }
 
