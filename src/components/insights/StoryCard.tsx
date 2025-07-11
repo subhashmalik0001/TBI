@@ -20,8 +20,10 @@ export default function StoryCard({
   className,
 }: StoryCardProps) {
   return (
-    <div className={`bg-white rounded-[34px] shadow-lg p-1 max-w-sm mx-auto flex flex-col gap-4 border border-gray-100 ${className || ""}`}
-         style={{ boxShadow: "0 4px 32px 0 rgba(255, 176, 102, 0.15)" }}>
+    <div
+      className={`bg-white rounded-[34px] shadow-lg p-1 max-w-sm mx-auto flex flex-col gap-4 border border-gray-100 transition-transform transition-colors duration-500 cursor-pointer hover:bg-[#FFF9F2] hover:scale-97 active:bg-[#FFF1E0] active:scale-95 ${className || ""}`}
+      style={{ boxShadow: "0 4px 32px 0 rgba(255, 176, 102, 0.15)" }}
+    >
       <div className="overflow-hidden rounded-[30px]">
         <Image src={image} alt={title} width={400} height={200} className="object-cover w-full h-40" />
       </div>

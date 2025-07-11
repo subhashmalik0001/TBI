@@ -122,11 +122,11 @@ const ProcessSection = () => {
           </div>
 
           {/* Right Section */}
-          <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center">
-            <div className="w-full">
-              <h2 className="text-xs lg:text-sm font-semibold text-gray-900 tracking-wider uppercase">PROCESS</h2>
-            </div>
-          </div>
+          <div className="flex flex-col items-start w-full">
+              <span>STARTUP CUTBI</span>
+              <div  className="h-[2px] bg-[#333] border-none w-full sm:w-full md:w-full lg:w-full mb-1" />
+              </div>
+                
 
           {/* Vertical Divider for large screens */}
           <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 w-px bg-gray-300" style={{transform: 'translateX(-0.5px)'}} />

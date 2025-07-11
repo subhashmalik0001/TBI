@@ -348,7 +348,7 @@ export default function Hero() {
                     return (
                       <span
                         key={index}
-                        className={`transition-colors duration-300 ${
+                        className={`transition-colors duration-1000 ${
                           shouldBeBlack ? "text-black" : "text-gray-400"
                         }`}
                       >

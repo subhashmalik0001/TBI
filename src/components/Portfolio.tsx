@@ -8,7 +8,12 @@ export default function Portfolio() {
         <div className="px-4 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full">
             <Header
                 leftText={<>Portfolio.os</>}
-                rightText="PROCESS"
+                rightText={
+                    <div className="flex flex-col items-start w-full">
+                        <span>STARTUP CUTBI</span>
+                        <div  className="h-[2px] bg-[#333] border-none w-full sm:w-full md:w-full lg:w-full mb-1" />
+                        
+                    </div>}
                 iconSrc="/assets/image1.png"
             />
             <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-10 md:mt-24 w-full md:mx-[188px]">

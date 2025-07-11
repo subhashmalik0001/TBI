@@ -76,7 +76,12 @@ export default function FounderStories() {
     <div className="px-4 sm:px-8 md:px-[40px] lg:px-[70px]">
       <Header 
         leftText={<>Founder<br />Stories.</>}
-        rightText="PROCESS"
+        rightText={
+          <div className="flex flex-col items-start w-full">
+              <span>STARTUP CUTBI</span>
+              <div  className="h-[2px] bg-[#333] border-none w-full sm:w-full md:w-full lg:w-full mb-1" />
+              
+          </div>}
         iconSrc="/assets/image1.png"
       />
       <div className="w-full flex flex-col gap-6 mt-8 md:flex-row md:gap-[16px]">
