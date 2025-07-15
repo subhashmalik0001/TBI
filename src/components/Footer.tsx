@@ -62,7 +62,7 @@ const Footer = () => {
       <div className="grid grid-cols-1 border-t border-gray-300 md:grid-cols-2"></div>
 
       {/* Overlapping SVG Section */}
-      <div className="relative w-full min-h-[400px]">
+      <div className="relative w-full min-h-[350px]">
         {/* The SVG that should overlap */}
         <div
           className="absolute w-full inset-6 z-10 bg-cover bg-center bg-no-repeat"
