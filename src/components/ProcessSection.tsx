@@ -212,7 +212,7 @@ const ProcessSection = () => {
                <div></div>
             </React.Fragment>
           ))}
-          <div  className="w-full h-full hidden md:block">
+          <div  className="w-50 h-full hidden md:block">
           <video
             ref={videoRef}
             src="/assets/animation.mp4"

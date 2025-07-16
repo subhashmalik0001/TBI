@@ -2,10 +2,124 @@ import Header from "./Header";
 import Image from "next/image";
 import { FaLinkedin, FaXTwitter, FaCode } from "react-icons/fa6";
 import PortfolioDetails from "./PortfolioDetails";
+const Folder: any = require("./Folder").default;
+import "./Folder.css";
+import { useState } from "react";
+import MacNavbarDock from "./MacNavbarDock";
 
 export default function Portfolio() {
+    const folderList = Array.from({ length: 15 }, (_, i) => ({ name: `Folder ${i + 1}` }));
+
+    // Dummy details for each startup
+    const detailsList = [
+        {
+            step: "01",
+            stepLabel: "Openworks",
+            stepCount: "1 / 6",
+            title: "Openworks: AI-powered workflow automation",
+            description: "Automate and optimize your business processes with Openworks' advanced AI tools.",
+            features: [
+                { title: "Workflow Builder", description: "Drag-and-drop interface for custom workflows." },
+                { title: "AI Integrations" },
+                { title: "Analytics Dashboard" },
+            ],
+            socialLinks: [
+                { icon: <FaLinkedin />, href: "#", label: "LinkedIn" },
+                { icon: <FaXTwitter />, href: "#", label: "X" },
+                { icon: <FaCode />, href: "#", label: "Code" },
+            ],
+        },
+        {
+            step: "02",
+            stepLabel: "TBI",
+            stepCount: "2 / 6",
+            title: "TBI: Incubating Innovation",
+            description: "Empowering startups with resources, mentorship, and funding opportunities.",
+            features: [
+                { title: "Mentorship Program" },
+                { title: "Seed Funding" },
+                { title: "Startup Community" },
+            ],
+            socialLinks: [
+                { icon: <FaLinkedin />, href: "#", label: "LinkedIn" },
+                { icon: <FaXTwitter />, href: "#", label: "X" },
+                { icon: <FaCode />, href: "#", label: "Code" },
+            ],
+        },
+        {
+            step: "03",
+            stepLabel: "Kizer",
+            stepCount: "3 / 6",
+            title: "Kizer: Next-gen Health Tech",
+            description: "Revolutionizing healthcare with smart diagnostics and patient management.",
+            features: [
+                { title: "Smart Diagnostics" },
+                { title: "Patient Portal" },
+                { title: "Data Security" },
+            ],
+            socialLinks: [
+                { icon: <FaLinkedin />, href: "#", label: "LinkedIn" },
+                { icon: <FaXTwitter />, href: "#", label: "X" },
+                { icon: <FaCode />, href: "#", label: "Code" },
+            ],
+        },
+        {
+            step: "04",
+            stepLabel: "Medoc",
+            stepCount: "4 / 6",
+            title: "Medoc: Medical Document AI",
+            description: "AI-powered document management for clinics and hospitals.",
+            features: [
+                { title: "OCR Scanning" },
+                { title: "Secure Storage" },
+                { title: "Collaboration Tools" },
+            ],
+            socialLinks: [
+                { icon: <FaLinkedin />, href: "#", label: "LinkedIn" },
+                { icon: <FaXTwitter />, href: "#", label: "X" },
+                { icon: <FaCode />, href: "#", label: "Code" },
+            ],
+        },
+        {
+            step: "05",
+            stepLabel: "Simulate",
+            stepCount: "5 / 6",
+            title: "Simulate: Virtual Testing Labs",
+            description: "Run simulations and tests in a virtual environment for rapid prototyping.",
+            features: [
+                { title: "3D Simulation" },
+                { title: "Real-time Analytics" },
+                { title: "API Access" },
+            ],
+            socialLinks: [
+                { icon: <FaLinkedin />, href: "#", label: "LinkedIn" },
+                { icon: <FaXTwitter />, href: "#", label: "X" },
+                { icon: <FaCode />, href: "#", label: "Code" },
+            ],
+        },
+        {
+            step: "06",
+            stepLabel: "Cube",
+            stepCount: "6 / 6",
+            title: "Cube: Modular Data Storage",
+            description: "Flexible and scalable data storage solutions for modern businesses.",
+            features: [
+                { title: "Modular Storage" },
+                { title: "Cloud Sync" },
+                { title: "Encryption" },
+            ],
+            socialLinks: [
+                { icon: <FaLinkedin />, href: "#", label: "LinkedIn" },
+                { icon: <FaXTwitter />, href: "#", label: "X" },
+                { icon: <FaCode />, href: "#", label: "Code" },
+            ],
+        },
+    ];
+
+    const [selectedIdx, setSelectedIdx] = useState(0);
+
     return (
-        <div className="px-4 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full">
+        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full -mt-15">
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] xl:min-h-[100px] relative">
                 {/* Left Section */}
                 <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center relative">
@@ -29,39 +143,33 @@ export default function Portfolio() {
 
             <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-10 md:mt-24 w-full md:mx-[188px]">
                 {/* Left Column as Component */}
-                <PortfolioDetails
-                    step="01"
-                    stepLabel="Openworks"
-                    stepCount="1 / 34"
-                    title="Turn production data into a competitive edge"
-                    description="Visualize complex AI workflows, run real-time evaluations, collect real-world performance data, and optimize for cost, latency, and quality at scale."
-                    features={[
-                        {
-                            title: "Full traces and spans",
-                            description:
-                                "Understand the complete journey of each request through your AI system with detailed visualization of execution paths, helping you identify bottlenecks and optimization opportunities.",
-                        },
-                        { title: "Continuous evaluations" },
-                        { title: "Human annotations" },
-                    ]}
-                    socialLinks={[
-                        { icon: <FaLinkedin />, href: "#", label: "LinkedIn" },
-                        { icon: <FaXTwitter />, href: "#", label: "X" },
-                        { icon: <FaCode />, href: "#", label: "Code" },
-                    ]}
-                />
-                {/* Right Column */}
-                <div className="flex-1 flex items-center justify-center mt-8 md:mt-0 w-full">
-                    <div className="relative w-full max-w-xs sm:max-w-md md:max-w-xl aspect-[4/3] bg-[#f8faf8] rounded-xl overflow-hidden flex items-center justify-center">
-                        <Image
-                            src="https://i.ytimg.com/vi/nuJFjx44ILM/maxresdefault.jpg"
-                            alt="Stacked cards"
-                            fill
-                            style={{ objectFit: 'contain', opacity: 0.9 }}
-                        />
+                <PortfolioDetails {...detailsList[selectedIdx]} />
+                {/* Right Column: 6 Folders in 2 rows, 3 columns each, with names */}
+                <div className="flex-1 flex flex-col items-center justify-center mr-30 mt-8 md:mt-0 w-full">
+                    <div className="grid grid-cols-1 md:grid-cols-5 transition-all duration-300 overflow-visible gap-x-0 gap-y-0 mr-30">
+                        {folderList.map((folder, idx) => (
+                            <div
+                                key={folder.name}
+                                className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[180px] min-h-[180px]"
+                            >
+                                <div onClick={() => setSelectedIdx(idx)} style={{ cursor: 'pointer' }}>
+                                    <Folder
+                                        color="#5227FF"
+                                        size={0.7}
+                                        items={[
+                                            <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 1</div>,
+                                            <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 2</div>,
+                                            <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 3</div>,
+                                        ] as unknown as any[]}
+                                    />
+                                </div>
+                                <span className="mt-3 text-sm font-semibold text-gray-800 text-center">{folder.name}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
+            <MacNavbarDock />
         </div>
     );
 }

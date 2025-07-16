@@ -127,8 +127,6 @@ export default function Hero() {
   const [heroScrollProgress, setHeroScrollProgress] = useState(0);
 
   // Hero text scroll lock and wheel-to-animate states
-  const [isHeroScrollLocked, setIsHeroScrollLocked] = useState(false);
-  const [isHeroAnimationDone, setIsHeroAnimationDone] = useState(false);
   const [heroWheelProgress, setHeroWheelProgress] = useState(0);
 
   // Services section scroll logic - works independently
@@ -217,53 +215,6 @@ export default function Hero() {
     return () => window.removeEventListener("scroll", handleHeroScroll);
   }, []);
 
-  // Lock scroll when hero text enters view
-  useEffect(() => {
-    if (isMobile) return; // Disable scroll lock on mobile
-    const onScroll = () => {
-      if (isHeroScrollLocked || isHeroAnimationDone || !heroTextRef.current) return;
-      const rect = heroTextRef.current.getBoundingClientRect();
-      const isInMiddle = rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5;
-      if (isInMiddle) {
-        setIsHeroScrollLocked(true);
-        document.body.style.overflow = "hidden";
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [isHeroScrollLocked, isHeroAnimationDone, isMobile]);
-
-  // Animate hero text with wheel while locked
-  useEffect(() => {
-    if (isMobile) return; // Disable wheel animation on mobile
-    if (!isHeroScrollLocked || isHeroAnimationDone) return;
-    let accumulated = 0;
-    const maxScroll = 800;
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      accumulated += Math.abs(e.deltaY);
-      const progress = Math.min(accumulated / maxScroll, 1);
-      setHeroWheelProgress(progress);
-      if (progress >= 1) {
-        setIsHeroScrollLocked(false);
-        setIsHeroAnimationDone(true);
-        document.body.style.overflow = "auto";
-      }
-    };
-    window.addEventListener("wheel", onWheel, { passive: false });
-    return () => window.removeEventListener("wheel", onWheel);
-  }, [isHeroScrollLocked, isHeroAnimationDone, isMobile]);
-
-  // Prevent scroll jumps while hero is locked
-  useEffect(() => {
-    if (!isHeroScrollLocked) return;
-    const lockPosition = () => {
-      window.scrollTo({ top: window.scrollY });
-    };
-    window.addEventListener("scroll", lockPosition);
-    return () => window.removeEventListener("scroll", lockPosition);
-  }, [isHeroScrollLocked]);
-
   // Always enable scroll on mobile
   useEffect(() => {
     if (isMobile) {
@@ -297,6 +248,20 @@ export default function Hero() {
     window.addEventListener('resize', updateLineMargins);
     return () => window.removeEventListener('resize', updateLineMargins);
   }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
+    const onScroll = () => {
+      // Animate from scrollY 0 to 800px (adjust as needed)
+      const maxScroll = 800;
+      const progress = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
+      setHeroWheelProgress(progress);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    // Run once on mount
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isMobile]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -492,9 +457,9 @@ export default function Hero() {
                   )}
                  <div className="spac"/>
                     {/* Black overlay at bottom left */}
-                    <div className="absolute left-10 bottom-0 w-24 h-24 bg-black/70 z-10 rounded-bl-2xl -ml-10" />
+                    <div className="absolute left-10 bottom-0 w-24 h-24 bg-black/70 z-10 rounded-bl-2xl -ml-10 " />
                   {/* Other overlays or content */}
-                  <div style={{ marginLeft: '-230px',width: '452.41px', height: '250.56px', }} className="absolute bottom-0 left-0 right-90 bg-black/90 p-6 z-20">
+                  <div style={{ marginLeft: '-230px',width: '452.41px', height: '250.56px', }} className="absolute -bottom-14 left-0 right-90 bg-black/90 p-6 z-20">
                     <h3 className="text-white text-lg md:text-xl font-bold mb-4">{services[activeIndex].name}</h3>
                     <p className="text-gray-300 text-sm leading-relaxed mb-6">
                       {services[activeIndex].description}
