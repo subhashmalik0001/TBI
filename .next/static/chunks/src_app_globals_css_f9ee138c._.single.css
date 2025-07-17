@@ -479,28 +479,8 @@
     top: 0;
   }
 
-  .top-\[-2rem\] {
-    top: -2rem;
-  }
-
   .top-\[0\.2rem\] {
     top: .2rem;
-  }
-
-  .top-\[0\.5rem\] {
-    top: .5rem;
-  }
-
-  .top-\[0rem\] {
-    top: 0;
-  }
-
-  .top-\[1rem\] {
-    top: 1rem;
-  }
-
-  .top-\[2rem\] {
-    top: 2rem;
   }
 
   .right-0 {
@@ -565,10 +545,6 @@
 
   .left-\[-2rem\] {
     left: -2rem;
-  }
-
-  .left-\[-4rem\] {
-    left: -4rem;
   }
 
   .left-\[3rem\] {
@@ -697,14 +673,6 @@
     margin-block: calc(var(--spacing) * 12);
   }
 
-  .-mt-0 {
-    margin-top: calc(var(--spacing) * 0);
-  }
-
-  .-mt-5 {
-    margin-top: calc(var(--spacing) * -5);
-  }
-
   .-mt-8 {
     margin-top: calc(var(--spacing) * -8);
   }
@@ -713,16 +681,8 @@
     margin-top: calc(var(--spacing) * -10);
   }
 
-  .-mt-15 {
-    margin-top: calc(var(--spacing) * -15);
-  }
-
-  .-mt-25 {
-    margin-top: calc(var(--spacing) * -25);
-  }
-
-  .-mt-45 {
-    margin-top: calc(var(--spacing) * -45);
+  .mt-0 {
+    margin-top: calc(var(--spacing) * 0);
   }
 
   .mt-1 {
@@ -739,6 +699,10 @@
 
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
+  }
+
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
   }
 
   .mt-6 {
@@ -761,6 +725,10 @@
     margin-top: calc(var(--spacing) * 12);
   }
 
+  .mt-15 {
+    margin-top: calc(var(--spacing) * 15);
+  }
+
   .mt-16 {
     margin-top: calc(var(--spacing) * 16);
   }
@@ -769,12 +737,44 @@
     margin-top: calc(var(--spacing) * 20);
   }
 
+  .mt-22 {
+    margin-top: calc(var(--spacing) * 22);
+  }
+
   .mt-24 {
     margin-top: calc(var(--spacing) * 24);
   }
 
   .mt-30 {
     margin-top: calc(var(--spacing) * 30);
+  }
+
+  .mt-32 {
+    margin-top: calc(var(--spacing) * 32);
+  }
+
+  .mt-35 {
+    margin-top: calc(var(--spacing) * 35);
+  }
+
+  .mt-36 {
+    margin-top: calc(var(--spacing) * 36);
+  }
+
+  .mt-38 {
+    margin-top: calc(var(--spacing) * 38);
+  }
+
+  .mt-42 {
+    margin-top: calc(var(--spacing) * 42);
+  }
+
+  .mt-44 {
+    margin-top: calc(var(--spacing) * 44);
+  }
+
+  .mt-45 {
+    margin-top: calc(var(--spacing) * 45);
   }
 
   .mt-\[-5rem\] {
@@ -877,10 +877,6 @@
     margin-bottom: calc(var(--spacing) * 12);
   }
 
-  .mb-15 {
-    margin-bottom: calc(var(--spacing) * 15);
-  }
-
   .mb-16 {
     margin-bottom: calc(var(--spacing) * 16);
   }
@@ -937,16 +933,8 @@
     margin-left: calc(var(--spacing) * 10);
   }
 
-  .ml-12 {
-    margin-left: calc(var(--spacing) * 12);
-  }
-
   .ml-13 {
     margin-left: calc(var(--spacing) * 13);
-  }
-
-  .ml-14 {
-    margin-left: calc(var(--spacing) * 14);
   }
 
   .ml-15 {
@@ -1535,10 +1523,6 @@
 
   .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .grid-cols-5 {
@@ -2533,10 +2517,6 @@
     padding-top: calc(var(--spacing) * 6);
   }
 
-  .pt-7 {
-    padding-top: calc(var(--spacing) * 7);
-  }
-
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
   }
@@ -2575,6 +2555,10 @@
 
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
+  }
+
+  .pb-5 {
+    padding-bottom: calc(var(--spacing) * 5);
   }
 
   .pb-6 {
@@ -2660,11 +2644,6 @@
   .text-6xl {
     font-size: var(--text-6xl);
     line-height: var(--tw-leading, var(--text-6xl--line-height));
-  }
-
-  .text-7xl {
-    font-size: var(--text-7xl);
-    line-height: var(--tw-leading, var(--text-7xl--line-height));
   }
 
   .text-base {
@@ -3511,12 +3490,6 @@
   }
 
   @media (width >= 40rem) {
-    .sm\:-mt-0 {
-      margin-top: calc(var(--spacing) * 0);
-    }
-  }
-
-  @media (width >= 40rem) {
     .sm\:mt-0 {
       margin-top: calc(var(--spacing) * 0);
     }
@@ -3716,12 +3689,6 @@
   @media (width >= 48rem) {
     .md\:mx-\[-10px\] {
       margin-inline: -10px;
-    }
-  }
-
-  @media (width >= 48rem) {
-    .md\:-mt-0 {
-      margin-top: calc(var(--spacing) * 0);
     }
   }
 
@@ -4132,13 +4099,6 @@
     .md\:text-6xl {
       font-size: var(--text-6xl);
       line-height: var(--tw-leading, var(--text-6xl--line-height));
-    }
-  }
-
-  @media (width >= 48rem) {
-    .md\:text-7xl {
-      font-size: var(--text-7xl);
-      line-height: var(--tw-leading, var(--text-7xl--line-height));
     }
   }
 
