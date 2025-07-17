@@ -88,8 +88,8 @@ function MobileHeroSection() {
       </div>
       <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-full px-2 z-10">
         <div className="text-white">
-          <div className="absolute left-[-2rem] top-0 bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
-          <div className="text-5xl leading-tight font-['SF Pro',__sans-serif]">
+          <div className="absolute ml-17 left-[-2rem] top-[0.2rem] bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
+          <div className="text-3xl ml-13 leading-tight font-['SF Pro',__sans-serif]">
             <div>Build</div>
             <div>Connect</div>
             <div>Grow</div>
@@ -278,12 +278,12 @@ export default function Hero() {
             className="absolute top-0 left-0 w-full h-full object-cover"
           >
             <source src="/hero.mp4" type="video/mp4" />
-          </video>
+            </video>
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-full px-2 md:left-16 md:bottom-8 md:top-auto md:-translate-x-0">
             <div className="text-white">
-              <div className="absolute left-[-2rem] top-[-0rem] bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
-              <div className="text-7xl md:text-7xl f leading-tight font-['SF Pro',__sans-serif]">
+              <div className="ml-15 absolute left-[-2rem] top-[0.2rem] bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
+              <div className=" ml-15 text-4xl md:text-6xl f leading-tight font-['SF Pro',__sans-serif]">
                 <div>Build</div>
                 <div>Connect</div>
                 <div>Grow</div>
@@ -304,24 +304,20 @@ export default function Hero() {
                 <span className="text-black">{blackText}</span>
 
                 {/* Grey text part - animates letter by letter, or all black on mobile */}
-                {isMobile ? (
-                  <span className="text-black">{greyText}</span>
-                ) : (
-                  greyChars.map((char, index) => {
-                    const charProgress = index / greyChars.length;
-                    const shouldBeBlack = heroWheelProgress > charProgress;
-                    return (
-                      <span
-                        key={index}
-                        className={`transition-colors duration-1000 ${
-                          shouldBeBlack ? "text-black" : "text-gray-400"
-                        }`}
-                      >
-                        {char}
-                      </span>
-                    );
-                  })
-                )}
+                {greyChars.map((char, index) => {
+                  const charProgress = index / greyChars.length;
+                  const shouldBeBlack = heroWheelProgress > charProgress;
+                  return (
+                    <span
+                      key={index}
+                      className={`transition-colors duration-1000 ${
+                        shouldBeBlack ? "text-black" : "text-gray-400"
+                      }`}
+                    >
+                      {char}
+                    </span>
+                  );
+                })}
               </p>
             </div>
           </div>

@@ -6,6 +6,7 @@ const Folder: any = require("./Folder").default;
 import "./Folder.css";
 import React, { useState } from "react";
 import MacNavbarDock from "./MacNavbarDock";
+import styles from "./Portfolio.module.css";
 
 export default function Portfolio() {
     const [showSecondSet, setShowSecondSet] = useState(false);
@@ -121,7 +122,7 @@ export default function Portfolio() {
     const [selectedIdx, setSelectedIdx] = useState(0);
 
     return (
-        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full -mt-15 relative">
+        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full sm:mt-15 lg:-mt-45  relative">
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] xl:min-h-[100px] relative">
                 
                 {/* Left Section */}
@@ -145,15 +146,11 @@ export default function Portfolio() {
             </div>
             {/* Main content with background image */}
             <div
+                className={`${styles['portfolio-bg']} w-full max-w-[1600px] mx-auto`}
                 style={{
-                    backgroundImage: 'url(https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock-3840x2160-1455.jpg)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
                     minHeight: '700px',
                     paddingBottom: '1px',
                 }}
-                className="w-full max-w-[1600px] mx-auto "
             >
                 <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-10 w-full">
                     {/* Mobile: Only show PortfolioDetails and Next button */}
