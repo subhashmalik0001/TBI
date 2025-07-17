@@ -106,8 +106,8 @@ const ProcessSection = () => {
   }
 
   return (
-    <section ref={sectionRef} className="bg-white text-black py-20">
-      <div className="w-full bg-white mb-20">
+    <section ref={sectionRef} className="bg-white text-black pt-15">
+      <div className="w-full bg-white mb-10">
         {/* Main Grid Container - Left and Right Layout (full width) */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] relative">
           {/* Left Section */}

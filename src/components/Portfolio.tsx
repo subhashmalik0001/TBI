@@ -121,7 +121,7 @@ export default function Portfolio() {
     const [selectedIdx, setSelectedIdx] = useState(0);
 
     return (
-        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full -mt-15 relative">
+        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full lg:-mt-45 relative sm:mt-0">
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] xl:min-h-[100px] relative">
                 
                 {/* Left Section */}
@@ -168,7 +168,7 @@ export default function Portfolio() {
                         </button>
                     </div>
                     {/* Desktop: Show grid of folders and PortfolioDetails only on lg and up */}
-                    <div className="hidden lg:flex flex-row w-full">
+                    <div className="hidden lg:flex flex-row w-full ml-10">
                         <PortfolioDetails {...detailsList[selectedIdx]} />
                         <div className="flex-1 flex flex-col items-center justify-center mr-20  md:mt-10 w-full">
                             <div className="grid grid-cols-1 md:grid-cols-5 transition-all duration-300 overflow-visible gap-x-2 gap-y-0">
@@ -181,7 +181,7 @@ export default function Portfolio() {
                                         <div onClick={() => setSelectedIdx(showSecondSet ? idx + 14 : idx)} style={{ cursor: 'pointer' }}>
                                             <Folder
                                                 color="#5227FF"
-                                                size={0.7}
+                                                size={0.9}
                                                 items={[
                                                     <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 1</div>,
                                                     <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 2</div>,

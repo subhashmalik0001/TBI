@@ -88,8 +88,8 @@ function MobileHeroSection() {
       </div>
       <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-full px-2 z-10">
         <div className="text-white">
-          <div className="absolute left-[-2rem] top-0 bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
-          <div className="text-5xl leading-tight font-['SF Pro',__sans-serif]">
+          <div className="absolute ml-17 left-[-2rem] top-[0.2rem] bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
+          <div className="text-3xl ml-13 leading-tight font-['SF Pro',__sans-serif]">
             <div>Build</div>
             <div>Connect</div>
             <div>Grow</div>
@@ -282,8 +282,8 @@ export default function Hero() {
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-full px-2 md:left-16 md:bottom-8 md:top-auto md:-translate-x-0">
             <div className="text-white">
-              <div className="absolute left-[-2rem] top-[-0rem] bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
-              <div className="text-7xl md:text-7xl f leading-tight font-['SF Pro',__sans-serif]">
+              <div className="ml-15 absolute left-[-2rem] top-[0.2rem] bottom-[-0.1rem] w-[0.1rem] bg-white"></div>
+              <div className=" ml-15 text-4xl md:text-6xl f leading-tight font-['SF Pro',__sans-serif]">
                 <div>Build</div>
                 <div>Connect</div>
                 <div>Grow</div>
@@ -518,7 +518,7 @@ export default function Hero() {
        (
         // MOBILE SERVICES SECTION
         <>
-        <div className="bg-white px-4 pt-7 pb-2 block md:hidden ">
+        <div className="bg-white px-4 pt- pb-2 block md:hidden ">
           {/* Section Title */}
           <div className="space-y-1 mb-6">
             <div className="flex items-center gap-1">
@@ -534,8 +534,8 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* SERVICES ROW (horizontal buttons) */}
-          <div className="flex flex-wrap gap-4 mb-8">
+          {/* SERVICES ROW (2 per row, grid) */}
+          <div className="sm:grid grid-cols-2 gap-4 mb-8">
             {services.map((service, idx) => (
               <button
                 key={service.name}
@@ -546,7 +546,7 @@ export default function Hero() {
                     setFade(false);
                   }, 200); // 200ms fade duration
                 }}
-                className={`px-3 py-2 text-xs rounded-full border transition ${
+                className={`w-full px-3 py-2 text-xs rounded-full border transition ${
                   mobileActiveIndex === idx
                     ? 'bg-red-600 text-white font-semibold'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
