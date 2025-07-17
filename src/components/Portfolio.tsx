@@ -4,13 +4,15 @@ import { FaLinkedin, FaXTwitter, FaCode, FaArrowRight } from "react-icons/fa6";
 import PortfolioDetails from "./PortfolioDetails";
 const Folder: any = require("./Folder").default;
 import "./Folder.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import MacNavbarDock from "./MacNavbarDock";
 
 export default function Portfolio() {
-    const folderList = Array.from({ length: 15 }, (_, i) => ({ name: `Folder ${i + 1}` }));
+    const [showSecondSet, setShowSecondSet] = useState(false);
+    const allFolders: { name: string }[] = Array.from({ length: 28 }, (_, i) => ({ name: `Folder ${i + 1}` }));
+    const visibleFolders = showSecondSet ? allFolders.slice(14, 28) : allFolders.slice(0, 14);
 
-    // Dummy details for each startup
+ 
     const detailsList = [
         {
             step: "01",
@@ -119,10 +121,11 @@ export default function Portfolio() {
     const [selectedIdx, setSelectedIdx] = useState(0);
 
     return (
-        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full ">
+        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full -mt-15 relative">
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] xl:min-h-[100px] relative">
+                
                 {/* Left Section */}
-                <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center relative">
+                <div className="px-6 py-4 lg:px-8 lg:py-6  flex items-center relative">
                     <div className="relative w-full">
                         <img src="/assets/image1.png" alt="Portfolio Icon" className="w-8 h-6 absolute -top-[-1.1rem] left-0" />
                         <h1 className="text-2xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight pl-10">
@@ -140,50 +143,76 @@ export default function Portfolio() {
                 {/* Vertical Divider for large screens */}
                 <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 w-px bg-gray-300" style={{transform: 'translateX(-0.5px)'}} />
             </div>
-
-            <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-20 md:mt-24  w-full md:mx-[40px]">
-                {/* Mobile: Only show PortfolioDetails and Next button */}
-                <div className="block lg:hidden w-full mb-8 pb-0">
-                    <PortfolioDetails {...detailsList[selectedIdx]} />
-                    <button
-                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 mx-auto mb-0"
-                        onClick={() => setSelectedIdx((selectedIdx + 1) % detailsList.length)}
-                        style={{ display: 'flex', alignItems: 'center', margin: '0 auto' }}
-                    >
-                        Next <FaArrowRight />
-                    </button>
-                </div>
-                {/* Desktop: Show grid of folders and PortfolioDetails only on lg and up */}
-                <div className="hidden lg:flex flex-row w-full">
-                    <PortfolioDetails {...detailsList[selectedIdx]} />
-                    <div className="flex-1 flex flex-col items-center justify-center mr-30 mt-8 md:mt-0 w-full">
-                        <div className="grid grid-cols-1 md:grid-cols-5 transition-all duration-300 overflow-visible gap-x-2 gap-y-0">
-                            {folderList.map((folder, idx) => (
-                                <div
-                                    key={folder.name}
-                                    className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[180px] min-h-[180px]"
-                                >
-                                    <div onClick={() => setSelectedIdx(idx)} style={{ cursor: 'pointer' }}>
-                                        <Folder
-                                            color="#5227FF"
-                                            size={0.7}
-                                            items={[
-                                                <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 1</div>,
-                                                <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 2</div>,
-                                                <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 3</div>,
-                                            ] as unknown as any[]}
-                                        />
+            {/* Main content with background image */}
+            <div
+                style={{
+                    backgroundImage: 'url(https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock-3840x2160-1455.jpg)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    minHeight: '700px',
+                    paddingBottom: '1px',
+                }}
+                className="w-full max-w-[1600px] mx-auto "
+            >
+                <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-10 w-full">
+                    {/* Mobile: Only show PortfolioDetails and Next button */}
+                    <div className="block lg:hidden w-full mr-10  pb-10">
+                        <PortfolioDetails {...detailsList[selectedIdx]} />
+                        <button
+                            className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 mx-auto mb-0"
+                            onClick={() => setSelectedIdx((selectedIdx + 1) % detailsList.length)}
+                            style={{ display: 'flex', alignItems: 'center', margin: '0 auto' }}
+                        >
+                            Next <FaArrowRight />
+                        </button>
+                    </div>
+                    {/* Desktop: Show grid of folders and PortfolioDetails only on lg and up */}
+                    <div className="hidden lg:flex flex-row w-full">
+                        <PortfolioDetails {...detailsList[selectedIdx]} />
+                        <div className="flex-1 flex flex-col items-center justify-center mr-20  md:mt-10 w-full">
+                            <div className="grid grid-cols-1 md:grid-cols-5 transition-all duration-300 overflow-visible gap-x-2 gap-y-0">
+                                {/* Render 14 folders and the icon button in the grid */}
+                                {visibleFolders.map((folder, idx) => (
+                                    <div
+                                        key={folder.name}
+                                        className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[180px] min-h-[180px]"
+                                    >
+                                        <div onClick={() => setSelectedIdx(showSecondSet ? idx + 14 : idx)} style={{ cursor: 'pointer' }}>
+                                            <Folder
+                                                color="#5227FF"
+                                                size={0.7}
+                                                items={[
+                                                    <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 1</div>,
+                                                    <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 2</div>,
+                                                    <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 3</div>,
+                                                ] as unknown as any[]}
+                                            />
+                                        </div>
+                                        <span className="mt-3 text-sm font-semibold text-gray-800 text-center">{folder.name}</span>
                                     </div>
-                                    <span className="mt-3 text-sm font-semibold text-gray-800 text-center">{folder.name}</span>
-                                </div>
-                            ))}
+                                ))}
+                                <button
+                                    key="icon"
+                                    className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[180px] min-h-[180px] focus:outline-none"
+                                    onClick={() => setShowSecondSet((prev) => !prev)}
+                                    aria-label="Show more folders"
+                                >
+                                    <div className="flex items-center justify-center w-full h-full">
+                                        <img src="/assets/icon.png" alt="icon" className="w-20 h-20 mx-auto mb-20" />
+                                    </div>
+                                    <span className="mt-3 text-sm font-semibold text-gray-800 text-center"></span>
+                                </button>
+                            </div>
+                            {/* Direct icon after the folders grid */}
+                           
                         </div>
                     </div>
                 </div>
-            </div>
-            {/* Only show MacNavbarDock on lg and larger screens */}
-            <div className="hidden lg:block">
-                <MacNavbarDock />
+                {/* Only show MacNavbarDock on lg and larger screens, inside the background */}
+                <div className="hidden lg:block">
+                    <MacNavbarDock />
+                </div>
             </div>
         </div>
     );

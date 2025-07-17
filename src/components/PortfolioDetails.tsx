@@ -31,13 +31,13 @@ const PortfolioDetails: React.FC<PortfolioDetailsProps> = ({
     socialLinks,
 }) => {
     return (
-        <div className="flex-1 max-w-full md:max-w-lg md:mr-12">
-            <div className="flex flex-wrap items-center gap-4 mb-6">
+        <div className="flex-1 max-w-full md:max-w-lg md:mr-20 ">
+            <div className="flex flex-wrap items-center gap-4 ml-20 mt-10 mb-20">
                 <div className="border border-gray-300 text-gray-500 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xs md:text-sm font-semibold">{step}</div>
                 <div className="text-gray-500 text-xs md:text-sm">{stepLabel}</div>
                 <div className="text-gray-400 text-xs ml-2">{stepCount}</div>
             </div>
-            <h2 className="text-lg md:text-2xl mb-2 text-gray-800 font-semibold">{title}</h2>
+            <h2 className="text-lg md:text-2xl  text-gray-800 font-semibold">{title}</h2>
             <p className="text-gray-500 mb-6 text-sm md:text-base">{description}</p>
             <ol className="mb-8 text-gray-700">
                 {features.map((feature, idx) => (

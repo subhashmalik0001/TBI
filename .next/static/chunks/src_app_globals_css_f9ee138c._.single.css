@@ -503,6 +503,10 @@
     bottom: calc(var(--spacing) * 8);
   }
 
+  .bottom-10 {
+    bottom: calc(var(--spacing) * 10);
+  }
+
   .bottom-28 {
     bottom: calc(var(--spacing) * 28);
   }
@@ -681,10 +685,6 @@
     margin-top: calc(var(--spacing) * -15);
   }
 
-  .-mt-30 {
-    margin-top: calc(var(--spacing) * -30);
-  }
-
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
@@ -699,6 +699,10 @@
 
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
+  }
+
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
   }
 
   .mt-6 {
@@ -775,6 +779,10 @@
 
   .mr-10 {
     margin-right: calc(var(--spacing) * 10);
+  }
+
+  .mr-20 {
+    margin-right: calc(var(--spacing) * 20);
   }
 
   .mr-30 {
@@ -1321,8 +1329,32 @@
     max-width: var(--container-7xl);
   }
 
+  .max-w-\[1px\] {
+    max-width: 1px;
+  }
+
   .max-w-\[60\%\] {
     max-width: 60%;
+  }
+
+  .max-w-\[160px\] {
+    max-width: 160px;
+  }
+
+  .max-w-\[170px\] {
+    max-width: 170px;
+  }
+
+  .max-w-\[1500px\] {
+    max-width: 1500px;
+  }
+
+  .max-w-\[1600px\] {
+    max-width: 1600px;
+  }
+
+  .max-w-\[1700px\] {
+    max-width: 1700px;
   }
 
   .max-w-full {
@@ -3626,36 +3658,6 @@
   }
 
   @media (width >= 48rem) {
-    .md\:mx-\[20px\] {
-      margin-inline: 20px;
-    }
-  }
-
-  @media (width >= 48rem) {
-    .md\:mx-\[40px\] {
-      margin-inline: 40px;
-    }
-  }
-
-  @media (width >= 48rem) {
-    .md\:mx-\[188px\] {
-      margin-inline: 188px;
-    }
-  }
-
-  @media (width >= 48rem) {
-    .md\:mx-\[200px\] {
-      margin-inline: 200px;
-    }
-  }
-
-  @media (width >= 48rem) {
-    .md\:mx-\[px\] {
-      margin-inline: px;
-    }
-  }
-
-  @media (width >= 48rem) {
     .md\:-mt-8 {
       margin-top: calc(var(--spacing) * -8);
     }
@@ -3668,20 +3670,14 @@
   }
 
   @media (width >= 48rem) {
+    .md\:mt-10 {
+      margin-top: calc(var(--spacing) * 10);
+    }
+  }
+
+  @media (width >= 48rem) {
     .md\:mt-16 {
       margin-top: calc(var(--spacing) * 16);
-    }
-  }
-
-  @media (width >= 48rem) {
-    .md\:mt-24 {
-      margin-top: calc(var(--spacing) * 24);
-    }
-  }
-
-  @media (width >= 48rem) {
-    .md\:mt-30 {
-      margin-top: calc(var(--spacing) * 30);
     }
   }
 
@@ -3700,6 +3696,18 @@
   @media (width >= 48rem) {
     .md\:mr-12 {
       margin-right: calc(var(--spacing) * 12);
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:mr-20 {
+      margin-right: calc(var(--spacing) * 20);
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:mr-30 {
+      margin-right: calc(var(--spacing) * 30);
     }
   }
 
