@@ -250,7 +250,6 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    if (isMobile) return;
     const onScroll = () => {
       // Animate from scrollY 0 to 800px (adjust as needed)
       const maxScroll = 800;
@@ -261,7 +260,7 @@ export default function Hero() {
     // Run once on mount
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isMobile]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -278,7 +277,7 @@ export default function Hero() {
             className="absolute top-0 left-0 w-full h-full object-cover"
           >
             <source src="/hero.mp4" type="video/mp4" />
-            </video>
+           </video>
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-full px-2 md:left-16 md:bottom-8 md:top-auto md:-translate-x-0">
             <div className="text-white">
