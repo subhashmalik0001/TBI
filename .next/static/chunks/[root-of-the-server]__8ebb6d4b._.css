@@ -839,6 +839,10 @@
     margin-top: calc(var(--spacing) * 30);
   }
 
+  .mt-36 {
+    margin-top: calc(var(--spacing) * 36);
+  }
+
   .mt-\[-5rem\] {
     margin-top: -5rem;
   }
@@ -3578,6 +3582,12 @@
 
   .data-\[state\=open\]\:animate-accordion-down[data-state="open"] {
     animation: accordion-down var(--tw-animation-duration, var(--tw-duration, .2s)) ease-out;
+  }
+
+  @media (width >= 40rem) {
+    .sm\:mt-0 {
+      margin-top: calc(var(--spacing) * 0);
+    }
   }
 
   @media (width >= 40rem) {
