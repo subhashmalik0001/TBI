@@ -847,6 +847,10 @@
     margin-top: 80px;
   }
 
+  .-mr-10 {
+    margin-right: calc(var(--spacing) * -10);
+  }
+
   .mr-2 {
     margin-right: calc(var(--spacing) * 2);
   }
@@ -993,6 +997,10 @@
 
   .ml-10 {
     margin-left: calc(var(--spacing) * 10);
+  }
+
+  .ml-15 {
+    margin-left: calc(var(--spacing) * 15);
   }
 
   .ml-20 {
