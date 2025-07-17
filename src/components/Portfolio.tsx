@@ -190,7 +190,7 @@ export default function Portfolio() {
                 <div className="px-6 py-4 lg:px-8 lg:py-6  flex items-center relative">
                     <div className="relative w-full">
                         <img src="/assets/image1.png" alt="Portfolio Icon" className="w-8 h-6 absolute -top-[-1.1rem] left-0" />
-                        <h1 className="text-2xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight pl-10">
+                        <h1 className="text-2xl lg:text-4xl xl:text-5xl font-bold lg:text-gray-900 text-white leading-tight pl-10">
                             Portfolio.os
                         </h1>
                     </div>
@@ -209,7 +209,7 @@ export default function Portfolio() {
             <div
                 style={{
                     backgroundImage: isMobile
-                        ? 'url(https://wallpapers.com/images/featured/iphone-wltnz5o1xymafqmo.jpg)'
+                        ? 'url(https://wallpapers.ispazio.net/wp-content/uploads/2020/10/iSpazio-98-768x1663.jpg)'
                         : 'url(https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock-3840x2160-1455.jpg)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -222,7 +222,7 @@ export default function Portfolio() {
             >
                 <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-10 w-full">
                     {/* Mobile: Only show PortfolioDetails and Next button */}
-                    <div className="block lg:hidden w-full mr-10  pb-10"
+                    <div className="block text-white lg:hidden w-full mr-10 pb-10"
                         onTouchStart={handleTouchStart}
                         onTouchEnd={handleTouchEnd}
                     >
@@ -256,7 +256,7 @@ export default function Portfolio() {
                                                 ] as unknown as any[]}
                                             />
                                         </div>
-                                        <span className="mt-3 text-sm font-semibold text-gray-800 text-center">{folder.name}</span>
+                                        <span className="mt-3 text-sm font-semibold lg:text-gray-800 text-white text-center">{folder.name}</span>
                                     </div>
                                 ))}
                                 <button
@@ -268,7 +268,7 @@ export default function Portfolio() {
                                     <div className="flex items-center justify-center w-full h-full">
                                         <img src="/assets/icon.png" alt="icon" className="w-20 h-20 mx-auto mb-20" />
                                     </div>
-                                    <span className="mt-3 text-sm font-semibold text-gray-800 text-center"></span>
+                                    <span className="mt-3 text-sm font-semibold lg:text-gray-800 text-white text-center"></span>
                                 </button>
                             </div>
                             {/* Direct icon after the folders grid */}
