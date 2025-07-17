@@ -73,7 +73,7 @@ export default function FounderStories() {
   const columns = Array.from({ length: 4 }, (_, i) => stories.slice(i * 2, i * 2 + 2));
 
   return (
-    <div className="px-4 sm:px-8 md:px-[40px] lg:px-[px]">
+    <div className="px-5  sm:px-8 md:px-[40px] lg:px-[px]">
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] xl:min-h-[100px] relative">
         {/* Left Section */}
         <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center relative">

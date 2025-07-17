@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import "./mac-navbar-dock.css";
-import { Bluetooth, BatteryMedium, Wifi, Search } from "lucide-react";
 
-const dockItems = [
+interface DockItem {
+  name: string;
+  src: string;
+  isBin?: boolean;
+}
+
+const dockItems: DockItem[] = [
   { name: "Finder", src: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Finder_Icon_macOS_Big_Sur.png" },
   { name: "Siri", src: "https://www.apple.com/v/siri/i/images/overview/routers_tile_1__gds6mleh3lea_large.png" },
   { name: "LaunchPad", src: "https://images.icon-icons.com/3053/PNG/512/whatsapp_macos_bigsur_icon_189555.png" },
@@ -24,11 +29,11 @@ const dockItems = [
   },
 ];
 
-const MacNavbarDock = () => {
-  const [hoveredIdx, setHoveredIdx] = useState(null);
+const MacNavbarDock: React.FC = () => {
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   // Calculate transform and zIndex for each icon based on hoveredIdx
-  const getIconTransform = (index) => {
+  const getIconTransform = (index: number) => {
     if (hoveredIdx === null) return { scale: 1, translateY: 0, z: 1 };
     const transformations = [
       { idx: hoveredIdx - 2, scale: 1.1, translateY: 0, z: 2 },
@@ -58,11 +63,7 @@ const MacNavbarDock = () => {
               <div className="name">{item.name}</div>
               <img
                 className={`ico ${item.isBin ? "ico-bin" : ""}`}
-                src={
-                  item.src.startsWith("http")
-                    ? item.src
-                    : `https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853c55558a2e1192ee09_${item.src}`
-                }
+                src={item.src}
                 alt={item.name}
                 style={{
                   transform: `scale(${scale}) translateY(${translateY}px)`,

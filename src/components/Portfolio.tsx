@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Image from "next/image";
-import { FaLinkedin, FaXTwitter, FaCode } from "react-icons/fa6";
+import { FaLinkedin, FaXTwitter, FaCode, FaArrowRight } from "react-icons/fa6";
 import PortfolioDetails from "./PortfolioDetails";
 const Folder: any = require("./Folder").default;
 import "./Folder.css";
@@ -119,7 +119,7 @@ export default function Portfolio() {
     const [selectedIdx, setSelectedIdx] = useState(0);
 
     return (
-        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full -mt-15">
+        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full ">
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] xl:min-h-[100px] relative">
                 {/* Left Section */}
                 <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center relative">
@@ -141,35 +141,50 @@ export default function Portfolio() {
                 <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 w-px bg-gray-300" style={{transform: 'translateX(-0.5px)'}} />
             </div>
 
-            <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-10 md:mt-24 w-full md:mx-[188px]">
-                {/* Left Column as Component */}
-                <PortfolioDetails {...detailsList[selectedIdx]} />
-                {/* Right Column: 6 Folders in 2 rows, 3 columns each, with names */}
-                <div className="flex-1 flex flex-col items-center justify-center mr-30 mt-8 md:mt-0 w-full">
-                    <div className="grid grid-cols-1 md:grid-cols-5 transition-all duration-300 overflow-visible gap-x-0 gap-y-0 mr-30">
-                        {folderList.map((folder, idx) => (
-                            <div
-                                key={folder.name}
-                                className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[180px] min-h-[180px]"
-                            >
-                                <div onClick={() => setSelectedIdx(idx)} style={{ cursor: 'pointer' }}>
-                                    <Folder
-                                        color="#5227FF"
-                                        size={0.7}
-                                        items={[
-                                            <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 1</div>,
-                                            <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 2</div>,
-                                            <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 3</div>,
-                                        ] as unknown as any[]}
-                                    />
+            <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-20 md:mt-24  w-full md:mx-[40px]">
+                {/* Mobile: Only show PortfolioDetails and Next button */}
+                <div className="block lg:hidden w-full mb-8 pb-0">
+                    <PortfolioDetails {...detailsList[selectedIdx]} />
+                    <button
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 mx-auto mb-0"
+                        onClick={() => setSelectedIdx((selectedIdx + 1) % detailsList.length)}
+                        style={{ display: 'flex', alignItems: 'center', margin: '0 auto' }}
+                    >
+                        Next <FaArrowRight />
+                    </button>
+                </div>
+                {/* Desktop: Show grid of folders and PortfolioDetails only on lg and up */}
+                <div className="hidden lg:flex flex-row w-full">
+                    <PortfolioDetails {...detailsList[selectedIdx]} />
+                    <div className="flex-1 flex flex-col items-center justify-center mr-30 mt-8 md:mt-0 w-full">
+                        <div className="grid grid-cols-1 md:grid-cols-5 transition-all duration-300 overflow-visible gap-x-2 gap-y-0">
+                            {folderList.map((folder, idx) => (
+                                <div
+                                    key={folder.name}
+                                    className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[180px] min-h-[180px]"
+                                >
+                                    <div onClick={() => setSelectedIdx(idx)} style={{ cursor: 'pointer' }}>
+                                        <Folder
+                                            color="#5227FF"
+                                            size={0.7}
+                                            items={[
+                                                <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 1</div>,
+                                                <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 2</div>,
+                                                <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 3</div>,
+                                            ] as unknown as any[]}
+                                        />
+                                    </div>
+                                    <span className="mt-3 text-sm font-semibold text-gray-800 text-center">{folder.name}</span>
                                 </div>
-                                <span className="mt-3 text-sm font-semibold text-gray-800 text-center">{folder.name}</span>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
-            <MacNavbarDock />
+            {/* Only show MacNavbarDock on lg and larger screens */}
+            <div className="hidden lg:block">
+                <MacNavbarDock />
+            </div>
         </div>
     );
 }

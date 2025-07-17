@@ -1,9 +1,9 @@
 /* Dock */
 .dock {
   position: static;
-  margin: 40px auto 0 auto;
+  margin: 20px auto 0 auto;
   left: unset;
-  bottom: unset;
+  bottom: 10px;
   transform: none;
   background-color: rgb(240, 0, 52);
   backdrop-filter: blur(10px);
@@ -16,6 +16,7 @@
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   width: 100%;
   max-width: 1100px;
+  margin-bottom: 50px;
 }
 
 .dock-container {

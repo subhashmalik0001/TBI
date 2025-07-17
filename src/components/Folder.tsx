@@ -1,6 +1,14 @@
+import React from "react";
 import "./Folder.css";
 
-const darkenColor = (hex, percent) => {
+interface FolderProps {
+  color?: string;
+  size?: number;
+  items?: React.ReactNode[];
+  className?: string;
+}
+
+const darkenColor = (hex: string, percent: number): string => {
   let color = hex.startsWith("#") ? hex.slice(1) : hex;
   if (color.length === 3) {
     color = color
@@ -21,7 +29,7 @@ const darkenColor = (hex, percent) => {
   );
 };
 
-const Folder = ({
+const Folder: React.FC<FolderProps> = ({
   color = "#5227FF",
   size = 1,
   items = [],
@@ -38,16 +46,21 @@ const Folder = ({
   const paper2 = darkenColor("#ffffff", 0.05);
   const paper3 = "#ffffff";
 
-  const folderStyle = {
+  const folderStyle: React.CSSProperties = {
+    // @ts-ignore
     "--folder-color": color,
+    // @ts-ignore
     "--folder-back-color": folderBackColor,
+    // @ts-ignore
     "--paper-1": paper1,
+    // @ts-ignore
     "--paper-2": paper2,
+    // @ts-ignore
     "--paper-3": paper3,
   };
 
   const folderClassName = `folder`.trim();
-  const scaleStyle = { transform: `scale(${size})` };
+  const scaleStyle: React.CSSProperties = { transform: `scale(${size})` };
 
   return (
     <div style={scaleStyle} className={className}>
