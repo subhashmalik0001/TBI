@@ -48,6 +48,7 @@ const ProcessSection = () => {
   const [sectionTop, setSectionTop] = useState(0);
   const [sectionHeight, setSectionHeight] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
 
   useEffect(() => {
     function updateSectionMetrics() {
@@ -105,9 +106,18 @@ const ProcessSection = () => {
     return Math.min(Math.max(progress, 0), 1);
   }
 
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsMobileOrTablet(window.innerWidth <= 1024);
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
   return (
-    <section ref={sectionRef} className="bg-white text-black py-20">
-      <div className="w-full bg-white mb-20">
+    <section ref={sectionRef} className="bg-white text-black pt-15">
+      <div className="w-full bg-white mb-10">
         {/* Main Grid Container - Left and Right Layout (full width) */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] relative">
           {/* Left Section */}
@@ -134,46 +144,45 @@ const ProcessSection = () => {
       </div>
       
       <div className="max-w-7xl mx-auto lg:ml-2 px-4 sm:px-6 lg:px-8">
-        {/* Mobile Layout */}
-        <div className="block md:hidden space-y-12">
-          {processSteps.map((step, index) => (
-            <div key={index} className="relative">
-              {/* Day */}
-              <div className="mb-4">
-                <p className="text-base font-bold text-gray-600">{step.day}</p>
+        {/* Mobile & Tablet Layout */}
+        {isMobileOrTablet ? (
+          <div className="space-y-12">
+            {processSteps.map((step, index) => (
+              <div key={index} className="relative">
+                {/* Day */}
+                <div className="mb-4">
+                  <p className="text-base font-bold text-gray-600">{step.day}</p>
+                </div>
+                {/* Content */}
+                <div className="relative pl-6">
+                  {/* Animated vertical line for all but last step */}
+                  {index !== processSteps.length - 1 && (
+                    (() => {
+                      const progress = getStepProgress(index);
+                      return (
+                        <div
+                          className="absolute left-0 top-6 w-px"
+                          style={{
+                            height: `${progress * 100}%`,
+                            background: `linear-gradient(to bottom, rgba(209,213,219,${1 - progress}), rgba(0,0,0,${progress}))`,
+                            transition: 'height 0.3s linear, background 0.3s linear',
+                            minHeight: '0px',
+                            maxHeight: '100%'
+                          }}
+                        />
+                      );
+                    })()
+                  )}
+                  {/* Dot */}
+                  <div className="w-3 h-3 rounded-full bg-gray-400 absolute left-[-0.6rem] top-4 z-10" />
+                  <h3 className="text-2xl font-semibold mb-3 text-gray-700 leading-tight">{step.title}</h3>
+                  <p className="text-gray-600 text-base leading-relaxed">{step.description}</p>
+                </div>
               </div>
-              
-              {/* Content */}
-              <div className="relative pl-6">
-                {/* Animated vertical line for all but last step */}
-                {index !== processSteps.length - 1 && (
-                  (() => {
-                    const progress = getStepProgress(index);
-                    return (
-                      <div
-                        className="absolute left-0 top-6 w-px"
-                        style={{
-                          height: `${progress * 100}%`,
-                          background: `linear-gradient(to bottom, rgba(209,213,219,${1 - progress}), rgba(0,0,0,${progress}))`,
-                          transition: 'height 0.3s linear, background 0.3s linear',
-                          minHeight: '0px',
-                          maxHeight: '100%'
-                        }}
-                      />
-                    );
-                  })()
-                )}
-                {/* Dot */}
-                <div className="w-3 h-3 rounded-full bg-gray-400 absolute left-[-0.6rem] top-4 z-10" />
-                <h3 className="text-2xl font-semibold mb-3 text-gray-700 leading-tight">{step.title}</h3>
-                <p className="text-gray-600 text-base leading-relaxed">{step.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Desktop Layout */}
-        <div className="hidden md:grid md:grid-cols-[120px_24px_1fr_120px] gap-x-4 lg:gap-x-8 max-w-5xl mx-auto">
+            ))}
+          </div>
+        ) : (
+        <div className="grid md:grid-cols-[120px_24px_1fr_120px] gap-x-4 lg:gap-x-8 max-w-5xl mx-auto">
           {processSteps.map((step, index) => (
             <React.Fragment key={index}>
               {/* Day */}
@@ -236,6 +245,7 @@ const ProcessSection = () => {
           </div>
           
         </div>
+        )}
       </div>
     </section>
   );

@@ -104,12 +104,17 @@ function MobileHeroSection() {
 export default function Hero() {
   // Detect mobile view
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+    const checkDevice = () => {
+        setIsMobile(window.innerWidth <= 600);
+        setIsTablet(window.innerWidth > 600 && window.innerWidth <= 1280); // 1280px covers all iPads/tablets
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+}, []);
 
   const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -217,10 +222,10 @@ export default function Hero() {
 
   // Always enable scroll on mobile
   useEffect(() => {
-    if (isMobile) {
+    if (isMobile || isTablet) {
       document.body.style.overflow = 'auto';
     }
-  }, [isMobile]);
+  }, [isMobile, isTablet]);
 
   const blackText = "We  "
   const greyText =
@@ -250,6 +255,7 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
+    if (isMobile || isTablet) return;
     const onScroll = () => {
       // Animate from scrollY 0 to 800px (adjust as needed)
       const maxScroll = 800;
@@ -260,14 +266,12 @@ export default function Hero() {
     // Run once on mount
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isMobile, isTablet]);
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      {isMobile ? (
-        <MobileHeroSection />
-      ) : (
+      {!(isMobile || isTablet) ? (
         <div className="relative h-[550px] w-full xl:max-w-[1400px] mx-auto overflow-hidden rounded-3xl mt-8 md:mt-32 px-6 md:px-12 lg:px-32 shadow-2xl border-b-8 border-r-8 border-gray-400">
           <video
             autoPlay
@@ -277,7 +281,7 @@ export default function Hero() {
             className="absolute top-0 left-0 w-full h-full object-cover"
           >
             <source src="/hero.mp4" type="video/mp4" />
-           </video>
+          </video>
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-full px-2 md:left-16 md:bottom-8 md:top-auto md:-translate-x-0">
             <div className="text-white">
@@ -290,6 +294,8 @@ export default function Hero() {
             </div>
           </div>
         </div>
+      ) : (
+        <MobileHeroSection />
       )}
 
       {/* Content Section */}
@@ -303,20 +309,24 @@ export default function Hero() {
                 <span className="text-black">{blackText}</span>
 
                 {/* Grey text part - animates letter by letter, or all black on mobile */}
-                {greyChars.map((char, index) => {
-                  const charProgress = index / greyChars.length;
-                  const shouldBeBlack = heroWheelProgress > charProgress;
-                  return (
-                    <span
-                      key={index}
-                      className={`transition-colors duration-1000 ${
-                        shouldBeBlack ? "text-black" : "text-gray-400"
-                      }`}
-                    >
-                      {char}
-                    </span>
-                  );
-                })}
+                {isMobile || isTablet ? (
+                  <span className="text-black">{greyText}</span>
+                ) : (
+                  greyChars.map((char, index) => {
+                    const charProgress = index / greyChars.length;
+                    const shouldBeBlack = heroWheelProgress > charProgress;
+                    return (
+                      <span
+                        key={index}
+                        className={`transition-colors duration-1000 ${
+                          shouldBeBlack ? "text-black" : "text-gray-400"
+                        }`}
+                      >
+                        {char}
+                      </span>
+                    );
+                  })
+                )}
               </p>
             </div>
           </div>
@@ -374,6 +384,7 @@ export default function Hero() {
              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpl-YRnxYXVx78kFqnXIi9I5b5s3bmQZXlg_ae8zgnoCXJAa837sfpK7eI2xZPZclrXAr2mKs1B1gXlOrHZqvQo4naWenEKgnrPeq8-NBQ1BZBqgoQk2vx4lAglHHgE_SpSnMwhBFiCdH6k6KRiIiBcHF66VriJF_vQXOHTOa-3tHGdVzNLZWyEBqwxozw/s2048/473544912_1018141797016754_6719124790330598010_n.jpg"
              alt="Community of innovative companies"
              fill
+             sizes="(max-width: 768px) 100vw, 50vw"
              className="object-cover"
            />
               <div className="absolute inset-0 bg-black/30" />
@@ -393,7 +404,7 @@ export default function Hero() {
       </div>
 
       {/* Services Section - Responsive */}
-      {isDesktop ? (
+      {!(isMobile || isTablet) ? (
         <>
         <div className="px-4  md:px-8 lg:px-16 bg-white  ">
         <div ref={scrollSectionRef} className="relative w-full">
@@ -447,6 +458,7 @@ export default function Hero() {
                       src={services[activeIndex].image}
                       alt={services[activeIndex].name}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-all duration-500"
                     />
                   )}
@@ -513,7 +525,7 @@ export default function Hero() {
        (
         // MOBILE SERVICES SECTION
         <>
-        <div className="bg-white px-4 pt-7 pb-2 block md:hidden ">
+        <div className="bg-white px-4 pt- pb-2 block md:hidden ">
           {/* Section Title */}
           <div className="space-y-1 mb-6">
             <div className="flex items-center gap-1">
@@ -529,8 +541,8 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* SERVICES ROW (horizontal buttons) */}
-          <div className="flex flex-wrap gap-4 mb-8">
+          {/* SERVICES ROW (2 per row, grid) */}
+          <div className="sm:grid grid-cols-2 gap-4 mb-8">
             {services.map((service, idx) => (
               <button
                 key={service.name}
@@ -541,7 +553,7 @@ export default function Hero() {
                     setFade(false);
                   }, 200); // 200ms fade duration
                 }}
-                className={`px-3 py-2 text-xs rounded-full border transition ${
+                className={`w-full px-3 py-2 text-xs rounded-full border transition ${
                   mobileActiveIndex === idx
                     ? 'bg-red-600 text-white font-semibold'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -558,6 +570,7 @@ export default function Hero() {
               src={services[mobileActiveIndex].image}
               alt={services[mobileActiveIndex].name}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
             {/* Black overlay layer */}

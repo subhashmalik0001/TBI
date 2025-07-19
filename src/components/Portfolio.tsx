@@ -4,23 +4,13 @@ import { FaLinkedin, FaXTwitter, FaCode, FaArrowRight } from "react-icons/fa6";
 import PortfolioDetails from "./PortfolioDetails";
 const Folder: any = require("./Folder").default;
 import "./Folder.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import MacNavbarDock from "./MacNavbarDock";
-import { dockItems } from "./dockItems";
 
 export default function Portfolio() {
     const [showSecondSet, setShowSecondSet] = useState(false);
     const allFolders: { name: string }[] = Array.from({ length: 28 }, (_, i) => ({ name: `Folder ${i + 1}` }));
     const visibleFolders = showSecondSet ? allFolders.slice(14, 28) : allFolders.slice(0, 14);
-
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
 
  
     const detailsList = [
@@ -129,61 +119,42 @@ export default function Portfolio() {
     ];
 
     const [selectedIdx, setSelectedIdx] = useState(0);
+    // Mobile swipe state
     const [mobilePage, setMobilePage] = useState(0);
-    const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
-    const mobilePageSize = 4;
-    const totalMobilePages = Math.ceil(dockItems.length / mobilePageSize);
+    const [slideDirection, setSlideDirection] = useState<null | 'left' | 'right'>(null);
+    const touchStartX = useRef<number | null>(null);
+    const touchEndX = useRef<number | null>(null);
 
-    // Handler for Next button
-    const handleNext = () => {
-        setSelectedIdx((selectedIdx + 1) % detailsList.length);
-        if (isMobile) {
-            setSlideDirection('right');
-            setTimeout(() => {
-                setMobilePage((prev) => (prev + 1) % totalMobilePages);
-                setTimeout(() => setSlideDirection(null), 400); // clear after animation
-            }, 0);
-        }
+    // Handle swipe gestures
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.changedTouches[0].clientX;
     };
-
-    // Handler for swipe gestures
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-        touchStartX = e.changedTouches[0].screenX;
-    };
-    const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    };
-    const handleSwipe = () => {
-        const minSwipeDistance = 50;
-        if (touchStartX - touchEndX > minSwipeDistance) {
-            // Swipe left (next)
-            setSelectedIdx((selectedIdx + 1) % detailsList.length);
-            if (isMobile) {
-                setSlideDirection('right');
-                setTimeout(() => {
-                    setMobilePage((prev) => (prev + 1) % totalMobilePages);
-                    setTimeout(() => setSlideDirection(null), 400);
-                }, 0);
-            }
-        } else if (touchEndX - touchStartX > minSwipeDistance) {
-            // Swipe right (prev)
-            setSelectedIdx((selectedIdx - 1 + detailsList.length) % detailsList.length);
-            if (isMobile) {
-                setSlideDirection('left');
-                setTimeout(() => {
-                    setMobilePage((prev) => (prev - 1 + totalMobilePages) % totalMobilePages);
-                    setTimeout(() => setSlideDirection(null), 400);
-                }, 0);
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        touchEndX.current = e.changedTouches[0].clientX;
+        if (touchStartX.current !== null && touchEndX.current !== null) {
+            const diff = touchStartX.current - touchEndX.current;
+            if (Math.abs(diff) > 50) { // threshold
+                if (diff > 0) {
+                    // Swipe left
+                    setSlideDirection('left');
+                    setTimeout(() => setSlideDirection(null), 300);
+                    setSelectedIdx((prev) => (prev + 1) % detailsList.length);
+                    setMobilePage((prev) => (prev + 1) % Math.ceil(detailsList.length));
+                } else {
+                    // Swipe right
+                    setSlideDirection('right');
+                    setTimeout(() => setSlideDirection(null), 300);
+                    setSelectedIdx((prev) => (prev - 1 + detailsList.length) % detailsList.length);
+                    setMobilePage((prev) => (prev - 1 + Math.ceil(detailsList.length)) % Math.ceil(detailsList.length));
+                }
             }
         }
+        touchStartX.current = null;
+        touchEndX.current = null;
     };
 
     return (
-        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full lg:-mt-45 relative sm:mt-0">
+        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full -mt-0 relative">
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] xl:min-h-[100px] relative">
                 
                 {/* Left Section */}
@@ -207,27 +178,28 @@ export default function Portfolio() {
             </div>
             {/* Main content with background image */}
             <div
+                className="portfolio-bg w-full max-w-[1600px] mx-auto"
                 style={{
-                    backgroundImage: isMobile
-                        ? 'url(https://wallpapers.com/images/featured/iphone-wltnz5o1xymafqmo.jpg)'
-                        : 'url(https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock-3840x2160-1455.jpg)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
                     minHeight: '700px',
-                    paddingBottom: '2px',
-                    marginBottom:'-10px'
+                    paddingBottom: '1px',
                 }}
-                className={`w-full max-w-[1600px] mx-auto ${isMobile ? 'rounded-2xl' : ''}`}
             >
-                <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-10 w-full">
-                    {/* Mobile: Only show PortfolioDetails and Next button */}
-                    <div className="block lg:hidden w-full mr-10  pb-10"
+                <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-0 w-full">
+                    {/* 📱 Mobile View Only */}
+                    <div
+                        className="block text-white lg:hidden w-full pb-10"
                         onTouchStart={handleTouchStart}
                         onTouchEnd={handleTouchEnd}
                     >
-                        <PortfolioDetails {...detailsList[selectedIdx]} />
-                        <div className="mt-36">
+                        {/* Show selected portfolio details, only 4 doc items on mobile */}
+                        <PortfolioDetails
+                            {...{
+                                ...detailsList[selectedIdx],
+                                features: detailsList[selectedIdx].features.slice(0, 4),
+                            }}
+                        />
+                        {/* Mac-style navbar dock */}
+                        <div className="mt-20">
                             <MacNavbarDock 
                                 mobilePage={mobilePage}
                                 slideDirection={slideDirection}
@@ -235,7 +207,7 @@ export default function Portfolio() {
                         </div>
                     </div>
                     {/* Desktop: Show grid of folders and PortfolioDetails only on lg and up */}
-                    <div className="hidden lg:flex flex-row w-full ml-10">
+                    <div className="hidden lg:flex flex-row w-full">
                         <PortfolioDetails {...detailsList[selectedIdx]} />
                         <div className="flex-1 flex flex-col items-center justify-center mr-20  md:mt-10 w-full">
                             <div className="grid grid-cols-1 md:grid-cols-5 transition-all duration-300 overflow-visible gap-x-2 gap-y-0">
@@ -248,7 +220,7 @@ export default function Portfolio() {
                                         <div onClick={() => setSelectedIdx(showSecondSet ? idx + 14 : idx)} style={{ cursor: 'pointer' }}>
                                             <Folder
                                                 color="#5227FF"
-                                                size={0.9}
+                                                size={0.7}
                                                 items={[
                                                     <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 1</div>,
                                                     <div className="flex items-center justify-center h-full text-xs font-semibold text-gray-700">Doc 2</div>,
@@ -277,7 +249,7 @@ export default function Portfolio() {
                     </div>
                 </div>
                 {/* Only show MacNavbarDock on lg and larger screens, inside the background */}
-                <div className="hidden lg:block">
+                <div className=" hidden lg:block">
                     <MacNavbarDock />
                 </div>
             </div>
