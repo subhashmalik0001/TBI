@@ -12,7 +12,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "..
 export default function Home() {
   return (
     <main>
-      <div className="max-w-screen-2xl mx-auto px-4">
+      <div className="mx-auto sm:max-w-screen-md md:max-w-screen-lg lg:max-w-screen-xl xl:max-w-screen-2xl px-2 sm:px-4 md:px-8 lg:px-12">
         <Hero />
         <ProcessSection />
         <Portfolio />

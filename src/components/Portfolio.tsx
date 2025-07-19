@@ -183,7 +183,7 @@ export default function Portfolio() {
     };
 
     return (
-        <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full lg:-mt-45 relative sm:mt-0">
+        <div className="px-2 sm:px-4 md:px-[70px] min-h-screen overflow-x-hidden w-full lg:-mt-45 relative sm:mt-0">
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] xl:min-h-[100px] relative">
                 
                 {/* Left Section */}
@@ -222,7 +222,7 @@ export default function Portfolio() {
             >
                 <div className="flex flex-col md:flex-row gap-8 md:gap-8 mt-10 w-full">
                     {/* Mobile: Only show PortfolioDetails and Next button */}
-                    <div className="block text-white lg:hidden w-full mr-10 pb-10"
+                    <div className="block text-white lg:hidden w-full pb-10"
                         onTouchStart={handleTouchStart}
                         onTouchEnd={handleTouchEnd}
                     >
@@ -235,15 +235,15 @@ export default function Portfolio() {
                         </div>
                     </div>
                     {/* Desktop: Show grid of folders and PortfolioDetails only on lg and up */}
-                    <div className="hidden lg:flex flex-row w-full ml-10">
+                    <div className="hidden lg:flex flex-row w-full">
                         <PortfolioDetails {...detailsList[selectedIdx]} />
-                        <div className="flex-1 flex flex-col items-center justify-center mr-20  md:mt-10 w-full">
-                            <div className="grid grid-cols-1 md:grid-cols-5 transition-all duration-300 overflow-visible gap-x-2 gap-y-0">
+                        <div className="flex-1 flex flex-col items-center justify-center md:mt-10 w-full">
+                            <div className="grid w-full max-w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 transition-all duration-300 overflow-visible gap-x-2 gap-y-0">
                                 {/* Render 14 folders and the icon button in the grid */}
                                 {visibleFolders.map((folder, idx) => (
                                     <div
                                         key={folder.name}
-                                        className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[180px] min-h-[180px]"
+                                        className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[100px] sm:min-w-[140px] md:min-w-[180px]"
                                     >
                                         <div onClick={() => setSelectedIdx(showSecondSet ? idx + 14 : idx)} style={{ cursor: 'pointer' }}>
                                             <Folder
@@ -261,12 +261,12 @@ export default function Portfolio() {
                                 ))}
                                 <button
                                     key="icon"
-                                    className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[180px] min-h-[180px] focus:outline-none"
+                                    className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[100px] sm:min-w-[140px] md:min-w-[180px] min-h-[100px] sm:min-h-[140px] md:min-h-[180px] focus:outline-none"
                                     onClick={() => setShowSecondSet((prev) => !prev)}
                                     aria-label="Show more folders"
                                 >
                                     <div className="flex items-center justify-center w-full h-full">
-                                        <img src="/assets/icon.png" alt="icon" className="w-20 h-20 mx-auto mb-20" />
+                                        <img src="/assets/icon.png" alt="icon" className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-10" />
                                     </div>
                                     <span className="mt-3 text-sm font-semibold lg:text-gray-800 text-white text-center"></span>
                                 </button>

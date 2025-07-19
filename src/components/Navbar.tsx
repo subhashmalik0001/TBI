@@ -308,6 +308,7 @@ const Navbar = () => {
               height={40}
               className="w-40 h-17 sm:w-50 sm:h-10 md:w-50 md:h-20"
               priority
+              style={{height: 'auto'}}
             />
           </div>
           </Link>
@@ -318,7 +319,7 @@ const Navbar = () => {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
-          <Image src="/assets/line.png" alt="Menu" width={30} height={40} />
+          <Image src="/assets/line.png" alt="Menu" width={30} height={40} style={{height: 'auto'}} />
         </button>
 
         {/* Mobile Menu Overlay */}
@@ -345,6 +346,7 @@ const Navbar = () => {
                 height={50}
                 className="w-40 h-12 sm:w-50 sm:h-10 md:w-50 md:h-20"
                 priority
+                style={{height: 'auto'}}
               />
             </div>
           </Link>
