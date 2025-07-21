@@ -21,7 +21,7 @@ const Footer = () => {
   }, []);
 
   const renderMobileView = () => (
-    <div className="bg-white overflow-x-hidden flex flex-col pb-0 m-0 w-full">
+    <div className="bg-white flex flex-col pb-0 m-0 w-full">
       {/* First SVG Section */}
       <div
         className="relative w-full flex flex-col justify-center items-center h-[20vh] sm:h-[22vh] md:h-[28vh] lg:h-[32vh] overflow-hidden p-0 m-0"
@@ -51,7 +51,7 @@ const Footer = () => {
   );
   
   const renderDesktopView = () => (
-    <div className="bg-white relative w-full overflow-x-hidden">
+    <div className="bg-white relative w-full">
       {/* First SVG Section */}
       <div
         className="relative w-full bg-cover bg-center bg-no-repeat flex flex-col justify-center h-[32vh] sm:h-[40vh] md:h-[60vh] lg:h-[90vh]"
@@ -67,7 +67,7 @@ const Footer = () => {
         {/* The SVG that should overlap */}
         <div
           className="absolute left-1/2 right-1/2 w-screen z-10 bg-cover bg-center bg-no-repeat 
-            h-[30vh] sm:h-[48vh] md:h-[52vh] lg:h-[60vh] xl:h-[64vh]
+            h-[48vh] sm:h-[48vh] md:h-[52vh] lg:h-[60vh] xl:h-[64vh]
             -mt-8 sm:-mt-10 md:-mt-12 lg:-mt-16
             -translate-x-1/2"
           style={{
@@ -77,7 +77,7 @@ const Footer = () => {
           }}
         ></div>
         {/* Grid Section */}
-        <div className="relative z-20 w-full px-2 sm:px-4 md:px-8 py-4 sm:py-8 flex flex-col md:flex-row bg-transparent min-h-[200px] sm:min-h-[300px] md:min-h-[400px] lg:min-h-[800px]">
+        <div className="relative z-20 w-full px-2 sm:px-4 md:px-8 py-4 sm:py-8 flex flex-col md:flex-row bg-transparent">
           <div className="w-full md:w-1/2"></div>
           <div className="w-full md:w-1/2 grid grid-cols-1 gap-0 h-full md:h-90">
             <div className="h-[120px] sm:h-[200px] md:h-[300px] lg:h-[400px] ml-8 sm:ml-16 md:ml-32 lg:ml-40 xl:ml-56 -mt-2 sm:-mt-3 md:-mt-4 lg:-mt-5 xl:-mt-6 border-t md:border-t-0 md:border-l border-gray-300"></div>
