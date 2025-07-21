@@ -233,7 +233,7 @@ export default function Portfolio() {
                                 ))}
                                 <button
                                     key="icon"
-                                    className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[180px] min-h-[180px] focus:outline-none"
+                                    className="flex flex-col items-center transition-all duration-300 overflow-visible min-w-[180px] min-h-[180px] focus:outline-none bg-white hover:translate-y-4 hover:scale-95  active:scale-90"
                                     onClick={() => setShowSecondSet((prev) => !prev)}
                                     aria-label="Show more folders"
                                 >

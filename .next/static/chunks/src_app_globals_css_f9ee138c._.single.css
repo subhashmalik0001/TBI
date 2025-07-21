@@ -1153,14 +1153,6 @@
     min-height: 120px;
   }
 
-  .min-h-\[140px\] {
-    min-height: 140px;
-  }
-
-  .min-h-\[150px\] {
-    min-height: 150px;
-  }
-
   .min-h-\[180px\] {
     min-height: 180px;
   }
@@ -2485,6 +2477,10 @@
     padding-top: calc(var(--spacing) * 6);
   }
 
+  .pt-7 {
+    padding-top: calc(var(--spacing) * 7);
+  }
+
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
   }
@@ -3128,6 +3124,13 @@
   }
 
   @media (hover: hover) {
+    .hover\:translate-y-4:hover {
+      --tw-translate-y: calc(var(--spacing) * 4);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:translate-y-\[1px\]:hover {
       --tw-translate-y: 1px;
       translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -3145,6 +3148,15 @@
     .hover\:translate-y-\[6px\]:hover {
       --tw-translate-y: 6px;
       translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:scale-95:hover {
+      --tw-scale-x: 95%;
+      --tw-scale-y: 95%;
+      --tw-scale-z: 95%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
     }
   }
 
@@ -3418,6 +3430,13 @@
     .focus-visible\:ring-ring\/50:focus-visible {
       --tw-ring-color: color-mix(in oklab, var(--ring) 50%, transparent);
     }
+  }
+
+  .active\:scale-90:active {
+    --tw-scale-x: 90%;
+    --tw-scale-y: 90%;
+    --tw-scale-z: 90%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
 
   .active\:scale-95:active {
@@ -4074,12 +4093,6 @@
   }
 
   @media (width >= 48rem) {
-    .md\:px-\[10px\] {
-      padding-inline: 10px;
-    }
-  }
-
-  @media (width >= 48rem) {
     .md\:px-\[40px\] {
       padding-inline: 40px;
     }
@@ -4088,12 +4101,6 @@
   @media (width >= 48rem) {
     .md\:px-\[70px\] {
       padding-inline: 70px;
-    }
-  }
-
-  @media (width >= 48rem) {
-    .md\:px-\[100px\] {
-      padding-inline: 100px;
     }
   }
 
@@ -4363,12 +4370,6 @@
   @media (width >= 64rem) {
     .lg\:px-32 {
       padding-inline: calc(var(--spacing) * 32);
-    }
-  }
-
-  @media (width >= 64rem) {
-    .lg\:px-\[10px\] {
-      padding-inline: 10px;
     }
   }
 
