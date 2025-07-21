@@ -161,7 +161,7 @@ const ProcessSection = () => {
                       const progress = getStepProgress(index);
                       return (
                         <div
-                          className="absolute left-0 top-6 w-px"
+                          className="absolute left-[-4px] top-6 w-px"
                           style={{
                             height: `${progress * 100}%`,
                             background: `linear-gradient(to bottom, rgba(209,213,219,${1 - progress}), rgba(0,0,0,${progress}))`,
@@ -199,7 +199,7 @@ const ProcessSection = () => {
                       <div
                         className="absolute top-6 left-1/2 -translate-x-1/2 w-px"
                         style={{
-                          height: `${progress * 100}%`,
+                          height: `${progress * 95}%`,
                           background: `linear-gradient(to bottom, rgba(209,213,219,${1 - progress}), rgba(0,0,0,${progress}))`,
                           transition: 'height 0.3s linear, background 0.3s linear',
                           minHeight: '0px',
