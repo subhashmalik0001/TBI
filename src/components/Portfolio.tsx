@@ -155,24 +155,22 @@ export default function Portfolio() {
 
     return (
         <div className="px-7 sm:px-8 md:px-[70px] min-h-screen overflow-x-hidden w-full -mt-0 relative">
-            <div className="w-full grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] xl:min-h-[100px] relative">
-                
+            <div className="w-[1500px] mr-[-6] grid grid-cols-1 lg:grid-cols-2 border-t border-b border-gray-300 min-h-[120px] lg:min-h-[100px] xl:min-h-[100px] relative">
                 {/* Left Section */}
-                <div className="px-6 py-4 lg:px-8 lg:py-6  flex items-center relative">
+                <div className="px-6 py-4 lg:px-8 lg:py-6 flex items-center relative">
                     <div className="relative w-full">
-                        <img src="/assets/image1.png" alt="Portfolio Icon" className="w-8 h-6 absolute -top-[-1.1rem] left-0" />
+                        <img src="/assets/image1.png" alt="Process Icon" className="w-8 h-6 absolute -top-[-1.1rem] left-0" />
                         <h1 className="text-2xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight pl-10">
-                            Portfolio.os
+                        Portfolio.os<br />
+                            
                         </h1>
                     </div>
                 </div>
-
                 {/* Right Section */}
-                <div className=" mb-10 sm:mb-10 ml-5 mt-10 flex flex-col items-start w-full">
+                <div className="mb-10 ml-5 sm:mb-10 mt-20 flex-col items-start w-full">
                     <span>STARTUP CUTBI</span>
-                    <div  style={{position: 'relative',width:'97%'}} className="h-[2px] bg-[#333] border-none w-full sm:w-full md:w-full lg:w-full xl:w-full mb-1" />
+                    <div style={{position: 'relative',width:'97%'}} className="h-[2px] bg-[#333] border-none w-full sm:w-full md:w-full lg:w-full mb-1" />
                 </div>
-
                 {/* Vertical Divider for large screens */}
                 <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 w-px bg-gray-300" style={{transform: 'translateX(-0.5px)'}} />
             </div>

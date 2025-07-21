@@ -637,10 +637,6 @@
     left: -.6rem;
   }
 
-  .left-\[-2px\] {
-    left: -2px;
-  }
-
   .left-\[-2rem\] {
     left: -2rem;
   }
@@ -649,36 +645,12 @@
     left: -4px;
   }
 
-  .left-\[-px\] {
-    left: -px;
-  }
-
-  .left-\[1px\] {
-    left: 1px;
-  }
-
   .left-\[3rem\] {
     left: 3rem;
   }
 
-  .left-\[4px\] {
-    left: 4px;
-  }
-
   .left-\[19\.5rem\] {
     left: 19.5rem;
-  }
-
-  .left-\[20px\] {
-    left: 20px;
-  }
-
-  .left-\[40px\] {
-    left: 40px;
-  }
-
-  .left-\[50px\] {
-    left: 50px;
   }
 
   .-z-10 {
@@ -915,6 +887,18 @@
     margin-right: calc(var(--spacing) * 40);
   }
 
+  .mr-\[-5\] {
+    margin-right: -5px;
+  }
+
+  .mr-\[-6\] {
+    margin-right: -6px;
+  }
+
+  .mr-\[-\] {
+    margin-right:  - ;
+  }
+
   .mb-0\.5 {
     margin-bottom: calc(var(--spacing) * .5);
   }
@@ -1045,6 +1029,14 @@
 
   .ml-96 {
     margin-left: calc(var(--spacing) * 96);
+  }
+
+  .ml-\[-2\], .ml-\[-2px\] {
+    margin-left: -2px;
+  }
+
+  .ml-\[-5\] {
+    margin-left: -5px;
   }
 
   .ml-auto {
@@ -1395,8 +1387,28 @@
     width: calc(var(--spacing) * 80);
   }
 
+  .w-300 {
+    width: calc(var(--spacing) * 300);
+  }
+
+  .w-400 {
+    width: calc(var(--spacing) * 400);
+  }
+
   .w-\[0\.1rem\] {
     width: .1rem;
+  }
+
+  .w-\[1px\] {
+    width: 1px;
+  }
+
+  .w-\[300p\] {
+    width: 300p;
+  }
+
+  .w-\[300px\] {
+    width: 300px;
   }
 
   .w-\[320px\] {
@@ -1413,6 +1425,22 @@
 
   .w-\[652\.8px\] {
     width: 652.8px;
+  }
+
+  .w-\[1000px\] {
+    width: 1000px;
+  }
+
+  .w-\[1500px\] {
+    width: 1500px;
+  }
+
+  .w-\[2000px\] {
+    width: 2000px;
+  }
+
+  .w-\[3000px\] {
+    width: 3000px;
   }
 
   .w-auto {
@@ -2525,6 +2553,10 @@
 
   .px-20 {
     padding-inline: calc(var(--spacing) * 20);
+  }
+
+  .px-60 {
+    padding-inline: calc(var(--spacing) * 60);
   }
 
   .py-0 {
@@ -4215,6 +4247,18 @@
   @media (width >= 48rem) {
     .md\:px-\[70px\] {
       padding-inline: 70px;
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:px-\[100px\] {
+      padding-inline: 100px;
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:px-\[px\] {
+      padding-inline: px;
     }
   }
 
