@@ -335,16 +335,16 @@ const Navbar = () => {
   const renderDesktopView = () => (
   <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white text-black">
     <div className="max-w-screen-2xl mx-auto px-9 custom-15inch-padding">
-      <div className="border-b ml-10 mr-10 border-gray-300 px-6 lg:px-10">
+      <div className="border-b border-gray-300 px-0 lg:px-10 ml-[-30px] mr-[-20px]">
         <nav className="flex items-center justify-between relative">
           <Link href={`/`}>
-            <div className="flex items-center py-0 relative h-full ml-0">
+            <div className="flex items-center py-0 relative h-full">
               <Image
                 src="/logo.svg"
                 alt="Logo"
                 width={11}
                 height={50}
-                className="w-40 h-12 sm:w-50 sm:h-10 md:w-50 md:h-20"
+                className="w-40 h-12  sm:w-50 sm:h-10 md:w-50 md:h-20"
                 priority
                 style={{height: 'auto'}}
               />
