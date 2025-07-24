@@ -641,10 +641,6 @@
     margin: calc(var(--spacing) * 0);
   }
 
-  .m-\[-30px\] {
-    margin: -30px;
-  }
-
   .mx-0 {
     margin-inline: calc(var(--spacing) * 0);
   }
@@ -785,10 +781,6 @@
     margin-right: calc(var(--spacing) * 9);
   }
 
-  .mr-10 {
-    margin-right: calc(var(--spacing) * 10);
-  }
-
   .mr-20 {
     margin-right: calc(var(--spacing) * 20);
   }
@@ -797,48 +789,12 @@
     margin-right: calc(var(--spacing) * 40);
   }
 
-  .mr-100 {
-    margin-right: calc(var(--spacing) * 100);
-  }
-
   .mr-\[-6\] {
     margin-right: -6px;
   }
 
-  .mr-\[-10px\] {
-    margin-right: -10px;
-  }
-
   .mr-\[-20px\] {
     margin-right: -20px;
-  }
-
-  .mr-\[-30px\] {
-    margin-right: -30px;
-  }
-
-  .mr-\[-100px\] {
-    margin-right: -100px;
-  }
-
-  .mr-\[30px\] {
-    margin-right: 30px;
-  }
-
-  .mr-\[40px\] {
-    margin-right: 40px;
-  }
-
-  .mr-\[100px\] {
-    margin-right: 100px;
-  }
-
-  .mr-\[px\] {
-    margin-right: px;
-  }
-
-  .mr-px {
-    margin-right: 1px;
   }
 
   .mb-0\.5 {
@@ -941,10 +897,6 @@
     margin-left: calc(var(--spacing) * 8);
   }
 
-  .ml-10 {
-    margin-left: calc(var(--spacing) * 10);
-  }
-
   .ml-13 {
     margin-left: calc(var(--spacing) * 13);
   }
@@ -973,36 +925,8 @@
     margin-left: calc(var(--spacing) * 96);
   }
 
-  .ml-\[-3px\] {
-    margin-left: -3px;
-  }
-
-  .ml-\[-10px\] {
-    margin-left: -10px;
-  }
-
-  .ml-\[-20px\] {
-    margin-left: -20px;
-  }
-
   .ml-\[-30px\] {
     margin-left: -30px;
-  }
-
-  .ml-\[-60px\] {
-    margin-left: -60px;
-  }
-
-  .ml-\[-90px\] {
-    margin-left: -90px;
-  }
-
-  .ml-\[-px\] {
-    margin-left: -px;
-  }
-
-  .ml-\[3px\] {
-    margin-left: 3px;
   }
 
   .ml-auto {

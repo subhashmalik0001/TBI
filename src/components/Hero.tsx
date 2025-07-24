@@ -6,67 +6,69 @@ import Navbar from "@/components/Navbar";
 
 const services = [
   {
-    name: "Mentoring",
+    name: "Mentorship",
     image: "https://media.licdn.com/dms/image/v2/D5605AQFF8a6PY2Kltw/feedshare-thumbnail_720_1280/B56ZZhzaO5HUAw-/0/1745397591544?e=2147483647&v=beta&t=Ml4Y3aWM9rqdPLCPjxL1NJFOmO1wcO7OYN4QtMCI4dE",
-    description: "Personalized guidance and expert mentorship to help you grow your startup.",
+    description: "Personalized guidance from experienced entrepreneurs and domain experts to shape your startup journey.",
   },
   {
-    name: "Coworking Space",
+    name: "Co-Working",
     image: "https://pbs.twimg.com/media/Gre7cpwbwAAPfiy?format=jpg&name=4096x4096",
-    description: "Collaborative and creative coworking spaces designed for productivity.",
+    description: "Dynamic and collaborative workspace designed for student startups to build, connect, and grow together.",
   },
   {
-    name: "Creative Studio",
+    name: "Innovation Studio",
     image: "https://imageio.forbes.com/specials-images/imageserve/60638bbdbe8ac107c34ae7fc/Developers-Working-From-Home-Office-/960x0.jpg?height=473&width=711&fit=bounds",
-    description: "A studio for creative minds to bring their ideas to life with the latest tools.",
+    description: "A space to brainstorm, prototype, and refine ideas into functional products with expert help.",
   },
   {
-    name: "Product Studio",
+    name: "Product Lab ",
     image: "https://images.ctfassets.net/y4cma050c2bp/782rVF82Aj4LLJ2VT2BSch/10a4728e9912371d282a000af8f89be6/2.jpg",
-    description: "From concept to launch, we help you build and refine your product.",
+    description: "End-to-end support to develop, test, and launch MVPs that solve real-world problems.",
   },
   {
-    name: "X | Labs",
+    name: "TBI X | Labs ",
     image: "https://media.licdn.com/dms/image/v2/D5605AQFF8a6PY2Kltw/feedshare-thumbnail_720_1280/B56ZZhzaO5HUAw-/0/1745397591544?e=2147483647&v=beta&t=Ml4Y3aWM9rqdPLCPjxL1NJFOmO1wcO7OYN4QtMCI4dE",
-    description: "Experimental labs for innovation and breakthrough solutions.",
+    description: "Cross-functional experimentation zone for high-impact solutions in tech, agri, health, and more.",
   },
   {
-    name: "House Renovation",
+    name: "Startup Clinic",
     image: "https://pbs.twimg.com/media/Gre7cpwbwAAPfiy?format=jpg&name=4096x4096",
-    description: "Transforming spaces with a perfect blend of aesthetics and functionality.",
+    description: "One-on-one diagnostic sessions to fix startup gaps—be it strategy, product, or fundraising.",
   },
 ];
 
 // Define tag arrays at the top of the file, outside the component
 const topRowTags = [
-  "Residential Space",
-  "Schematic",
-  "Functional",
-  "Structural Design",
-  "Residential Space",
-  "Schematic",
-  "Functional",
-  "Structural Design",
-  "Residential Space",
-  "Schematic",
-  "Functional",
-  "Structural Design",
+  "Startup Incubation",
+  "Idea to Execution",
+  "Mentorship Support",
+  "Innovation Lab",
+  "Co-working Space",
+  "Startup Showcases",
+  "Product Development",
+  "TBI X | Labs",
+  "Entrepreneurial Growth",
+  "Vision to Market",
+  "Pitch Practice",
+  "Founder First Approach",
 ];
 
+
 const bottomRowTags = [
-  "Architecture",
-  "Construction",
-  "Renovation",
-  "Kitchen",
-  "Architecture",
-  "Construction",
-  "Renovation",
-  "Kitchen",
-  "Architecture",
-  "Construction",
-  "Renovation",
-  "Kitchen",
+  "CU Incubation",
+  "Demo Day",
+  "Hackathons",
+  "Investor Connect",
+  "Prototype Building",
+  "AgriTech Support",
+  "HealthTech Solutions",
+  "Startup Clinics",
+  "Deep-Tech Startups",
+  "Workshops",
+  "Founder's Network",
+  "Innovation at CU",
 ];
+
 
 // Mobile Hero Section as a separate component
 function MobileHeroSection() {
@@ -222,9 +224,9 @@ export default function Hero() {
     }
   }, [isMobile]);
 
-  const blackText = "We  "
+  const blackText = "At TBI-CU ,  "
   const greyText =
-    "believe that to maximize retimes, you need a fundamental, first-principles understanding of every asset in your portfolio. That's why we focus on providing granular-level visibility and insight, so you can develop winning strategies for every single investment."
+    "we believe successful startups are built on strong fundamentals and a deep understanding of the problem they solve. That’s why we empower student entrepreneurs with hands-on mentorship, structured programs, and real-world insights—so they can build scalable, impactful ventures from day one."
 
   // Split grey text into individual characters for letter-by-letter animation
   const greyChars = greyText.split("")
@@ -332,9 +334,9 @@ export default function Hero() {
         <div className="px-2 py-5 md:px-8 lg:px-16 w-full col-span-2">
           <div className="mb-7">
           <h2 className="text-3xl md:text-2xl lg:text-6xl text-black leading-tight">
-          Revolutionizing the Venture
+          Transforming Student Innovation
           <br />
-          Capital Ecosystem!
+          into Scalable Startups
         </h2>
         {/* Horizontal grey line after the heading */}
         <div
@@ -350,21 +352,21 @@ export default function Hero() {
               <div className="flex items-start gap-4">
                 <div className="w-1 h-20 bg-red-500 flex-shrink-0 mt-1"></div>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  We help founders at their earliest stages regardless of their age.
+                Empowering student founders from idea to market launch.
                 </p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-1 h-16 bg-red-500 flex-shrink-0 mt-1"></div>
-                <p className="text-lg text-gray-700 leading-relaxed">We give startups a huge fundraising advantage.</p>
+                <p className="text-lg text-gray-700 leading-relaxed">Providing mentorship, infrastructure, and early funding access.</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-1 h-16 bg-red-500 flex-shrink-0 mt-1"></div>
-                <p className="text-lg text-gray-700 leading-relaxed">We improve the success rate of our startups.</p>
+                <p className="text-lg text-gray-700 leading-relaxed">Boosting startup success through structured guidance and support.</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-1 h-20 bg-red-500 flex-shrink-0 mt-1"></div>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Our companies have a track record of becoming billion dollar companies.
+                TBI CU startups solve real problems with real impact.
                 </p>
               </div>
             </div>
@@ -409,16 +411,14 @@ export default function Hero() {
                     <div className="w-2 h-2 border border-white-400 rounded-full"></div>
                     <span className="text-xs text-gray-600 uppercase tracking-wide">What Service We Offer</span>
                   </div>
-                  {/* Main Heading */}
                   <h2 className="text-2xl md:text-3xl lg:text-3xl font-bold text-black leading-tight">
-                    Unleashing the Artistry of Block Studio's Services
+                  Empowering Startup Innovation Through TBI CU’s Ecosystem
                   </h2>
                   {/* Description */}
                   <p className="text-[16px] leading-[22px] text-gray-600 leading-relaxed text-left">
-                    Discover Block Studio's dynamic ecosystem, empowering startups with cutting-edge resources, expert
-                    mentorship, and innovative solutions. We nurture your vision through personalized guidance, strategic
-                    growth support, and a collaborative community—where every idea matters, and every venture tells a unique
-                    story. At Block Studio, we don't just incubate startups; we build the future.
+                  Discover TBI CU’s robust incubation ecosystem—where student-led ventures thrive with access to expert mentorship, innovation labs, shared workspaces, and startup-building support. We don’t just guide ideas—we grow the next generation of impactful startups.
+
+
                   </p>
                   {/* Services List */}
                   <div style={{ paddingTop: '20px' }} className="space-y-5 pt-2 ">
@@ -521,11 +521,10 @@ export default function Hero() {
               <span className="text-xs text-gray-600 uppercase tracking-wide">What Service We Offer</span>
             </div>
             <h2 className="text-xl font-bold text-black leading-tight">
-              Unleashing the Artistry of Block Studio's Services
+            Empowering Startup Innovation Through TBI CU’s Ecosystem
             </h2>
             <p className="text-sm text-gray-600 leading-relaxed">
-              Discover Block Studio's dynamic ecosystem, empowering startups with cutting-edge resources,
-              expert mentorship, and innovative solutions.
+            Discover TBI CU’s robust incubation ecosystem—where student-led ventures thrive with access to expert mentorship, innovation labs, shared workspaces, and startup-building support. We don’t just guide ideas—we grow the next generation of impactful startups.
             </p>
           </div>
 
